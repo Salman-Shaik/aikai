@@ -1,0 +1,25 @@
+.homepage {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #222222;
+}
+
+.logo {
+    margin: 0;
+}
+
+.page_header {
+    min-height: 15vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1d1d1d;
+}
+
+.navigation_menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
