@@ -1,0 +1,28 @@
+.search_bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #181818;
+    border: 2px solid #a9a9a9;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.search_icon {
+    color: #ffefd5;
+    background-color: transparent;
+}
+
+.search_input {
+    background-color: transparent;
+    color: #ffefd5;
+    border: none;
+    font-size: 1.1em;
+    font-family: Avenir sans-serif;
+    width: 14vw;
+}
+
+.search_input:focus , .search_icon:focus {
+    outline: none;
+}

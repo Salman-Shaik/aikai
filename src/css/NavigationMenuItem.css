@@ -1,0 +1,18 @@
+.menu_item {
+    background-color: transparent;
+    color: #ffefd5;
+    font-size: 1.1em;
+    font-family: Avenir sans-serif;
+    padding: 10px;
+    margin: 0 1vh;
+    border: none;
+}
+
+.underline {
+    border-bottom: 1px solid #ff1493;
+    border-radius: 2px;
+}
+
+.menu_item:focus {
+    outline: none;
+}
