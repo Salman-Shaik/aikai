@@ -1,6 +1,6 @@
 import Search from '@material-ui/icons/Search'
 import React from "react";
-import '../css/SearchBar.css';
+import '../../css/SearchBar.css';
 
 export const SearchBar = () => {
     const onClick = ({target}) => {

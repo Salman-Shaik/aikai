@@ -1,7 +1,7 @@
 import React from "react";
 import {NavigationMenuItem} from "./NavigationMenuItem";
 import {SearchBar} from "./SearchBar";
-import '../css/NavigationMenu.css'
+import '../../css/NavigationMenu.css'
 
 export const NavigationMenu = ({currentMenuItem,setCurrentMenuItem}) => {
     const createNavigationMenuItem = (name) => <NavigationMenuItem name={name} currentMenuItem={currentMenuItem}

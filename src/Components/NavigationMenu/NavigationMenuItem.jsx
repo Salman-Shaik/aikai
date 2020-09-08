@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import '../css/NavigationMenuItem.css';
+import '../../css/NavigationMenuItem.css';
 
 export const NavigationMenuItem = ({name, currentMenuItem, setCurrentMenuItem}) => {
     let isItemSelected = name === currentMenuItem;
