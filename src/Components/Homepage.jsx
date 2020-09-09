@@ -18,7 +18,7 @@ export const Homepage = () => {
         <div className="homepage">
             <header className="page_header">
                 <h2 className="logo" onClick={onIconClick}>A.I.K.A.I</h2>
-                <NavigationMenu currentMenuItem={currentMenuItem} setCurrentMenuItem={setCurrentMenuItem}/>
+                <NavigationMenu currentMenuItem={currentMenuItem} setCurrentMenuItem={setCurrentMenuItem} setCurrentShow={setCurrentShow}/>
             </header>
             <main>
                 {(_.isEmpty(currentMenuItem) && _.isEmpty(currentShow)) &&

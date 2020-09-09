@@ -12,9 +12,9 @@ const Component = ({info, currentShowType, setCurrentShow}) => {
         <section className="show">
             <section className="show_section">
                 <ShowDetails info={info} currentShowType={currentShowType}/>
-                <OtherShows keyword="similar" className="similar_movies" currentShowType={currentShowType}
-                            showId={info.id} setCurrentShow={setCurrentShow}/>
                 <OtherShows keyword="recommendations" className="recommended_movies" currentShowType={currentShowType}
+                            showId={info.id} setCurrentShow={setCurrentShow}/>
+                <OtherShows keyword="similar" className="similar_movies" currentShowType={currentShowType}
                             showId={info.id} setCurrentShow={setCurrentShow}/>
             </section>
         </section>
