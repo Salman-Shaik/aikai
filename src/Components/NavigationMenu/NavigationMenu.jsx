@@ -9,7 +9,6 @@ export const NavigationMenu = ({currentMenuItem,setCurrentMenuItem}) => {
     return <section className="navigation_menu">
         {createNavigationMenuItem("Random Movie")}
         {createNavigationMenuItem("Random TV Show")}
-        {createNavigationMenuItem("Latest")}
         {createNavigationMenuItem("Editor's Choice")}
         <SearchBar/>
     </section>

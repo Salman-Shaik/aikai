@@ -5,24 +5,30 @@ import {Spinner} from "../Spinner";
 import {AiringShows} from "./AiringShows";
 import {PlayingMovies} from "./PlayingMovies";
 
-const Component = ({playingMovies, airingTvShows}) => <section className="now_playing">
+const Component = ({playingMovies, airingTvShows, setCurrentShow, setCurrentShowType}) => <section
+    className="now_playing">
     <h2 className="sub_header">Now Playing - Movies</h2>
-    <PlayingMovies data={playingMovies}/>
+    <PlayingMovies data={playingMovies}
+                   setCurrentShow={setCurrentShow}
+                   setCurrentShowType={() => setCurrentShowType("movie")}/>
     <h2 className="sub_header">Now Airing - TV Shows</h2>
-    <AiringShows data={airingTvShows}/>
+    <AiringShows data={airingTvShows}
+                 setCurrentShow={setCurrentShow}
+                 setCurrentShowType={() => setCurrentShowType("tv")}/>
 </section>
 
-export const NowPlaying = () => {
-    let [playingMovies, setPlayingMovies] = useState([]);
-    let [airingTvShows, setAiringTvShows] = useState([]);
-    let [isLoading, setIsLoading] = useState(true);
+export const NowPlaying = ({setCurrentShow, setCurrentShowType}) => {
+    const [playingMovies, setPlayingMovies] = useState([]);
+    const [airingTvShows, setAiringTvShows] = useState([]);
+    const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
-        let url = "https://api.themoviedb.org/3/movie/now_playing?api_key=8f38dc176aea0ef9cbb167f50a8fc9b2&language=en-IN&region=IN";
-        let tvUrl = "https://api.themoviedb.org/3/tv/on_the_air?api_key=8f38dc176aea0ef9cbb167f50a8fc9b2&language=en-IN";
-        fetchPlayingMovies(url, setPlayingMovies, setIsLoading);
-        fetchAiringTVShows(tvUrl, setAiringTvShows, setIsLoading);
-    }, [])
+        fetchPlayingMovies(setPlayingMovies);
+        fetchAiringTVShows(setAiringTvShows, setLoaded);
+    }, []);
 
-    return isLoading ? <Spinner/> : <Component playingMovies={playingMovies} airingTvShows={airingTvShows}/>
+    return !loaded ? <Spinner loaded={loaded}/> : <Component playingMovies={playingMovies}
+                                                            airingTvShows={airingTvShows}
+                                                            setCurrentShow={setCurrentShow}
+                                                            setCurrentShowType={setCurrentShowType}/>
 }

@@ -1,10 +1,15 @@
 import React from "react";
 import '../../css/Poster.css';
+import {imageUrlBuilder} from "../../lib/helper";
 
-export const Poster = ({data,key}) => {
-    let title = data["original_name"] || data["original_title"];
-
+export const Poster = ({data,key,setCurrentShow,setCurrentShowType}) => {
+    let title = data.name || data.title;
+    const onClick = ({target}) => {
+        let title = target.alt;
+        setCurrentShow(title);
+        setCurrentShowType();
+    }
     return <section>
-        <img src={`https://image.tmdb.org/t/p/original${data["poster_path"]}`} alt={title} className="poster" key={key}/>
+        <img src={imageUrlBuilder(data["poster_path"])} alt={title} className="poster" key={key} onClick={onClick}/>
     </section>
 }

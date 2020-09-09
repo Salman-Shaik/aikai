@@ -1,0 +1,22 @@
+.mini_poster {
+    height: 10vh;
+    width: 4.5vw;
+    box-shadow: #1d1d1d 1px 1px 8px 8px;
+    border-radius: 5px;
+}
+
+.mini_show {
+    width: 18vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: #1d1d1d 1px 1px 8px 8px;
+    padding: 5px;
+    border-radius: 2px;
+    color: papayawhip;
+    cursor: pointer;
+}
+
+.title {
+    margin-left: 1vw;
+}

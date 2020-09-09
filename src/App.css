@@ -49,6 +49,11 @@
   padding: 20px;
   cursor: pointer;
   font-size: 3em;
-  color: papayawhip;
+  color: #ffefd5;
   background-color: transparent;
+  font-family: Avenir sans-serif Arial;
+}
+
+.menu-item-wrapper  {
+  margin: 0 6px;
 }

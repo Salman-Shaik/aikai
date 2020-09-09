@@ -1,12 +1,17 @@
+import _ from 'lodash';
 import React, {useState} from "react";
+import '../css/Homepage.css'
 import {NavigationMenu} from "./NavigationMenu/NavigationMenu";
 import {NowPlaying} from "./NowPlaying/NowPlaying";
-import '../css/Homepage.css'
+import {Show} from "./Show/Show";
 
 export const Homepage = () => {
-    let [currentMenuItem, setCurrentMenuItem] = useState("");
+    const [currentMenuItem, setCurrentMenuItem] = useState("");
+    const [currentShow, setCurrentShow] = useState("");
+    const [currentShowType, setCurrentShowType] = useState("movie");
     const onIconClick = () => {
         setCurrentMenuItem("");
+        setCurrentShow("");
     }
 
     return (
@@ -16,7 +21,11 @@ export const Homepage = () => {
                 <NavigationMenu currentMenuItem={currentMenuItem} setCurrentMenuItem={setCurrentMenuItem}/>
             </header>
             <main>
-                <NowPlaying />
+                {(_.isEmpty(currentMenuItem) && _.isEmpty(currentShow)) &&
+                <NowPlaying setCurrentShow={setCurrentShow} setCurrentShowType={setCurrentShowType}/>}
+                {console.log(currentShow)}
+                {!_.isEmpty(currentShow) &&
+                <Show currentShow={currentShow} currentShowType={currentShowType} setCurrentShow={setCurrentShow}/>}
             </main>
         </div>
     )
