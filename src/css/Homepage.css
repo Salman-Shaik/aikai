@@ -5,6 +5,7 @@
 
 .logo {
     margin: 0;
+    cursor: pointer;
 }
 
 .page_header {

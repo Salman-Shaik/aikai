@@ -17,7 +17,7 @@ const createProgressBar = rating => <CircularProgressbar value={rating} maxValue
 
 export const ShowDetails = ({info, currentShowType}) => {
     const title = info.name || info.title;
-    const genre = getGenreNames(info["genre_ids"], currentShowType);
+    const genre = getGenreNames(info, currentShowType);
     const rating = info["vote_average"];
     const description = info.overview;
     const releaseDate = info["first_air_date"] || info["release_date"];

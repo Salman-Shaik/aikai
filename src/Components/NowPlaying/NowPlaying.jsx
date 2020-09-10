@@ -5,30 +5,31 @@ import {Spinner} from "../Spinner";
 import {AiringShows} from "./AiringShows";
 import {PlayingMovies} from "./PlayingMovies";
 
-const Component = ({playingMovies, airingTvShows, setCurrentShow, setCurrentShowType}) => <section
+const Component = ({playingMovies, airingTvShows, setCurrentShowId, setCurrentShowType, setHomePageLoaded}) => <section
     className="now_playing">
     <h2 className="sub_header">Now Playing - Movies</h2>
     <PlayingMovies data={playingMovies}
-                   setCurrentShow={setCurrentShow}
-                   setCurrentShowType={() => setCurrentShowType("movie")}/>
+                   setCurrentShowId={setCurrentShowId}
+                   setCurrentShowType={() => setCurrentShowType("movie")} setHomePageLoaded={setHomePageLoaded}/>
     <h2 className="sub_header">Now Airing - TV Shows</h2>
     <AiringShows data={airingTvShows}
-                 setCurrentShow={setCurrentShow}
-                 setCurrentShowType={() => setCurrentShowType("tv")}/>
+                 setCurrentShowId={setCurrentShowId}
+                 setCurrentShowType={() => setCurrentShowType("tv")} setHomePageLoaded={setHomePageLoaded}/>
 </section>
 
-export const NowPlaying = ({setCurrentShow, setCurrentShowType}) => {
+export const NowPlaying = ({setCurrentShowType, setCurrentShowId, homepageLoaded, setHomePageLoaded}) => {
     const [playingMovies, setPlayingMovies] = useState([]);
     const [airingTvShows, setAiringTvShows] = useState([]);
     const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
         fetchPlayingMovies(setPlayingMovies);
-        fetchAiringTVShows(setAiringTvShows, setLoaded);
-    }, []);
+        fetchAiringTVShows(setAiringTvShows, setLoaded, setHomePageLoaded);
+    }, [setHomePageLoaded]);
 
-    return !loaded ? <Spinner loaded={loaded}/> : <Component playingMovies={playingMovies}
-                                                            airingTvShows={airingTvShows}
-                                                            setCurrentShow={setCurrentShow}
-                                                            setCurrentShowType={setCurrentShowType}/>
+    return (!loaded && !homepageLoaded) ? <Spinner loaded={loaded}/> : <Component playingMovies={playingMovies}
+                                                                                  airingTvShows={airingTvShows}
+                                                                                  setCurrentShowId={setCurrentShowId}
+                                                                                  setCurrentShowType={setCurrentShowType}
+                                                                                  setHomePageLoaded={setHomePageLoaded}/>
 }

@@ -3,14 +3,16 @@ import _ from "lodash";
 import React, {useState} from "react";
 import '../../css/SearchBar.css';
 
-export const SearchBar = ({setCurrentShow, setCurrentShowType}) => {
+export const SearchBar = ({setCurrentShow, setCurrentShowId, setHomePageLoaded}) => {
     const [show, setShow] = useState("");
     const [error, setError] = useState(false);
     const onClick = (event) => {
         event.preventDefault();
         if (_.isEmpty(show)) return setError(true);
+        setHomePageLoaded(false);
         setError(false);
         setCurrentShow(show);
+        setCurrentShowId(0);
     }
 
     const onChange = ({target}) => {

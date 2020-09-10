@@ -7,32 +7,45 @@ import {Spinner} from "../Spinner";
 import {OtherShows} from "./OtherShows";
 import {ShowDetails} from "./ShowDetails";
 
-const Component = ({info, currentShowType, setCurrentShow}) => {
+
+const Component = ({info, currentShowType, setCurrentShow, setCurrentShowId, setHomePageLoaded, homepageLoaded}) => {
+    const createOtherMovies = (keyword, className) =>
+        <OtherShows keyword={keyword}
+                    className={className}
+                    currentShowType={currentShowType}
+                    showId={info.id}
+                    setCurrentShow={setCurrentShow}
+                    setCurrentShowId={setCurrentShowId}
+                    homepageLoaded={homepageLoaded}
+                    setHomePageLoaded={setHomePageLoaded}/>;
+
     const ShowSection = () => <section className="show_section">
         <ShowDetails info={info} currentShowType={currentShowType}/>
-        <OtherShows keyword="recommendations" className="recommended_movies" currentShowType={currentShowType}
-                    showId={info.id} setCurrentShow={setCurrentShow}/>
-        <OtherShows keyword="similar" className="similar_movies" currentShowType={currentShowType}
-                    showId={info.id} setCurrentShow={setCurrentShow}/>
+        {createOtherMovies("recommendations", "recommended_movies")}
+        {createOtherMovies("similar", "similar_movies")}
     </section>;
 
     return <section>
         <section className="show">
-            {_.isEmpty(info) ? <h2 className="invalid_query">{"Invalid Show: Check The Your Search Query."}</h2> : <ShowSection/>}
+            {(_.isEmpty(info)) ?
+                <h2 className="invalid_query">{"Invalid Show: Check The Your Search Query."}</h2> :
+                <ShowSection/>}
         </section>
     </section>;
 };
 
-export const Show = ({currentShow, currentShowType, setCurrentShow, setCurrentShowType}) => {
+export const Show = (props) => {
+    const {currentShowId, currentShow, currentShowType, setCurrentShow, setCurrentShowType, setCurrentShowId, homepageLoaded, setHomePageLoaded} = props;
     const [info, setShowInformation] = useState({});
     const [loaded, setLoaded] = useState(false);
     useEffect(() => {
-        if (_.isEmpty(currentShowType)) {
-            return fetchPerfectShow(currentShow, setShowInformation, setLoaded, setCurrentShowType);
+        if (_.isEmpty(currentShowType) || currentShowId === 0) {
+            return fetchPerfectShow(currentShow, setShowInformation, setLoaded, setCurrentShowType, setCurrentShowId, setHomePageLoaded);
         }
-        fetchShow(currentShow, currentShowType, setShowInformation, setLoaded);
-    }, [currentShow, currentShowType, setCurrentShowType]);
-
-    return !loaded ? <Spinner loaded={loaded}/> :
-        <Component info={info} currentShowType={currentShowType} setCurrentShow={setCurrentShow}/>;
+        fetchShow(currentShowId, currentShowType, setShowInformation, setLoaded, setHomePageLoaded);
+    }, [currentShow, currentShowId, currentShowType, setCurrentShowId, setCurrentShowType, setHomePageLoaded]);
+    return (!loaded && !homepageLoaded) ? <Spinner loaded={loaded}/> :
+        <Component info={info} currentShowType={currentShowType} setCurrentShow={setCurrentShow}
+                   setCurrentShowId={setCurrentShowId} setHomePageLoaded={setHomePageLoaded}
+                   homepageLoaded={homepageLoaded}/>;
 }
