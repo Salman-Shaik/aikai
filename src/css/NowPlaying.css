@@ -4,3 +4,13 @@
     color: papayawhip;
     font-family: Avenir sans-serif;
 }
+
+.note {
+    color: #ff7ea6;
+    text-align: left;
+    margin-left: 2vw;
+}
+
+.now_playing {
+    margin: 4vh 0;
+}

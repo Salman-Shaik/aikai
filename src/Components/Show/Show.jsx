@@ -27,7 +27,7 @@ const Component = ({info, currentShowType, setCurrentShow, setCurrentShowId, set
 
     return <section>
         <section className="show">
-            {(_.isEmpty(info)) ?
+            {(_.isEmpty(info) || info["status_code"] === 34) ?
                 <h2 className="invalid_query">{"Invalid Show: Check The Your Search Query."}</h2> :
                 <ShowSection/>}
         </section>
@@ -44,7 +44,7 @@ export const Show = (props) => {
         }
         fetchShow(currentShowId, currentShowType, setShowInformation, setLoaded, setHomePageLoaded);
     }, [currentShow, currentShowId, currentShowType, setCurrentShowId, setCurrentShowType, setHomePageLoaded]);
-    return (!loaded && !homepageLoaded) ? <Spinner loaded={loaded}/> :
+    return (!loaded || !homepageLoaded) ? <Spinner loaded={loaded}/> :
         <Component info={info} currentShowType={currentShowType} setCurrentShow={setCurrentShow}
                    setCurrentShowId={setCurrentShowId} setHomePageLoaded={setHomePageLoaded}
                    homepageLoaded={homepageLoaded}/>;

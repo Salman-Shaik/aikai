@@ -9,7 +9,7 @@ const createProgressBar = rating => <CircularProgressbar value={rating} maxValue
                                                              strokeLinecap: 'round',
                                                              textSize: '22px',
                                                              pathTransitionDuration: 0.5,
-                                                             pathColor: `rgba(251, 116, 169, ${rating / 10})`,
+                                                             pathColor: `rgba(251, 116, 169)`,
                                                              textColor: '#8d8c8c',
                                                              trailColor: '#fffff2',
                                                              backgroundColor: '#fb74a9'

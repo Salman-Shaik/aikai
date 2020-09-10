@@ -28,9 +28,10 @@ export const Homepage = () => {
                                 setCurrentMenuItem={setCurrentMenuItem}
                                 setCurrentShow={setCurrentShow}
                                 setCurrentShowId={setCurrentShowId}
+                                setCurrentShowType={setCurrentShowType}
                                 setHomePageLoaded={setHomePageLoaded}/>
             </header>
-            <main>
+            <main className="main_container">
                 {(_.isEmpty(currentMenuItem) && isShowEmpty && isShowIdEmpty) &&
                 <NowPlaying setCurrentShowType={setCurrentShowType}
                             setCurrentShowId={setCurrentShowId}

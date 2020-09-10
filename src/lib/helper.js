@@ -7,10 +7,11 @@ const filterPosterPaths = item => {
     return !!item["poster_path"];
 };
 
-export const createPosters = (rawJson, setCurrentShowId, setCurrentShowType,setHomePageLoaded) => {
+export const createPosters = (rawJson, setCurrentShowId, setCurrentShowType, setHomePageLoaded) => {
     const filteredList = rawJson.filter(filterPosterPaths);
     return filteredList.map((item, index) => <Poster data={item} key={index} setCurrentShowId={setCurrentShowId}
-                                                     setCurrentShowType={setCurrentShowType} setHomePageLoaded={setHomePageLoaded}/>);
+                                                     setCurrentShowType={setCurrentShowType}
+                                                     setHomePageLoaded={setHomePageLoaded}/>);
 };
 
 export const refineShowResults = (results, title) => {
@@ -38,7 +39,7 @@ export const getFirstFour = res => {
 
 export const capitalize = s => _.snakeCase(s).split(`_`).map(x => _.capitalize(x)).join(` `);
 
-export const handlePerfectShowPromises = (promises, title, setShowInformation, setLoaded, setCurrentShowType, setCurrentShowId,setHomePageLoaded) => {
+export const handlePerfectShowPromises = (promises, title, setShowInformation, setLoaded, setCurrentShowType, setCurrentShowId, setHomePageLoaded) => {
     let result;
     const findPerfectShow = (val, title) => {
         const name = val.name || val.title;
@@ -55,3 +56,8 @@ export const handlePerfectShowPromises = (promises, title, setShowInformation, s
     };
     Promise.all(promises).then(setPerfectShow);
 };
+
+export const getRandomItem = (arr) => {
+    const shuffledArr = _.shuffle(arr);
+    return shuffledArr[0];
+}
