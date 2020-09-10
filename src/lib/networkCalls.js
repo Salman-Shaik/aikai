@@ -1,4 +1,3 @@
-import _ from "lodash";
 import {getFirstFour, getRandomItem, handlePerfectShowPromises, refineShowResults} from "./helper";
 
 const API_KEY = "8f38dc176aea0ef9cbb167f50a8fc9b2";
@@ -74,7 +73,8 @@ export const fetchPerfectShow = (currentShow, setShowInformation, setLoaded, set
     handlePerfectShowPromises(promises, currentShow, setShowInformation, setLoaded, setCurrentShowType, setCurrentShowId, setHomePageLoaded);
 };
 
-const fetchTopShow = (url, setCurrentShowId, setCurrentShowType, setHomePageLoaded, type) => {
+export const fetchTopShow = (setCurrentShowId, setCurrentShowType, setHomePageLoaded, pageNumber, type) => {
+    const url = `${API_HOST}/${type}/top_rated?api_key=${API_KEY}&language=en-IN&page=${pageNumber}`
     fetch(url).then(res => res.text())
         .then(data => JSON.parse(data).results)
         .then(res => getRandomItem(res))
@@ -84,16 +84,4 @@ const fetchTopShow = (url, setCurrentShowId, setCurrentShowType, setHomePageLoad
             setHomePageLoaded(true);
         })
         .catch(e => new TypeError(e));
-}
-
-export const fetchTopTv = (setCurrentShowId, setCurrentShowType, setHomePageLoaded) => {
-    const pageNumber = _.random(1, 21);
-    const url = `${API_HOST}/tv/top_rated?api_key=${API_KEY}&language=en-IN&page=${pageNumber}`
-    fetchTopShow(url, setCurrentShowId, setCurrentShowType, setHomePageLoaded, "tv");
-}
-
-export const fetchTopMovie = (setCurrentShowId, setCurrentShowType, setHomePageLoaded) => {
-    const pageNumber = _.random(1, 21);
-    const url = `${API_HOST}/movie/top_rated?api_key=${API_KEY}&language=en-IN&page=${pageNumber}`
-    fetchTopShow(url, setCurrentShowId, setCurrentShowType, setHomePageLoaded, "movie");
 }

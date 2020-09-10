@@ -1,8 +1,9 @@
+import _ from "lodash";
 import React from "react";
 import '../../css/NavigationMenu.css'
 import {list} from '../../editorsChoice.json'
 import {getRandomItem} from "../../lib/helper";
-import {fetchTopMovie, fetchTopTv} from "../../lib/networkCalls";
+import {fetchTopShow} from "../../lib/networkCalls";
 import {NavigationMenuItem} from "./NavigationMenuItem";
 import {SearchBar} from "./SearchBar";
 
@@ -18,12 +19,30 @@ export const NavigationMenu = ({currentMenuItem, setCurrentMenuItem, setCurrentS
         setCurrentShowId(0);
         setCurrentShow(randomShow);
     }
-    const onTopTv = () => fetchTopTv(setCurrentShowId, setCurrentShowType, setHomePageLoaded)
-    const onTopMovie = () => fetchTopMovie(setCurrentShowId, setCurrentShowType, setHomePageLoaded)
+
+    const onTopTv = () => {
+        const pageNumber = _.random(1, 21);
+        fetchTopShow(setCurrentShowId, setCurrentShowType, setHomePageLoaded, pageNumber, "tv");
+    }
+
+    const onTopMovie = () => {
+        const pageNumber = _.random(1, 21);
+        fetchTopShow(setCurrentShowId, setCurrentShowType, setHomePageLoaded, pageNumber, "movie");
+    }
+
+    const onRandomTv = () => {
+        const pageNumber = _.random(1, 60);
+        fetchTopShow(setCurrentShowId, setCurrentShowType, setHomePageLoaded, pageNumber, "tv");
+    }
+
+    const onRandomMovie = () => {
+        const pageNumber = _.random(1, 389);
+        fetchTopShow(setCurrentShowId, setCurrentShowType, setHomePageLoaded, pageNumber, "movie");
+    }
 
     return <section className="navigation_menu">
-        {createNavigationMenuItem("Random Movie")}
-        {createNavigationMenuItem("Random TV")}
+        {createNavigationMenuItem("Random Movie", onRandomMovie)}
+        {createNavigationMenuItem("Random TV", onRandomTv)}
         {createNavigationMenuItem("Top Rated Movie", onTopMovie)}
         {createNavigationMenuItem("Top Rated TV", onTopTv)}
         {createNavigationMenuItem("Editor's Choice", onEditorsChoice)}
