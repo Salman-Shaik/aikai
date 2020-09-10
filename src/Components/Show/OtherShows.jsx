@@ -8,8 +8,8 @@ const createMiniShows = (shows, setCurrentShow, setCurrentShowId, setHomePageLoa
     return shows.map((show, index) => {
         const posterPath = show["poster_path"];
         const title = show.title || show.name;
-        return <MiniShow posterPath={posterPath} title={title} setCurrentShow={setCurrentShow}
-                         setCurrentShowId={setCurrentShowId} key={index} setHomePageLoaded={setHomePageLoaded}/>;
+        return <MiniShow posterPath={posterPath} title={title} setCurrentShowId={setCurrentShowId}
+                         key={index} setHomePageLoaded={setHomePageLoaded} id={show.id}/>;
     });
 };
 

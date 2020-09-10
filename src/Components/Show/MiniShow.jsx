@@ -2,11 +2,10 @@ import React from "react";
 import '../../css/MiniShow.css'
 import {imageUrlBuilder} from "../../lib/helper";
 
-export const MiniShow = ({posterPath, title, setCurrentShow, setCurrentShowId, setHomePageLoaded}) => {
+export const MiniShow = ({posterPath, title, setCurrentShowId, setHomePageLoaded,id}) => {
     const onClick = () => {
         setHomePageLoaded(false);
-        setCurrentShow(title);
-        setCurrentShowId(0);
+        setCurrentShowId(id);
     }
 
     return <section className="mini_show" onClick={onClick}>
