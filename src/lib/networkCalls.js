@@ -8,7 +8,11 @@ export const fetchPlayingMovies = (setPlayingMovies) => {
     fetch(url).then(r => r.text())
         .then(data => JSON.parse(data))
         .then(json => {
-            setPlayingMovies(json.results);
+            let results = json.results;
+            if (results.length > 16) {
+                results = results.slice(0, 16);
+            }
+            setPlayingMovies(results);
         })
         .catch(e => new TypeError(e));
 };
@@ -18,7 +22,11 @@ export const fetchAiringTVShows = (setAiringTvShows, setLoaded, setHomepageLoade
     fetch(tvUrl).then(r => r.text())
         .then(data => JSON.parse(data))
         .then(json => {
-            setAiringTvShows(json.results);
+            let results = json.results;
+            if (results.length > 10) {
+                results = results.slice(0, 16);
+            }
+            setAiringTvShows(results);
             setLoaded(true);
             setHomepageLoaded(true);
         })
