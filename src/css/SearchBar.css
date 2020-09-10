@@ -28,3 +28,15 @@
 .search_input:focus , .search_icon:focus {
     outline: none;
 }
+
+.error {
+    position: relative;
+    animation: shake .1s linear;
+    animation-iteration-count: 6;
+    border-color: indianred;
+}
+
+@keyframes shake {
+    0% { left: -3px; }
+    100% { right: -3px; }
+}

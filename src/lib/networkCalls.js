@@ -1,4 +1,4 @@
-import {getFirstFour, refineShowResults} from "./helper";
+import {getFirstFour, handlePerfectShowPromises, refineShowResults} from "./helper";
 
 export const fetchPlayingMovies = (setPlayingMovies) => {
     const url = "https://api.themoviedb.org/3/movie/now_playing?api_key=8f38dc176aea0ef9cbb167f50a8fc9b2&language=en-IN&region=IN";
@@ -21,12 +21,36 @@ export const fetchAiringTVShows = (setAiringTvShows, setLoaded) => {
         .catch(e => new TypeError(e));
 };
 
-export const fetchShow = (currentShow, currentShowType, setShowInformation, setLoaded) => {
-    const showType = currentShowType;
-    const url = `https://api.themoviedb.org/3/search/${showType}?api_key=8f38dc176aea0ef9cbb167f50a8fc9b2&query=${currentShow}`
-    fetch(url).then(r => r.text())
+const fetchMovie = currentShow => {
+    const url = `https://api.themoviedb.org/3/search/movie?api_key=8f38dc176aea0ef9cbb167f50a8fc9b2&query=${currentShow}`
+    return fetch(url).then(r => r.text())
         .then(d => JSON.parse(d).results)
         .then(j => refineShowResults(j, currentShow))
+        .catch(e => new TypeError(e));
+};
+
+const fetchTv = currentShow => {
+    const tvUrl = `https://api.themoviedb.org/3/search/tv?api_key=8f38dc176aea0ef9cbb167f50a8fc9b2&query=${currentShow}`
+    return fetch(tvUrl).then(r => r.text())
+        .then(d => JSON.parse(d).results)
+        .then(j => refineShowResults(j, currentShow))
+        .catch(e => new TypeError(e));
+};
+
+export const fetchPerfectShow = (currentShow, setShowInformation, setLoaded,setCurrentShowType) => {
+    const promises = []
+    promises.push(fetchMovie(currentShow));
+    promises.push(fetchTv(currentShow));
+    handlePerfectShowPromises(promises, currentShow, setShowInformation, setLoaded,setCurrentShowType);
+};
+
+export const fetchShow = (currentShow, currentShowType, setShowInformation, setLoaded) => {
+    const url = `https://api.themoviedb.org/3/search/${currentShowType}?api_key=8f38dc176aea0ef9cbb167f50a8fc9b2&query=${currentShow}`
+    fetch(url).then(r => r.text())
+        .then(d => JSON.parse(d).results)
+        .then(j => {
+            return refineShowResults(j, currentShow);
+        })
         .then(rj => {
             setShowInformation(rj);
             setLoaded(true);

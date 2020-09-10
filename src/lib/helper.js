@@ -1,6 +1,7 @@
+import _ from 'lodash';
 import React from "react";
-import {genres} from "../genres.json"
 import {Poster} from "../Components/NowPlaying/Poster";
+import {genres} from "../genres.json"
 
 const filterPosterPaths = item => {
     return !!item["poster_path"];
@@ -29,4 +30,22 @@ export const getGenreNames = (ids, showType) => {
 
 export const getFirstFour = res => {
     return res.slice(0, 4);
+};
+
+export const capitalize = s => _.snakeCase(s).split(`_`).map(x => _.capitalize(x)).join(` `);
+
+export const handlePerfectShowPromises = (promises, title, setShowInformation, setLoaded, setCurrentShowType) => {
+    let result;
+    const findPerfectShow = (val, title) => {
+        const name = val.name || val.title;
+        return name === capitalize(title);
+    };
+    const setPerfectShow = values => {
+        result = values.filter(v => !_.isEmpty(v)).find(val => findPerfectShow(val, title));
+        if (_.isEmpty(result)) result = values[0];
+        setShowInformation(result);
+        setCurrentShowType(values.indexOf(result) === 0 ? "movie" : "tv")
+        setLoaded(true);
+    };
+    Promise.all(promises).then(setPerfectShow);
 };

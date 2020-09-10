@@ -67,3 +67,8 @@
     color: #ffefd5;
     margin-left: .5vw;
 }
+
+.invalid_query {
+    color: #ff5959;
+    text-shadow: #0c0c0c 3px 1px 5px;
+}
