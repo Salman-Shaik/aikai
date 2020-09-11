@@ -3,6 +3,8 @@ const compression = require('compression');
 const favicon = require('express-favicon');
 const logger = require("morgan");
 const path = require('path');
+const {sequelize} = require('./models');
+
 
 const port = process.env.PORT || 8080;
 
@@ -15,6 +17,9 @@ app.use(logger("dev"));
 
 app.get('/health', (req, res) => res.send('ok'));
 app.get('/*', (req, res) => res.sendFile(path.join(__dirname, '../build', 'index.html')));
-app.listen(port);
+
+sequelize.sync().then(() => {
+    app.listen(port);
+});
 
 console.log('\x1b[33m%s\x1b[0m', `Server is listening to ${port}`);
