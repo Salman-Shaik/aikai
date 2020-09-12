@@ -1,6 +1,6 @@
-import {getFirstFour, getRandomItem, handlePerfectShowPromises, refineShowResults} from "./helper";
+import {getCookieValue, getFirstFour, getRandomItem, handlePerfectShowPromises, refineShowResults} from "./helper";
 
-const API_KEY = "8f38dc176aea0ef9cbb167f50a8fc9b2";
+const API_KEY = getCookieValue("apiKey");
 const API_HOST = "https://api.themoviedb.org/3";
 
 export const fetchPlayingMovies = (setPlayingMovies) => {
@@ -91,5 +91,22 @@ export const fetchTopShow = (setCurrentShowId, setCurrentShowType, setHomePageLo
             setCurrentShowId(show.id);
             setHomePageLoaded(true);
         })
+        .catch(e => new TypeError(e));
+}
+
+export const login = (username, password, setIsUserLoggedIn, setIsLoginError, setIsLoginSuccess) => {
+    const body = {username, password}
+    const loginHandler = ({status}) => {
+        if (status === 401) setIsLoginError(true);
+        else {
+            setIsLoginSuccess(true);
+            setIsUserLoggedIn(true);
+        }
+    };
+    fetch("/login", {
+        method: "post",
+        body: JSON.stringify(body),
+        headers: {'Content-Type': 'application/json'}
+    }).then(loginHandler)
         .catch(e => new TypeError(e));
 }

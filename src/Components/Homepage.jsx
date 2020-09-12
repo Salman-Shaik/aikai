@@ -1,52 +1,41 @@
-import _ from 'lodash';
 import React, {useState} from "react";
 import '../css/Homepage.css'
-import {NavigationMenu} from "./NavigationMenu/NavigationMenu";
-import {NowPlaying} from "./NowPlaying/NowPlaying";
-import {Show} from "./Show/Show";
+import {getCookieValue} from "../lib/helper";
+import {Header} from "./Homepage/Header";
+import {LoginPage} from "./Homepage/Login/LoginPage";
+import {Main} from "./Homepage/Main";
 
 export const Homepage = () => {
+    const userCookie = getCookieValue('user');
     const [currentMenuItem, setCurrentMenuItem] = useState("");
     const [currentShow, setCurrentShow] = useState("");
     const [currentShowId, setCurrentShowId] = useState(0);
     const [currentShowType, setCurrentShowType] = useState("");
     const [homepageLoaded, setHomePageLoaded] = useState(false);
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState(!!userCookie || false);
+    const [gotoLoginPage, setGotoLoginPage] = useState(false);
+    const [gotoRegisterPage, setGotoRegisterPage] = useState(false);
 
-    const onIconClick = () => {
-        setCurrentMenuItem("");
-        setCurrentShow("");
-        setCurrentShowId(0);
-    }
-
-    const isShowEmpty = _.isEmpty(currentShow);
-    const isShowIdEmpty = currentShowId === 0;
-    return (
-        <div className="homepage">
-            <header className="page_header">
-                <h2 className="logo" onClick={onIconClick}>A.I.K.A.I</h2>
-                <NavigationMenu currentMenuItem={currentMenuItem}
-                                setCurrentMenuItem={setCurrentMenuItem}
-                                setCurrentShow={setCurrentShow}
-                                setCurrentShowId={setCurrentShowId}
-                                setCurrentShowType={setCurrentShowType}
-                                setHomePageLoaded={setHomePageLoaded}/>
-            </header>
-            <main className="main_container">
-                {(_.isEmpty(currentMenuItem) && isShowEmpty && isShowIdEmpty) &&
-                <NowPlaying setCurrentShowType={setCurrentShowType}
-                            setCurrentShowId={setCurrentShowId}
-                            homepageLoaded={homepageLoaded}
-                            setHomePageLoaded={setHomePageLoaded}/>}
-                {(!isShowEmpty || !isShowIdEmpty) &&
-                <Show currentShowId={currentShowId}
-                      currentShow={currentShow}
-                      currentShowType={currentShowType}
-                      setCurrentShow={setCurrentShow}
-                      setCurrentShowType={setCurrentShowType}
-                      setCurrentShowId={setCurrentShowId}
-                      homepageLoaded={homepageLoaded}
-                      setHomePageLoaded={setHomePageLoaded}/>}
-            </main>
-        </div>
-    )
+    return <div className="homepage">
+        <Header currentMenuItem={currentMenuItem}
+                isUserLoggedIn={isUserLoggedIn}
+                setGotoLoginPage={setGotoLoginPage}
+                setCurrentShow={setCurrentShow}
+                setCurrentShowId={setCurrentShowId}
+                setCurrentShowType={setCurrentShowType}
+                setHomePageLoaded={setHomePageLoaded}
+                setCurrentMenuItem={setCurrentMenuItem}
+        />
+        {gotoLoginPage
+            ? <LoginPage setIsUserLoggedIn={setIsUserLoggedIn} setGotoRegisterPage={setGotoRegisterPage}/>
+            : <Main currentMenuItem={currentMenuItem}
+                    currentShow={currentShow}
+                    currentShowId={currentShowId}
+                    currentShowType={currentShowType}
+                    homepageLoaded={homepageLoaded}
+                    setCurrentShow={setCurrentShow}
+                    setCurrentShowId={setCurrentShowId}
+                    setCurrentShowType={setCurrentShowType}
+                    setHomePageLoaded={setHomePageLoaded}/>}
+    </div>
 }

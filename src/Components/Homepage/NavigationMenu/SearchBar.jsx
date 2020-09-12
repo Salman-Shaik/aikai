@@ -2,7 +2,7 @@ import Close from '@material-ui/icons/Close'
 import Search from '@material-ui/icons/Search'
 import _ from "lodash";
 import React, {useState} from "react";
-import '../../css/SearchBar.css';
+import '../../../css/SearchBar.css';
 
 export const SearchBar = ({setCurrentShow, setCurrentShowId, setHomePageLoaded}) => {
     const [show, setShow] = useState("");

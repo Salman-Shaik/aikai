@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
-import '../../css/NowPlaying.css'
-import {fetchAiringTVShows, fetchPlayingMovies} from "../../lib/networkCalls";
-import {Spinner} from "../Spinner";
+import '../../../css/NowPlaying.css'
+import {fetchAiringTVShows, fetchPlayingMovies} from "../../../lib/networkCalls";
+import {Spinner} from "../../Spinner";
 import {AiringShows} from "./AiringShows";
 import {PlayingMovies} from "./PlayingMovies";
 

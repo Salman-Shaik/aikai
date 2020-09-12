@@ -33,7 +33,7 @@
     position: relative;
     animation: shake .1s linear;
     animation-iteration-count: 6;
-    border-color: indianred;
+    border-color: #cd5c5c;
 }
 
 @keyframes shake {

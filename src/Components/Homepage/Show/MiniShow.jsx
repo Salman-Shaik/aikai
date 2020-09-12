@@ -1,8 +1,8 @@
 import React from "react";
-import '../../css/MiniShow.css'
-import {imageUrlBuilder} from "../../lib/helper";
+import '../../../css/MiniShow.css'
+import {imageUrlBuilder} from "../../../lib/helper";
 
-export const MiniShow = ({posterPath, title, setCurrentShowId, setHomePageLoaded,id}) => {
+export const MiniShow = ({posterPath, title, setCurrentShowId, setHomePageLoaded, id}) => {
     const onClick = () => {
         setHomePageLoaded(false);
         setCurrentShowId(id);

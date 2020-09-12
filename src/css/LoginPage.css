@@ -1,0 +1,99 @@
+.login {
+    width: 100vw;
+    height: 89vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.login_form {
+    width: 30vw;
+    height: 38vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 10px;
+    margin-top: 10vh;
+}
+
+.credentials {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.credential {
+    width: 30vh;
+    font-size: 1.4em;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 8px;
+    margin: 1vh 0;
+}
+
+.login_button {
+    padding: 10px 0;
+    margin: 1vh 0;
+    width: 33.5vh;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    color: #222222;
+    background-color: #7cfc00;
+    border: none;
+    border-radius: 10px;
+    box-shadow: #1d1d1d 1px 1px 8px 5px;
+    cursor: pointer;
+}
+
+.header {
+    margin-bottom: 0;
+    background-image: -webkit-linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);
+    background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 3em;
+}
+
+.create_account {
+    margin-top: 1vh;
+    cursor: pointer;
+    color: #b49fda;
+    font-size: 1em;
+}
+
+.credential:focus, .login_button, .create_account:focus {
+    outline: none;
+}
+
+.error {
+    position: relative;
+    animation: shake .1s linear;
+    animation-iteration-count: 6;
+    border: 2px solid #cd5c5c;
+}
+
+@keyframes shake {
+    0% {
+        left: -3px;
+    }
+    100% {
+        right: -3px;
+    }
+}
+
+.login_message {
+    visibility: hidden;
+}
+
+.login_error {
+    color: #cd5c5c;
+    visibility: visible;
+}
+
+.login_success {
+    color: #90ee90;
+    visibility: visible;
+}

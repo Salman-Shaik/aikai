@@ -1,13 +1,17 @@
 import _ from "lodash";
 import React from "react";
-import '../../css/NavigationMenu.css'
-import {list} from '../../editorsChoice.json'
-import {getRandomItem} from "../../lib/helper";
-import {fetchTopShow} from "../../lib/networkCalls";
+import '../../../css/NavigationMenu.css'
+import {list} from '../../../editorsChoice.json'
+import {getRandomItem} from "../../../lib/helper";
+import {fetchTopShow} from "../../../lib/networkCalls";
+import {UserIcon} from "../Login/UserIcon";
 import {NavigationMenuItem} from "./NavigationMenuItem";
 import {SearchBar} from "./SearchBar";
 
-export const NavigationMenu = ({currentMenuItem, setCurrentMenuItem, setCurrentShow, setCurrentShowId, setCurrentShowType, setHomePageLoaded}) => {
+export const NavigationMenu = ({
+                                   currentMenuItem, setCurrentMenuItem, setCurrentShow, setCurrentShowId,
+                                   setCurrentShowType, setHomePageLoaded, isUserLoggedIn,setGotoLoginPage
+                               }) => {
     const createNavigationMenuItem = (name, onclick) => <NavigationMenuItem name={name}
                                                                             currentMenuItem={currentMenuItem}
                                                                             setCurrentMenuItem={setCurrentMenuItem}
@@ -49,5 +53,6 @@ export const NavigationMenu = ({currentMenuItem, setCurrentMenuItem, setCurrentS
         <SearchBar setCurrentShow={setCurrentShow}
                    setCurrentShowId={setCurrentShowId}
                    setHomePageLoaded={setHomePageLoaded}/>
+        <UserIcon isUserLoggedIn={isUserLoggedIn} setGotoLoginPage={setGotoLoginPage}/>
     </section>
 }

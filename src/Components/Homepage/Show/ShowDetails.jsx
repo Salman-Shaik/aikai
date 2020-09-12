@@ -1,6 +1,6 @@
 import React from "react";
 import {buildStyles, CircularProgressbar} from "react-circular-progressbar";
-import {getGenreNames, imageUrlBuilder} from "../../lib/helper";
+import {getGenreNames, imageUrlBuilder} from "../../../lib/helper";
 
 const createProgressBar = rating => <CircularProgressbar value={rating} maxValue={10} text={`${rating * 10}%`}
                                                          className="progress_bar"

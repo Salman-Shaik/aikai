@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React from "react";
-import {Poster} from "../Components/NowPlaying/Poster";
+import {Poster} from "../Components/Homepage/NowPlaying/Poster";
 import {genres} from "../genres.json"
 
 const filterPosterPaths = item => {
@@ -61,3 +61,13 @@ export const getRandomItem = (arr) => {
     const shuffledArr = _.shuffle(arr);
     return shuffledArr[0];
 }
+
+export const getCookieValue = (cookieString) => {
+    const cookies = document.cookie.split(";");
+    const cookiesObj = {};
+    cookies.forEach(cookie => {
+        const [key, val] = cookie.split("=");
+        cookiesObj[key] = val;
+    })
+    return cookiesObj[cookieString];
+};

@@ -2,7 +2,7 @@ import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIos from "@material-ui/icons/ArrowForwardIos";
 import React from "react";
 import ScrollMenu from 'react-horizontal-scrolling-menu';
-import {createPosters} from "../../lib/helper";
+import {createPosters} from "../../../lib/helper";
 
 const Arrow = ({text, className}) => <div className={className}>{text}</div>;
 
