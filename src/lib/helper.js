@@ -1,3 +1,4 @@
+import jwt from "jsonwebtoken";
 import _ from 'lodash';
 import React from "react";
 import {Poster} from "../Components/Homepage/NowPlaying/Poster";
@@ -71,3 +72,7 @@ export const getCookieValue = (cookieString) => {
     })
     return cookiesObj[cookieString];
 };
+
+export const getJwtToken = (payload) => {
+    return jwt.sign(payload, "ADHIIDHIKAADHUADHEIDHI");
+}

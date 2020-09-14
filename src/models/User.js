@@ -29,7 +29,7 @@ const user = (sequelize, DataTypes) => {
         }
     });
 
-    User.createUser = async ({username, password, name}) => {
+    User.createUser = async (username, password, name) => {
         await bcrypt.hash(password, 10, async (err, hash) => {
             if (err) console.log(err)
             if (hash) {

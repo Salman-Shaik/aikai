@@ -1,14 +1,27 @@
+const jwt = require('jsonwebtoken');
+const _ = require('lodash');
+
 const loginHandler = async (req, res, User) => {
-    const {password, username} = req.body;
+    const token = req.get("Authorization").replace("Bearer ", "");
+    if (!token) {
+        res.status(401);
+        res.send("Unauthorized User")
+    }
+    const {username, password} = jwt.verify(token, "ADHIIDHIKAADHUADHEIDHI");
     await User.validateUser(username, password, res);
 };
 
 const registrationHandler = async (req, res, User) => {
-    const body = req.body;
-    const user = await User.createUser(body);
-    if (user instanceof User) return res.send('Sign Up Success!');
-    res.status(422);
-    res.send("Error Registering User");
+    const token = req.get("Authorization").replace("Bearer ", "");
+    if (!token) {
+        res.status(401);
+        res.send("Unauthorized User")
+    }
+    const {username, password} = jwt.verify(token, "ADHIIDHIKAADHUADHEIDHI");
+    const {name} = req.body;
+    await User.createUser(username, password, name);
+    await User.findByUsername(username);
+    return res.send('Sign Up Success!');
 }
 
 const apiKeySetter = (req, res, next) => {

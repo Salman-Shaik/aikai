@@ -1,4 +1,11 @@
-import {getCookieValue, getFirstFour, getRandomItem, handlePerfectShowPromises, refineShowResults} from "./helper";
+import {
+    getCookieValue,
+    getFirstFour,
+    getJwtToken,
+    getRandomItem,
+    handlePerfectShowPromises,
+    refineShowResults
+} from "./helper";
 
 const API_KEY = getCookieValue("apiKey");
 const API_HOST = "https://api.themoviedb.org/3";
@@ -104,20 +111,20 @@ export const login = (username, password, setIsUserLoggedIn, setIsLoginError, se
             setIsUserLoggedIn(true);
         }
     };
+    const jwtToken = getJwtToken(body);
     fetch("/login", {
         method: "post",
-        body: JSON.stringify(body),
-        headers: {'Content-Type': 'application/json'}
+        headers: {'Content-Type': 'application/json', "Authorization": `Bearer ${jwtToken}`}
     }).then(loginHandler)
         .catch(e => new TypeError(e));
 }
 
 export const registerUser = (name, username, password, setGotoRegisterPage, setGotoLoginPage) => {
-    const body = {username, password, name};
+    const jwtToken = getJwtToken({username, password});
     fetch("/register", {
         method: "post",
-        body: JSON.stringify(body),
-        headers: {'Content-Type': 'application/json'}
+        body: JSON.stringify({name}),
+        headers: {'Content-Type': 'application/json', "Authorization": `Bearer ${jwtToken}`}
     }).then(res => {
         if (res.status === 200) {
             setGotoRegisterPage(false);
