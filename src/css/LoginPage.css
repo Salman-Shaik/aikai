@@ -64,7 +64,7 @@
     font-size: 1em;
 }
 
-.credential:focus, .login_button, .create_account:focus {
+.credential:focus, .login_button:focus, .create_account:focus {
     outline: none;
 }
 

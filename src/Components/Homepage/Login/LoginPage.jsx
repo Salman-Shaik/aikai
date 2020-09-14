@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import '../../../css/LoginPage.css';
 import {login} from "../../../lib/networkCalls";
 
-export const LoginPage = (setIsUserLoggedIn, setGotoRegisterPage) => {
+export const LoginPage = ({setIsUserLoggedIn, setGotoRegisterPage, setGotoLoginPage}) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(false);
@@ -20,14 +20,16 @@ export const LoginPage = (setIsUserLoggedIn, setGotoRegisterPage) => {
         setPassword(target.value);
     };
 
-    const onLogin = (event) => {
+    const onLogin = () => {
         if (_.isEmpty(username.trim()) || _.isEmpty(password.trim())) return setError(true);
         setError(false);
-        login(username, password, setIsUserLoggedIn, setIsLoginError, setIsLoginSuccess);
-        event.preventDefault();
+        login(username, password, setIsUserLoggedIn, setIsLoginError, setIsLoginSuccess,setGotoLoginPage);
     };
 
-    const gotoRegister = () => setGotoRegisterPage(true);
+    const gotoRegister = () => {
+        setGotoLoginPage(false);
+        return setGotoRegisterPage(true);
+    };
 
     return <section className="login">
         <section className="login_form" onSubmit={onLogin}>

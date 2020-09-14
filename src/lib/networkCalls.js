@@ -94,11 +94,12 @@ export const fetchTopShow = (setCurrentShowId, setCurrentShowType, setHomePageLo
         .catch(e => new TypeError(e));
 }
 
-export const login = (username, password, setIsUserLoggedIn, setIsLoginError, setIsLoginSuccess) => {
+export const login = (username, password, setIsUserLoggedIn, setIsLoginError, setIsLoginSuccess, setGotoLoginPage) => {
     const body = {username, password}
     const loginHandler = ({status}) => {
         if (status === 401) setIsLoginError(true);
         else {
+            setGotoLoginPage(false)
             setIsLoginSuccess(true);
             setIsUserLoggedIn(true);
         }
@@ -109,4 +110,18 @@ export const login = (username, password, setIsUserLoggedIn, setIsLoginError, se
         headers: {'Content-Type': 'application/json'}
     }).then(loginHandler)
         .catch(e => new TypeError(e));
+}
+
+export const registerUser = (name, username, password, setGotoRegisterPage, setGotoLoginPage) => {
+    const body = {username, password, name};
+    fetch("/register", {
+        method: "post",
+        body: JSON.stringify(body),
+        headers: {'Content-Type': 'application/json'}
+    }).then(res => {
+        if (res.status === 200) {
+            setGotoRegisterPage(false);
+            setGotoLoginPage(true);
+        }
+    }).catch(e => new TypeError(e));
 }

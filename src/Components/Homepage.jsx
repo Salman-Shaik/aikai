@@ -3,6 +3,7 @@ import '../css/Homepage.css'
 import {getCookieValue} from "../lib/helper";
 import {Header} from "./Homepage/Header";
 import {LoginPage} from "./Homepage/Login/LoginPage";
+import {RegistrationPage} from "./Homepage/Login/RegistrationPage";
 import {Main} from "./Homepage/Main";
 
 export const Homepage = () => {
@@ -27,15 +28,17 @@ export const Homepage = () => {
                 setCurrentMenuItem={setCurrentMenuItem}
         />
         {gotoLoginPage
-            ? <LoginPage setIsUserLoggedIn={setIsUserLoggedIn} setGotoRegisterPage={setGotoRegisterPage}/>
-            : <Main currentMenuItem={currentMenuItem}
-                    currentShow={currentShow}
-                    currentShowId={currentShowId}
-                    currentShowType={currentShowType}
-                    homepageLoaded={homepageLoaded}
-                    setCurrentShow={setCurrentShow}
-                    setCurrentShowId={setCurrentShowId}
-                    setCurrentShowType={setCurrentShowType}
-                    setHomePageLoaded={setHomePageLoaded}/>}
+            ? <LoginPage setIsUserLoggedIn={setIsUserLoggedIn} setGotoRegisterPage={setGotoRegisterPage} setGotoLoginPage={setGotoLoginPage}/>
+            : (gotoRegisterPage
+                ? <RegistrationPage setGotoRegisterPage={setGotoRegisterPage} setGotoLoginPage={setGotoLoginPage}/>
+                : <Main currentMenuItem={currentMenuItem}
+                        currentShow={currentShow}
+                        currentShowId={currentShowId}
+                        currentShowType={currentShowType}
+                        homepageLoaded={homepageLoaded}
+                        setCurrentShow={setCurrentShow}
+                        setCurrentShowId={setCurrentShowId}
+                        setCurrentShowType={setCurrentShowType}
+                        setHomePageLoaded={setHomePageLoaded}/>)}
     </div>
 }

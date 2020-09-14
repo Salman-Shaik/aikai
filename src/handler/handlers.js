@@ -1,19 +1,15 @@
-const _ = require('lodash');
-
 const loginHandler = async (req, res, User) => {
     const {password, username} = req.body;
-    const userObject = await User.findByLogin(username);
-    if (_.isEmpty(userObject)) {
-        res.status(401);
-        res.send("Invalid User");
-    }
-    if (password !== userObject.password) {
-        res.status(401);
-        res.send("Invalid Password");
-    }
-    res.cookie('user', username);
-    res.send("Login Successful");
+    await User.validateUser(username, password, res);
 };
+
+const registrationHandler = async (req, res, User) => {
+    const body = req.body;
+    const user = await User.createUser(body);
+    if (user instanceof User) return res.send('Sign Up Success!');
+    res.status(422);
+    res.send("Error Registering User");
+}
 
 const apiKeySetter = (req, res, next) => {
     let cookie = req.cookies.apiKey;
@@ -27,5 +23,6 @@ const apiKeySetter = (req, res, next) => {
 
 module.exports = {
     loginHandler,
-    apiKeySetter
+    apiKeySetter,
+    registrationHandler
 }

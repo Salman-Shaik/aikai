@@ -10,3 +10,7 @@
 .page_header + .login {
     padding-top: 11vh;
 }
+
+.page_header + .register_page {
+    padding-top: 11vh;
+}
