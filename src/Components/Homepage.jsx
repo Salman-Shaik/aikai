@@ -28,7 +28,9 @@ export const Homepage = () => {
                 setCurrentMenuItem={setCurrentMenuItem}
         />
         {gotoLoginPage
-            ? <LoginPage setIsUserLoggedIn={setIsUserLoggedIn} setGotoRegisterPage={setGotoRegisterPage} setGotoLoginPage={setGotoLoginPage}/>
+            ? <LoginPage setIsUserLoggedIn={setIsUserLoggedIn}
+                         setGotoRegisterPage={setGotoRegisterPage}
+                         setGotoLoginPage={setGotoLoginPage}/>
             : (gotoRegisterPage
                 ? <RegistrationPage setGotoRegisterPage={setGotoRegisterPage} setGotoLoginPage={setGotoLoginPage}/>
                 : <Main currentMenuItem={currentMenuItem}
@@ -39,6 +41,8 @@ export const Homepage = () => {
                         setCurrentShow={setCurrentShow}
                         setCurrentShowId={setCurrentShowId}
                         setCurrentShowType={setCurrentShowType}
-                        setHomePageLoaded={setHomePageLoaded}/>)}
+                        setHomePageLoaded={setHomePageLoaded}
+                        isUserLoggedIn={isUserLoggedIn}
+                        setGotoLoginPage={setGotoLoginPage}/>)}
     </div>
 }

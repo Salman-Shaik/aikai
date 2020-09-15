@@ -1,3 +1,5 @@
+const {Sequelize} = require('sequelize');
+
 const jwt = require('jsonwebtoken');
 const _ = require('lodash');
 
@@ -11,7 +13,7 @@ const loginHandler = async (req, res, User) => {
     await User.validateUser(username, password, res);
 };
 
-const registrationHandler = async (req, res, User) => {
+const registrationHandler = async (req, res, User, Favorite) => {
     const token = req.get("Authorization").replace("Bearer ", "");
     if (!token) {
         res.status(401);
@@ -21,7 +23,34 @@ const registrationHandler = async (req, res, User) => {
     const {name} = req.body;
     await User.createUser(username, password, name);
     await User.findByUsername(username);
+    await Favorite.create({username});
     return res.send('Sign Up Success!');
+}
+
+const favoriteHandler = async (req, res, Favorite) => {
+    const userName = req.cookies.user;
+    if (_.isEmpty(userName)) {
+        res.status(401);
+        return res.send("User not logged in");
+    }
+    console.log(userName);
+    const {title} = req.body;
+    await Favorite.update(
+        {titles: Sequelize.fn('array_append', Sequelize.col('titles'), title)},
+        {where: {username: userName}}
+    );
+    res.send(`${title} Saved As Favorite Successfully.`);
+}
+
+const getFavorites = async (req, res, Favorite) => {
+    const userName = req.cookies.user;
+    if (_.isEmpty(userName)) {
+        res.status(401);
+        return res.send("User not logged in");
+    }
+    const FavoritesObj = await Favorite.findByUsername(userName);
+    const titles = JSON.stringify(FavoritesObj.titles);
+    return res.send(titles);
 }
 
 const apiKeySetter = (req, res, next) => {
@@ -34,8 +63,11 @@ const apiKeySetter = (req, res, next) => {
     next();
 };
 
+
 module.exports = {
     loginHandler,
     apiKeySetter,
-    registrationHandler
+    registrationHandler,
+    favoriteHandler,
+    getFavorites
 }

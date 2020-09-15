@@ -3,10 +3,11 @@ import React from "react";
 import {NowPlaying} from "./NowPlaying/NowPlaying";
 import {Show} from "./Show/Show";
 
-export const Main = ({
-                         currentMenuItem, setCurrentShowType, setCurrentShowId, homepageLoaded,
-                         setHomePageLoaded, currentShowId, currentShow, currentShowType, setCurrentShow
-                     }) => {
+export const Main = (props) => {
+    const {
+        currentMenuItem, setCurrentShowType, setCurrentShowId, homepageLoaded,isUserLoggedIn,
+        setHomePageLoaded, currentShowId, currentShow, currentShowType, setCurrentShow,setGotoLoginPage
+    } = props;
     const isShowEmpty = _.isEmpty(currentShow);
     const isShowIdEmpty = currentShowId === 0;
 
@@ -24,6 +25,9 @@ export const Main = ({
               setCurrentShowType={setCurrentShowType}
               setCurrentShowId={setCurrentShowId}
               homepageLoaded={homepageLoaded}
-              setHomePageLoaded={setHomePageLoaded}/>}
+              setHomePageLoaded={setHomePageLoaded}
+              isUserLoggedIn={isUserLoggedIn}
+              setGotoLoginPage={setGotoLoginPage}
+        />}
     </main>;
 };

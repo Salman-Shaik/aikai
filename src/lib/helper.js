@@ -64,7 +64,7 @@ export const getRandomItem = (arr) => {
 }
 
 export const getCookieValue = (cookieString) => {
-    const cookies = document.cookie.split(";");
+    const cookies = document.cookie.split("; ");
     const cookiesObj = {};
     cookies.forEach(cookie => {
         const [key, val] = cookie.split("=");

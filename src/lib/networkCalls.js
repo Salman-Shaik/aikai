@@ -132,3 +132,27 @@ export const registerUser = (name, username, password, setGotoRegisterPage, setG
         }
     }).catch(e => new TypeError(e));
 }
+
+export const setFavorite = (title, setIsFavorite) => {
+    fetch("/favorite", {
+        method: "put",
+        body: JSON.stringify({title}),
+        headers: {'Content-Type': 'application/json'}
+    }).then(res => {
+        if (res.status === 200) {
+            setIsFavorite(true);
+        }
+    }).catch(e => new TypeError(e));
+}
+
+export const isFavoriteShow = (title, setIsFavorite) => {
+    fetch("/favorites")
+        .then(res => res.text())
+        .then(data => JSON.parse(data))
+        .then(favorites => {
+            if (favorites.includes(title)) {
+                return setIsFavorite(true);
+            }
+            setIsFavorite(false);
+        }).catch(e => new TypeError(e));
+}

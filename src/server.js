@@ -4,12 +4,10 @@ const favicon = require('express-favicon');
 const logger = require("morgan");
 const path = require('path');
 const cookieParser = require("cookie-parser");
-const {registrationHandler} = require("./handler/handlers");
-const {apiKeySetter} = require("./handler/handlers");
-const {loginHandler} = require("./handler/handlers");
+const {favoriteHandler, getFavorites, registrationHandler, apiKeySetter, loginHandler} = require("./handler/handlers");
 const {sequelize, models} = require('./models');
 
-const {User} = models;
+const {User, Favorite} = models;
 const port = process.env.PORT || 8080;
 
 const app = express();
@@ -25,9 +23,11 @@ app.use(express.static(path.join(__dirname, '../build'), {maxAge: 2592000000}));
 app.use(apiKeySetter);
 
 app.get('/health', (req, res) => res.send('ok'));
+app.get('/favorites', (req, res) => getFavorites(req, res, Favorite));
 app.get('/*', (req, res) => res.sendFile(path.join(__dirname, '../build', 'index.html')));
 app.post('/login', (req, res) => loginHandler(req, res, User))
-app.post('/register', (req, res) => registrationHandler(req, res, User))
+app.post('/register', (req, res) => registrationHandler(req, res, User,Favorite))
+app.put('/favorite', (req, res) => favoriteHandler(req, res, Favorite))
 
 sequelize.sync().then(() => {
     app.listen(port);

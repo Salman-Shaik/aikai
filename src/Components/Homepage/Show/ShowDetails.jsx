@@ -1,6 +1,9 @@
-import React from "react";
+import Favorite from "@material-ui/icons/Favorite"
+import FavoriteBorder from "@material-ui/icons/FavoriteBorder"
+import React, {useEffect, useState} from "react";
 import {buildStyles, CircularProgressbar} from "react-circular-progressbar";
 import {getGenreNames, imageUrlBuilder} from "../../../lib/helper";
+import {isFavoriteShow, setFavorite} from "../../../lib/networkCalls";
 
 const createProgressBar = rating => <CircularProgressbar value={rating} maxValue={10} text={`${rating * 10}%`}
                                                          className="progress_bar"
@@ -15,7 +18,7 @@ const createProgressBar = rating => <CircularProgressbar value={rating} maxValue
                                                              backgroundColor: '#fb74a9'
                                                          })}/>;
 
-export const ShowDetails = ({info, currentShowType}) => {
+export const ShowDetails = ({info, currentShowType, isUserLoggedIn, setGotoLoginPage}) => {
     const title = info.name || info.title;
     const genre = getGenreNames(info, currentShowType);
     const rating = info["vote_average"];
@@ -23,6 +26,21 @@ export const ShowDetails = ({info, currentShowType}) => {
     const releaseDate = info["first_air_date"] || info["release_date"];
     const imagePath = info["poster_path"]
     const language = info["original_language"];
+    const [isFavorite, setIsFavorite] = useState(false);
+
+    useEffect(() => {
+        if (isUserLoggedIn) {
+            isFavoriteShow(title, setIsFavorite);
+        }
+    }, [title])
+
+    const onFavorite = () => {
+        if (isUserLoggedIn) {
+            setFavorite(title, setIsFavorite);
+        } else {
+            setGotoLoginPage(true);
+        }
+    }
 
     return <section className="show_details">
         <img className="poster" src={imageUrlBuilder(imagePath)} alt={title}/>
@@ -32,6 +50,11 @@ export const ShowDetails = ({info, currentShowType}) => {
             {createProgressBar(rating)}
             <h4 className="language">Language: {language.toUpperCase()}</h4>
             <h4>Release Date: {releaseDate}</h4>
+        </section>
+        <section className="show_actions">
+            {isFavorite
+                ? <Favorite className="favorite"/>
+                : <FavoriteBorder className="not_favorite" onClick={onFavorite}/>}
         </section>
     </section>
 }

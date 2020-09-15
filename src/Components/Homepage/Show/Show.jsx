@@ -8,7 +8,7 @@ import {OtherShows} from "./OtherShows";
 import {ShowDetails} from "./ShowDetails";
 
 
-const Component = ({info, currentShowType, setCurrentShow, setCurrentShowId, setHomePageLoaded, homepageLoaded}) => {
+const Component = ({info, currentShowType, setCurrentShow, setCurrentShowId, setHomePageLoaded, homepageLoaded, isUserLoggedIn, setGotoLoginPage}) => {
     const createOtherMovies = (keyword, className) =>
         <OtherShows keyword={keyword}
                     className={className}
@@ -20,7 +20,10 @@ const Component = ({info, currentShowType, setCurrentShow, setCurrentShowId, set
                     setHomePageLoaded={setHomePageLoaded}/>;
 
     const ShowSection = () => <section className="show_section">
-        <ShowDetails info={info} currentShowType={currentShowType}/>
+        <ShowDetails info={info}
+                     currentShowType={currentShowType}
+                     isUserLoggedIn={isUserLoggedIn}
+                     setGotoLoginPage={setGotoLoginPage}/>
         {createOtherMovies("recommendations", "recommended_movies")}
         {createOtherMovies("similar", "similar_movies")}
     </section>;
@@ -35,7 +38,10 @@ const Component = ({info, currentShowType, setCurrentShow, setCurrentShowId, set
 };
 
 export const Show = (props) => {
-    const {currentShowId, currentShow, currentShowType, setCurrentShow, setCurrentShowType, setCurrentShowId, homepageLoaded, setHomePageLoaded} = props;
+    const {
+        currentShowId, currentShow, currentShowType, setCurrentShow, setCurrentShowType,
+        setCurrentShowId, homepageLoaded, setHomePageLoaded, isUserLoggedIn, setGotoLoginPage
+    } = props;
     const [info, setShowInformation] = useState({});
     const [loaded, setLoaded] = useState(false);
     useEffect(() => {
@@ -45,7 +51,12 @@ export const Show = (props) => {
         fetchShow(currentShowId, currentShowType, setShowInformation, setLoaded, setHomePageLoaded);
     }, [currentShow, currentShowId, currentShowType, setCurrentShowId, setCurrentShowType, setHomePageLoaded]);
     return (!loaded || !homepageLoaded) ? <Spinner loaded={loaded}/> :
-        <Component info={info} currentShowType={currentShowType} setCurrentShow={setCurrentShow}
-                   setCurrentShowId={setCurrentShowId} setHomePageLoaded={setHomePageLoaded}
-                   homepageLoaded={homepageLoaded}/>;
+        <Component info={info}
+                   currentShowType={currentShowType}
+                   setCurrentShow={setCurrentShow}
+                   setCurrentShowId={setCurrentShowId}
+                   setHomePageLoaded={setHomePageLoaded}
+                   homepageLoaded={homepageLoaded}
+                   isUserLoggedIn={isUserLoggedIn}
+                   setGotoLoginPage={setGotoLoginPage}/>;
 }
