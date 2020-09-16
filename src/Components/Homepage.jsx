@@ -26,6 +26,7 @@ export const Homepage = () => {
                 setCurrentShowType={setCurrentShowType}
                 setHomePageLoaded={setHomePageLoaded}
                 setCurrentMenuItem={setCurrentMenuItem}
+                setGotoRegisterPage={setGotoRegisterPage}
         />
         {gotoLoginPage
             ? <LoginPage setIsUserLoggedIn={setIsUserLoggedIn}
