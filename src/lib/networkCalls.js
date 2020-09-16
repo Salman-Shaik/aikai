@@ -133,10 +133,10 @@ export const registerUser = (name, username, password, setGotoRegisterPage, setG
     }).catch(e => new TypeError(e));
 }
 
-export const setFavorite = (title, setIsFavorite) => {
+export const setFavorite = (title, id, posterPath, setIsFavorite) => {
     fetch("/favorite", {
         method: "put",
-        body: JSON.stringify({title}),
+        body: JSON.stringify({title, id, posterPath}),
         headers: {'Content-Type': 'application/json'}
     }).then(res => {
         if (res.status === 200) {
@@ -149,6 +149,7 @@ export const isFavoriteShow = (title, setIsFavorite) => {
     fetch("/favorites")
         .then(res => res.text())
         .then(data => JSON.parse(data))
+        .then(favoritesInfo => favoritesInfo.map(f => f.title))
         .then(favorites => {
             if (favorites.includes(title)) {
                 return setIsFavorite(true);

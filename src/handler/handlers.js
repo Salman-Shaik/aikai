@@ -33,10 +33,9 @@ const favoriteHandler = async (req, res, Favorite) => {
         res.status(401);
         return res.send("User not logged in");
     }
-    console.log(userName);
-    const {title} = req.body;
+    const {title, id, posterPath} = req.body;
     await Favorite.update(
-        {titles: Sequelize.fn('array_append', Sequelize.col('titles'), title)},
+        {favoritesInfo: Sequelize.fn('array_append', Sequelize.col('favoritesInfo'), `{"title":"${title}","id":${id},"posterPath":"${posterPath}"}`)},
         {where: {username: userName}}
     );
     res.send(`${title} Saved As Favorite Successfully.`);
@@ -49,7 +48,7 @@ const getFavorites = async (req, res, Favorite) => {
         return res.send("User not logged in");
     }
     const FavoritesObj = await Favorite.findByUsername(userName);
-    const titles = JSON.stringify(FavoritesObj.titles);
+    const titles = JSON.stringify(FavoritesObj.favoritesInfo);
     return res.send(titles);
 }
 

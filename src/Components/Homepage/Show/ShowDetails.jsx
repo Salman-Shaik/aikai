@@ -36,7 +36,7 @@ export const ShowDetails = ({info, currentShowType, isUserLoggedIn, setGotoLogin
 
     const onFavorite = () => {
         if (isUserLoggedIn) {
-            setFavorite(title, setIsFavorite);
+            setFavorite(title, info.id, imagePath, setIsFavorite);
         } else {
             setGotoLoginPage(true);
         }

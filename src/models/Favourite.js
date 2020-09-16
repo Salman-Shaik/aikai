@@ -8,8 +8,8 @@ const favorite = (sequelize, DataTypes) => {
                 notEmpty: true,
             },
         },
-        titles: {
-            type: DataTypes.ARRAY(DataTypes.STRING),
+        favoritesInfo: {
+            type: DataTypes.ARRAY(DataTypes.JSON),
             unique: false,
             defaultValue: []
         }
