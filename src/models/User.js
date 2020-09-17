@@ -5,6 +5,7 @@ const user = (sequelize, DataTypes) => {
     const User = sequelize.define('user', {
         username: {
             type: DataTypes.STRING,
+            primaryKey: true,
             unique: true,
             allowNull: false,
             validate: {
@@ -26,14 +27,30 @@ const user = (sequelize, DataTypes) => {
             validate: {
                 notEmpty: true,
             },
+        },
+        age: {
+            type: DataTypes.INTEGER,
+            unique: false,
+            allowNull: false,
+            validate: {
+                notEmpty: true
+            }
+        },
+        explicitFlag: {
+            type: DataTypes.BOOLEAN,
+            unique: false,
+            allowNull: false,
+            defaultValue: false
         }
+    },{
+        timestamps: false,
     });
 
-    User.createUser = async (username, password, name) => {
+    User.createUser = async (username, password, name,age,explicitFlag) => {
         await bcrypt.hash(password, 10, async (err, hash) => {
             if (err) console.log(err)
             if (hash) {
-                await User.create({username, password: hash, name});
+                await User.create({username, password: hash, name,age,explicitFlag});
             }
         });
     };

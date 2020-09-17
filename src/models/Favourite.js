@@ -1,3 +1,4 @@
+const user = require('./User');
 const favorite = (sequelize, DataTypes) => {
     const Favorite = sequelize.define('favorite', {
         username: {
@@ -13,6 +14,8 @@ const favorite = (sequelize, DataTypes) => {
             unique: false,
             defaultValue: []
         }
+    }, {
+        timestamps: false,
     });
 
     Favorite.findByUsername = async username => {
@@ -20,6 +23,8 @@ const favorite = (sequelize, DataTypes) => {
             where: {username: username}
         });
     };
+
+    Favorite.belongsTo(user(sequelize, DataTypes))
 
     return Favorite;
 };

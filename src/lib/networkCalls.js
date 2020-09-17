@@ -119,11 +119,11 @@ export const login = (username, password, setIsUserLoggedIn, setIsLoginError, se
         .catch(e => new TypeError(e));
 }
 
-export const registerUser = (name, username, password, setGotoRegisterPage, setGotoLoginPage) => {
+export const registerUser = (name, username, password, age, explicitFlag, setGotoRegisterPage, setGotoLoginPage) => {
     const jwtToken = getJwtToken({username, password});
     fetch("/register", {
         method: "post",
-        body: JSON.stringify({name}),
+        body: JSON.stringify({name, age, explicitFlag}),
         headers: {'Content-Type': 'application/json', "Authorization": `Bearer ${jwtToken}`}
     }).then(res => {
         if (res.status === 200) {

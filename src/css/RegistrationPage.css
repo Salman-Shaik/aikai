@@ -15,8 +15,11 @@
     margin-top: 3vh;
 }
 
+.email, .password {
+    width: 20vw;
+}
+
 .detail {
-    width: 30vh;
     font-size: 1.4em;
     padding: 8px 15px;
     border: none;
@@ -24,10 +27,50 @@
     margin: 1vh 0;
 }
 
+.personal_details, .explicit {
+    display: flex;
+    width: 21.8vw;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.explicit{
+    align-items: center;
+}
+
+.explicit_label {
+    color: #ffefd5;
+    font-weight:bolder;
+    font-size: 1.2em;
+    margin: 1vh 0;
+}
+
+.explicit_switch {
+    margin-right: 1vw;
+}
+
+.name {
+    width: 15vw;
+}
+
+.age {
+    width: 2.5vw;
+}
+
+.age::-webkit-outer-spin-button,
+.age::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.age[type=number] {
+    -moz-appearance: textfield;
+}
+
 .reg_btn {
     padding: 10px 0;
     margin: 1vh 0;
-    width: 33.5vh;
+    width: 22vw;
     font-size: 1.2em;
     font-weight: bold;
     text-align: center;

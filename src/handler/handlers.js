@@ -20,8 +20,8 @@ const registrationHandler = async (req, res, User, Favorite) => {
         res.send("Unauthorized User")
     }
     const {username, password} = jwt.verify(token, "ADHIIDHIKAADHUADHEIDHI");
-    const {name} = req.body;
-    await User.createUser(username, password, name);
+    const {name, age, explicitFlag} = req.body;
+    await User.createUser(username, password, name, age, explicitFlag);
     await User.findByUsername(username);
     await Favorite.create({username});
     return res.send('Sign Up Success!');

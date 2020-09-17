@@ -26,6 +26,7 @@
     "react-horizontal-scrolling-menu": "^0.7.7",
     "react-loader": "^2.4.7",
     "react-scripts": "3.4.3",
+    "react-switch": "^5.0.1",
     "sequelize": "^6.3.5"
   },
   "scripts": {
