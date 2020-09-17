@@ -80,11 +80,21 @@ const validateUser = async (req, res, next, User) => {
     next();
 }
 
+const getExplicitFlag = async (req, res, User) => {
+    const username = req.cookies.user;
+    const userObj = await User.findByUsername(username);
+    if (_.isEmpty(userObj)) {
+        return res.send(JSON.stringify({flagStatus: true}));
+    }
+    const explicitFlag = userObj.explicitFlag;
+    res.send(JSON.stringify({flagStatus: explicitFlag}));
+}
 
 module.exports = {
     loginHandler,
     apiKeySetter,
     validateUser,
+    getExplicitFlag,
     registrationHandler,
     favoriteHandler,
     getFavorites

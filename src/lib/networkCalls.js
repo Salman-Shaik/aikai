@@ -44,7 +44,7 @@ const fetchMovie = currentShow => {
     const url = `${API_HOST}/search/movie?api_key=${API_KEY}&query=${currentShow}`
     return fetch(url).then(r => r.text())
         .then(d => JSON.parse(d).results)
-        .then(j => refineShowResults(j, currentShow))
+        .then(async j => await refineShowResults(j, currentShow))
         .catch(e => new TypeError(e));
 };
 
@@ -52,7 +52,7 @@ const fetchTv = currentShow => {
     const tvUrl = `${API_HOST}/search/tv?api_key=${API_KEY}&query=${currentShow}`
     return fetch(tvUrl).then(r => r.text())
         .then(d => JSON.parse(d).results)
-        .then(j => refineShowResults(j, currentShow))
+        .then(async j => await refineShowResults(j, currentShow))
         .catch(e => new TypeError(e));
 };
 

@@ -15,10 +15,11 @@ export const createPosters = (rawJson, setCurrentShowId, setCurrentShowType, set
                                                      setHomePageLoaded={setHomePageLoaded}/>);
 };
 
-export const refineShowResults = (results, title) => {
+export const refineShowResults = async (results, title) => {
+    const flag = await fetchExplicitFlag();
     let movieInfo = results.find(result => {
         const showName = result.title || result.name;
-        return showName.includes(title);
+        return !flag ? showName.includes(title) && !result.adult : showName.includes(title);
     });
     return !!movieInfo ? movieInfo : results[0];
 };
@@ -39,21 +40,24 @@ export const getFirstFour = res => {
 };
 
 export const capitalize = s => _.snakeCase(s).split(`_`).map(x => _.capitalize(x)).join(` `);
+export const fetchExplicitFlag = () => fetch("/explicitFlag").then(r => r.text()).then(d => JSON.parse(d).flagStatus);
 
 export const handlePerfectShowPromises = (promises, title, setShowInformation, setLoaded, setCurrentShowType, setCurrentShowId, setHomePageLoaded) => {
     let result;
-    const findPerfectShow = (val, title) => {
+    const findPerfectShow = (val, title, flag) => {
         const name = val.name || val.title;
-        return name === capitalize(title);
+        return !flag ? name === capitalize(title) && !val.adult : name === capitalize(title);
     };
     const setPerfectShow = values => {
-        result = values.filter(v => !_.isEmpty(v)).find(val => findPerfectShow(val, title));
-        if (_.isEmpty(result)) result = values[0];
-        setCurrentShowType(values.indexOf(result) === 0 ? "movie" : "tv")
-        setShowInformation(result);
-        setCurrentShowId((!!result && result.id) || 0);
-        setHomePageLoaded(true)
-        setLoaded(true);
+        fetchExplicitFlag().then(flag => {
+            result = values.filter(v => !_.isEmpty(v)).find(val => findPerfectShow(val, title, flag));
+            if (_.isEmpty(result)) result = values[0];
+            setCurrentShowType(values.indexOf(result) === 0 ? "movie" : "tv")
+            setShowInformation(result);
+            setCurrentShowId((!!result && result.id) || 0);
+            setHomePageLoaded(true)
+            setLoaded(true);
+        })
     };
     Promise.all(promises).then(setPerfectShow);
 };
