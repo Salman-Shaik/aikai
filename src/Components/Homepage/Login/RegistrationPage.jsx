@@ -32,7 +32,7 @@ export const RegistrationPage = ({setGotoRegisterPage, setGotoLoginPage}) => {
     const onSwitch = () => setExplicitFlag(!explicitFlag)
 
     const onRegister = () => {
-        if (_.isEmpty(username.trim()) || _.isEmpty(password.trim()) || _.isEmpty(age.trim())) return setError(true);
+        if (_.isEmpty(username.trim()) || _.isEmpty(password.trim()) || _.isEqual(age, 0)) return setError(true);
         setError(false);
         registerUser(name, username, password, age, explicitFlag, setGotoRegisterPage, setGotoLoginPage);
     };

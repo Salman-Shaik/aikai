@@ -4,7 +4,7 @@ const favicon = require('express-favicon');
 const logger = require("morgan");
 const path = require('path');
 const cookieParser = require("cookie-parser");
-const {favoriteHandler, getFavorites, registrationHandler, apiKeySetter, loginHandler} = require("./handler/handlers");
+const {favoriteHandler, getFavorites, registrationHandler, apiKeySetter, loginHandler,validateUser} = require("./handler/handlers");
 const {sequelize, models} = require('./models');
 
 const {User, Favorite} = models;
@@ -18,9 +18,10 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
+app.use(apiKeySetter);
+app.use((req,res,next)=>validateUser(req,res,next,User));
 app.use(express.static(__dirname, {maxAge: 2592000000}));
 app.use(express.static(path.join(__dirname, '../build'), {maxAge: 2592000000}));
-app.use(apiKeySetter);
 
 app.get('/health', (req, res) => res.send('ok'));
 app.get('/favorites', (req, res) => getFavorites(req, res, Favorite));

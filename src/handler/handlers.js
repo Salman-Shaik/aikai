@@ -62,10 +62,29 @@ const apiKeySetter = (req, res, next) => {
     next();
 };
 
+const validateUser = async (req, res, next, User) => {
+    let cookie = req.cookies.user;
+    if (!!cookie) {
+        await User.findByUsername(cookie).then(obj => {
+            if (_.isEmpty(obj)) {
+                res.clearCookie("user");
+                console.info("Cleared User Cookie");
+            }
+            return obj;
+        }).catch(e => {
+            res.clearCookie("user");
+            console.info("Cleared User Cookie");
+            console.warn(e);
+        });
+    }
+    next();
+}
+
 
 module.exports = {
     loginHandler,
     apiKeySetter,
+    validateUser,
     registrationHandler,
     favoriteHandler,
     getFavorites
