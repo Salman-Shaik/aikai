@@ -40,9 +40,9 @@ export const LoginPage = ({setIsUserLoggedIn, setGotoRegisterPage, setGotoLoginP
             </h4>
             <section className="credentials">
                 <input type="text" placeholder="Enter Username" className={`credential ${error ? "error" : ""}`}
-                       onChange={onUserNameChange}/>
+                       onChange={onUserNameChange} autoComplete="on"/>
                 <input type="password" placeholder="Enter Password" className={`credential ${error ? "error" : ""}`}
-                       onChange={onPasswordChange}/>
+                       onChange={onPasswordChange} autoComplete="on"/>
             </section>
             <button type="button" className="login_button" onClick={onLogin}>Login</button>
             <span className="create_account" onClick={gotoRegister}><b>New User? Create Account</b></span>
