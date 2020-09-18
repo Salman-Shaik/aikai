@@ -13,6 +13,16 @@ const loginHandler = async (req, res, User) => {
     await User.validateUser(username, password, res);
 };
 
+const logoutUser = (req, res) => {
+    const cookie = req.cookies.user;
+    if (!!cookie) {
+        res.clearCookie("user");
+        return res.send("User Logged Out")
+    }
+    res.status(400);
+    res.send("USER COOKIE NOT FOUND");
+}
+
 const registrationHandler = async (req, res, User, Favorite) => {
     const token = req.get("Authorization").replace("Bearer ", "");
     if (!token) {
@@ -109,19 +119,18 @@ const checkFavorites = async (req, res, next, Favorite) => {
             await Favorite.create({username: cookie});
             console.info("Default Favorites Created");
         }
-
     }
     next();
 }
 
 const getExplicitFlag = async (req, res, User) => {
     const username = req.cookies.user;
-    const userObj = await User.findByUsername(username);
-    if (_.isEmpty(userObj)) {
-        return res.send(JSON.stringify({flagStatus: true}));
+    if (!!username) {
+        const userObj = await User.findByUsername(username);
+        const explicitFlag = userObj.explicitFlag;
+        res.send(JSON.stringify({flagStatus: explicitFlag}));
     }
-    const explicitFlag = userObj.explicitFlag;
-    res.send(JSON.stringify({flagStatus: explicitFlag}));
+    return res.send(JSON.stringify({flagStatus: true}));
 }
 
 module.exports = {
@@ -133,5 +142,6 @@ module.exports = {
     favoriteHandler,
     deleteFavorite,
     getFavorites,
-    checkFavorites
+    checkFavorites,
+    logoutUser
 }

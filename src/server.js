@@ -4,7 +4,7 @@ const favicon = require('express-favicon');
 const logger = require("morgan");
 const path = require('path');
 const cookieParser = require("cookie-parser");
-const {favoriteHandler, getFavorites, registrationHandler, apiKeySetter, loginHandler, validateUser, getExplicitFlag, deleteFavorite,checkFavorites} = require("./handler/handlers");
+const {favoriteHandler, getFavorites, registrationHandler, apiKeySetter, loginHandler, validateUser, getExplicitFlag, deleteFavorite,checkFavorites,logoutUser} = require("./handler/handlers");
 const {sequelize, models} = require('./models');
 
 const {User, Favorite} = models;
@@ -32,6 +32,7 @@ app.post('/login', (req, res) => loginHandler(req, res, User))
 app.post('/register', (req, res) => registrationHandler(req, res, User, Favorite))
 app.put('/favorite', (req, res) => favoriteHandler(req, res, Favorite))
 app.delete('/favorite', (req, res) => deleteFavorite(req, res, Favorite))
+app.delete('/logout', logoutUser);
 
 sequelize.sync().then(() => {
     app.listen(port);

@@ -3,7 +3,7 @@ import '../../css/Header.css';
 import {NavigationMenu} from "./NavigationMenu/NavigationMenu";
 
 export const Header = ({
-                           currentMenuItem, setCurrentMenuItem, isUserLoggedIn, setGotoLoginPage, setFavorites,
+                           currentMenuItem, setCurrentMenuItem, isUserLoggedIn, setGotoLoginPage, setFavorites,setIsUserLoggedIn,
                            setCurrentShow, setCurrentShowId, setCurrentShowType, setHomePageLoaded, setGotoRegisterPage
                        }) => {
     const onIconClick = () => {
@@ -17,7 +17,9 @@ export const Header = ({
         <h2 className="logo" onClick={onIconClick}>A.I.K.A.I</h2>
         <NavigationMenu currentMenuItem={currentMenuItem}
                         isUserLoggedIn={isUserLoggedIn}
+                        setIsUserLoggedIn={setIsUserLoggedIn}
                         setGotoLoginPage={setGotoLoginPage}
+                        setGotoRegisterPage={setGotoRegisterPage}
                         setCurrentMenuItem={setCurrentMenuItem}
                         setCurrentShow={setCurrentShow}
                         setCurrentShowId={setCurrentShowId}

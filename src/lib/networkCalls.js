@@ -119,6 +119,17 @@ export const login = (username, password, setIsUserLoggedIn, setIsLoginError, se
         .catch(e => new TypeError(e));
 }
 
+export const logout = (setHomePageLoaded, setIsUserLoggedIn) => {
+    fetch("/logout", {
+        method: "delete"
+    }).then(res => res.status).then(st => {
+        if (st === 200) {
+            setIsUserLoggedIn(false);
+            setHomePageLoaded(true);
+        }
+    });
+}
+
 export const registerUser = (name, username, password, age, explicitFlag, setGotoRegisterPage, setGotoLoginPage) => {
     const jwtToken = getJwtToken({username, password});
     fetch("/register", {
@@ -144,6 +155,7 @@ export const setFavorite = (title, id, posterPath, setIsFavorite) => {
         }
     }).catch(e => new TypeError(e));
 }
+
 export const removeFavorite = (id, setIsFavorite) => {
     fetch("/favorite", {
         method: "delete",

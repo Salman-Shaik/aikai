@@ -21,6 +21,7 @@ export const Homepage = () => {
     return <div className="homepage">
         <Header currentMenuItem={currentMenuItem}
                 isUserLoggedIn={isUserLoggedIn}
+                setIsUserLoggedIn={setIsUserLoggedIn}
                 setGotoLoginPage={setGotoLoginPage}
                 setCurrentShow={setCurrentShow}
                 setCurrentShowId={setCurrentShowId}
@@ -33,7 +34,8 @@ export const Homepage = () => {
         {gotoLoginPage
             ? <LoginPage setIsUserLoggedIn={setIsUserLoggedIn}
                          setGotoRegisterPage={setGotoRegisterPage}
-                         setGotoLoginPage={setGotoLoginPage}/>
+                         setGotoLoginPage={setGotoLoginPage}
+                         setCurrentMenuItem={setCurrentMenuItem}/>
             : (gotoRegisterPage
                 ? <RegistrationPage setGotoRegisterPage={setGotoRegisterPage} setGotoLoginPage={setGotoLoginPage}/>
                 : <Main currentMenuItem={currentMenuItem}

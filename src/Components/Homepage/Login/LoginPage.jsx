@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import '../../../css/LoginPage.css';
 import {login} from "../../../lib/networkCalls";
 
-export const LoginPage = ({setIsUserLoggedIn, setGotoRegisterPage, setGotoLoginPage}) => {
+export const LoginPage = ({setIsUserLoggedIn, setGotoRegisterPage, setGotoLoginPage, setCurrentMenuItem}) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(false);
@@ -23,10 +23,11 @@ export const LoginPage = ({setIsUserLoggedIn, setGotoRegisterPage, setGotoLoginP
     const onLogin = () => {
         if (_.isEmpty(username.trim()) || _.isEmpty(password.trim())) return setError(true);
         setError(false);
-        login(username, password, setIsUserLoggedIn, setIsLoginError, setIsLoginSuccess,setGotoLoginPage);
+        login(username, password, setIsUserLoggedIn, setIsLoginError, setIsLoginSuccess, setGotoLoginPage);
     };
 
     const gotoRegister = () => {
+        setCurrentMenuItem("");
         setGotoLoginPage(false);
         return setGotoRegisterPage(true);
     };
