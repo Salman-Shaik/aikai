@@ -10,7 +10,7 @@ const Section = ({miniShows}) => {
 
 const getSectionedMiniShows = map => {
     const sectionedMap = []
-    for (let i = 0; i < map.length; i += 4) sectionedMap.push(<Section miniShows={getFive(map, i)}/>);
+    for (let i = 0; i < map.length; i += 5) sectionedMap.push(<Section miniShows={getFive(map, i)}/>);
     return sectionedMap;
 }
 
