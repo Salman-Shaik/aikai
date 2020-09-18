@@ -4,9 +4,9 @@ import {imageUrlBuilder} from "../../../lib/helper";
 
 export const MiniShow = ({posterPath, title, id, setCurrentShowId, setHomePageLoaded,setCurrentMenuItem}) => {
     const onClick = () => {
-        setHomePageLoaded(false);
         setCurrentShowId(id);
         setCurrentMenuItem("");
+        setHomePageLoaded(false);
     }
 
     return <section className="mini_show" onClick={onClick}>

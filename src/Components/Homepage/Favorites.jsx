@@ -4,9 +4,7 @@ import '../../css/Favorite.css';
 import {getFive} from "../../lib/helper";
 import {MiniShow} from "./Show/MiniShow";
 
-const Section = ({miniShows}) => {
-    return <section className="sectioned_shows">{miniShows}</section>;
-}
+const Section = ({miniShows}) => <section className="sectioned_shows">{miniShows}</section>
 
 const getSectionedMiniShows = map => {
     const sectionedMap = []
@@ -14,13 +12,14 @@ const getSectionedMiniShows = map => {
     return sectionedMap;
 }
 
-export const Favorites = ({userFavorites, setCurrentShowId, setHomePageLoaded,setCurrentMenuItem}) => {
+export const Favorites = ({userFavorites, setCurrentShowId, setHomePageLoaded, setCurrentMenuItem}) => {
     const MiniShows = () => {
-        const miniShowMap = userFavorites.map(({posterPath, title, id}) => <MiniShow posterPath={posterPath}
-                                                                                     title={title} id={id}
-                                                                                     setCurrentShowId={setCurrentShowId}
-                                                                                     setHomePageLoaded={setHomePageLoaded}
-                                                                                     setCurrentMenuItem={setCurrentMenuItem}/>);
+        const miniShowMap = userFavorites.map(({posterPath, title, id}) =>
+            <MiniShow posterPath={posterPath}
+                      title={title} id={id}
+                      setCurrentShowId={setCurrentShowId}
+                      setHomePageLoaded={setHomePageLoaded}
+                      setCurrentMenuItem={setCurrentMenuItem}/>);
         return getSectionedMiniShows(miniShowMap);
     }
     return <section className="favorites_section">
