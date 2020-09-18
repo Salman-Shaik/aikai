@@ -25,7 +25,7 @@
 }
 
 .credential {
-    width: 30vh;
+    width: 18vw;
     font-size: 1.4em;
     padding: 8px 15px;
     border: none;
@@ -36,7 +36,7 @@
 .login_button {
     padding: 10px 0;
     margin: 1vh 0;
-    width: 33.5vh;
+    width: 20vw;
     font-size: 1.2em;
     font-weight: bold;
     text-align: center;
