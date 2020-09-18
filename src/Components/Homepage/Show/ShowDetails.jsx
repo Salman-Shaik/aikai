@@ -1,5 +1,6 @@
 import Favorite from "@material-ui/icons/Favorite"
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder"
+import Tooltip from "@material-ui/core/Tooltip";
 import React, {useEffect, useState} from "react";
 import {buildStyles, CircularProgressbar} from "react-circular-progressbar";
 import {getGenreNames, imageUrlBuilder} from "../../../lib/helper";
@@ -57,8 +58,8 @@ export const ShowDetails = ({info, currentShowType, isUserLoggedIn, setGotoLogin
         </section>
         <section className="show_actions">
             {isFavorite
-                ? <Favorite className="favorite" onClick={onDislike}/>
-                : <FavoriteBorder className="not_favorite" onClick={onLike}/>}
+                ? <Tooltip title="You Like it"><Favorite className="favorite" onClick={onDislike}/></Tooltip>
+                : <Tooltip title="Do You Like It?"><FavoriteBorder className="not_favorite" onClick={onLike}/></Tooltip>}
         </section>
     </section>
 }

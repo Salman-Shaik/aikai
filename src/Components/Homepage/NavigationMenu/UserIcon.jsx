@@ -14,7 +14,7 @@ export const UserIcon = ({isUserLoggedIn, setGotoLoginPage, setHomePageLoaded, s
     }
     const onLogout = () => logout(setHomePageLoaded, setIsUserLoggedIn)
 
-    return isUserLoggedIn ?
-        <Tooltip title="Logout"><PowerSettingsNew className="logout_icon" onClick={onLogout}/></Tooltip> :
-        <Tooltip title="Login"><AccountCircle className="user_icon" onClick={onClick}/></Tooltip>
+    return isUserLoggedIn
+        ? <Tooltip title="Logout"><PowerSettingsNew className="logout_icon" onClick={onLogout}/></Tooltip>
+        : <Tooltip title="Login"><AccountCircle className="user_icon" onClick={onClick}/></Tooltip>
 }

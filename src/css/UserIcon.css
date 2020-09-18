@@ -3,6 +3,7 @@
     color: #ffefd5;
     margin: 0 1vw;
     justify-self: flex-end;
+    cursor: pointer;
 }
 
 .logout_icon {
@@ -10,4 +11,5 @@
     color: #ff4500;
     margin: 0 1vw;
     justify-self: flex-end;
+    cursor: pointer;
 }

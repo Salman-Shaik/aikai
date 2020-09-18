@@ -1,5 +1,6 @@
 import Close from '@material-ui/icons/Close'
 import Search from '@material-ui/icons/Search'
+import Tooltip from "@material-ui/core/Tooltip";
 import _ from "lodash";
 import React, {useState} from "react";
 import '../../../css/SearchBar.css';
@@ -26,9 +27,9 @@ export const SearchBar = ({setCurrentShow, setCurrentShowId, setHomePageLoaded})
         setShow("");
     }
     return <form className={`search_bar ${error ? "error" : ""}`} onSubmit={onClick}>
-        <Search className="search_icon" onClick={onClick}/>
+        <Tooltip title="Search"><Search className="search_icon" onClick={onClick}/></Tooltip>
         <input type="text" title="Search" placeholder="Search Movie, TV Shows..." className="search_input"
                value={show} onChange={onChange}/>
-        <Close className="close_icon" onClick={onClose}/>
+        <Tooltip title="Clear"><Close className="close_icon" onClick={onClose}/></Tooltip>
     </form>
 }

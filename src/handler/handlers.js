@@ -128,9 +128,9 @@ const getExplicitFlag = async (req, res, User) => {
     if (!!username) {
         const userObj = await User.findByUsername(username);
         const explicitFlag = userObj.explicitFlag;
-        res.send(JSON.stringify({flagStatus: explicitFlag}));
+        return res.send(JSON.stringify({flagStatus: explicitFlag}));
     }
-    return res.send(JSON.stringify({flagStatus: true}));
+    res.send(JSON.stringify({flagStatus: true}));
 }
 
 module.exports = {
