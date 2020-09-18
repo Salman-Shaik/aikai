@@ -9,11 +9,12 @@ export const Main = (props) => {
         currentMenuItem, setCurrentShowType, setCurrentShowId, homepageLoaded, isUserLoggedIn, favorites,
         setHomePageLoaded, currentShowId, currentShow, currentShowType, setCurrentShow, setGotoLoginPage, setCurrentMenuItem
     } = props;
+
     const isShowEmpty = _.isEmpty(currentShow);
     const isShowIdEmpty = currentShowId === 0;
 
     const Component = () => <section>
-        {(!isShowEmpty || !isShowIdEmpty)
+        {(!isShowIdEmpty || !isShowEmpty)
             ? <Show currentShowId={currentShowId}
                     currentShow={currentShow}
                     currentShowType={currentShowType}
@@ -26,7 +27,7 @@ export const Main = (props) => {
                     setGotoLoginPage={setGotoLoginPage}
                     setCurrentMenuItem={setCurrentMenuItem}/>
             : (_.isEmpty(currentMenuItem) &&
-                 <NowPlaying setCurrentShowType={setCurrentShowType}
+                <NowPlaying setCurrentShowType={setCurrentShowType}
                             setCurrentShowId={setCurrentShowId}
                             homepageLoaded={homepageLoaded}
                             setHomePageLoaded={setHomePageLoaded}/>)

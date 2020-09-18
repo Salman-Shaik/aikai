@@ -48,7 +48,6 @@ export const RegistrationPage = ({setGotoRegisterPage, setGotoLoginPage}) => {
             </section>
             <section className="explicit">
                 <span className="explicit_label">Show Explicit Content</span>
-                {console.log(disabled)}
                 <Switch onChange={onSwitch} checked={explicitFlag} className={"explicit_switch"} disabled={disabled}
                         offHandleColor="#a9a9a9" onHandleColor="#ffefd5" offColor="#000000" onColor="#fb74a9"/>
             </section>

@@ -1,6 +1,7 @@
+import Tooltip from "@material-ui/core/Tooltip";
 import Favorite from "@material-ui/icons/Favorite"
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder"
-import Tooltip from "@material-ui/core/Tooltip";
+import Share from "@material-ui/icons/ShareTwoTone"
 import React, {useEffect, useState} from "react";
 import {buildStyles, CircularProgressbar} from "react-circular-progressbar";
 import {getGenreNames, imageUrlBuilder} from "../../../lib/helper";
@@ -43,8 +44,10 @@ export const ShowDetails = ({info, currentShowType, isUserLoggedIn, setGotoLogin
         }
     }
 
-    const onDislike = () => {
-        removeFavorite(info.id, setIsFavorite);
+    const onDislike = () => removeFavorite(info.id, setIsFavorite)
+    const copyUrl = () => {
+        const showUrl = `${window.location.href}?showId=${info.id}&showType=${currentShowType}`;
+        navigator.clipboard.writeText(showUrl).catch(e => new TypeError(e));
     }
 
     return <section className="show_details">
@@ -59,7 +62,9 @@ export const ShowDetails = ({info, currentShowType, isUserLoggedIn, setGotoLogin
         <section className="show_actions">
             {isFavorite
                 ? <Tooltip title="You Like it"><Favorite className="favorite" onClick={onDislike}/></Tooltip>
-                : <Tooltip title="Do You Like It?"><FavoriteBorder className="not_favorite" onClick={onLike}/></Tooltip>}
+                :
+                <Tooltip title="Do You Like It?"><FavoriteBorder className="not_favorite" onClick={onLike}/></Tooltip>}
+            <Tooltip title={"Copy Url"}><Share className="share" onClick={copyUrl}/></Tooltip>
         </section>
     </section>
 }

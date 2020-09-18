@@ -43,14 +43,17 @@ export const Show = (props) => {
         currentShowId, currentShow, currentShowType, setCurrentShow, setCurrentShowType, setCurrentMenuItem,
         setCurrentShowId, homepageLoaded, setHomePageLoaded, isUserLoggedIn, setGotoLoginPage
     } = props;
+
     const [info, setShowInformation] = useState({});
     const [loaded, setLoaded] = useState(false);
+
     useEffect(() => {
         if (_.isEmpty(currentShowType) || currentShowId === 0) {
             return fetchPerfectShow(currentShow, setShowInformation, setLoaded, setCurrentShowType, setCurrentShowId, setHomePageLoaded);
         }
         fetchShow(currentShowId, currentShowType, setShowInformation, setLoaded, setHomePageLoaded);
     }, [currentShow, currentShowId, currentShowType, setCurrentShowId, setCurrentShowType, setHomePageLoaded]);
+
     return (!loaded || !homepageLoaded) ? <Spinner loaded={loaded}/> :
         <Component info={info}
                    currentShowType={currentShowType}

@@ -4,11 +4,24 @@ const favicon = require('express-favicon');
 const logger = require("morgan");
 const path = require('path');
 const cookieParser = require("cookie-parser");
-const {favoriteHandler, getFavorites, registrationHandler, apiKeySetter, loginHandler, validateUser, getExplicitFlag, deleteFavorite,checkFavorites,logoutUser} = require("./handler/handlers");
+const handlers = require("./handler/handlers");
 const {sequelize, models} = require('./models');
 
 const {User, Favorite} = models;
 const port = process.env.PORT || 8080;
+const {
+    favoriteHandler,
+    getFavorites,
+    registrationHandler,
+    apiKeySetter,
+    loginHandler,
+    validateUser,
+    getExplicitFlag,
+    deleteFavorite,
+    checkFavorites,
+    logoutUser,
+    currentShowSetter
+} = handlers;
 
 const app = express();
 
@@ -20,6 +33,7 @@ app.use(cookieParser());
 app.use(apiKeySetter);
 app.use((req, res, next) => validateUser(req, res, next, User));
 app.use((req, res, next) => checkFavorites(req, res, next, Favorite));
+app.use(currentShowSetter)
 app.use(express.static(path.join(__dirname, '../build'), {maxAge: 2592000000}));
 app.use(favicon(__dirname + '../build/favicon.ico'));
 

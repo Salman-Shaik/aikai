@@ -8,10 +8,13 @@ import {Main} from "./Homepage/Main";
 
 export const Homepage = () => {
     const userCookie = getCookieValue('user');
+    const showIdCookie = getCookieValue('showId');
+    const showTypeCookie = getCookieValue('showType');
+
     const [currentMenuItem, setCurrentMenuItem] = useState("");
     const [currentShow, setCurrentShow] = useState("");
-    const [currentShowId, setCurrentShowId] = useState(0);
-    const [currentShowType, setCurrentShowType] = useState("");
+    const [currentShowId, setCurrentShowId] = useState(showIdCookie || 0);
+    const [currentShowType, setCurrentShowType] = useState(showTypeCookie || "");
     const [homepageLoaded, setHomePageLoaded] = useState(false);
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(!!userCookie || false);
     const [gotoLoginPage, setGotoLoginPage] = useState(false);

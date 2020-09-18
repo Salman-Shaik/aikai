@@ -133,6 +133,20 @@ const getExplicitFlag = async (req, res, User) => {
     res.send(JSON.stringify({flagStatus: true}));
 }
 
+const currentShowSetter = (req, res, next) => {
+    const show = req.query.showId;
+    const showType = req.query.showType;
+    if (!!show && !!showType) {
+        res.cookie("showId", show);
+        res.cookie("showType", showType);
+        res.redirect("/");
+    } else {
+        res.clearCookie("showId");
+        res.clearCookie("showType");
+    }
+    next();
+}
+
 module.exports = {
     loginHandler,
     apiKeySetter,
@@ -143,5 +157,6 @@ module.exports = {
     deleteFavorite,
     getFavorites,
     checkFavorites,
-    logoutUser
+    logoutUser,
+    currentShowSetter
 }
