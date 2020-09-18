@@ -41,6 +41,22 @@ const favoriteHandler = async (req, res, Favorite) => {
     res.send(`${title} Saved As Favorite Successfully.`);
 }
 
+const deleteFavorite = async (req, res, Favorite) => {
+    const userName = req.cookies.user;
+    if (_.isEmpty(userName)) {
+        res.status(401);
+        return res.send("User not logged in");
+    }
+    const {id} = req.body;
+    const favorites = await Favorite.findByUsername(userName);
+    const filteredFavorites = favorites.favoritesInfo.filter(f => f.id !== id);
+    await Favorite.update(
+        {favoritesInfo: filteredFavorites},
+        {where: {username: userName}}
+    );
+    res.send(`Deleted Favorite Successfully.`);
+}
+
 const getFavorites = async (req, res, Favorite) => {
     const userName = req.cookies.user;
     if (_.isEmpty(userName)) {
@@ -80,6 +96,24 @@ const validateUser = async (req, res, next, User) => {
     next();
 }
 
+const checkFavorites = async (req, res, next, Favorite) => {
+    let cookie = req.cookies.user;
+    if (!!cookie) {
+        try {
+            const favorites = await Favorite.findByUsername(cookie);
+            if (_.isEmpty(favorites)) {
+                await Favorite.create({username: cookie});
+                console.info("Default Favorites Created");
+            }
+        } catch (e) {
+            await Favorite.create({username: cookie});
+            console.info("Default Favorites Created");
+        }
+
+    }
+    next();
+}
+
 const getExplicitFlag = async (req, res, User) => {
     const username = req.cookies.user;
     const userObj = await User.findByUsername(username);
@@ -97,5 +131,7 @@ module.exports = {
     getExplicitFlag,
     registrationHandler,
     favoriteHandler,
-    getFavorites
+    deleteFavorite,
+    getFavorites,
+    checkFavorites
 }

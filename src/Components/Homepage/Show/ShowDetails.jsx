@@ -3,7 +3,7 @@ import FavoriteBorder from "@material-ui/icons/FavoriteBorder"
 import React, {useEffect, useState} from "react";
 import {buildStyles, CircularProgressbar} from "react-circular-progressbar";
 import {getGenreNames, imageUrlBuilder} from "../../../lib/helper";
-import {isFavoriteShow, setFavorite} from "../../../lib/networkCalls";
+import {isFavoriteShow, removeFavorite, setFavorite} from "../../../lib/networkCalls";
 
 const createProgressBar = rating => <CircularProgressbar value={rating} maxValue={10} text={`${rating * 10}%`}
                                                          className="progress_bar"
@@ -34,12 +34,16 @@ export const ShowDetails = ({info, currentShowType, isUserLoggedIn, setGotoLogin
         }
     }, [title])
 
-    const onFavorite = () => {
+    const onLike = () => {
         if (isUserLoggedIn) {
             setFavorite(title, info.id, imagePath, setIsFavorite);
         } else {
             setGotoLoginPage(true);
         }
+    }
+
+    const onDislike = () => {
+        removeFavorite(info.id, setIsFavorite);
     }
 
     return <section className="show_details">
@@ -53,8 +57,8 @@ export const ShowDetails = ({info, currentShowType, isUserLoggedIn, setGotoLogin
         </section>
         <section className="show_actions">
             {isFavorite
-                ? <Favorite className="favorite"/>
-                : <FavoriteBorder className="not_favorite" onClick={onFavorite}/>}
+                ? <Favorite className="favorite" onClick={onDislike}/>
+                : <FavoriteBorder className="not_favorite" onClick={onLike}/>}
         </section>
     </section>
 }

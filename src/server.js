@@ -4,7 +4,7 @@ const favicon = require('express-favicon');
 const logger = require("morgan");
 const path = require('path');
 const cookieParser = require("cookie-parser");
-const {favoriteHandler, getFavorites, registrationHandler, apiKeySetter, loginHandler, validateUser, getExplicitFlag} = require("./handler/handlers");
+const {favoriteHandler, getFavorites, registrationHandler, apiKeySetter, loginHandler, validateUser, getExplicitFlag, deleteFavorite,checkFavorites} = require("./handler/handlers");
 const {sequelize, models} = require('./models');
 
 const {User, Favorite} = models;
@@ -20,6 +20,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(apiKeySetter);
 app.use((req, res, next) => validateUser(req, res, next, User));
+app.use((req, res, next) => checkFavorites(req, res, next, Favorite));
 app.use(express.static(__dirname, {maxAge: 2592000000}));
 app.use(express.static(path.join(__dirname, '../build'), {maxAge: 2592000000}));
 
@@ -30,6 +31,7 @@ app.get('/*', (req, res) => res.sendFile(path.join(__dirname, '../build', 'index
 app.post('/login', (req, res) => loginHandler(req, res, User))
 app.post('/register', (req, res) => registrationHandler(req, res, User, Favorite))
 app.put('/favorite', (req, res) => favoriteHandler(req, res, Favorite))
+app.delete('/favorite', (req, res) => deleteFavorite(req, res, Favorite))
 
 sequelize.sync().then(() => {
     app.listen(port);

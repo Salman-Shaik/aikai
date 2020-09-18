@@ -8,7 +8,7 @@ import {OtherShows} from "./OtherShows";
 import {ShowDetails} from "./ShowDetails";
 
 
-const Component = ({info, currentShowType, setCurrentShow, setCurrentShowId, setHomePageLoaded, homepageLoaded, isUserLoggedIn, setGotoLoginPage}) => {
+const Component = ({info, currentShowType, setCurrentShow, setCurrentShowId, setHomePageLoaded, homepageLoaded, isUserLoggedIn, setGotoLoginPage, setCurrentMenuItem}) => {
     const createOtherMovies = (keyword, className) =>
         <OtherShows keyword={keyword}
                     className={className}
@@ -17,7 +17,8 @@ const Component = ({info, currentShowType, setCurrentShow, setCurrentShowId, set
                     setCurrentShow={setCurrentShow}
                     setCurrentShowId={setCurrentShowId}
                     homepageLoaded={homepageLoaded}
-                    setHomePageLoaded={setHomePageLoaded}/>;
+                    setHomePageLoaded={setHomePageLoaded}
+                    setCurrentMenuItem={setCurrentMenuItem}/>;
 
     const ShowSection = () => <section className="show_section">
         <ShowDetails info={info}
@@ -39,7 +40,7 @@ const Component = ({info, currentShowType, setCurrentShow, setCurrentShowId, set
 
 export const Show = (props) => {
     const {
-        currentShowId, currentShow, currentShowType, setCurrentShow, setCurrentShowType,
+        currentShowId, currentShow, currentShowType, setCurrentShow, setCurrentShowType, setCurrentMenuItem,
         setCurrentShowId, homepageLoaded, setHomePageLoaded, isUserLoggedIn, setGotoLoginPage
     } = props;
     const [info, setShowInformation] = useState({});
@@ -58,5 +59,6 @@ export const Show = (props) => {
                    setHomePageLoaded={setHomePageLoaded}
                    homepageLoaded={homepageLoaded}
                    isUserLoggedIn={isUserLoggedIn}
-                   setGotoLoginPage={setGotoLoginPage}/>;
+                   setGotoLoginPage={setGotoLoginPage}
+                   setCurrentMenuItem={setCurrentMenuItem}/>;
 }

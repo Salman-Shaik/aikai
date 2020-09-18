@@ -144,11 +144,24 @@ export const setFavorite = (title, id, posterPath, setIsFavorite) => {
         }
     }).catch(e => new TypeError(e));
 }
+export const removeFavorite = (id, setIsFavorite) => {
+    fetch("/favorite", {
+        method: "delete",
+        body: JSON.stringify({id}),
+        headers: {'Content-Type': 'application/json'}
+    }).then(res => {
+        if (res.status === 200) {
+            setIsFavorite(false);
+        }
+    }).catch(e => new TypeError(e));
+}
+
+export const fetchUserFavorites = () => fetch("/favorites")
+    .then(res => res.text())
+    .then(data => JSON.parse(data));
 
 export const isFavoriteShow = (title, setIsFavorite) => {
-    fetch("/favorites")
-        .then(res => res.text())
-        .then(data => JSON.parse(data))
+    fetchUserFavorites()
         .then(favoritesInfo => favoritesInfo.map(f => f.title))
         .then(favorites => {
             if (favorites.includes(title)) {

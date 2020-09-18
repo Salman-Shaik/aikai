@@ -39,6 +39,10 @@ export const getFirstFour = res => {
     return res.slice(0, 4);
 };
 
+export const getFive = (res, i) => {
+    return res.slice(i, i + 5);
+};
+
 export const capitalize = s => _.snakeCase(s).split(`_`).map(x => _.capitalize(x)).join(` `);
 export const fetchExplicitFlag = () => fetch("/explicitFlag").then(r => r.text()).then(d => JSON.parse(d).flagStatus);
 

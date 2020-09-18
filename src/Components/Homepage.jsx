@@ -16,6 +16,7 @@ export const Homepage = () => {
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(!!userCookie || false);
     const [gotoLoginPage, setGotoLoginPage] = useState(false);
     const [gotoRegisterPage, setGotoRegisterPage] = useState(false);
+    const [favorites, setFavorites] = useState([]);
 
     return <div className="homepage">
         <Header currentMenuItem={currentMenuItem}
@@ -27,6 +28,7 @@ export const Homepage = () => {
                 setHomePageLoaded={setHomePageLoaded}
                 setCurrentMenuItem={setCurrentMenuItem}
                 setGotoRegisterPage={setGotoRegisterPage}
+                setFavorites={setFavorites}
         />
         {gotoLoginPage
             ? <LoginPage setIsUserLoggedIn={setIsUserLoggedIn}
@@ -39,9 +41,11 @@ export const Homepage = () => {
                         currentShowId={currentShowId}
                         currentShowType={currentShowType}
                         homepageLoaded={homepageLoaded}
+                        favorites={favorites}
                         setCurrentShow={setCurrentShow}
                         setCurrentShowId={setCurrentShowId}
                         setCurrentShowType={setCurrentShowType}
+                        setCurrentMenuItem={setCurrentMenuItem}
                         setHomePageLoaded={setHomePageLoaded}
                         isUserLoggedIn={isUserLoggedIn}
                         setGotoLoginPage={setGotoLoginPage}/>)}

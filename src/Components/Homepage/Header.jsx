@@ -3,7 +3,7 @@ import '../../css/Header.css';
 import {NavigationMenu} from "./NavigationMenu/NavigationMenu";
 
 export const Header = ({
-                           currentMenuItem, setCurrentMenuItem, isUserLoggedIn, setGotoLoginPage,
+                           currentMenuItem, setCurrentMenuItem, isUserLoggedIn, setGotoLoginPage, setFavorites,
                            setCurrentShow, setCurrentShowId, setCurrentShowType, setHomePageLoaded, setGotoRegisterPage
                        }) => {
     const onIconClick = () => {
@@ -22,6 +22,7 @@ export const Header = ({
                         setCurrentShow={setCurrentShow}
                         setCurrentShowId={setCurrentShowId}
                         setCurrentShowType={setCurrentShowType}
-                        setHomePageLoaded={setHomePageLoaded}/>
+                        setHomePageLoaded={setHomePageLoaded}
+                        setFavorites={setFavorites}/>
     </header>
 }

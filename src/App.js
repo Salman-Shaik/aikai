@@ -1,7 +1,7 @@
 import React from 'react';
 import {Homepage} from "./Components/Homepage";
 import {isMobile} from 'react-device-detect'
-import './App.css';
+import './css/App.css';
 
 function App() {
   return (
