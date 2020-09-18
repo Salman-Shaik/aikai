@@ -20,7 +20,6 @@ app.use(cookieParser());
 app.use(apiKeySetter);
 app.use((req, res, next) => validateUser(req, res, next, User));
 app.use((req, res, next) => checkFavorites(req, res, next, Favorite));
-app.use(express.static(__dirname, {maxAge: 2592000000}));
 app.use(express.static(path.join(__dirname, '../build'), {maxAge: 2592000000}));
 app.use(favicon(__dirname + '../build/favicon.ico'));
 
