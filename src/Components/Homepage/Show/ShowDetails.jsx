@@ -31,6 +31,7 @@ export const ShowDetails = ({info, currentShowType, isUserLoggedIn, setGotoLogin
     return <section className="show_details">
         <img className="poster" src={imageUrlBuilder(imagePath)} alt={title}/>
         <section className="show_info">
+            <h2 className="show_title">{title}</h2>
             <p className="description">{description}</p>
             <h4>{genre}</h4>
             {createProgressBar(rating)}

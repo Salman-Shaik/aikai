@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {NotificationContainer} from "react-notifications";
 import '../css/Homepage.css'
 import {getCookieValue} from "../lib/helper";
 import {Header} from "./Homepage/Header";
@@ -54,5 +55,6 @@ export const Homepage = () => {
                         setHomePageLoaded={setHomePageLoaded}
                         isUserLoggedIn={isUserLoggedIn}
                         setGotoLoginPage={setGotoLoginPage}/>)}
+        <NotificationContainer/>
     </div>
 }

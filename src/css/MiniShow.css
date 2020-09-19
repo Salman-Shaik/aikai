@@ -19,4 +19,8 @@
 
 .title {
     margin-left: 1vw;
+    background-image: -webkit-linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+    background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }

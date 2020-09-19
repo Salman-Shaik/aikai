@@ -1,6 +1,7 @@
 import checkPasswordStrength from "check-password-strength";
 import _ from "lodash";
 import React, {useState} from "react";
+import {NotificationContainer,NotificationManager} from 'react-notifications';
 import Switch from "react-switch";
 import '../../../css/RegistrationPage.css';
 import {registerUser} from "../../../lib/networkCalls";
@@ -75,7 +76,7 @@ export const RegistrationPage = ({setGotoRegisterPage, setGotoLoginPage}) => {
     const onRegister = () => {
         if (isFormInvalid()) return;
         setErrors(false);
-        registerUser(name, username, password, age, explicitFlag, setGotoRegisterPage, setGotoLoginPage);
+        registerUser(name, username, password, age, explicitFlag, setGotoRegisterPage, setGotoLoginPage,NotificationManager);
     };
 
     return <section className="register_page">

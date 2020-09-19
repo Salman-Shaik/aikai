@@ -1,14 +1,17 @@
 import React from 'react';
-import {Homepage} from "./Components/Homepage";
 import {isMobile} from 'react-device-detect'
+import 'react-notifications/lib/notifications.css';
+import {Homepage} from "./Components/Homepage";
 import './css/App.css';
 
-function App() {
-  return (
+const App = () => (
     <div className="App">
-        {isMobile ? <h4 className="mobile_notice">This website in not available on Mobile yet. Please Try Desktop Version.</h4> : <Homepage />}
+        {isMobile ?
+            <h4 className="mobile_notice">This website in not available on Mobile yet. Please Try Desktop
+                Version.</h4> :
+            <Homepage/>
+        }
     </div>
-  );
-}
+);
 
 export default App;

@@ -101,13 +101,15 @@ export const fetchTopShow = (setCurrentShowId, setCurrentShowType, setHomePageLo
         .catch(e => new TypeError(e));
 }
 
-export const login = (username, password, setIsUserLoggedIn, setIsLoginError, setIsLoginSuccess, setGotoLoginPage) => {
+export const login = (username, password, setIsUserLoggedIn, setGotoLoginPage, manager) => {
     const body = {username, password}
     const loginHandler = ({status}) => {
-        if (status === 401) setIsLoginError(true);
+        if (status === 401) {
+            manager.error("Invalid Credentials");
+        }
         else {
-            setGotoLoginPage(false)
-            setIsLoginSuccess(true);
+            setGotoLoginPage(false);
+            manager.success("Login Success!");
             setIsUserLoggedIn(true);
         }
     };
@@ -130,7 +132,7 @@ export const logout = (setHomePageLoaded, setIsUserLoggedIn) => {
     });
 }
 
-export const registerUser = (name, username, password, age, explicitFlag, setGotoRegisterPage, setGotoLoginPage) => {
+export const registerUser = (name, username, password, age, explicitFlag, setGotoRegisterPage, setGotoLoginPage, manager) => {
     const jwtToken = getJwtToken({username, password});
     fetch("/register", {
         method: "post",
@@ -138,6 +140,7 @@ export const registerUser = (name, username, password, age, explicitFlag, setGot
         headers: {'Content-Type': 'application/json', "Authorization": `Bearer ${jwtToken}`}
     }).then(res => {
         if (res.status === 200) {
+            manager.success("Account Created!");
             setGotoRegisterPage(false);
             setGotoLoginPage(true);
         }

@@ -14,3 +14,7 @@
 .page_header + .register_page {
     padding-top: 11vh;
 }
+
+.page_header + .notification-container {
+    padding-top: 12vh;
+}

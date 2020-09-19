@@ -1,5 +1,6 @@
 import _ from "lodash";
 import React, {useState} from "react";
+import {NotificationManager} from 'react-notifications';
 import '../../../css/LoginPage.css';
 import {login} from "../../../lib/networkCalls";
 
@@ -8,8 +9,6 @@ export const LoginPage = ({setIsUserLoggedIn, setGotoRegisterPage, setGotoLoginP
     const [password, setPassword] = useState("");
     const [usernameError, setUsernameError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
-    const [isLoginError, setIsLoginError] = useState(false);
-    const [isLoginSuccess, setIsLoginSuccess] = useState(false);
 
     const onUserNameChange = ({target}) => {
         setUsernameError(false);
@@ -38,7 +37,7 @@ export const LoginPage = ({setIsUserLoggedIn, setGotoRegisterPage, setGotoLoginP
         if (isFormInValid()) return;
         setUsernameError(false);
         setPasswordError(false);
-        login(username, password, setIsUserLoggedIn, setIsLoginError, setIsLoginSuccess, setGotoLoginPage);
+        login(username, password, setIsUserLoggedIn, setGotoLoginPage, NotificationManager);
     };
 
     const gotoRegister = () => {
@@ -50,9 +49,6 @@ export const LoginPage = ({setIsUserLoggedIn, setGotoRegisterPage, setGotoLoginP
     return <section className="login">
         <section className="login_form" onSubmit={onLogin}>
             <h1 className="header">A.I.K.A.I</h1>
-            <h4 className={` login_message ${isLoginError ? "login_error" : (isLoginSuccess ? "login_success" : "")}`}>
-                {isLoginError ? "Invalid Credentials!" : (isLoginSuccess ? "Login Success." : "")}
-            </h4>
             <section className="credentials">
                 <input type="text" placeholder="Enter Username" className={`credential ${usernameError ? "error" : ""}`}
                        onChange={onUserNameChange} autoComplete="on"/>
