@@ -6,23 +6,38 @@ import {login} from "../../../lib/networkCalls";
 export const LoginPage = ({setIsUserLoggedIn, setGotoRegisterPage, setGotoLoginPage, setCurrentMenuItem}) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState(false);
+    const [usernameError, setUsernameError] = useState(false);
+    const [passwordError, setPasswordError] = useState(false);
     const [isLoginError, setIsLoginError] = useState(false);
     const [isLoginSuccess, setIsLoginSuccess] = useState(false);
 
     const onUserNameChange = ({target}) => {
-        setError(false);
+        setUsernameError(false);
         setUsername(target.value);
     };
 
     const onPasswordChange = ({target}) => {
-        setError(false);
+        setPasswordError(false);
         setPassword(target.value);
     };
 
+    const isFormInValid = () => {
+        let isInvalid = false;
+        if (_.isEmpty(username.trim())) {
+            isInvalid = true;
+            setUsernameError(true);
+        }
+        if (_.isEmpty(password.trim())) {
+            isInvalid = true;
+            setPasswordError(true);
+        }
+        return isInvalid;
+    };
+
     const onLogin = () => {
-        if (_.isEmpty(username.trim()) || _.isEmpty(password.trim())) return setError(true);
-        setError(false);
+        if (isFormInValid()) return;
+        setUsernameError(false);
+        setPasswordError(false);
         login(username, password, setIsUserLoggedIn, setIsLoginError, setIsLoginSuccess, setGotoLoginPage);
     };
 
@@ -39,9 +54,10 @@ export const LoginPage = ({setIsUserLoggedIn, setGotoRegisterPage, setGotoLoginP
                 {isLoginError ? "Invalid Credentials!" : (isLoginSuccess ? "Login Success." : "")}
             </h4>
             <section className="credentials">
-                <input type="text" placeholder="Enter Username" className={`credential ${error ? "error" : ""}`}
+                <input type="text" placeholder="Enter Username" className={`credential ${usernameError ? "error" : ""}`}
                        onChange={onUserNameChange} autoComplete="on"/>
-                <input type="password" placeholder="Enter Password" className={`credential ${error ? "error" : ""}`}
+                <input type="password" placeholder="Enter Password"
+                       className={`credential ${passwordError ? "error" : ""}`}
                        onChange={onPasswordChange} autoComplete="on"/>
             </section>
             <button type="button" className="login_button" onClick={onLogin}>Login</button>
