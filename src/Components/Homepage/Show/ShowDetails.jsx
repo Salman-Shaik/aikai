@@ -1,11 +1,9 @@
-import Tooltip from "@material-ui/core/Tooltip";
-import Favorite from "@material-ui/icons/Favorite"
-import FavoriteBorder from "@material-ui/icons/FavoriteBorder"
-import Share from "@material-ui/icons/ShareTwoTone"
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {buildStyles, CircularProgressbar} from "react-circular-progressbar";
 import {getGenreNames, imageUrlBuilder} from "../../../lib/helper";
-import {isFavoriteShow, removeFavorite, setFavorite} from "../../../lib/networkCalls";
+import {FavoriteComponent} from "./Actions/FavoriteComponent";
+import {ShareComponent} from "./Actions/ShareComponent";
+import {WatchList} from "./Actions/WatchList";
 
 const createProgressBar = rating => <CircularProgressbar value={rating} maxValue={10} text={`${rating * 10}%`}
                                                          className="progress_bar"
@@ -21,6 +19,7 @@ const createProgressBar = rating => <CircularProgressbar value={rating} maxValue
                                                          })}/>;
 
 export const ShowDetails = ({info, currentShowType, isUserLoggedIn, setGotoLoginPage}) => {
+    const id = info.id;
     const title = info.name || info.title;
     const genre = getGenreNames(info, currentShowType);
     const rating = info["vote_average"];
@@ -28,27 +27,6 @@ export const ShowDetails = ({info, currentShowType, isUserLoggedIn, setGotoLogin
     const releaseDate = info["first_air_date"] || info["release_date"];
     const imagePath = info["poster_path"]
     const language = info["original_language"];
-    const [isFavorite, setIsFavorite] = useState(false);
-
-    useEffect(() => {
-        if (isUserLoggedIn) {
-            isFavoriteShow(title, setIsFavorite);
-        }
-    }, [title])
-
-    const onLike = () => {
-        if (isUserLoggedIn) {
-            setFavorite(title, info.id, imagePath, setIsFavorite);
-        } else {
-            setGotoLoginPage(true);
-        }
-    }
-
-    const onDislike = () => removeFavorite(info.id, setIsFavorite)
-    const copyUrl = () => {
-        const showUrl = `${window.location.href}?showId=${info.id}&showType=${currentShowType}`;
-        navigator.clipboard.writeText(showUrl).catch(e => new TypeError(e));
-    }
 
     return <section className="show_details">
         <img className="poster" src={imageUrlBuilder(imagePath)} alt={title}/>
@@ -60,11 +38,17 @@ export const ShowDetails = ({info, currentShowType, isUserLoggedIn, setGotoLogin
             <h4>Release Date: {releaseDate}</h4>
         </section>
         <section className="show_actions">
-            {isFavorite
-                ? <Tooltip title="You Like it"><Favorite className="favorite" onClick={onDislike}/></Tooltip>
-                :
-                <Tooltip title="Do You Like It?"><FavoriteBorder className="not_favorite" onClick={onLike}/></Tooltip>}
-            <Tooltip title={"Copy Url"}><Share className="share" onClick={copyUrl}/></Tooltip>
+            <FavoriteComponent id={id}
+                               title={title}
+                               posterPath={imagePath}
+                               isUserLoggedIn={isUserLoggedIn}
+                               setGotoLoginPage={setGotoLoginPage}/>
+            <WatchList id={id}
+                       title={title}
+                       posterPath={imagePath}
+                       isUserLoggedIn={isUserLoggedIn}
+                       setGotoLoginPage={setGotoLoginPage}/>
+            <ShareComponent id={id} currentShowType={currentShowType}/>
         </section>
     </section>
 }

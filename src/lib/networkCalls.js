@@ -182,3 +182,28 @@ export const isFavoriteShow = (title, setIsFavorite) => {
             setIsFavorite(false);
         }).catch(e => new TypeError(e));
 }
+
+export const addToWatchList = (title, id, posterPath, setIsOnWatchList) => {
+    fetch("/watch", {
+        method: "put",
+        body: JSON.stringify({title, id, posterPath}),
+        headers: {'Content-Type': 'application/json'}
+    }).then(res => {
+        if (res.status === 200) {
+            setIsOnWatchList(true);
+        }
+    }).catch(e => new TypeError(e));
+}
+
+export const isShowOnWatchList = (title, setIsOnWatchList) => {
+    fetch("/watchlist")
+        .then(r => r.text())
+        .then(d => JSON.parse(d))
+        .then(watchListMap => watchListMap.map(w => w.title))
+        .then(watchList => {
+            if (watchList.includes(title)) {
+                return setIsOnWatchList(true);
+            }
+            setIsOnWatchList(false);
+        }).catch(e => new TypeError(e));
+}

@@ -23,7 +23,7 @@ const logoutUser = (req, res) => {
     res.send("USER COOKIE NOT FOUND");
 }
 
-const registrationHandler = async (req, res, User, Favorite) => {
+const registrationHandler = async (req, res, User, Favorite, WatchList) => {
     const token = req.get("Authorization").replace("Bearer ", "");
     if (!token) {
         res.status(401);
@@ -34,6 +34,7 @@ const registrationHandler = async (req, res, User, Favorite) => {
     await User.createUser(username, password, name, age, explicitFlag);
     await User.findByUsername(username);
     await Favorite.create({username});
+    await WatchList.create({username});
     return res.send('Sign Up Success!');
 }
 
@@ -106,17 +107,24 @@ const validateUser = async (req, res, next, User) => {
     next();
 }
 
-const checkFavorites = async (req, res, next, Favorite) => {
+const checkLists = async (req, res, next, Favorite, WatchList) => {
     let cookie = req.cookies.user;
     if (!!cookie) {
         try {
             const favorites = await Favorite.findByUsername(cookie);
+            const watchlist = await WatchList.findByUsername(cookie);
             if (_.isEmpty(favorites)) {
                 await Favorite.create({username: cookie});
                 console.info("Default Favorites Created");
             }
+            if (_.isEmpty(watchlist)) {
+                await WatchList.create({username: cookie});
+                console.info("Default Favorites Created");
+            }
         } catch (e) {
             await Favorite.create({username: cookie});
+            console.info("Default Favorites Created");
+            await WatchList.create({username: cookie});
             console.info("Default Favorites Created");
         }
     }
@@ -147,6 +155,67 @@ const currentShowSetter = (req, res, next) => {
     next();
 }
 
+const addToWatchList = async (req, res, WatchList) => {
+    const userName = req.cookies.user;
+    if (_.isEmpty(userName)) {
+        res.status(401);
+        return res.send("User not logged in");
+    }
+    const {title, id, posterPath} = req.body;
+    const show = {"title": title, "id": id, "posterPath": posterPath, "watched": false};
+    await WatchList.update(
+        {watchlist: Sequelize.fn('array_append', Sequelize.col('watchlist'), JSON.stringify(show))},
+        {where: {username: userName}}
+    );
+    res.send(`${title} Added To WatchList.`);
+}
+
+const watchedHandler = async (req, res, WatchList) => {
+    const userName = req.cookies.user;
+    if (_.isEmpty(userName)) {
+        res.status(401);
+        return res.send("User not logged in");
+    }
+    const {id} = req.body;
+    const watchList = await WatchList.findByUsername(userName);
+    const show = watchList.watchlist.find(w => w.id === id);
+    show.watched = true;
+    const filteredWatchList = watchList.watchlist.filter(f => f.id !== id);
+    filteredWatchList.push(show);
+    await WatchList.update(
+        {watchlist: filteredWatchList},
+        {where: {username: userName}}
+    );
+    res.send(`Removed From Watchlist`);
+}
+
+const deleteFromWatchlist = async (req, res, WatchList) => {
+    const userName = req.cookies.user;
+    if (_.isEmpty(userName)) {
+        res.status(401);
+        return res.send("User not logged in");
+    }
+    const {id} = req.body;
+    const watchList = await WatchList.findByUsername(userName);
+    const filteredWatchList = watchList.watchlist.filter(w => w.id !== id);
+    await WatchList.update(
+        {watchlist: filteredWatchList},
+        {where: {username: userName}}
+    );
+    res.send(`Removed From Watchlist`);
+}
+
+const getWatchList = async (req, res, WatchList) => {
+    const userName = req.cookies.user;
+    if (_.isEmpty(userName)) {
+        res.status(401);
+        return res.send("User not logged in");
+    }
+    const watchListObj = await WatchList.findByUsername(userName);
+    const titles = JSON.stringify(watchListObj.watchlist);
+    return res.send(titles);
+}
+
 module.exports = {
     loginHandler,
     apiKeySetter,
@@ -156,7 +225,11 @@ module.exports = {
     favoriteHandler,
     deleteFavorite,
     getFavorites,
-    checkFavorites,
+    checkLists,
     logoutUser,
-    currentShowSetter
+    currentShowSetter,
+    addToWatchList,
+    watchedHandler,
+    deleteFromWatchlist,
+    getWatchList
 }

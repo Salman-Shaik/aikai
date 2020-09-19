@@ -93,4 +93,20 @@
     font-size: 1.8em !important;
     cursor: pointer;
     margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+.add, .added {
+    font-size: 2em !important;
+    cursor: pointer;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+.add {
+    color: #ffefd5;
+}
+
+.added {
+    color: #7cfc00;
 }
