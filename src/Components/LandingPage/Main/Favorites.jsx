@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React from "react";
-import '../../css/Favorite.css';
-import {getFive} from "../../lib/helper";
+import '../../../css/Favorite.css';
+import {getFive} from "../../../lib/helper";
 import {MiniShow} from "./Show/MiniShow";
 
 const Section = ({miniShows}) => <section className="sectioned_shows">{miniShows}</section>

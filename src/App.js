@@ -1,7 +1,7 @@
 import React from 'react';
 import {isMobile} from 'react-device-detect'
 import 'react-notifications/lib/notifications.css';
-import {Homepage} from "./Components/Homepage";
+import {LandingPage} from "./Components/LandingPage";
 import './css/App.css';
 
 const App = () => (
@@ -9,7 +9,7 @@ const App = () => (
         {isMobile ?
             <h4 className="mobile_notice">This website in not available on Mobile yet. Please Try Desktop
                 Version.</h4> :
-            <Homepage/>
+            <LandingPage/>
         }
     </div>
 );

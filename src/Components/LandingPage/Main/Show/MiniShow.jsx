@@ -1,6 +1,6 @@
 import React from "react";
-import '../../../css/MiniShow.css'
-import {imageUrlBuilder} from "../../../lib/helper";
+import '../../../../css/MiniShow.css'
+import {imageUrlBuilder} from "../../../../lib/helper";
 
 export const MiniShow = ({posterPath, title, id, setCurrentShowId, setHomePageLoaded,setCurrentMenuItem}) => {
     const onClick = () => {

@@ -1,13 +1,13 @@
 import React, {useState} from "react";
 import {NotificationContainer} from "react-notifications";
-import '../css/Homepage.css'
+import '../css/Landingpage.css'
 import {getCookieValue} from "../lib/helper";
-import {Header} from "./Homepage/Header";
-import {LoginPage} from "./Homepage/Login/LoginPage";
-import {RegistrationPage} from "./Homepage/Login/RegistrationPage";
-import {Main} from "./Homepage/Main";
+import {Header} from "./LandingPage/Header/Header";
+import {LoginPage} from "./LandingPage/Main/Login/LoginPage";
+import {RegistrationPage} from "./LandingPage/Main/Login/RegistrationPage";
+import {Main} from "./LandingPage/Main/Main";
 
-export const Homepage = () => {
+export const LandingPage = () => {
     const userCookie = getCookieValue('user');
     const showIdCookie = getCookieValue('showId');
     const showTypeCookie = getCookieValue('showType');
@@ -22,7 +22,7 @@ export const Homepage = () => {
     const [gotoRegisterPage, setGotoRegisterPage] = useState(false);
     const [favorites, setFavorites] = useState([]);
 
-    return <div className="homepage">
+    return <div className="landingpage">
         <Header currentMenuItem={currentMenuItem}
                 isUserLoggedIn={isUserLoggedIn}
                 setIsUserLoggedIn={setIsUserLoggedIn}

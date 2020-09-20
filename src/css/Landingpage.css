@@ -1,4 +1,4 @@
-.homepage {
+.landingpage {
     width: 100%;
     min-height: 100vh;
 }
@@ -11,7 +11,7 @@
     padding-top: 11vh;
 }
 
-.page_header + .register_page {
+.page_header + .register {
     padding-top: 11vh;
 }
 

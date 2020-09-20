@@ -1,6 +1,6 @@
 import React from "react";
-import '../../../css/Poster.css';
-import {imageUrlBuilder} from "../../../lib/helper";
+import '../../../../css/Poster.css';
+import {imageUrlBuilder} from "../../../../lib/helper";
 
 export const Poster = ({data,key,setCurrentShowId,setCurrentShowType,setHomePageLoaded}) => {
     let title = data.name || data.title;

@@ -3,7 +3,7 @@ import Search from '@material-ui/icons/Search'
 import Tooltip from "@material-ui/core/Tooltip";
 import _ from "lodash";
 import React, {useState} from "react";
-import '../../../css/SearchBar.css';
+import '../../../../css/SearchBar.css';
 
 export const SearchBar = ({setCurrentShow, setCurrentShowId, setHomePageLoaded}) => {
     const [show, setShow] = useState("");

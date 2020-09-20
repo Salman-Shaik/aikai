@@ -1,5 +1,5 @@
 import React from "react";
-import '../../css/Header.css';
+import '../../../css/Header.css';
 import {NavigationMenu} from "./NavigationMenu/NavigationMenu";
 
 export const Header = ({
@@ -25,6 +25,7 @@ export const Header = ({
                         setCurrentShowId={setCurrentShowId}
                         setCurrentShowType={setCurrentShowType}
                         setHomePageLoaded={setHomePageLoaded}
-                        setFavorites={setFavorites}/>
+                        setFavorites={setFavorites}
+        />
     </header>
 }

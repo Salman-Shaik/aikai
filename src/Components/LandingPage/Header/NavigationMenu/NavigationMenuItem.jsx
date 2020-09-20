@@ -1,5 +1,5 @@
 import React from "react";
-import '../../../css/NavigationMenuItem.css';
+import '../../../../css/NavigationMenuItem.css';
 
 export const NavigationMenuItem = ({name, currentMenuItem, setCurrentMenuItem, setHomePageLoaded, onclick}) => {
     let isItemSelected = name === currentMenuItem;

@@ -1,8 +1,8 @@
 import _ from "lodash";
 import React, {useState} from "react";
 import {NotificationManager} from 'react-notifications';
-import '../../../css/LoginPage.css';
-import {login} from "../../../lib/networkCalls";
+import '../../../../css/LoginPage.css';
+import {login} from "../../../../lib/networkCalls";
 
 export const LoginPage = ({setIsUserLoggedIn, setGotoRegisterPage, setGotoLoginPage, setCurrentMenuItem}) => {
     const [username, setUsername] = useState("");
@@ -48,7 +48,7 @@ export const LoginPage = ({setIsUserLoggedIn, setGotoRegisterPage, setGotoLoginP
 
     return <section className="login">
         <section className="login_form" onSubmit={onLogin}>
-            <h1 className="header">A.I.K.A.I</h1>
+            <h3 className="login_header">Welcome Back</h3>
             <section className="credentials">
                 <input type="text" placeholder="Enter Username" className={`credential ${usernameError ? "error" : ""}`}
                        onChange={onUserNameChange} autoComplete="on"/>

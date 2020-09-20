@@ -1,9 +1,9 @@
 import _ from 'lodash';
 import React, {useEffect, useState} from "react";
 import 'react-circular-progressbar/dist/styles.css';
-import '../../../css/Show.css';
-import {fetchPerfectShow, fetchShow} from "../../../lib/networkCalls";
-import {Spinner} from "../../Spinner";
+import '../../../../css/Show.css';
+import {fetchPerfectShow, fetchShow} from "../../../../lib/networkCalls";
+import {Spinner} from "../../../Spinner";
 import {OtherShows} from "./OtherShows";
 import {ShowDetails} from "./ShowDetails";
 

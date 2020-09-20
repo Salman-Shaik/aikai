@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, {useEffect, useState} from "react";
-import {fetchOtherShow} from "../../../lib/networkCalls";
-import {Spinner} from "../../Spinner";
+import {fetchOtherShow} from "../../../../lib/networkCalls";
+import {Spinner} from "../../../Spinner";
 import {MiniShow} from "./MiniShow";
 
 const createMiniShows = (shows, setCurrentShow, setCurrentShowId, setHomePageLoaded,setCurrentMenuItem) => {

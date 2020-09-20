@@ -1,6 +1,6 @@
 import React from "react";
 import {buildStyles, CircularProgressbar} from "react-circular-progressbar";
-import {getGenreNames, imageUrlBuilder} from "../../../lib/helper";
+import {getGenreNames, imageUrlBuilder} from "../../../../lib/helper";
 import {FavoriteComponent} from "./Actions/FavoriteComponent";
 import {ShareComponent} from "./Actions/ShareComponent";
 import {WatchList} from "./Actions/WatchList";

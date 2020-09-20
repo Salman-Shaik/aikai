@@ -1,17 +1,28 @@
 import _ from "lodash";
 import React from "react";
-import '../../../css/NavigationMenu.css'
-import {list} from '../../../editorsChoice.json'
-import {getRandomItem} from "../../../lib/helper";
-import {fetchTopShow, fetchUserFavorites} from "../../../lib/networkCalls";
-import {UserIcon} from "./UserIcon";
+import '../../../../css/NavigationMenu.css'
+import {list} from '../../../../editorsChoice.json'
+import {getRandomItem} from "../../../../lib/helper";
+import {fetchTopShow, fetchUserFavorites} from "../../../../lib/networkCalls";
 import {NavigationMenuItem} from "./NavigationMenuItem";
 import {SearchBar} from "./SearchBar";
+import {UserIcon} from "./UserIcon";
 
-export const NavigationMenu = ({
-                                   currentMenuItem, setCurrentMenuItem, setCurrentShow, setCurrentShowId, setIsUserLoggedIn,
-                                   setCurrentShowType, setHomePageLoaded, isUserLoggedIn, setGotoLoginPage, setFavorites, setGotoRegisterPage
-                               }) => {
+export const NavigationMenu = (props) => {
+    const {
+        currentMenuItem,
+        isUserLoggedIn,
+        setCurrentMenuItem,
+        setCurrentShow,
+        setCurrentShowId,
+        setIsUserLoggedIn,
+        setCurrentShowType,
+        setHomePageLoaded,
+        setGotoLoginPage,
+        setFavorites,
+        setGotoRegisterPage
+    } = props;
+
     const createNavigationMenuItem = (name, onclick) => <NavigationMenuItem name={name}
                                                                             currentMenuItem={currentMenuItem}
                                                                             setCurrentMenuItem={setCurrentMenuItem}
@@ -65,11 +76,14 @@ export const NavigationMenu = ({
         });
     }
 
+    const onNowPlaying = () => setUserPagesOff();
+
     return <section className="navigation_menu">
         {createNavigationMenuItem("Random Movie", onRandomMovie)}
         {createNavigationMenuItem("Random TV", onRandomTv)}
         {createNavigationMenuItem("Top Rated Movie", onTopMovie)}
         {createNavigationMenuItem("Top Rated TV", onTopTv)}
+        {createNavigationMenuItem("Now Playing", onNowPlaying)}
         {createNavigationMenuItem("Editor's Choice", onEditorsChoice)}
         {createNavigationMenuItem("Favorites", onFavorites)}
         <SearchBar setCurrentShow={setCurrentShow}

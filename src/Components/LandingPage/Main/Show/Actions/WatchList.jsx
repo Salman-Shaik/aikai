@@ -2,7 +2,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import AddToWatchList from "@material-ui/icons/PlaylistAdd";
 import AddedToWatchList from "@material-ui/icons/PlaylistAddCheck";
 import React, {useEffect, useState} from "react";
-import {addToWatchList, isShowOnWatchList} from "../../../../lib/networkCalls";
+import {addToWatchList, isShowOnWatchList} from "../../../../../lib/networkCalls";
 
 export const WatchList = ({id, title, posterPath, isUserLoggedIn, setGotoLoginPage}) => {
     const [isOnWatchList, setIsOnWatchList] = useState(false);

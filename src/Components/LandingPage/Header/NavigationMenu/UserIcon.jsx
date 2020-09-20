@@ -2,8 +2,8 @@ import Tooltip from "@material-ui/core/Tooltip";
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import PowerSettingsNew from '@material-ui/icons/PowerSettingsNew'
 import React from "react";
-import '../../../css/UserIcon.css';
-import {logout} from "../../../lib/networkCalls";
+import '../../../../css/UserIcon.css';
+import {logout} from "../../../../lib/networkCalls";
 
 export const UserIcon = ({isUserLoggedIn, setGotoLoginPage, setHomePageLoaded, setIsUserLoggedIn, setCurrentMenuItem}) => {
     const onClick = () => {
