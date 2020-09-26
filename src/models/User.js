@@ -1,3 +1,5 @@
+const {encode} = require("js-base64");
+
 const bcrypt = require("bcrypt");
 const _ = require('lodash');
 
@@ -63,7 +65,7 @@ const user = (sequelize, DataTypes) => {
         }
         await bcrypt.compare(password, userObj.password, (err, result) => {
             if (result) {
-                res.cookie("user", username);
+                res.cookie("user", encode(username));
                 res.send("Login Success")
             } else {
                 res.status(401);
