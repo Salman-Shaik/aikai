@@ -12,10 +12,10 @@ const createProgressBar = rating => <CircularProgressbar value={rating} maxValue
                                                              strokeLinecap: 'round',
                                                              textSize: '22px',
                                                              pathTransitionDuration: 0.5,
-                                                             pathColor: `rgba(251, 116, 169)`,
+                                                             pathColor: `rgb(253,82,144)`,
                                                              textColor: '#8d8c8c',
                                                              trailColor: '#fffff2',
-                                                             backgroundColor: '#fb74a9'
+                                                             backgroundColor: '#ffe1ec'
                                                          })}/>;
 
 export const ShowDetails = ({info, currentShowType, isUserLoggedIn, setGotoLoginPage}) => {
@@ -29,14 +29,16 @@ export const ShowDetails = ({info, currentShowType, isUserLoggedIn, setGotoLogin
     const language = info["original_language"];
 
     return <section className="show_details">
-        <img className="poster" src={imageUrlBuilder(imagePath)} alt={title}/>
-        <section className="show_info">
-            <h2 className="show_title">{title}</h2>
-            <p className="description">{description}</p>
-            <h4>{genre}</h4>
-            {createProgressBar(rating)}
-            <h4 className="language">Language: {language.toUpperCase()}</h4>
-            <h4>Release Date: {releaseDate}</h4>
+        <section className="show_specifics">
+            <img className="poster" src={imageUrlBuilder(imagePath)} alt={title}/>
+            <section className="show_info">
+                <h2 className="show_title">{title}</h2>
+                <p className="description">{description}</p>
+                <h4>{genre}</h4>
+                {createProgressBar(rating)}
+                <h4 className="language">Language: {language.toUpperCase()}</h4>
+                <h4>Release Date: {releaseDate}</h4>
+            </section>
         </section>
         <section className="show_actions">
             <FavoriteComponent id={id}

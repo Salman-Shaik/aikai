@@ -4,7 +4,7 @@ import PlayArrow from "@material-ui/icons/PlayArrow";
 import _ from "lodash";
 import React from "react";
 import '../../../../css/NavigationMenu.css'
-import {list} from '../../../../editorsChoice.json'
+import {list} from '../../../../data/editorsChoice.json'
 import {getRandomItem} from "../../../../lib/helper";
 import {fetchUserFavorites} from "../../../../lib/networkCalls";
 import {fetchTopShow} from "../../../../lib/showNetworkCalls";
@@ -24,7 +24,8 @@ export const NavigationMenu = (props) => {
         setHomePageLoaded,
         setGotoLoginPage,
         setFavorites,
-        setGotoRegisterPage
+        setGotoRegisterPage,
+        clear
     } = props;
 
     const createNavigationMenuItem = (name, onclick) => <NavigationMenuItem name={name}
@@ -96,7 +97,8 @@ export const NavigationMenu = (props) => {
         <Tooltip title="Favorites"><Favorite className="favorites_icon" onClick={onFavorites}/></Tooltip>
         <SearchBar setCurrentShow={setCurrentShow}
                    setCurrentShowId={setCurrentShowId}
-                   setHomePageLoaded={setHomePageLoaded}/>
+                   setHomePageLoaded={setHomePageLoaded}
+                   clear={clear}/>
         <UserIcon isUserLoggedIn={isUserLoggedIn}
                   setGotoLoginPage={setGotoLoginPage}
                   setHomePageLoaded={setHomePageLoaded}

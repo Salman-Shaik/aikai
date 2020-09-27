@@ -5,9 +5,10 @@ import _ from "lodash";
 import React, {useState} from "react";
 import '../../../../css/SearchBar.css';
 
-export const SearchBar = ({setCurrentShow, setCurrentShowId, setHomePageLoaded}) => {
+export const SearchBar = ({setCurrentShow, setCurrentShowId, setHomePageLoaded,clear}) => {
     const [show, setShow] = useState("");
     const [error, setError] = useState(false);
+
     const onClick = (event) => {
         event.preventDefault();
         if (_.isEmpty(show.trim())) return setError(true);
@@ -15,6 +16,7 @@ export const SearchBar = ({setCurrentShow, setCurrentShowId, setHomePageLoaded})
         setError(false);
         setCurrentShow(show);
         setCurrentShowId(0);
+        clear();
     }
 
     const onChange = ({target}) => {

@@ -15,8 +15,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    border-radius: 10px;
-    background-image: repeating-linear-gradient(22.5deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px,transparent 1px, transparent 31px,rgba(255,255,255,0.05) 31px, rgba(255,255,255,0.05) 32px,transparent 32px, transparent 92px),repeating-linear-gradient(112.5deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px,transparent 1px, transparent 31px,rgba(255,255,255,0.05) 31px, rgba(255,255,255,0.05) 32px,transparent 32px, transparent 92px),repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px,transparent 1px, transparent 31px,rgba(255,255,255,0.05) 31px, rgba(255,255,255,0.05) 32px,transparent 32px, transparent 92px),linear-gradient(90deg, hsl(279,0%,3%),hsl(279,0%,3%));
+    border-radius: 18px;
+    background-color: rgba(34, 34, 34, 0.5);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
 }
 
 .credentials {
@@ -33,7 +35,7 @@
     border: none;
     border-radius: 8px;
     margin: 1vh 0;
-    background-color: #222222;
+    background-color: #000000;
     color: #ffefd5;
 }
 
@@ -45,7 +47,8 @@
     font-weight: bold;
     text-align: center;
     color: #222222;
-    background-color: #7cfc00;
+    background-image: linear-gradient(to right bottom, #72ffb6, #5ef4a2, #4ae88e, #33dd79, #10d164);
+    background-image: -webkit-linear-gradient(to right bottom, #72ffb6, #5ef4a2, #4ae88e, #33dd79, #10d164);
     border: none;
     border-radius: 10px;
     box-shadow: #1d1d1d 1px 1px 8px 5px;

@@ -15,8 +15,8 @@
     cursor: pointer;
     font-size: 2.5em;
     margin-left: 2vw;
-    background-image: -webkit-linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);
-    background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);
+    background-image: linear-gradient(to right bottom, #f14f2e, #f03f42, #ec3154, #e42764, #d82474);
+    background-image: -webkit-linear-gradient(to right bottom, #f14f2e, #f03f42, #ec3154, #e42764, #d82474);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }

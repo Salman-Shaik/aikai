@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 import _ from 'lodash';
 import React from "react";
 import {Poster} from "../Components/LandingPage/Main/NowPlaying/Poster";
-import {genres} from "../genres.json"
+import {genres} from "../data/genres.json"
 
 const filterPosterPaths = item => {
     return !!item["poster_path"];

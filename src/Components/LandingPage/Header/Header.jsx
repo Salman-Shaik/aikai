@@ -3,7 +3,7 @@ import '../../../css/Header.css';
 import {NavigationMenu} from "./NavigationMenu/NavigationMenu";
 
 export const Header = ({
-                           currentMenuItem, setCurrentMenuItem, isUserLoggedIn, setGotoLoginPage, setFavorites,setIsUserLoggedIn,
+                           currentMenuItem, setCurrentMenuItem, isUserLoggedIn, setGotoLoginPage, setFavorites, setIsUserLoggedIn,
                            setCurrentShow, setCurrentShowId, setCurrentShowType, setHomePageLoaded, setGotoRegisterPage
                        }) => {
     const onIconClick = () => {
@@ -13,6 +13,13 @@ export const Header = ({
         setGotoLoginPage(false);
         setGotoRegisterPage(false);
     };
+
+    const clear = () => {
+        setCurrentMenuItem("");
+        setGotoLoginPage(false);
+        setGotoRegisterPage(false);
+    }
+
     return <header className="page_header">
         <h2 className="logo" onClick={onIconClick}>A.I.K.A.I</h2>
         <NavigationMenu currentMenuItem={currentMenuItem}
@@ -26,6 +33,7 @@ export const Header = ({
                         setCurrentShowType={setCurrentShowType}
                         setHomePageLoaded={setHomePageLoaded}
                         setFavorites={setFavorites}
+                        clear={clear}
         />
     </header>
 }
