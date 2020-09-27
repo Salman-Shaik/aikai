@@ -4,27 +4,15 @@ const favicon = require('express-favicon');
 const logger = require("morgan");
 const path = require('path');
 const cookieParser = require("cookie-parser");
-const handlers = require("./handler/handlers");
+const {validateUser, currentShowSetter, apiKeySetter} = require("./handlers/middleware");
+const {getFavorites, getWatchList, getExplicitFlag} = require("./handlers/getHandler");
+const {favoriteHandler, watchedHandler, addToWatchList} = require("./handlers/putHandler");
+const {loginHandler, registrationHandler} = require("./handlers/postHandler");
+const {deleteFavorite, deleteFromWatchlist, logoutUser} = require("./handlers/deleteHandler");
 const {sequelize, models} = require('./models');
 
 const {User} = models;
 const port = process.env.PORT || 8080;
-const {
-    favoriteHandler,
-    getFavorites,
-    registrationHandler,
-    apiKeySetter,
-    loginHandler,
-    validateUser,
-    getExplicitFlag,
-    deleteFavorite,
-    logoutUser,
-    currentShowSetter,
-    addToWatchList,
-    watchedHandler,
-    deleteFromWatchlist,
-    getWatchList
-} = handlers;
 
 const app = express();
 
@@ -46,11 +34,11 @@ app.get('/explicitFlag', (req, res) => getExplicitFlag(req, res, User));
 app.get('/*', (req, res) => res.sendFile(path.join(__dirname, '../build', 'index.html')));
 app.post('/login', (req, res) => loginHandler(req, res, User))
 app.post('/register', (req, res) => registrationHandler(req, res, User))
-app.put('/favorite', (req, res) => favoriteHandler(req, res,User))
-app.put('/watch', (req, res) => addToWatchList(req, res,User))
-app.put('/watched', (req, res) => watchedHandler(req, res,User))
-app.delete('/favorite', (req, res) => deleteFavorite(req, res,User))
-app.delete('/watch', (req, res) => deleteFromWatchlist(req, res,User))
+app.put('/favorite', (req, res) => favoriteHandler(req, res, User))
+app.put('/watch', (req, res) => addToWatchList(req, res, User))
+app.put('/watched', (req, res) => watchedHandler(req, res, User))
+app.delete('/favorite', (req, res) => deleteFavorite(req, res, User))
+app.delete('/watch', (req, res) => deleteFromWatchlist(req, res, User))
 app.delete('/logout', logoutUser);
 
 sequelize.sync().then(() => {

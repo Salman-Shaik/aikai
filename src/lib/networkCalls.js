@@ -178,9 +178,7 @@ export const isFavoriteShow = (title, setIsFavorite) => {
     fetchUserFavorites()
         .then(favorites => favorites.map(f => f.title))
         .then(favorites => {
-            if (favorites.includes(title)) {
-                return setIsFavorite(true);
-            }
+            if (favorites.includes(title)) return setIsFavorite(true);
             setIsFavorite(false);
         }).catch(e => new TypeError(e));
 }
