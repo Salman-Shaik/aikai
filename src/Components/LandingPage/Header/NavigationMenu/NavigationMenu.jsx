@@ -1,3 +1,6 @@
+import Tooltip from "@material-ui/core/Tooltip";
+import Favorite from "@material-ui/icons/Favorite";
+import PlayArrow from "@material-ui/icons/PlayArrow";
 import _ from "lodash";
 import React from "react";
 import '../../../../css/NavigationMenu.css'
@@ -71,21 +74,25 @@ export const NavigationMenu = (props) => {
         setGotoRegisterPage(false);
         if (!isUserLoggedIn) return setGotoLoginPage(true);
         fetchUserFavorites().then((favorites) => {
+            setCurrentMenuItem("Favorites");
             setFavorites(favorites);
             setHomePageLoaded(true);
         });
     }
 
-    const onNowPlaying = () => setUserPagesOff();
+    const onNowPlaying = () => {
+        setCurrentMenuItem("Now Playing");
+        setUserPagesOff();
+    };
 
     return <section className="navigation_menu">
+        <Tooltip title="Now Playing"><PlayArrow className="play_icon" onClick={onNowPlaying}/></Tooltip>
         {createNavigationMenuItem("Random Movie", onRandomMovie)}
         {createNavigationMenuItem("Random TV", onRandomTv)}
         {createNavigationMenuItem("Top Rated Movie", onTopMovie)}
         {createNavigationMenuItem("Top Rated TV", onTopTv)}
-        {createNavigationMenuItem("Now Playing", onNowPlaying)}
         {createNavigationMenuItem("Editor's Choice", onEditorsChoice)}
-        {createNavigationMenuItem("Favorites", onFavorites)}
+        <Tooltip title="Favorites"><Favorite className="favorites_icon" onClick={onFavorites}/></Tooltip>
         <SearchBar setCurrentShow={setCurrentShow}
                    setCurrentShowId={setCurrentShowId}
                    setHomePageLoaded={setHomePageLoaded}/>

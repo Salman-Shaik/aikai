@@ -26,7 +26,7 @@ export const Main = (props) => {
     const isShowIdEmpty = currentShowId === 0;
     const isShowPresent = !isShowIdEmpty || !isShowEmpty;
     const isNowPlaying = _.isEqual(currentMenuItem, "Now Playing");
-    const isFavorites = _.isEqual(currentMenuItem, "Now Favorites");
+    const isFavorites = _.isEqual(currentMenuItem, "Favorites");
 
     const Component = () => {
         return <section>
