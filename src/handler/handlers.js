@@ -23,7 +23,7 @@ const logoutUser = (req, res) => {
     res.send("USER COOKIE NOT FOUND");
 }
 
-const registrationHandler = async (req, res, User, Favorite, WatchList) => {
+const registrationHandler = async (req, res, User) => {
     const token = req.get("Authorization").replace("Bearer ", "");
     if (!token) {
         res.status(401);
@@ -33,49 +33,50 @@ const registrationHandler = async (req, res, User, Favorite, WatchList) => {
     const {name, age, explicitFlag} = req.body;
     await User.createUser(username, password, name, age, explicitFlag);
     await User.findByUsername(username);
-    await Favorite.create({username});
-    await WatchList.create({username});
     return res.send('Sign Up Success!');
 }
 
-const favoriteHandler = async (req, res, Favorite) => {
-    const userName = decode(req.cookies.user);
-    if (_.isEmpty(userName)) {
+const favoriteHandler = async (req, res, User) => {
+    const cookie = req.cookies.user;
+    if (_.isEmpty(cookie)) {
         res.status(401);
         return res.send("User not logged in");
     }
+    const username = decode(cookie);
     const {title, id, posterPath} = req.body;
-    await Favorite.update(
-        {favoritesInfo: Sequelize.fn('array_append', Sequelize.col('favoritesInfo'), `{"title":"${title}","id":${id},"posterPath":"${posterPath}"}`)},
-        {where: {username: userName}}
+    await User.update(
+        {favorites: Sequelize.fn('array_append', Sequelize.col('favorites'), `{"title":"${title}","id":${id},"posterPath":"${posterPath}"}`)},
+        {where: {username}}
     );
     res.send(`${title} Saved As Favorite Successfully.`);
 }
 
-const deleteFavorite = async (req, res, Favorite) => {
-    const userName = decode(req.cookies.user);
-    if (_.isEmpty(userName)) {
+const deleteFavorite = async (req, res, User) => {
+    const cookie = req.cookies.user;
+    if (_.isEmpty(cookie)) {
         res.status(401);
         return res.send("User not logged in");
     }
+    const username = decode(cookie);
     const {id} = req.body;
-    const favorites = await Favorite.findByUsername(userName);
-    const filteredFavorites = favorites.favoritesInfo.filter(f => f.id !== id);
-    await Favorite.update(
-        {favoritesInfo: filteredFavorites},
-        {where: {username: userName}}
+    const favorites = await User.getFavorites(username);
+    const filteredFavorites = favorites.filter(f => f.id !== id);
+    await User.update(
+        {favorites: filteredFavorites},
+        {where: {username}}
     );
     res.send(`Deleted Favorite Successfully.`);
 }
 
-const getFavorites = async (req, res, Favorite) => {
-    const userName = decode(req.cookies.user);
-    if (_.isEmpty(userName)) {
+const getFavorites = async (req, res, User) => {
+    const cookie = req.cookies.user;
+    if (_.isEmpty(cookie)) {
         res.status(401);
         return res.send("User not logged in");
     }
-    const FavoritesObj = await Favorite.findByUsername(userName);
-    const titles = JSON.stringify(FavoritesObj.favoritesInfo);
+    const username = decode(cookie);
+    const FavoritesObj = await User.getFavorites(username)
+    const titles = JSON.stringify(FavoritesObj);
     return res.send(titles);
 }
 
@@ -107,27 +108,6 @@ const validateUser = async (req, res, next, User) => {
     next();
 }
 
-const checkLists = async (req, res, next, Favorite, WatchList) => {
-    let cookie = req.cookies.user;
-    if (!!cookie) {
-        let username = decode(cookie);
-        try {
-            const favorites = await Favorite.findByUsername(username);
-            const watchlist = await WatchList.findByUsername(username);
-            if (_.isEmpty(favorites)) {
-                await Favorite.create({username});
-            }
-            if (_.isEmpty(watchlist)) {
-                await WatchList.create({username});
-            }
-        } catch (e) {
-            await Favorite.create({username});
-            await WatchList.create({username});
-        }
-    }
-    next();
-}
-
 const getExplicitFlag = async (req, res, User) => {
     let cookie = req.cookies.user;
     if (!!cookie) {
@@ -153,7 +133,7 @@ const currentShowSetter = (req, res, next) => {
     next();
 }
 
-const addToWatchList = async (req, res, WatchList) => {
+const addToWatchList = async (req, res, User) => {
     const cookie = req.cookies.user;
     if (_.isEmpty(cookie)) {
         res.status(401);
@@ -162,14 +142,14 @@ const addToWatchList = async (req, res, WatchList) => {
     const username = decode(cookie);
     const {title, id, posterPath} = req.body;
     const show = {"title": title, "id": id, "posterPath": posterPath, "watched": false};
-    await WatchList.update(
+    await User.update(
         {watchlist: Sequelize.fn('array_append', Sequelize.col('watchlist'), JSON.stringify(show))},
         {where: {username}}
     );
     res.send(`${title} Added To WatchList.`);
 }
 
-const watchedHandler = async (req, res, WatchList) => {
+const watchedHandler = async (req, res, User) => {
     const cookie = req.cookies.user;
     if (_.isEmpty(cookie)) {
         res.status(401);
@@ -177,19 +157,19 @@ const watchedHandler = async (req, res, WatchList) => {
     }
     let username = decode(cookie);
     const {id} = req.body;
-    const watchList = await WatchList.findByUsername(username);
-    const show = watchList.watchlist.find(w => w.id === id);
+    const watchList = await User.getWatchList(username);
+    const show = watchList.find(w => w.id === id);
     show.watched = true;
-    const filteredWatchList = watchList.watchlist.filter(f => f.id !== id);
+    const filteredWatchList = watchList.filter(f => f.id !== id);
     filteredWatchList.push(show);
-    await WatchList.update(
+    await User.update(
         {watchlist: filteredWatchList},
         {where: {username}}
     );
     res.send(`Removed From Watchlist`);
 }
 
-const deleteFromWatchlist = async (req, res, WatchList) => {
+const deleteFromWatchlist = async (req, res, User) => {
     const cookie = req.cookies.user;
     if (_.isEmpty(cookie)) {
         res.status(401);
@@ -197,24 +177,24 @@ const deleteFromWatchlist = async (req, res, WatchList) => {
     }
     let username = decode(cookie);
     const {id} = req.body;
-    const watchList = await WatchList.findByUsername(username);
-    const filteredWatchList = watchList.watchlist.filter(w => w.id !== id);
-    await WatchList.update(
+    const watchList = await User.getWatchList(username);
+    const filteredWatchList = watchList.filter(w => w.id !== id);
+    await User.update(
         {watchlist: filteredWatchList},
         {where: {username}}
     );
     res.send(`Removed From Watchlist`);
 }
 
-const getWatchList = async (req, res, WatchList) => {
+const getWatchList = async (req, res, User) => {
     const cookie = req.cookies.user;
     if (_.isEmpty(cookie)) {
         res.status(401);
         return res.send("User not logged in");
     }
     let username = decode(cookie);
-    const watchListObj = await WatchList.findByUsername(username);
-    const titles = JSON.stringify(watchListObj.watchlist);
+    const watchListObj = await User.getWatchList(username);
+    const titles = JSON.stringify(watchListObj);
     return res.send(titles);
 }
 
@@ -227,7 +207,6 @@ module.exports = {
     favoriteHandler,
     deleteFavorite,
     getFavorites,
-    checkLists,
     logoutUser,
     currentShowSetter,
     addToWatchList,

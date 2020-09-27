@@ -43,6 +43,16 @@ const user = (sequelize, DataTypes) => {
             unique: false,
             allowNull: false,
             defaultValue: false
+        },
+        favorites: {
+            type: DataTypes.ARRAY(DataTypes.JSON),
+            unique: false,
+            defaultValue: []
+        },
+        watchlist: {
+            type: DataTypes.ARRAY(DataTypes.JSON),
+            unique: false,
+            defaultValue: []
         }
     },{
         timestamps: false,
@@ -79,6 +89,16 @@ const user = (sequelize, DataTypes) => {
             where: {username: username}
         });
     };
+
+    User.getFavorites = async username => {
+        const user = await User.findByUsername(username);
+        return user.favorites;
+    }
+
+    User.getWatchList = async username => {
+        const user = await User.findByUsername(username);
+        return user.watchlist;
+    }
 
     return User;
 };

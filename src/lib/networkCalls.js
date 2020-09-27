@@ -106,8 +106,7 @@ export const login = (username, password, setIsUserLoggedIn, setGotoLoginPage, m
     const loginHandler = ({status}) => {
         if (status === 401) {
             manager.error("Invalid Credentials");
-        }
-        else {
+        } else {
             setGotoLoginPage(false);
             manager.success("Login Success!");
             setIsUserLoggedIn(true);
@@ -177,7 +176,7 @@ export const fetchUserFavorites = () => fetch("/favorites")
 
 export const isFavoriteShow = (title, setIsFavorite) => {
     fetchUserFavorites()
-        .then(favoritesInfo => favoritesInfo.map(f => f.title))
+        .then(favorites => favorites.map(f => f.title))
         .then(favorites => {
             if (favorites.includes(title)) {
                 return setIsFavorite(true);
