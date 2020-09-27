@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import '../../../../css/NowPlaying.css'
-import {fetchAiringTVShows, fetchPlayingMovies} from "../../../../lib/networkCalls";
+import {fetchAiringTVShows, fetchPlayingMovies} from "../../../../lib/showNetworkCalls";
 import {Spinner} from "../../../Spinner";
 import {PlayingShows} from "./PlayingShows";
 

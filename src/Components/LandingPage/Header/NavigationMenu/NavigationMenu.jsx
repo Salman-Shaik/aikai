@@ -6,7 +6,8 @@ import React from "react";
 import '../../../../css/NavigationMenu.css'
 import {list} from '../../../../editorsChoice.json'
 import {getRandomItem} from "../../../../lib/helper";
-import {fetchTopShow, fetchUserFavorites} from "../../../../lib/networkCalls";
+import {fetchUserFavorites} from "../../../../lib/networkCalls";
+import {fetchTopShow} from "../../../../lib/showNetworkCalls";
 import {NavigationMenuItem} from "./NavigationMenuItem";
 import {SearchBar} from "./SearchBar";
 import {UserIcon} from "./UserIcon";

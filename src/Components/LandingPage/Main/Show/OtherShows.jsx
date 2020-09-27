@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React, {useEffect, useState} from "react";
-import {fetchOtherShow} from "../../../../lib/networkCalls";
+import {fetchOtherShow} from "../../../../lib/showNetworkCalls";
 import {Spinner} from "../../../Spinner";
 import {MiniShow} from "./MiniShow";
 
