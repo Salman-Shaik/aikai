@@ -1,56 +1,61 @@
 .search_bar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #181818;
-    border: 2px solid #a9a9a9;
-    border-radius: 3px;
-    padding: 5px;
-    cursor: text;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #181818;
+  border: 2px solid #a9a9a9;
+  border-radius: 3px;
+  padding: 5px;
+  cursor: text;
 }
 
 .search_icon {
-    color: #ffefd5;
-    background-color: transparent;
-    cursor: pointer;
+  color: #ffefd5;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .search_input {
-    background-color: transparent;
-    color: #ffefd5;
-    border: none;
-    font-size: 1.1em;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    width: 14vw;
+  background-color: transparent;
+  color: #ffefd5;
+  border: none;
+  font-size: 1.1em;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  width: 14vw;
 }
 
-.search_input:focus, .search_icon:focus {
-    outline: none;
+.search_input:focus,
+.search_icon:focus {
+  outline: none;
 }
 
 .error {
-    position: relative;
-    animation: shake .1s linear;
-    animation-iteration-count: 6;
-    border-color: #cd5c5c;
+  position: relative;
+  animation: shake 0.1s linear;
+  animation-iteration-count: 6;
+  border-color: #cd5c5c;
 }
 
 @keyframes shake {
-    0% {
-        left: -3px;
-    }
-    100% {
-        right: -3px;
-    }
+  0% {
+    left: -3px;
+  }
+  100% {
+    right: -3px;
+  }
 }
 
 .close_icon {
-    background-color: transparent;
-    color: #ffefd5;
-    border: none;
-    font-size: 1.2em !important;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    width: 14vw;
-    cursor: pointer;
+  background-color: transparent;
+  color: #ffefd5;
+  border: none;
+  font-size: 1.2em !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  width: 14vw;
+  cursor: pointer;
 }

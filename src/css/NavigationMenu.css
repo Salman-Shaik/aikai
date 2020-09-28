@@ -1,19 +1,19 @@
 .navigation_menu {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.favorites_icon{
-    color: #ff1493;
-    font-size: 1.8em !important;
-    cursor: pointer;
-    margin-right: 1vw;
+.favorites_icon {
+  color: #ff1493;
+  font-size: 1.8em !important;
+  cursor: pointer;
+  margin-right: 1vw;
 }
 
 .play_icon {
-    color: #ffefd5;
-    font-size: 2.2em !important;
-    cursor: pointer;
+  color: #ffefd5;
+  font-size: 2.2em !important;
+  cursor: pointer;
 }

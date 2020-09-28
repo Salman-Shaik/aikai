@@ -1,15 +1,15 @@
 .user_icon {
-    font-size: 2.5em !important;
-    color: #ffefd5;
-    margin: 0 1vw;
-    justify-self: flex-end;
-    cursor: pointer;
+  font-size: 2.5em !important;
+  color: #ffefd5;
+  margin: 0 1vw;
+  justify-self: flex-end;
+  cursor: pointer;
 }
 
 .logout_icon {
-    font-size: 2.4em !important;
-    color: #ff0000;
-    margin: 0 1vw;
-    justify-self: flex-end;
-    cursor: pointer;
+  font-size: 2.4em !important;
+  color: #ff0000;
+  margin: 0 1vw;
+  justify-self: flex-end;
+  cursor: pointer;
 }

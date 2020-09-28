@@ -1,29 +1,29 @@
 .favorites_section {
-    width: 100%;
-    height: 86vh;
-    padding-top: 3vh;
-    margin: 0;
+  width: 100%;
+  height: 86vh;
+  padding-top: 3vh;
+  margin: 0;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .sectioned_shows {
-    width: 100%;
-    height: 14vh;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
+  width: 100%;
+  height: 14vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .mini_show {
-    margin: 0 0.5vw;
+  margin: 0 0.5vw;
 }
 
 .notice {
-    color: #d3d3d3;
-    text-align: center;
+  color: #d3d3d3;
+  text-align: center;
 }
