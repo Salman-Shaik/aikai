@@ -1,23 +1,23 @@
 import checkPasswordStrength from "check-password-strength";
 import _ from "lodash";
-import React, { useState } from "react";
-import { NotificationManager } from "react-notifications";
+import React, {useState} from "react";
+import {NotificationManager} from "react-notifications";
 import Switch from "react-switch";
 import "../../../../css/RegistrationPage.css";
 import languageList from "../../../../data/languages.json";
-import { registerUser } from "../../../../lib/networkCalls";
-import { LanguageOption } from "./LanguageOption";
+import {registerUser} from "../../../../lib/networkCalls";
+import {LanguageOption} from "./LanguageOption";
 
 const createLanguageComponents = (languages, addLanguage, removeLanguage) =>
   Object.values(languages).map((language) => (
     <LanguageOption
       text={language}
       addLanguage={addLanguage}
-      removeLanguage={{ removeLanguage }}
+      removeLanguage={{removeLanguage}}
     />
   ));
 
-export const RegistrationPage = ({ setGotoRegisterPage, setGotoLoginPage }) => {
+export const RegistrationPage = ({setGotoRegisterPage, setGotoLoginPage}) => {
   const [name, setName] = useState("");
   const [age, setAge] = useState(0);
   const [explicitFlag, setExplicitFlag] = useState(false);
@@ -31,17 +31,17 @@ export const RegistrationPage = ({ setGotoRegisterPage, setGotoLoginPage }) => {
   const [passwordStrength, setPasswordStrength] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
   const [languages, setLanguages] = useState([]);
-  const updateName = ({ target }) => {
+  const updateName = ({target}) => {
     setNameError(false);
     setName(target.value);
   };
 
-  const updateUsername = ({ target }) => {
+  const updateUsername = ({target}) => {
     setUsernameError(false);
     setUsername(target.value);
   };
 
-  const updatePassword = ({ target }) => {
+  const updatePassword = ({target}) => {
     setPasswordError(false);
     const password = target.value;
     setPassword(password);
@@ -50,7 +50,7 @@ export const RegistrationPage = ({ setGotoRegisterPage, setGotoLoginPage }) => {
     setPasswordStrength(strength);
   };
 
-  const updateAge = ({ target }) => {
+  const updateAge = ({target}) => {
     setAgeError(false);
     const value = +target.value;
     setDisabled(value < 18);

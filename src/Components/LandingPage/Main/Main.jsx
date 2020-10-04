@@ -1,9 +1,9 @@
 import _ from "lodash";
 import React from "react";
-import { Favorites } from "./Favorites";
-import { HomePage } from "./Homepage";
-import { NowPlaying } from "./NowPlaying/NowPlaying";
-import { Show } from "./Show/Show";
+import {Favorites} from "./Favorites";
+import {HomePage} from "./Homepage";
+import {NowPlaying} from "./NowPlaying/NowPlaying";
+import {Show} from "./Show/Show";
 
 export const Main = (props) => {
   const {
@@ -43,10 +43,9 @@ export const Main = (props) => {
             setCurrentShowId={setCurrentShowId}
             setHomePageLoaded={setHomePageLoaded}
             setGotoLoginPage={setGotoLoginPage}
-            setCurrentMenuItem={setCurrentMenuItem}
-          />
+            setCurrentMenuItem={setCurrentMenuItem}/>
         ) : (
-          <HomePage />
+          <HomePage/>
         )}
       </section>
     );
@@ -69,7 +68,7 @@ export const Main = (props) => {
           setHomePageLoaded={setHomePageLoaded}
         />
       ) : (
-        <Component />
+        <Component/>
       )}
     </main>
   );

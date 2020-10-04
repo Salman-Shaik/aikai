@@ -123,6 +123,11 @@ const user = (sequelize, DataTypes) => {
     return user.watchlist;
   };
 
+  User.getLanguages = async (username) => {
+    const user = await User.findByUsername(username);
+    return user.languages;
+  };
+
   return User;
 };
 

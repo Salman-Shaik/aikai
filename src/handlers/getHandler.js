@@ -36,8 +36,21 @@ const getWatchList = async (req, res, User) => {
   return res.send(titles);
 };
 
+const getLanguages = async (req, res, User) => {
+  const cookie = req.cookies.user;
+  if (_.isEmpty(cookie)) {
+    res.status(401);
+    return res.send("User not logged in");
+  }
+  let username = decode(cookie);
+  const languages = await User.getLanguages(username);
+  const titles = JSON.stringify(languages);
+  return res.send(titles);
+};
+
 module.exports = {
   getExplicitFlag,
   getFavorites,
   getWatchList,
+  getLanguages,
 };

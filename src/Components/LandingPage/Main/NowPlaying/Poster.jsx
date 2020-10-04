@@ -1,20 +1,22 @@
 import React from "react";
 import "../../../../css/Poster.css";
-import { imageUrlBuilder } from "../../../../lib/helper";
+import {imageUrlBuilder} from "../../../../lib/helper";
 
 export const Poster = ({
-  data,
-  key,
-  setCurrentShowId,
-  setCurrentShowType,
-  setHomePageLoaded,
-}) => {
+                         data,
+                         key,
+                         setCurrentShowId,
+                         setCurrentShowType,
+                         setHomePageLoaded,
+                       }) => {
   let title = data.name || data.title;
+
   const onClick = () => {
     setHomePageLoaded(false);
     setCurrentShowId(data.id);
     setCurrentShowType();
   };
+
   return (
     <section>
       <img
