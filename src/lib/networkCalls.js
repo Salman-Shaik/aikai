@@ -48,6 +48,7 @@ export const registerUser = (
   password,
   age,
   explicitFlag,
+  languages,
   setGotoRegisterPage,
   setGotoLoginPage,
   manager
@@ -55,7 +56,7 @@ export const registerUser = (
   const jwtToken = getJwtToken({ username, password });
   fetch("/register", {
     method: "post",
-    body: JSON.stringify({ name, age, explicitFlag }),
+    body: JSON.stringify({ name, age, explicitFlag, languages }),
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${jwtToken}`,

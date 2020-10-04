@@ -4,7 +4,18 @@ import React, { useState } from "react";
 import { NotificationManager } from "react-notifications";
 import Switch from "react-switch";
 import "../../../../css/RegistrationPage.css";
+import languageList from "../../../../data/languages.json";
 import { registerUser } from "../../../../lib/networkCalls";
+import { LanguageOption } from "./LanguageOption";
+
+const createLanguageComponents = (languages, addLanguage, removeLanguage) =>
+  Object.values(languages).map((language) => (
+    <LanguageOption
+      text={language}
+      addLanguage={addLanguage}
+      removeLanguage={{ removeLanguage }}
+    />
+  ));
 
 export const RegistrationPage = ({ setGotoRegisterPage, setGotoLoginPage }) => {
   const [name, setName] = useState("");
@@ -18,15 +29,18 @@ export const RegistrationPage = ({ setGotoRegisterPage, setGotoLoginPage }) => {
   const [ageError, setAgeError] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const [passwordStrength, setPasswordStrength] = useState("");
-
+  const [pageNumber, setPageNumber] = useState(1);
+  const [languages, setLanguages] = useState([]);
   const updateName = ({ target }) => {
     setNameError(false);
     setName(target.value);
   };
+
   const updateUsername = ({ target }) => {
     setUsernameError(false);
     setUsername(target.value);
   };
+
   const updatePassword = ({ target }) => {
     setPasswordError(false);
     const password = target.value;
@@ -35,6 +49,7 @@ export const RegistrationPage = ({ setGotoRegisterPage, setGotoLoginPage }) => {
     const strength = checkPasswordStrength(password).value;
     setPasswordStrength(strength);
   };
+
   const updateAge = ({ target }) => {
     setAgeError(false);
     const value = +target.value;
@@ -84,31 +99,73 @@ export const RegistrationPage = ({ setGotoRegisterPage, setGotoLoginPage }) => {
       password,
       age,
       explicitFlag,
+      languages,
       setGotoRegisterPage,
       setGotoLoginPage,
       NotificationManager
     );
   };
 
+  const onNext = () => {
+    if (isFormInvalid()) return;
+    setErrors(false);
+    setPageNumber(2);
+  };
+
+  const addLanguage = (language) => {
+    const languagesMap = languages;
+    languagesMap.push(language);
+    setLanguages(languagesMap);
+  };
+
+  const removeLanguage = (language) => {
+    setLanguages(languages.filter((l) => l !== language));
+  };
+
   return (
     <section className="register">
-      <section className="register_page">
-        <h3 className="header">Create Account</h3>
-        <section className="user_details">
-          <section className="personal_details">
+      {_.isEqual(pageNumber, 1) && (
+        <section className="register_page">
+          <h3 className="header">Create Account</h3>
+          <section className="user_details">
+            <section className="personal_details">
+              <input
+                type="name"
+                placeholder="Enter Full Name"
+                className={`detail name ${nameError ? "error" : ""}`}
+                onChange={updateName}
+              />
+              <input
+                type="number"
+                placeholder="Age"
+                className={`detail age ${ageError ? "error" : ""}`}
+                onChange={updateAge}
+              />
+            </section>
             <input
-              type="name"
-              placeholder="Enter Full Name"
-              className={`detail name ${nameError ? "error" : ""}`}
-              onChange={updateName}
+              type="text"
+              placeholder="Enter Your Email"
+              className={`detail email ${usernameError ? "error" : ""}`}
+              onChange={updateUsername}
             />
             <input
-              type="number"
-              placeholder="Age"
-              className={`detail age ${ageError ? "error" : ""}`}
-              onChange={updateAge}
+              type="password"
+              placeholder="Enter Password"
+              className={`detail password ${passwordError ? "error" : ""}`}
+              onChange={updatePassword}
             />
+            <h5 className={`strength ${passwordStrength.toLowerCase()}`}>
+              <i>{`${passwordStrength} Password`}</i>
+            </h5>
           </section>
+          <button type="button" className="next_btn" onClick={onNext}>
+            Next >
+          </button>
+        </section>
+      )}
+      {_.isEqual(pageNumber, 2) && (
+        <section className="user_preferences">
+          <h3 className="pref_header">Preferences</h3>
           <section className="explicit">
             <span className="explicit_label">Show Explicit Content</span>
             <Switch
@@ -122,26 +179,21 @@ export const RegistrationPage = ({ setGotoRegisterPage, setGotoLoginPage }) => {
               onColor="#fb74a9"
             />
           </section>
-          <input
-            type="text"
-            placeholder="Enter Your Email"
-            className={`detail email ${usernameError ? "error" : ""}`}
-            onChange={updateUsername}
-          />
-          <input
-            type="password"
-            placeholder="Enter Password"
-            className={`detail password ${passwordError ? "error" : ""}`}
-            onChange={updatePassword}
-          />
-          <h5 className={`strength ${passwordStrength.toLowerCase()}`}>
-            <i>{`${passwordStrength} Password`}</i>
-          </h5>
+          <section className="languages_section">
+            <span className="explicit_label">Language Preferences</span>
+            <section className="languages">
+              {createLanguageComponents(
+                languageList,
+                addLanguage,
+                removeLanguage
+              )}
+            </section>
+          </section>
+          <button type="button" className="reg_btn" onClick={onRegister}>
+            Sign Up
+          </button>
         </section>
-        <button type="button" className="reg_btn" onClick={onRegister}>
-          Sign Up
-        </button>
-      </section>
+      )}
     </section>
   );
 };

@@ -56,13 +56,25 @@ const user = (sequelize, DataTypes) => {
         unique: false,
         defaultValue: [],
       },
+      languages: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
+        defaultValue: [],
+        unique: false,
+      },
     },
     {
       timestamps: false,
     }
   );
 
-  User.createUser = async (username, password, name, age, explicitFlag) => {
+  User.createUser = async (
+    username,
+    password,
+    name,
+    age,
+    explicitFlag,
+    languages
+  ) => {
     await bcrypt.hash(password, 10, async (err, hash) => {
       if (err) console.log(err);
       if (hash) {
@@ -72,6 +84,7 @@ const user = (sequelize, DataTypes) => {
           name,
           age,
           explicitFlag,
+          languages,
         });
       }
     });

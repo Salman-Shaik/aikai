@@ -1,0 +1,30 @@
+.language_option {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 98%;
+}
+
+.language_icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.language {
+  color: #ffefd5;
+}
+
+.not_selected,
+.selected {
+  font-size: 1.8em !important;
+}
+
+.not_selected {
+  color: #ffefd5;
+}
+
+.selected {
+  color: #7cfc00;
+}

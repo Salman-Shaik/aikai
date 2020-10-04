@@ -19,7 +19,7 @@ export const FavoriteComponent = ({
 
   useEffect(() => {
     if (isUserLoggedIn) isFavoriteShow(title, setIsFavorite);
-  }, [title]);
+  }, [title, isUserLoggedIn]);
 
   const onLike = () => {
     if (isUserLoggedIn) {

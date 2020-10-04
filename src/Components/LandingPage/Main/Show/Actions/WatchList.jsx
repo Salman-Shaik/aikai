@@ -18,7 +18,7 @@ export const WatchList = ({
 
   useEffect(() => {
     if (isUserLoggedIn) isShowOnWatchList(title, setIsOnWatchList);
-  }, [title]);
+  }, [title, isUserLoggedIn]);
 
   const onWatchListAdd = () => {
     if (isUserLoggedIn) {

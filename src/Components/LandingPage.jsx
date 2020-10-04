@@ -3,8 +3,8 @@ import { NotificationContainer } from "react-notifications";
 import "../css/Landingpage.css";
 import { getCookieValue } from "../lib/helper";
 import { Header } from "./LandingPage/Header/Header";
-import { LoginPage } from "./LandingPage/Main/Login/LoginPage";
-import { RegistrationPage } from "./LandingPage/Main/Login/RegistrationPage";
+import { LoginPage } from "./LandingPage/Main/User/LoginPage";
+import { RegistrationPage } from "./LandingPage/Main/User/RegistrationPage";
 import { Main } from "./LandingPage/Main/Main";
 
 export const LandingPage = () => {
