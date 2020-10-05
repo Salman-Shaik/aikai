@@ -39,8 +39,7 @@ const getWatchList = async (req, res, User) => {
 const getLanguages = async (req, res, User) => {
   const cookie = req.cookies.user;
   if (_.isEmpty(cookie)) {
-    res.status(401);
-    return res.send("User not logged in");
+    return res.send(JSON.stringify([]));
   }
   let username = decode(cookie);
   const languages = await User.getLanguages(username);

@@ -1,7 +1,7 @@
 import _ from "lodash";
 import React from "react";
 import {Favorites} from "./Favorites";
-import {HomePage} from "./Homepage";
+import {HomePage} from "./Homepage/HomePage";
 import {NowPlaying} from "./NowPlaying/NowPlaying";
 import {Show} from "./Show/Show";
 
@@ -43,9 +43,10 @@ export const Main = (props) => {
             setCurrentShowId={setCurrentShowId}
             setHomePageLoaded={setHomePageLoaded}
             setGotoLoginPage={setGotoLoginPage}
-            setCurrentMenuItem={setCurrentMenuItem}/>
+            setCurrentMenuItem={setCurrentMenuItem}
+          />
         ) : (
-          <HomePage/>
+          <HomePage setCurrentMenuItem={setCurrentMenuItem}/>
         )}
       </section>
     );

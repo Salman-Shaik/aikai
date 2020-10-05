@@ -1,0 +1,209 @@
+.homepage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 89vh;
+    background-color: #222222;
+}
+
+.page {
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.now-playing,
+.random,
+.top_rated,
+.editors_choice {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 96%;
+}
+
+.favorites {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 96%;
+    min-height: 95vh;
+}
+
+.now-playing_image {
+    width: 74%;
+}
+
+.random_image,
+.top_rated_image,
+.editors_choice_image {
+    width: 70%;
+}
+
+.favorite_image {
+    width: 65%;
+}
+
+.favorite_example {
+    width: 15%;
+}
+
+.info_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+}
+
+.description_section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.page_info {
+    background-image: -webkit-linear-gradient(-225deg, #e3fdf5 0%, #ffe6fa 100%);
+    background-image: linear-gradient(-225deg, #e3fdf5 0%, #ffe6fa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    word-break: break-word;
+    font-size: 1.8em !important;
+    font-weight: normal;
+}
+
+.visit {
+    padding: 1.5vh 1.2vw;
+    border-radius: 4px;
+    border: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    color: #222222;
+    background-image: linear-gradient(
+            to right bottom,
+            #ffae00,
+            #fdbe23,
+            #fbcc3b,
+            #fada51,
+            #f9e866
+    );
+    background-image: -webkit-linear-gradient(
+            to right bottom,
+            #ffae00,
+            #fdbe23,
+            #fbcc3b,
+            #fada51,
+            #f9e866
+    );
+}
+
+.visit:focus, .feedback_button {
+    outline: none;
+}
+
+.feature_page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 85vh;
+    width: 100%;
+}
+
+.features, .feedback {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.features_header {
+    font-size: 2em;
+    font-weight: bold;
+    color: #e3fdf5;
+}
+
+.feedback_header {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #e3fdf5;
+}
+
+.features_header::after {
+    content: " 🚀";
+}
+
+.feedback_header::after {
+    background-image: linear-gradient(
+            to right bottom,
+            #f14f2e,
+            #f03f42,
+            #ec3154,
+            #e42764,
+            #d82474
+    );
+    background-image: -webkit-linear-gradient(
+            to right bottom,
+            #f14f2e,
+            #f03f42,
+            #ec3154,
+            #e42764,
+            #d82474
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    content: " ❤️️";
+}
+
+.feature_list {
+    list-style-type: none;
+    font-size: 1.2em;
+    color: #ffefd5;
+}
+
+.feature_list > li {
+    text-align: left;
+    margin: 0.4vh 0;
+}
+
+.feature_list > li::before {
+    content: "🚀  ";
+}
+
+.signature {
+    color: #f8f8ff;
+    font-weight: normal;
+    font-size: 1.5em;
+    margin-top: 5vh;
+}
+
+.signature::after {
+    content: ".";
+}
+
+.profile_link {
+    text-decoration: none;
+    color: #1e90ff;
+    cursor: pointer;
+}
+
+.feedback_button {
+    background-image: linear-gradient(to right bottom, #4ca9df, #268cd1, #086ec0, #154fab, #292e91);
+    background-image: -webkit-linear-gradient(to right bottom, #4ca9df, #268cd1, #086ec0, #154fab, #292e91);
+    padding: 1.5vh 1.2vw;
+    border-radius: 4px;
+    border: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    color: #ffefd5;
+    margin-top: 4vh;
+}

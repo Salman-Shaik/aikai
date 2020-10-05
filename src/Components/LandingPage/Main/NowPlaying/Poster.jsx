@@ -1,6 +1,6 @@
 import React from "react";
 import "../../../../css/Poster.css";
-import {imageUrlBuilder} from "../../../../lib/helper";
+import { imageUrlBuilder } from "../../../../lib/helper";
 
 export const Poster = ({
                          data,
@@ -12,13 +12,13 @@ export const Poster = ({
   let title = data.name || data.title;
 
   const onClick = () => {
-    setHomePageLoaded(false);
     setCurrentShowId(data.id);
     setCurrentShowType();
+    setHomePageLoaded(false);
   };
 
   return (
-    <section>
+    <section onClick={onClick}>
       <img
         src={imageUrlBuilder(data["poster_path"])}
         alt={title}

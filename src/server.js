@@ -13,22 +13,22 @@ const {
   getFavorites,
   getWatchList,
   getExplicitFlag,
-  getLanguages
+  getLanguages,
 } = require("./handlers/getHandler");
 const {
   favoriteHandler,
   watchedHandler,
   addToWatchList,
 } = require("./handlers/putHandler");
-const {loginHandler, registrationHandler} = require("./handlers/postHandler");
+const { loginHandler, registrationHandler } = require("./handlers/postHandler");
 const {
   deleteFavorite,
   deleteFromWatchlist,
   logoutUser,
 } = require("./handlers/deleteHandler");
-const {sequelize, models} = require("./models");
+const { sequelize, models } = require("./models");
 
-const {User} = models;
+const { User } = models;
 const port = process.env.PORT || 8080;
 
 const app = express();
@@ -36,13 +36,13 @@ const app = express();
 app.use(compression());
 app.use(logger("dev"));
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(apiKeySetter);
 app.use((req, res, next) => validateUser(req, res, next, User));
 app.use(currentShowSetter);
 app.use(
-  express.static(path.join(__dirname, "../build"), {maxAge: 2592000000})
+  express.static(path.join(__dirname, "../build"), { maxAge: 2592000000 })
 );
 app.use(favicon(__dirname + "../build/favicon.ico"));
 

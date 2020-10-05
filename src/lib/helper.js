@@ -3,7 +3,6 @@ import _ from "lodash";
 import React from "react";
 import { Poster } from "../Components/LandingPage/Main/NowPlaying/Poster";
 import { genres } from "../data/genres.json";
-import languagesList from "../data/languages.json";
 
 const filterPosterPaths = (item) => {
   return !!item["poster_path"];
@@ -13,8 +12,7 @@ export const createPosters = (
   rawJson,
   setCurrentShowId,
   setCurrentShowType,
-  setHomePageLoaded,
-  type
+  setHomePageLoaded
 ) => {
   const filteredList = rawJson.filter(filterPosterPaths);
   return filteredList.map((item, index) => (
@@ -24,7 +22,6 @@ export const createPosters = (
       setCurrentShowId={setCurrentShowId}
       setCurrentShowType={setCurrentShowType}
       setHomePageLoaded={setHomePageLoaded}
-      type={type}
     />
   ));
 };
@@ -117,4 +114,5 @@ export const getCookieValue = (cookieString) => {
   return cookiesObj[cookieString];
 };
 
-export const getJwtToken = (payload) => jwt.sign(payload, "ADHIIDHIKAADHUADHEIDHI");
+export const getJwtToken = (payload) =>
+  jwt.sign(payload, "ADHIIDHIKAADHUADHEIDHI");

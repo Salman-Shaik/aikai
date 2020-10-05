@@ -1,29 +1,46 @@
-import _ from 'lodash';
-import languagesList from '../data/languages.json'
-import {getCookieValue, getFirstFour, getRandomItem, handlePerfectShowPromises, refineShowResults,} from "./helper";
-import {fetchLanguages} from "./networkCalls";
+import _ from "lodash";
+import languagesList from "../data/languages.json";
+import {
+  getCookieValue,
+  getFirstFour,
+  getRandomItem,
+  handlePerfectShowPromises,
+  refineShowResults,
+} from "./helper";
+import { fetchLanguages } from "./networkCalls";
 
 const API_KEY = getCookieValue("apiKey");
 const API_HOST = "https://api.themoviedb.org/3";
 
 const playingMoviesFilter = (json, setPlayingMovies) => {
   let results = json.results;
-  fetchLanguages().then(languages => {
-    if (!_.isEmpty(languages)) results = results.filter(r => languages.includes(languagesList[r["original_language"]]))
+  fetchLanguages().then((languages) => {
+    if (!_.isEmpty(languages))
+      results = results.filter((r) =>
+        languages.includes(languagesList[r["original_language"]])
+      );
     if (results.length > 16) results = results.slice(0, 16);
     setPlayingMovies(results);
-  })
+  });
 };
 
-const airingShowsFilter = (json, setAiringTvShows, setLoaded, setHomepageLoaded) => {
+const airingShowsFilter = (
+  json,
+  setAiringTvShows,
+  setLoaded,
+  setHomepageLoaded
+) => {
   let results = json.results;
-  fetchLanguages().then(languages => {
-    if (!_.isEmpty(languages)) results = results.filter(r => languages.includes(languagesList[r["original_language"]]))
+  fetchLanguages().then((languages) => {
+    if (!_.isEmpty(languages))
+      results = results.filter((r) =>
+        languages.includes(languagesList[r["original_language"]])
+      );
     if (results.length > 10) results = results.slice(0, 16);
     setAiringTvShows(results);
     setLoaded(true);
     setHomepageLoaded(true);
-  })
+  });
 };
 
 export const fetchPlayingMovies = (setPlayingMovies) => {
@@ -31,7 +48,7 @@ export const fetchPlayingMovies = (setPlayingMovies) => {
   fetch(url)
     .then((r) => r.text())
     .then((data) => JSON.parse(data))
-    .then(json => playingMoviesFilter(json, setPlayingMovies))
+    .then((json) => playingMoviesFilter(json, setPlayingMovies))
     .catch((e) => new TypeError(e));
 };
 
@@ -44,7 +61,9 @@ export const fetchAiringTVShows = (
   fetch(tvUrl)
     .then((r) => r.text())
     .then((data) => JSON.parse(data))
-    .then(json => airingShowsFilter(json, setAiringTvShows, setLoaded, setHomepageLoaded))
+    .then((json) =>
+      airingShowsFilter(json, setAiringTvShows, setLoaded, setHomepageLoaded)
+    )
     .catch((e) => new TypeError(e));
 };
 
