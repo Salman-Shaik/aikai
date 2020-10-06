@@ -102,9 +102,11 @@ const Footer = () => {
     </section>
     <section className="feedback">
       <span className="feedback_header">Feedback makes A.I.K.A.I perfect</span>
-      <button type="button" className="feedback_button">Share feedback</button>
+      <button type="button" className="feedback_button"
+              onClick={() => window.open("https://forms.gle/MAiEH8fJDmZc6oda6", '_blank')}>Share feedback
+      </button>
     </section>
-    <span className="signature">Made by <a href="https://github.com/Salman-Shaik"
+    <span className="signature">Made by <a href="https://github.com/Salman-Shaik" target="_blank" rel="noopener noreferrer"
                                            className="profile_link">Salman Shaik</a></span>
     <WaveComponent/>
   </section>
