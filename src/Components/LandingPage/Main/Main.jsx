@@ -60,6 +60,8 @@ export const Main = (props) => {
           setCurrentShowId={setCurrentShowId}
           setHomePageLoaded={setHomePageLoaded}
           setCurrentMenuItem={setCurrentMenuItem}
+          setGotoLoginPage={setGotoLoginPage}
+          isUserLoggedIn={isUserLoggedIn}
         />
       ) : isNowPlaying ? (
         <NowPlaying

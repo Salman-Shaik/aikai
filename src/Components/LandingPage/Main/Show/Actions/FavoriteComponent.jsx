@@ -2,6 +2,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Favorite from "@material-ui/icons/Favorite";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import React, { useEffect, useState } from "react";
+import "../../../../../css/FavoritesComponent.css";
 import {
   isFavoriteShow,
   removeFavorite,
@@ -14,8 +15,11 @@ export const FavoriteComponent = ({
   id,
   posterPath,
   setGotoLoginPage,
+  initialValue,
 }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(
+    !!initialValue ? initialValue : false
+  );
 
   useEffect(() => {
     if (isUserLoggedIn) isFavoriteShow(title, setIsFavorite);
