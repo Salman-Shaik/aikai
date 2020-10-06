@@ -1,8 +1,8 @@
 import React from "react";
 import "../../../../css/HomePage.css";
-import {IntroductionPage} from "./IntroductionPage";
+import { IntroductionPage } from "./IntroductionPage";
 
-const InfoSection = ({description, onClick}) => {
+const InfoSection = ({ description, onClick }) => {
   return (
     <section className="info_section">
       <p className="page_info">{description}</p>
@@ -13,18 +13,18 @@ const InfoSection = ({description, onClick}) => {
   );
 };
 
-const Page = ({keyword, image, alt, description, onClick}) => {
+const Page = ({ keyword, image, alt, description, onClick }) => {
   return (
     <section id={keyword} className="page">
       <section className={keyword}>
-        <img src={image} alt={alt} className={`${keyword}_image`}/>
-        <InfoSection description={description} onClick={onClick}/>
+        <img src={image} alt={alt} className={`${keyword}_image`} />
+        <InfoSection description={description} onClick={onClick} />
       </section>
     </section>
   );
 };
 
-const NowPlayingPage = ({setCurrentMenuItem}) => (
+const NowPlayingPage = ({ setCurrentMenuItem }) => (
   <Page
     keyword="now-playing"
     image="nowPlaying.png"
@@ -34,7 +34,7 @@ const NowPlayingPage = ({setCurrentMenuItem}) => (
   />
 );
 
-const RandomPage = ({setCurrentMenuItem}) => (
+const RandomPage = ({ setCurrentMenuItem }) => (
   <Page
     keyword="random"
     image="random.png"
@@ -44,7 +44,7 @@ const RandomPage = ({setCurrentMenuItem}) => (
   />
 );
 
-const TopRatedPage = ({setCurrentMenuItem}) => (
+const TopRatedPage = ({ setCurrentMenuItem }) => (
   <Page
     keyword="top_rated"
     image="topRated.png"
@@ -54,7 +54,7 @@ const TopRatedPage = ({setCurrentMenuItem}) => (
   />
 );
 
-const EditorsChoicePage = ({setCurrentMenuItem}) => (
+const EditorsChoicePage = ({ setCurrentMenuItem }) => (
   <Page
     keyword="editors_choice"
     image="editorsChoice.png"
@@ -64,19 +64,21 @@ const EditorsChoicePage = ({setCurrentMenuItem}) => (
   />
 );
 
-const FavoritesPage = ({setCurrentMenuItem}) => {
+const FavoritesPage = ({ setCurrentMenuItem }) => {
   return (
     <section id="favorites" className="page">
       <section className="favorites">
-        <img src="favorites.png" alt="favorite" className="favorite_image"/>
+        <img src="favorites.png" alt="favorite" className="favorite_image" />
         <section className="description_section">
           <img
             src="example.png"
             alt="Favorite Example"
             className="favorite_example"
           />
-          <InfoSection description="You can add movie or tv shows to your favorites list but you need to login first."
-                       onClick={() => setCurrentMenuItem("Favorites")}/>
+          <InfoSection
+            description="You can add movie or tv shows to your favorites list but you need to login first."
+            onClick={() => setCurrentMenuItem("Favorites")}
+          />
         </section>
       </section>
     </section>
@@ -84,44 +86,68 @@ const FavoritesPage = ({setCurrentMenuItem}) => {
 };
 
 const WaveComponent = () => {
-  return <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-    <path fill="#EB2F53" fill-opacity="1"
-          d="M0,64L48,58.7C96,53,192,43,288,69.3C384,96,480,160,576,160C672,160,768,96,864,106.7C960,117,1056,203,1152,224C1248,245,1344,203,1392,181.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-  </svg>;
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path
+        fill="#EB2F53"
+        fill-opacity="1"
+        d="M0,64L48,58.7C96,53,192,43,288,69.3C384,96,480,160,576,160C672,160,768,96,864,106.7C960,117,1056,203,1152,224C1248,245,1344,203,1392,181.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+      ></path>
+    </svg>
+  );
 };
 
 const Footer = () => {
-  return <section className="feature_page">
-    <section className="features">
-      <span className="features_header">Features coming soon</span>
-      <ul className="feature_list">
-        <li className="feature">Watchlist</li>
-        <li className="feature">User profile</li>
-        <li className="feature">Subscriptions</li>
-      </ul>
+  return (
+    <section className="feature_page">
+      <section className="features">
+        <span className="features_header">Features coming soon</span>
+        <ul className="feature_list">
+          <li className="feature">Watchlist</li>
+          <li className="feature">User profile</li>
+          <li className="feature">Subscriptions</li>
+        </ul>
+      </section>
+      <section className="feedback">
+        <span className="feedback_header">
+          Feedback makes A.I.K.A.I perfect
+        </span>
+        <button
+          type="button"
+          className="feedback_button"
+          onClick={() =>
+            window.open("https://forms.gle/MAiEH8fJDmZc6oda6", "_blank")
+          }
+        >
+          Share feedback
+        </button>
+      </section>
+      <span className="signature">
+        Made by{" "}
+        <a
+          href="https://github.com/Salman-Shaik"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="profile_link"
+        >
+          Salman Shaik
+        </a>
+      </span>
+      <WaveComponent />
     </section>
-    <section className="feedback">
-      <span className="feedback_header">Feedback makes A.I.K.A.I perfect</span>
-      <button type="button" className="feedback_button"
-              onClick={() => window.open("https://forms.gle/MAiEH8fJDmZc6oda6", '_blank')}>Share feedback
-      </button>
-    </section>
-    <span className="signature">Made by <a href="https://github.com/Salman-Shaik" target="_blank" rel="noopener noreferrer"
-                                           className="profile_link">Salman Shaik</a></span>
-    <WaveComponent/>
-  </section>
-}
+  );
+};
 
-export const HomePage = ({setCurrentMenuItem}) => {
+export const HomePage = ({ setCurrentMenuItem }) => {
   return (
     <section className="homepage">
-      <IntroductionPage/>
-      <NowPlayingPage setCurrentMenuItem={setCurrentMenuItem}/>
-      <RandomPage setCurrentMenuItem={setCurrentMenuItem}/>
-      <TopRatedPage setCurrentMenuItem={setCurrentMenuItem}/>
-      <EditorsChoicePage setCurrentMenuItem={setCurrentMenuItem}/>
-      <FavoritesPage setCurrentMenuItem={setCurrentMenuItem}/>
-      <Footer/>
+      <IntroductionPage />
+      <NowPlayingPage setCurrentMenuItem={setCurrentMenuItem} />
+      <RandomPage setCurrentMenuItem={setCurrentMenuItem} />
+      <TopRatedPage setCurrentMenuItem={setCurrentMenuItem} />
+      <EditorsChoicePage setCurrentMenuItem={setCurrentMenuItem} />
+      <FavoritesPage setCurrentMenuItem={setCurrentMenuItem} />
+      <Footer />
     </section>
   );
 };
