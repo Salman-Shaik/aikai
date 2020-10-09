@@ -1,20 +1,25 @@
-import { getJwtToken } from "./helper";
+import {getJwtToken} from "./helper";
 
 export const login = (
   username,
   password,
   setIsUserLoggedIn,
   setGotoLoginPage,
-  manager
+  setError,
+  setSuccessMessage
 ) => {
-  const body = { username, password };
-  const loginHandler = ({ status }) => {
+  const body = {username, password};
+  const loginHandler = ({status}) => {
     if (status === 401) {
-      manager.error("Invalid Credentials");
+      setSuccessMessage("");
+      setError("Invalid Credentials.");
     } else {
-      setGotoLoginPage(false);
-      manager.success("Login Success!");
-      setIsUserLoggedIn(true);
+      setError("");
+      setSuccessMessage("Login Success!");
+      setTimeout(() => {
+        setIsUserLoggedIn(true);
+        setGotoLoginPage(false);
+      }, 1000);
     }
   };
   const jwtToken = getJwtToken(body);
@@ -53,10 +58,10 @@ export const registerUser = (
   setGotoLoginPage,
   manager
 ) => {
-  const jwtToken = getJwtToken({ username, password });
+  const jwtToken = getJwtToken({username, password});
   fetch("/register", {
     method: "post",
-    body: JSON.stringify({ name, age, explicitFlag, languages }),
+    body: JSON.stringify({name, age, explicitFlag, languages}),
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${jwtToken}`,
@@ -75,8 +80,8 @@ export const registerUser = (
 export const setFavorite = (title, id, posterPath, setIsFavorite) => {
   fetch("/favorite", {
     method: "put",
-    body: JSON.stringify({ title, id, posterPath }),
-    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({title, id, posterPath}),
+    headers: {"Content-Type": "application/json"},
   })
     .then((res) => {
       if (res.status === 200) {
@@ -89,8 +94,8 @@ export const setFavorite = (title, id, posterPath, setIsFavorite) => {
 export const removeFavorite = (id, setIsFavorite) => {
   fetch("/favorite", {
     method: "delete",
-    body: JSON.stringify({ id }),
-    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({id}),
+    headers: {"Content-Type": "application/json"},
   })
     .then((res) => {
       if (res.status === 200) {
@@ -118,8 +123,8 @@ export const isFavoriteShow = (title, setIsFavorite) => {
 export const addToWatchList = (title, id, posterPath, setIsOnWatchList) => {
   fetch("/watch", {
     method: "put",
-    body: JSON.stringify({ title, id, posterPath }),
-    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({title, id, posterPath}),
+    headers: {"Content-Type": "application/json"},
   })
     .then((res) => {
       if (res.status === 200) {
