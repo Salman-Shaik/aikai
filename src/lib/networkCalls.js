@@ -56,7 +56,7 @@ export const registerUser = (
   languages,
   setGotoRegisterPage,
   setGotoLoginPage,
-  manager
+  setSuccessMessage
 ) => {
   const jwtToken = getJwtToken({username, password});
   fetch("/register", {
@@ -69,9 +69,11 @@ export const registerUser = (
   })
     .then((res) => {
       if (res.status === 200) {
-        manager.success("Account Created!");
-        setGotoRegisterPage(false);
-        setGotoLoginPage(true);
+        setSuccessMessage("Account Created!");
+        setTimeout(() => {
+          setGotoRegisterPage(false);
+          setGotoLoginPage(true);
+        }, 1000);
       }
     })
     .catch((e) => new TypeError(e));
