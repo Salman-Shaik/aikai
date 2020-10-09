@@ -1,8 +1,10 @@
 import React from "react";
-import '../../css/Alert.css';
+import "../../css/Alert.css";
 
-export const Alert = ({style, message}) => {
-  return <div className={`alert ${style}`}>
+export const Alert = ({ style, message }) => {
+  return (
+    <div className={`alert ${style}`}>
       <span className={`${style}_message`}>{message}</span>
-  </div>
-}
+    </div>
+  );
+};

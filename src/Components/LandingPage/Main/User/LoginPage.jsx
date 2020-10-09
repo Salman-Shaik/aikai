@@ -1,15 +1,15 @@
 import _ from "lodash";
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "../../../../css/LoginPage.css";
-import {login} from "../../../../lib/networkCalls";
-import {Alert} from "../../Alert";
+import { login } from "../../../../lib/networkCalls";
+import { Alert } from "../../Alert";
 
 export const LoginPage = ({
-                            setIsUserLoggedIn,
-                            setGotoRegisterPage,
-                            setGotoLoginPage,
-                            setCurrentMenuItem,
-                          }) => {
+  setIsUserLoggedIn,
+  setGotoRegisterPage,
+  setGotoLoginPage,
+  setCurrentMenuItem,
+}) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [usernameError, setUsernameError] = useState(false);
@@ -17,12 +17,12 @@ export const LoginPage = ({
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
-  const onUserNameChange = ({target}) => {
+  const onUserNameChange = ({ target }) => {
     setUsernameError(false);
     setUsername(target.value);
   };
 
-  const onPasswordChange = ({target}) => {
+  const onPasswordChange = ({ target }) => {
     setPasswordError(false);
     setPassword(target.value);
   };
@@ -62,8 +62,10 @@ export const LoginPage = ({
 
   return (
     <section className="login">
-      {(!!error&&!successMessage) && <Alert style="error" message={error}/>}
-      {(!!successMessage && !error) && <Alert style="success" message={successMessage}/>}
+      {!!error && !successMessage && <Alert style="error" message={error} />}
+      {!!successMessage && !error && (
+        <Alert style="success" message={successMessage} />
+      )}
       <section className="login_form" onSubmit={onLogin}>
         <h3 className="login_header">Welcome Back</h3>
         <section className="credentials">
