@@ -2,16 +2,16 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Close from "@material-ui/icons/Close";
 import Search from "@material-ui/icons/Search";
 import _ from "lodash";
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "../../../../css/SearchBar.css";
 
 export const SearchBar = ({
-                            setCurrentShow,
-                            setCurrentShowId,
-                            setHomePageLoaded,
-                            setCurrentMenuItem,
-                            clear,
-                          }) => {
+  setCurrentShow,
+  setCurrentShowId,
+  setHomePageLoaded,
+  setCurrentMenuItem,
+  clear,
+}) => {
   const [show, setShow] = useState("");
   const [error, setError] = useState(false);
 
@@ -26,7 +26,7 @@ export const SearchBar = ({
     clear();
   };
 
-  const onChange = ({target}) => {
+  const onChange = ({ target }) => {
     setError(false);
     setShow(target.value);
   };
@@ -38,7 +38,7 @@ export const SearchBar = ({
   return (
     <form className={`search_bar ${error ? "error" : ""}`} onSubmit={onClick}>
       <Tooltip title="Search">
-        <Search className="search_icon" onClick={onClick}/>
+        <Search className="search_icon" onClick={onClick} />
       </Tooltip>
       <input
         type="text"
@@ -49,7 +49,7 @@ export const SearchBar = ({
         onChange={onChange}
       />
       <Tooltip title="Clear">
-        <Close className="close_icon" onClick={onClose}/>
+        <Close className="close_icon" onClick={onClose} />
       </Tooltip>
     </form>
   );

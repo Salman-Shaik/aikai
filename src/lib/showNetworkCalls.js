@@ -1,7 +1,13 @@
 import _ from "lodash";
 import languagesList from "../data/languages.json";
-import {getCookieValue, getFirstFour, getRandomItem, handlePerfectShowPromises, refineShowResults,} from "./helper";
-import {fetchLanguages} from "./networkCalls";
+import {
+  getCookieValue,
+  getFirstFour,
+  getRandomItem,
+  handlePerfectShowPromises,
+  refineShowResults,
+} from "./helper";
+import { fetchLanguages } from "./networkCalls";
 
 const API_KEY = getCookieValue("apiKey");
 const API_HOST = "https://api.themoviedb.org/3";
@@ -161,17 +167,24 @@ export const fetchTopShow = (
     .catch((e) => new TypeError(e));
 };
 
-export const fetchSearchedShow = (type, currentShow, setResults, setLoaded, setHomePageLoaded) => {
+export const fetchSearchedShow = (
+  type,
+  currentShow,
+  setResults,
+  setLoaded,
+  setHomePageLoaded
+) => {
   const url = `${API_HOST}/search/${type}?api_key=${API_KEY}&query=${currentShow}`;
   fetch(url)
     .then((r) => r.text())
     .then((d) => JSON.parse(d).results)
-    .then(res => res.slice(0, 12))
-    .then(sr => {
+    .then((res) => res.slice(0, 12))
+    .then((sr) => {
       setResults(sr);
       if (!!setLoaded) {
         setLoaded(true);
         setHomePageLoaded(true);
       }
-    }).catch(e => new TypeError(e));
-}
+    })
+    .catch((e) => new TypeError(e));
+};

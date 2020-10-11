@@ -1,10 +1,10 @@
 import _ from "lodash";
 import React from "react";
-import {Favorites} from "./Favorites";
-import {HomePage} from "./Homepage/HomePage";
-import {NowPlaying} from "./NowPlaying/NowPlaying";
-import {SearchResults} from "./Search/SearchResults";
-import {Show} from "./Show/Show";
+import { Favorites } from "./Favorites";
+import { HomePage } from "./Homepage/HomePage";
+import { NowPlaying } from "./NowPlaying/NowPlaying";
+import { SearchResults } from "./Search/SearchResults";
+import { Show } from "./Show/Show";
 
 export const Main = (props) => {
   const {
@@ -47,7 +47,7 @@ export const Main = (props) => {
             setCurrentMenuItem={setCurrentMenuItem}
           />
         ) : (
-          <HomePage setCurrentMenuItem={setCurrentMenuItem}/>
+          <HomePage setCurrentMenuItem={setCurrentMenuItem} />
         )}
       </section>
     );
@@ -72,14 +72,17 @@ export const Main = (props) => {
           setHomePageLoaded={setHomePageLoaded}
         />
       ) : isSearch ? (
-          <SearchResults currentShowTitle={currentShow}
-                         setCurrentShowId={setCurrentShowId}
-                         setCurrentShowType={setCurrentShowType}
-                         homepageLoaded={homepageLoaded}
-                         setHomePageLoaded={setHomePageLoaded}
-                         setCurrentMenuItem={setCurrentMenuItem}
-          />)
-        : (<Component/>)}
+        <SearchResults
+          currentShowTitle={currentShow}
+          setCurrentShowId={setCurrentShowId}
+          setCurrentShowType={setCurrentShowType}
+          homepageLoaded={homepageLoaded}
+          setHomePageLoaded={setHomePageLoaded}
+          setCurrentMenuItem={setCurrentMenuItem}
+        />
+      ) : (
+        <Component />
+      )}
     </main>
   );
 };
