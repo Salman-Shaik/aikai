@@ -1,9 +1,10 @@
 import _ from "lodash";
 import React from "react";
-import { Favorites } from "./Favorites";
-import { HomePage } from "./Homepage/HomePage";
-import { NowPlaying } from "./NowPlaying/NowPlaying";
-import { Show } from "./Show/Show";
+import {Favorites} from "./Favorites";
+import {HomePage} from "./Homepage/HomePage";
+import {NowPlaying} from "./NowPlaying/NowPlaying";
+import {SearchResults} from "./Search/SearchResults";
+import {Show} from "./Show/Show";
 
 export const Main = (props) => {
   const {
@@ -27,7 +28,7 @@ export const Main = (props) => {
   const isShowPresent = !isShowIdEmpty || !isShowEmpty;
   const isNowPlaying = _.isEqual(currentMenuItem, "Now Playing");
   const isFavorites = _.isEqual(currentMenuItem, "Favorites");
-
+  const isSearch = _.isEqual(currentMenuItem, "Search");
   const Component = () => {
     return (
       <section>
@@ -46,7 +47,7 @@ export const Main = (props) => {
             setCurrentMenuItem={setCurrentMenuItem}
           />
         ) : (
-          <HomePage setCurrentMenuItem={setCurrentMenuItem} />
+          <HomePage setCurrentMenuItem={setCurrentMenuItem}/>
         )}
       </section>
     );
@@ -70,9 +71,15 @@ export const Main = (props) => {
           homepageLoaded={homepageLoaded}
           setHomePageLoaded={setHomePageLoaded}
         />
-      ) : (
-        <Component />
-      )}
+      ) : isSearch ? (
+          <SearchResults currentShowTitle={currentShow}
+                         setCurrentShowId={setCurrentShowId}
+                         setCurrentShowType={setCurrentShowType}
+                         homepageLoaded={homepageLoaded}
+                         setHomePageLoaded={setHomePageLoaded}
+                         setCurrentMenuItem={setCurrentMenuItem}
+          />)
+        : (<Component/>)}
     </main>
   );
 };

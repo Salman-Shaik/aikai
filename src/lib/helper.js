@@ -57,6 +57,10 @@ export const getFive = (res, i) => {
   return res.slice(i, i + 5);
 };
 
+export const getSix = (res, i) => {
+  return res.slice(i, i + 6);
+};
+
 export const capitalize = (s) =>
   _.snakeCase(s)
     .split(`_`)

@@ -8,13 +8,13 @@
   height: 6vh;
 }
 
-.error {
+.error-alert {
   border: 2px solid #8b0000;
   background-color: #fadbdb;
   color: #ff0000;
 }
 
-.success {
+.success-alert {
   border: 2px solid #32cd32;
   background-color: #defade;
   color: #32cd32;
