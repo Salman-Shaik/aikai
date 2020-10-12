@@ -1,90 +1,439 @@
 {
   "list": [
-    "Shawshank Redemption",
-    "Schindler's List",
-    "Black Panther",
-    "Avengers: Endgame",
-    "Avengers: Infinity War",
-    "Friends",
-    "The Big Bang Theory",
-    "How I Met Your Mother",
-    "Fringe",
-    "WestWorld",
-    "Black Mirror",
-    "Iron Man",
-    "Avengers",
-    "Doctor Strange",
-    "Spider-man",
-    "Spider-man: Far from home",
-    "Spider-man: Homecoming",
-    "Thor: Ragnarok",
-    "Iron Man 2",
-    "Spider-Man 2",
-    "2001",
-    "Captain America: Civil War",
-    "Wonder Woman",
-    "Aquaman",
-    "Shazam",
-    "Man of Steel",
-    "Zodiac",
-    "Gone Girl",
-    "Chhichhore",
-    "Jigarthandha",
-    "Ala Vaikuntapuramlo",
-    "Aravindha Sametha",
-    "Nannaku Prematho",
-    "Bajrangi Bhaijaan",
-    "Ghazi Attack",
-    "PINK",
-    "Wind River",
-    "Jack Reacher",
-    "Divergent",
-    "Insurgent",
-    "The Fault In Our Stars",
-    "The Witcher",
-    "Interstellar",
-    "Inception",
-    "Avatar",
-    "Titanic",
-    "The Perks Of being a wallflower",
-    "Exorcist",
-    "The Conjuring",
-    "Eternal sunshine of the spotless mind",
-    "Back to the future",
-    "Top Gun",
-    "Mission: Impossible III",
-    "Mission Impossible: Ghost Protocol",
-    "Mission Impossible: Rogue Nation",
-    "Knives Out",
-    "1917",
-    "Lawrence Of Arabia",
-    "Prince Of Persia",
-    "Ready Player One",
-    "Se7en",
-    "Fight Club",
-    "1 - Nenokkadine",
-    "Khaleja",
-    "Ye Maya Chesave",
-    "Devil Wears Prada",
-    "Love & Other Drugs",
-    "V for Vendetta",
-    "Matrix: Reloaded",
-    "The Matrix Revolutions",
-    "The Matrix",
-    "The Butterfly Effect",
-    "PSV Garuda Vega",
-    "Breathe",
-    "Hamari Adhuri Kahani",
-    "Notebook",
-    "Deep Blue Sea",
-    "Pirhana",
-    "Aladdin",
-    "Quiet Place",
-    "Shutter Island",
-    "The Prestige",
-    "The Mummy",
-    "Raiders of the Lost Ark",
-    "Charlie And The Chocolate Factory",
-    "Frozen"
+    {
+      "title": "Shawshank Redemption",
+      "id": 278,
+      "type": "movie"
+    },
+    {
+      "title": "Schindler's List",
+      "id": 424,
+      "type": "movie"
+    },
+    {
+      "title": "Black Panther",
+      "id": 284054,
+      "type": "movie"
+    },
+    {
+      "title": "Avengers: Endgame",
+      "id": 299534,
+      "type": "movie"
+    },
+    {
+      "title": "Avengers: Infinity War",
+      "id": 299536,
+      "type": "movie"
+    },
+    {
+      "title": "Friends",
+      "id": 1668,
+      "type": "tv"
+    },
+    {
+      "title": "The Big Bang Theory",
+      "id": 1418,
+      "type": "tv"
+    },
+    {
+      "title": "How I Met Your Mother",
+      "id": 1100,
+      "type": "tv"
+    },
+    {
+      "title": "Fringe",
+      "id": 1705,
+      "type": "tv"
+    },
+    {
+      "title": "WestWorld",
+      "id": 63247,
+      "type": "tv"
+    },
+    {
+      "title": "Black Mirror",
+      "id": 42009,
+      "type": "tv"
+    },
+    {
+      "title": "Iron Man",
+      "id": 1726,
+      "type": "movie"
+    },
+    {
+      "title": "Avengers",
+      "id": 24428,
+      "type": "movie"
+    },
+    {
+      "title": "Doctor Strange",
+      "id": 284052,
+      "type": "movie"
+    },
+    {
+      "title": "Spider-man",
+      "id": 557,
+      "type": "movie"
+    },
+    {
+      "title": "Spider-man: Far from home",
+      "id": 429617,
+      "type": "movie"
+    },
+    {
+      "title": "Spider-man: Homecoming",
+      "id": 315635,
+      "type": "movie"
+    },
+    {
+      "title": "Thor: Ragnarok",
+      "id": 284053,
+      "type": "movie"
+    },
+    {
+      "title": "Iron Man 2",
+      "id": 10138,
+      "type": "movie"
+    },
+    {
+      "title": "Spider-Man 2",
+      "id": 552,
+      "type": "movie"
+    },
+    {
+      "title": "2001",
+      "id": 62,
+      "type": "movie"
+    },
+    {
+      "title": "Captain America: Civil War",
+      "id": 271110,
+      "type": "movie"
+    },
+    {
+      "title": "Wonder Woman",
+      "id": 297762,
+      "type": "movie"
+    },
+    {
+      "title": "Aquaman",
+      "id": 297802,
+      "type": "movie"
+    },
+    {
+      "title": "Shazam",
+      "id": 287947,
+      "type": "movie"
+    },
+    {
+      "title": "Man of Steel",
+      "id": 49521,
+      "type": "movie"
+    },
+    {
+      "title": "Zodiac",
+      "id": 1949,
+      "type": "movie"
+    },
+    {
+      "title": "Gone Girl",
+      "id": 210577,
+      "type": "movie"
+    },
+    {
+      "title": "Chhichhore",
+      "id": 596650,
+      "type": "movie"
+    },
+    {
+      "title": "Jigarthandha",
+      "id": 270766,
+      "type": "movie"
+    },
+    {
+      "title": "Ala Vaikuntapuramlo",
+      "id": 628241,
+      "type": "movie"
+    },
+    {
+      "title": "Aravindha Sametha",
+      "id": 534530,
+      "type": "movie"
+    },
+    {
+      "title": "Nannaku Prematho",
+      "id": 365187,
+      "type": "movie"
+    },
+    {
+      "title": "Bajrangi Bhaijaan",
+      "id": 348892,
+      "type": "movie"
+    },
+    {
+      "title": "Ghazi Attack",
+      "id": 442405,
+      "type": "movie"
+    },
+    {
+      "title": "PINK",
+      "id": 415358,
+      "type": "movie"
+    },
+    {
+      "title": "Wind River",
+      "id": 395834,
+      "type": "movie"
+    },
+    {
+      "title": "Jack Reacher",
+      "id": 75780,
+      "type": "movie"
+    },
+    {
+      "title": "Divergent",
+      "id": 157350,
+      "type": "movie"
+    },
+    {
+      "title": "Insurgent",
+      "id": 262500,
+      "type": "movie"
+    },
+    {
+      "title": "The Fault In Our Stars",
+      "id": 222935,
+      "type": "movie"
+    },
+    {
+      "title": "The Witcher",
+      "id": 71912,
+      "type": "tv"
+    },
+    {
+      "title": "Interstellar",
+      "id": 157336,
+      "type": "movie"
+    },
+    {
+      "title": "Inception",
+      "id": 27205,
+      "type": "movie"
+    },
+    {
+      "title": "Avatar",
+      "id": 19995,
+      "type": "movie"
+    },
+    {
+      "title": "Titanic",
+      "id": 597,
+      "type": "movie"
+    },
+    {
+      "title": "The Perks Of being a wallflower",
+      "id": 84892,
+      "type": "movie"
+    },
+    {
+      "title": "Exorcist",
+      "id": 9552,
+      "type": "movie"
+    },
+    {
+      "title": "The Conjuring",
+      "id": 138843,
+      "type": "movie"
+    },
+    {
+      "title": "Eternal sunshine of the spotless mind",
+      "id": 38,
+      "type": "movie"
+    },
+    {
+      "title": "Back to the future",
+      "id": 105,
+      "type": "movie"
+    },
+    {
+      "title": "Top Gun",
+      "id": 744,
+      "type": "movie"
+    },
+    {
+      "title": "Mission: Impossible III",
+      "id": 956,
+      "type": "movie"
+    },
+    {
+      "title": "Mission Impossible: Ghost Protocol",
+      "id": 56292,
+      "type": "movie"
+    },
+    {
+      "title": "Mission Impossible: Rogue Nation",
+      "id": 17677,
+      "type": "movie"
+    },
+    {
+      "title": "Knives Out",
+      "id": 546554,
+      "type": "movie"
+    },
+    {
+      "title": "1917",
+      "id": 530915,
+      "type": "movie"
+    },
+    {
+      "title": "Lawrence Of Arabia",
+      "id": 947,
+      "type": "movie"
+    },
+    {
+      "title": "Prince Of Persia",
+      "id": 9543,
+      "type": "movie"
+    },
+    {
+      "title": "Ready Player One",
+      "id": 333339,
+      "type": "movie"
+    },
+    {
+      "title": "Se7en",
+      "id": 807,
+      "type": "movie"
+    },
+    {
+      "title": "Fight Club",
+      "id": 550,
+      "type": "movie"
+    },
+    {
+      "title": "1 - Nenokkadine",
+      "id": 249772,
+      "type": "movie"
+    },
+    {
+      "title": "Khaleja",
+      "id": 56986,
+      "type": "movie"
+    },
+    {
+      "title": "Ye Maya Chesave",
+      "id": 63430,
+      "type": "movie"
+    },
+    {
+      "title": "Devil Wears Prada",
+      "id": 350,
+      "type": "movie"
+    },
+    {
+      "title": "Love & Other Drugs",
+      "id": 43347,
+      "type": "movie"
+    },
+    {
+      "title": "V for Vendetta",
+      "id": 752,
+      "type": "movie"
+    },
+    {
+      "title": "Matrix: Reloaded",
+      "id": 604,
+      "type": "movie"
+    },
+    {
+      "title": "The Matrix Revolutions",
+      "id": 605,
+      "type": "movie"
+    },
+    {
+      "title": "The Matrix",
+      "id": 603,
+      "type": "movie"
+    },
+    {
+      "title": "The Butterfly Effect",
+      "id": 1954,
+      "type": "movie"
+    },
+    {
+      "title": "PSV Garuda Vega",
+      "id": 484423,
+      "type": "movie"
+    },
+    {
+      "title": "Breathe",
+      "id": 76659,
+      "type": "tv"
+    },
+    {
+      "title": "Hamari Adhuri Kahani",
+      "id": 339367,
+      "type": "movie"
+    },
+    {
+      "title": "Notebook",
+      "id": 582375,
+      "type": "movie"
+    },
+    {
+      "title": "The Notebook",
+      "id": 11063,
+      "type": "movie"
+    },
+    {
+      "title": "Deep Blue Sea",
+      "id": 8914,
+      "type": "movie"
+    },
+    {
+      "title": "Aladdin",
+      "id": 42081,
+      "type": "movie"
+    },
+    {
+      "title": "Quiet Place",
+      "id": 447332,
+      "type": "movie"
+    },
+    {
+      "title": "Shutter Island",
+      "id": 11324,
+      "type": "movie"
+    },
+    {
+      "title": "The Prestige",
+      "id": 1124,
+      "type": "movie"
+    },
+    {
+      "title": "The Mummy",
+      "id": 564,
+      "type": "movie"
+    },
+    {
+      "title": "Raiders of the Lost Ark",
+      "id": 85,
+      "type": "movie"
+    },
+    {
+      "title": "Charlie And The Chocolate Factory",
+      "id": 118,
+      "type": "movie"
+    },
+    {
+      "title": "Frozen",
+      "id": 109445,
+      "type": "movie"
+    },
+    {
+      "title": "The 100",
+      "id": 48866,
+      "type": "tv"
+    }
   ]
 }

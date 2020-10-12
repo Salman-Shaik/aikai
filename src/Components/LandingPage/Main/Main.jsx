@@ -32,7 +32,9 @@ export const Main = (props) => {
   const isSearch = _.isEqual(currentMenuItem, "Search");
   const isMovie = _.isEqual(currentMenuItem, "movie");
   const isTv = _.isEqual(currentMenuItem, "tv");
-
+  if (isMovie || isTv) {
+    setCurrentShowType("");
+  }
   const Component = () => {
     return (
       <section>

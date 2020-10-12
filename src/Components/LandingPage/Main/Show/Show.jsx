@@ -2,7 +2,7 @@ import _ from "lodash";
 import React, {useEffect, useState} from "react";
 import "react-circular-progressbar/dist/styles.css";
 import "../../../../css/Show.css";
-import {fetchPerfectShow, fetchShow} from "../../../../lib/showNetworkCalls";
+import {fetchShow} from "../../../../lib/showNetworkCalls";
 import {Spinner} from "../../../Spinner";
 import {OtherShows} from "./OtherShows";
 import {ShowDetails} from "./ShowDetails";
@@ -78,23 +78,15 @@ export const Show = ({
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    if (_.isEmpty(currentShowType) || currentShowId === 0) {
-      return fetchPerfectShow(
-        currentShow,
+    if (currentShowId !== 0 && !_.isEmpty(currentShowType)) {
+      return fetchShow(
+        currentShowId,
+        currentShowType,
         setShowInformation,
         setLoaded,
-        setCurrentShowType,
-        setCurrentShowId,
         setHomePageLoaded
       );
     }
-    fetchShow(
-      currentShowId,
-      currentShowType,
-      setShowInformation,
-      setLoaded,
-      setHomePageLoaded
-    );
   }, [
     currentShow,
     currentShowId,

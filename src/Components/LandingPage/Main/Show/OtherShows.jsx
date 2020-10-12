@@ -1,8 +1,8 @@
 import _ from "lodash";
-import React, { useEffect, useState } from "react";
-import { fetchOtherShow } from "../../../../lib/showNetworkCalls";
-import { Spinner } from "../../../Spinner";
-import { MiniShow } from "./MiniShow";
+import React, {useEffect, useState} from "react";
+import {fetchOtherShow} from "../../../../lib/showNetworkCalls";
+import {Spinner} from "../../../Spinner";
+import {MiniShow} from "./MiniShow";
 
 const createMiniShows = (
   shows,
@@ -29,15 +29,15 @@ const createMiniShows = (
 };
 
 const Component = ({
-  className,
-  otherShows,
-  keyword,
-  currentShowType,
-  setCurrentShow,
-  setCurrentShowId,
-  setHomePageLoaded,
-  setCurrentMenuItem,
-}) => {
+                     className,
+                     otherShows,
+                     keyword,
+                     currentShowType,
+                     setCurrentShow,
+                     setCurrentShowId,
+                     setHomePageLoaded,
+                     setCurrentMenuItem,
+                   }) => {
   return (
     <section className={className}>
       <h3 className="section_title">{_.capitalize(keyword)}</h3>
@@ -61,31 +61,33 @@ const Component = ({
 };
 
 export const OtherShows = ({
-  keyword,
-  className,
-  showId,
-  currentShowType,
-  setCurrentShow,
-  setCurrentShowId,
-  homepageLoaded,
-  setHomePageLoaded,
-  setCurrentMenuItem,
-}) => {
+                             keyword,
+                             className,
+                             showId,
+                             currentShowType,
+                             setCurrentShow,
+                             setCurrentShowId,
+                             homepageLoaded,
+                             setHomePageLoaded,
+                             setCurrentMenuItem,
+                           }) => {
   const [otherShows, setOtherShows] = useState([]);
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
-    fetchOtherShow(
-      currentShowType,
-      showId,
-      keyword,
-      setOtherShows,
-      setLoaded,
-      setHomePageLoaded
-    );
+    if (showId !== 0 && !_.isEmpty(currentShowType)) {
+      fetchOtherShow(
+        currentShowType,
+        showId,
+        keyword,
+        setOtherShows,
+        setLoaded,
+        setHomePageLoaded
+      );
+    }
   }, [currentShowType, keyword, showId, setHomePageLoaded]);
 
   return !loaded || !homepageLoaded ? (
-    <Spinner />
+    <Spinner/>
   ) : (
     <Component
       className={className}

@@ -1,6 +1,5 @@
 import Tooltip from "@material-ui/core/Tooltip";
 import Favorite from "@material-ui/icons/Favorite";
-import PlayArrow from "@material-ui/icons/PlayArrow";
 import React from "react";
 import "../../../../css/NavigationMenu.css";
 import {list} from "../../../../data/editorsChoice.json";
@@ -43,9 +42,8 @@ export const NavigationMenu = (props) => {
   const onEditorsChoice = () => {
     setUserPagesOff();
     const randomShow = getRandomItem(list);
-    setCurrentShowType("");
-    setCurrentShowId(0);
-    setCurrentShow(randomShow);
+    setCurrentShowType(randomShow.type);
+    setCurrentShowId(randomShow.id);
     setHomePageLoaded(true);
   };
 
@@ -76,9 +74,7 @@ export const NavigationMenu = (props) => {
 
   return (
     <section className="navigation_menu">
-      <Tooltip title="Now Playing">
-        <PlayArrow className="play_icon" onClick={onNowPlaying}/>
-      </Tooltip>
+      {createNavigationMenuItem("Now Playing", onNowPlaying)}
       {createNavigationMenuItem("Movies", onMovie)}
       {createNavigationMenuItem("TV Shows", onTv)}
       {createNavigationMenuItem("Editor's Choice", onEditorsChoice)}

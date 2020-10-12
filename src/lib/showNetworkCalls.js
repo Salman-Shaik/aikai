@@ -1,13 +1,7 @@
 import _ from "lodash";
 import languagesList from "../data/languages.json";
-import {
-  getCookieValue,
-  getFirstFour,
-  getRandomItem,
-  handlePerfectShowPromises,
-  refineShowResults,
-} from "./helper";
-import { fetchLanguages } from "./networkCalls";
+import {getCookieValue, getFirstFour, getRandomItem,} from "./helper";
+import {fetchLanguages} from "./networkCalls";
 
 const API_KEY = getCookieValue("apiKey");
 const API_HOST = "https://api.themoviedb.org/3";
@@ -66,25 +60,6 @@ export const fetchAiringTVShows = (
     )
     .catch((e) => new TypeError(e));
 };
-
-const fetchMovie = (currentShow) => {
-  const url = `${API_HOST}/search/movie?api_key=${API_KEY}&query=${currentShow}`;
-  return fetch(url)
-    .then((r) => r.text())
-    .then((d) => JSON.parse(d).results)
-    .then(async (j) => await refineShowResults(j, currentShow))
-    .catch((e) => new TypeError(e));
-};
-
-const fetchTv = (currentShow) => {
-  const tvUrl = `${API_HOST}/search/tv?api_key=${API_KEY}&query=${currentShow}`;
-  return fetch(tvUrl)
-    .then((r) => r.text())
-    .then((d) => JSON.parse(d).results)
-    .then(async (j) => await refineShowResults(j, currentShow))
-    .catch((e) => new TypeError(e));
-};
-
 export const fetchShow = (
   currentShowId,
   currentShowType,
@@ -124,29 +99,6 @@ export const fetchOtherShow = (
     })
     .catch((e) => new TypeError(e));
 };
-
-export const fetchPerfectShow = (
-  currentShow,
-  setShowInformation,
-  setLoaded,
-  setCurrentShowType,
-  setCurrentShowId,
-  setHomePageLoaded
-) => {
-  const promises = [];
-  promises.push(fetchMovie(currentShow));
-  promises.push(fetchTv(currentShow));
-  handlePerfectShowPromises(
-    promises,
-    currentShow,
-    setShowInformation,
-    setLoaded,
-    setCurrentShowType,
-    setCurrentShowId,
-    setHomePageLoaded
-  );
-};
-
 export const fetchTopShow = (
   setCurrentShowId,
   setCurrentShowType,

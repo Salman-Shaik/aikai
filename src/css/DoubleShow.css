@@ -3,6 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  margin-top: 5vh;
 }
 
 .double_show_section{
