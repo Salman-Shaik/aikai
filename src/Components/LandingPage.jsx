@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { NotificationContainer } from "react-notifications";
 import "../css/Landingpage.css";
 import { getCookieValue } from "../lib/helper";
 import { Header } from "./LandingPage/Header/Header";
@@ -66,7 +65,6 @@ export const LandingPage = () => {
           setGotoLoginPage={setGotoLoginPage}
         />
       )}
-      <NotificationContainer />
     </div>
   );
 };

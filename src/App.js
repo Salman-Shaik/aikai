@@ -1,6 +1,5 @@
 import React from "react";
 import { isMobile } from "react-device-detect";
-import "react-notifications/lib/notifications.css";
 import { LandingPage } from "./Components/LandingPage";
 import "./css/App.css";
 
