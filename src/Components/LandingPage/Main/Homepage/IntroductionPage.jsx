@@ -1,6 +1,5 @@
 import React from "react";
 import "../../../../css/IntroductionPage.css";
-import { LinkMenu } from "./LinkMenu";
 
 export const IntroductionPage = () => {
   return (
@@ -13,7 +12,6 @@ export const IntroductionPage = () => {
           what's playing in theatres or what's airing on TV. You can get all of
           them here @ A.I.K.A.I .
         </p>
-        <LinkMenu />
       </section>
     </section>
   );

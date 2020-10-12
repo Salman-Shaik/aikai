@@ -1,3 +1,4 @@
+import _ from "lodash";
 import React from "react";
 import "../../../../css/HomePage.css";
 import { IntroductionPage } from "./IntroductionPage";
@@ -34,23 +35,52 @@ const NowPlayingPage = ({ setCurrentMenuItem }) => (
   />
 );
 
-const RandomPage = ({ setCurrentMenuItem }) => (
-  <Page
-    keyword="random"
-    image="random.png"
-    alt="Random movie/tv"
-    description="Confused what to watch today? We have a solution for that."
-    onClick={() => setCurrentMenuItem("Random Movie")}
+const ShowPage = ({
+  image1,
+  image2,
+  description,
+  setCurrentMenuItem,
+  type,
+}) => {
+  return (
+    <section className="show-page">
+      <section className="examples">
+        <img
+          src={image1}
+          alt={`Top Rated ${_.capitalize(type)}`}
+          className="show_example"
+        />
+        <img
+          src={image2}
+          alt={`Random ${_.capitalize(type)}`}
+          className="show_example"
+        />
+      </section>
+      <InfoSection
+        description={description}
+        onClick={() => setCurrentMenuItem(type)}
+      />
+    </section>
+  );
+};
+
+const MoviesPage = ({ setCurrentMenuItem }) => (
+  <ShowPage
+    image1="movies-top.png"
+    image2="movies-random.png"
+    description="Puzzled which Movie to watch? We are here to help you."
+    setCurrentMenuItem={setCurrentMenuItem}
+    type="movie"
   />
 );
 
-const TopRatedPage = ({ setCurrentMenuItem }) => (
-  <Page
-    keyword="top_rated"
-    image="topRated.png"
-    alt="Top Rated Movie/TV"
-    description="Not just a random suggestion also a top rated one."
-    onClick={() => setCurrentMenuItem("Top Rated Movie")}
+const TVPage = ({ setCurrentMenuItem }) => (
+  <ShowPage
+    image1="tv-top.png"
+    image2="tv-random.png"
+    description="Want to watch a TV / Web Series. We got your back with suggestions."
+    setCurrentMenuItem={setCurrentMenuItem}
+    type="tv"
   />
 );
 
@@ -59,7 +89,7 @@ const EditorsChoicePage = ({ setCurrentMenuItem }) => (
     keyword="editors_choice"
     image="editorsChoice.png"
     alt="Editor's Choice"
-    description="Recommendations from the Editor, he says these are best he has ever seen. I doubt that."
+    description="Recommendations from the Editor, he says these are best he has ever seen. Do you believe him?"
     onClick={() => setCurrentMenuItem("Editor's Choice")}
   />
 );
@@ -143,8 +173,8 @@ export const HomePage = ({ setCurrentMenuItem }) => {
     <section className="homepage">
       <IntroductionPage />
       <NowPlayingPage setCurrentMenuItem={setCurrentMenuItem} />
-      <RandomPage setCurrentMenuItem={setCurrentMenuItem} />
-      <TopRatedPage setCurrentMenuItem={setCurrentMenuItem} />
+      <MoviesPage setCurrentMenuItem={setCurrentMenuItem} />
+      <TVPage setCurrentMenuItem={setCurrentMenuItem} />
       <EditorsChoicePage setCurrentMenuItem={setCurrentMenuItem} />
       <FavoritesPage setCurrentMenuItem={setCurrentMenuItem} />
       <Footer />

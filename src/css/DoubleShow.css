@@ -1,4 +1,4 @@
-.double_show{
+.double_show {
   width: 100%;
   display: flex;
   align-items: center;
@@ -6,7 +6,7 @@
   margin-top: 5vh;
 }
 
-.double_show_section{
+.double_show_section {
   width: 98%;
   min-height: 89vh;
   display: flex;
@@ -17,19 +17,19 @@
 
 .action_button {
   background-image: linear-gradient(
-          to right bottom,
-          #ffae00,
-          #fdbe23,
-          #fbcc3b,
-          #fada51,
-          #f9e866
+    to right bottom,
+    #ffae00,
+    #fdbe23,
+    #fbcc3b,
+    #fada51,
+    #f9e866
   ) !important;
   background-image: -webkit-linear-gradient(
-          to right bottom,
-          #ffae00,
-          #fdbe23,
-          #fbcc3b,
-          #fada51,
-          #f9e866
+    to right bottom,
+    #ffae00,
+    #fdbe23,
+    #fbcc3b,
+    #fada51,
+    #f9e866
   ) !important;
 }

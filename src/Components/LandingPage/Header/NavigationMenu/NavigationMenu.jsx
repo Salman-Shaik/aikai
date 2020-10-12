@@ -2,12 +2,12 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Favorite from "@material-ui/icons/Favorite";
 import React from "react";
 import "../../../../css/NavigationMenu.css";
-import {list} from "../../../../data/editorsChoice.json";
-import {getRandomItem} from "../../../../lib/helper";
-import {fetchUserFavorites} from "../../../../lib/networkCalls";
-import {NavigationMenuItem} from "./NavigationMenuItem";
-import {SearchBar} from "./SearchBar";
-import {UserIcon} from "./UserIcon";
+import { list } from "../../../../data/editorsChoice.json";
+import { getRandomItem } from "../../../../lib/helper";
+import { fetchUserFavorites } from "../../../../lib/networkCalls";
+import { NavigationMenuItem } from "./NavigationMenuItem";
+import { SearchBar } from "./SearchBar";
+import { UserIcon } from "./UserIcon";
 
 export const NavigationMenu = (props) => {
   const {
@@ -79,7 +79,7 @@ export const NavigationMenu = (props) => {
       {createNavigationMenuItem("TV Shows", onTv)}
       {createNavigationMenuItem("Editor's Choice", onEditorsChoice)}
       <Tooltip title="Favorites">
-        <Favorite className="favorites_icon" onClick={onFavorites}/>
+        <Favorite className="favorites_icon" onClick={onFavorites} />
       </Tooltip>
       <SearchBar
         setCurrentShow={setCurrentShow}

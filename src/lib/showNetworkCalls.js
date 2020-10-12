@@ -1,7 +1,7 @@
 import _ from "lodash";
 import languagesList from "../data/languages.json";
-import {getCookieValue, getFirstFour, getRandomItem,} from "./helper";
-import {fetchLanguages} from "./networkCalls";
+import { getCookieValue, getFirstFour, getRandomItem } from "./helper";
+import { fetchLanguages } from "./networkCalls";
 
 const API_KEY = getCookieValue("apiKey");
 const API_HOST = "https://api.themoviedb.org/3";

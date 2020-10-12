@@ -223,3 +223,24 @@
   color: #ffefd5;
   margin-top: 4vh;
 }
+
+.show-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  min-height: 85vh;
+}
+
+.examples {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 95%;
+}
+
+.show_example {
+  width: 45%;
+}

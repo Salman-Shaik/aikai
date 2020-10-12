@@ -1,9 +1,9 @@
 import _ from "lodash";
-import React, {useState} from "react";
-import '../../../css/DoubleShow.css'
-import {fetchTopShow} from "../../../lib/showNetworkCalls";
-import {MinimizeActionButton} from "./MinimizeActionButton";
-import {Show} from "./Show/Show";
+import React, { useState } from "react";
+import "../../../css/DoubleShow.css";
+import { fetchTopShow } from "../../../lib/showNetworkCalls";
+import { MinimizeActionButton } from "./MinimizeActionButton";
+import { Show } from "./Show/Show";
 
 export const DoubleShow = (props) => {
   const [randomMinimized, setRandomMinimized] = useState(true);
@@ -12,11 +12,11 @@ export const DoubleShow = (props) => {
   const [randomId, setRandomId] = useState(0);
 
   const randomShowPageNumber = {
-    "movie": 389,
-    "tv": 60
-  }
+    movie: 389,
+    tv: 60,
+  };
 
-  const topRatedShowPageNumber = 22
+  const topRatedShowPageNumber = 22;
   const type = props.type;
 
   const minimizeRandom = () => {
@@ -47,16 +47,26 @@ export const DoubleShow = (props) => {
     props.setHomePageLoaded(false);
   };
 
-  return <section className="double_show">
-    <section className="double_show_section">
-      <MinimizeActionButton minimized={topRatedMinimized} anchorText={`Top Rated ${_.capitalize(type)}`}
-                            minimizeMethod={minimizeTopRated}/>
-      {!topRatedMinimized &&
-      <Show {...props} currentShowId={topRatedId} currentShowType={type}/>}
-      <MinimizeActionButton minimized={randomMinimized} anchorText={`Random ${_.capitalize(type)}`}
-                            minimizeMethod={minimizeRandom}/>
-      {!randomMinimized &&
-      <Show {...props} currentShowId={randomId} currentShowType={type}/>}
+  return (
+    <section className="double_show">
+      <section className="double_show_section">
+        <MinimizeActionButton
+          minimized={topRatedMinimized}
+          anchorText={`Top Rated ${_.capitalize(type)}`}
+          minimizeMethod={minimizeTopRated}
+        />
+        {!topRatedMinimized && (
+          <Show {...props} currentShowId={topRatedId} currentShowType={type} />
+        )}
+        <MinimizeActionButton
+          minimized={randomMinimized}
+          anchorText={`Random ${_.capitalize(type)}`}
+          minimizeMethod={minimizeRandom}
+        />
+        {!randomMinimized && (
+          <Show {...props} currentShowId={randomId} currentShowType={type} />
+        )}
+      </section>
     </section>
-  </section>
-}
+  );
+};
