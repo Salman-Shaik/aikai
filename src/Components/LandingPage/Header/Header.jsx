@@ -1,30 +1,24 @@
 import React from "react";
 import "../../../css/Header.css";
-import { NavigationMenu } from "./NavigationMenu/NavigationMenu";
+import {NavigationMenu} from "./NavigationMenu/NavigationMenu";
 
 export const Header = ({
-  currentMenuItem,
-  setCurrentMenuItem,
-  isUserLoggedIn,
-  setGotoLoginPage,
-  setFavorites,
-  setIsUserLoggedIn,
-  setCurrentShow,
-  setCurrentShowId,
-  setCurrentShowType,
-  setHomePageLoaded,
-  setGotoRegisterPage,
-}) => {
+                         currentMenuItem,
+                         setCurrentMenuItem,
+                         isUserLoggedIn,
+                         setGotoLoginPage,
+                         setFavorites,
+                         setIsUserLoggedIn,
+                         setCurrentShow,
+                         setCurrentShowId,
+                         setCurrentShowType,
+                         setHomePageLoaded,
+                         setGotoRegisterPage,
+                       }) => {
   const onIconClick = () => {
     setCurrentMenuItem("");
     setCurrentShow("");
     setCurrentShowId(0);
-    setGotoLoginPage(false);
-    setGotoRegisterPage(false);
-  };
-
-  const clear = () => {
-    setCurrentMenuItem("");
     setGotoLoginPage(false);
     setGotoRegisterPage(false);
   };
@@ -46,7 +40,6 @@ export const Header = ({
         setCurrentShowType={setCurrentShowType}
         setHomePageLoaded={setHomePageLoaded}
         setFavorites={setFavorites}
-        clear={clear}
       />
     </header>
   );

@@ -1,10 +1,11 @@
 import _ from "lodash";
 import React from "react";
-import { Favorites } from "./Favorites";
-import { HomePage } from "./Homepage/HomePage";
-import { NowPlaying } from "./NowPlaying/NowPlaying";
-import { SearchResults } from "./Search/SearchResults";
-import { Show } from "./Show/Show";
+import {DoubleShow} from "./DoubleShow";
+import {Favorites} from "./Favorites";
+import {HomePage} from "./Homepage/HomePage";
+import {NowPlaying} from "./NowPlaying/NowPlaying";
+import {SearchResults} from "./Search/SearchResults";
+import {Show} from "./Show/Show";
 
 export const Main = (props) => {
   const {
@@ -29,6 +30,9 @@ export const Main = (props) => {
   const isNowPlaying = _.isEqual(currentMenuItem, "Now Playing");
   const isFavorites = _.isEqual(currentMenuItem, "Favorites");
   const isSearch = _.isEqual(currentMenuItem, "Search");
+  const isMovie = _.isEqual(currentMenuItem, "movie");
+  const isTv = _.isEqual(currentMenuItem, "tv");
+
   const Component = () => {
     return (
       <section>
@@ -47,7 +51,7 @@ export const Main = (props) => {
             setCurrentMenuItem={setCurrentMenuItem}
           />
         ) : (
-          <HomePage setCurrentMenuItem={setCurrentMenuItem} />
+          <HomePage setCurrentMenuItem={setCurrentMenuItem}/>
         )}
       </section>
     );
@@ -80,9 +84,21 @@ export const Main = (props) => {
           setHomePageLoaded={setHomePageLoaded}
           setCurrentMenuItem={setCurrentMenuItem}
         />
-      ) : (
-        <Component />
-      )}
+      ) : (isMovie || isTv) ?
+        <DoubleShow currentShowId={currentShowId}
+                    currentShow={currentShow}
+                    currentShowType={currentShowType}
+                    isUserLoggedIn={isUserLoggedIn}
+                    homepageLoaded={homepageLoaded}
+                    setCurrentShow={setCurrentShow}
+                    setCurrentShowType={setCurrentShowType}
+                    setCurrentShowId={setCurrentShowId}
+                    setHomePageLoaded={setHomePageLoaded}
+                    setGotoLoginPage={setGotoLoginPage}
+                    setCurrentMenuItem={setCurrentMenuItem}
+                    type={currentMenuItem}/> : (
+          <Component/>
+        )}
     </main>
   );
 };

@@ -1,23 +1,23 @@
 import _ from "lodash";
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import "react-circular-progressbar/dist/styles.css";
 import "../../../../css/Show.css";
-import { fetchPerfectShow, fetchShow } from "../../../../lib/showNetworkCalls";
-import { Spinner } from "../../../Spinner";
-import { OtherShows } from "./OtherShows";
-import { ShowDetails } from "./ShowDetails";
+import {fetchPerfectShow, fetchShow} from "../../../../lib/showNetworkCalls";
+import {Spinner} from "../../../Spinner";
+import {OtherShows} from "./OtherShows";
+import {ShowDetails} from "./ShowDetails";
 
 const Component = ({
-  info,
-  currentShowType,
-  setCurrentShow,
-  setCurrentShowId,
-  setHomePageLoaded,
-  homepageLoaded,
-  isUserLoggedIn,
-  setGotoLoginPage,
-  setCurrentMenuItem,
-}) => {
+                     info,
+                     currentShowType,
+                     setCurrentShow,
+                     setCurrentShowId,
+                     setHomePageLoaded,
+                     homepageLoaded,
+                     isUserLoggedIn,
+                     setGotoLoginPage,
+                     setCurrentMenuItem,
+                   }) => {
   const createOtherMovies = (keyword, className) => (
     <OtherShows
       keyword={keyword}
@@ -53,27 +53,26 @@ const Component = ({
             {"Invalid Show: Check The Your Search Query."}
           </h2>
         ) : (
-          <ShowSection />
+          <ShowSection/>
         )}
       </section>
     </section>
   );
 };
 
-export const Show = (props) => {
-  const {
-    currentShowId,
-    currentShow,
-    currentShowType,
-    setCurrentShow,
-    setCurrentShowType,
-    setCurrentMenuItem,
-    setCurrentShowId,
-    homepageLoaded,
-    setHomePageLoaded,
-    isUserLoggedIn,
-    setGotoLoginPage,
-  } = props;
+export const Show = ({
+                       currentShowId,
+                       currentShow,
+                       currentShowType,
+                       setCurrentShow,
+                       setCurrentShowType,
+                       setCurrentMenuItem,
+                       setCurrentShowId,
+                       homepageLoaded,
+                       setHomePageLoaded,
+                       isUserLoggedIn,
+                       setGotoLoginPage,
+                     }) => {
 
   const [info, setShowInformation] = useState({});
   const [loaded, setLoaded] = useState(false);
@@ -106,7 +105,7 @@ export const Show = (props) => {
   ]);
 
   return !loaded || !homepageLoaded ? (
-    <Spinner loaded={loaded} />
+    <Spinner loaded={loaded}/>
   ) : (
     <Component
       info={info}
