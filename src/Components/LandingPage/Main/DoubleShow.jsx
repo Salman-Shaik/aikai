@@ -54,6 +54,7 @@ export const DoubleShow = (props) => {
           minimized={topRatedMinimized}
           anchorText={`Top Rated ${_.capitalize(type)}`}
           minimizeMethod={minimizeTopRated}
+          className="section_action"
         />
         {!topRatedMinimized && (
           <Show {...props} currentShowId={topRatedId} currentShowType={type} />
@@ -62,6 +63,7 @@ export const DoubleShow = (props) => {
           minimized={randomMinimized}
           anchorText={`Random ${_.capitalize(type)}`}
           minimizeMethod={minimizeRandom}
+          className="section_action"
         />
         {!randomMinimized && (
           <Show {...props} currentShowId={randomId} currentShowType={type} />
