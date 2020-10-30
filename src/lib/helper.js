@@ -10,7 +10,8 @@ export const createPosters = (
   rawJson,
   setCurrentShowId,
   setCurrentShowType,
-  setHomePageLoaded
+  setHomePageLoaded,
+  setCurrentMenuItem
 ) => {
   const filteredList = rawJson.filter(filterPosterPaths);
   return filteredList.map((item, index) => (
@@ -20,6 +21,7 @@ export const createPosters = (
       setCurrentShowId={setCurrentShowId}
       setCurrentShowType={setCurrentShowType}
       setHomePageLoaded={setHomePageLoaded}
+      setCurrentMenuItem={setCurrentMenuItem}
     />
   ));
 };

@@ -20,12 +20,14 @@ export const PlayingShows = ({
   setCurrentShowId,
   setCurrentShowType,
   setHomePageLoaded,
+  setCurrentMenuItem,
 }) => {
   let menu = createPosters(
     data,
     setCurrentShowId,
     setCurrentShowType,
-    setHomePageLoaded
+    setHomePageLoaded,
+    setCurrentMenuItem
   );
   return (
     <section className="playing_movies">

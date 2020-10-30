@@ -76,6 +76,7 @@ export const Main = (props) => {
           setCurrentShowId={setCurrentShowId}
           homepageLoaded={homepageLoaded}
           setHomePageLoaded={setHomePageLoaded}
+          setCurrentMenuItem={setCurrentMenuItem}
         />
       ) : isSearch ? (
         <SearchResults

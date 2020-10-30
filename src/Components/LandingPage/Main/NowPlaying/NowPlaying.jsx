@@ -13,6 +13,7 @@ const Component = ({
   setCurrentShowId,
   setCurrentShowType,
   setHomePageLoaded,
+  setCurrentMenuItem,
 }) => {
   const createPlayingShows = (data, className, type) => (
     <PlayingShows
@@ -21,6 +22,7 @@ const Component = ({
       className={className}
       setCurrentShowType={() => setCurrentShowType(type)}
       setHomePageLoaded={setHomePageLoaded}
+      setCurrentMenuItem={setCurrentMenuItem}
     />
   );
 
@@ -30,7 +32,7 @@ const Component = ({
       <h5 className="note">
         **RESULTS CAN BE UNRELAVENT DUE TO ONGOING PANDEMIC**
       </h5>
-      {createPlayingShows(playingMovies, "playing_movies", "movies")}
+      {createPlayingShows(playingMovies, "playing_movies", "movie")}
       <h2 className="sub_header">Now Airing - TV Shows</h2>
       {createPlayingShows(airingTvShows, "airing_shows", "tv")}
     </section>
@@ -42,6 +44,7 @@ export const NowPlaying = ({
   setCurrentShowId,
   homepageLoaded,
   setHomePageLoaded,
+  setCurrentMenuItem,
 }) => {
   const [playingMovies, setPlayingMovies] = useState([]);
   const [airingTvShows, setAiringTvShows] = useState([]);
@@ -61,6 +64,7 @@ export const NowPlaying = ({
       setCurrentShowId={setCurrentShowId}
       setCurrentShowType={setCurrentShowType}
       setHomePageLoaded={setHomePageLoaded}
+      setCurrentMenuItem={setCurrentMenuItem}
     />
   );
 };

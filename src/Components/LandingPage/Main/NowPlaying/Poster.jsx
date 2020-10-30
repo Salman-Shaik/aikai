@@ -8,10 +8,12 @@ export const Poster = ({
   setCurrentShowId,
   setCurrentShowType,
   setHomePageLoaded,
+  setCurrentMenuItem,
 }) => {
   let title = data.name || data.title;
 
   const onClick = () => {
+    setCurrentMenuItem("");
     setCurrentShowId(data.id);
     setCurrentShowType();
     setHomePageLoaded(false);

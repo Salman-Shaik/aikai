@@ -4,7 +4,7 @@ export const MinimizeActionButton = ({
   minimizeMethod,
   anchorText,
   minimized,
-  className
+  className,
 }) => {
   return (
     <section className={className} onClick={minimizeMethod}>

@@ -44,6 +44,13 @@ const ShowPage = ({
 }) => {
   return (
     <section className="show-page">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path
+          fill="#EB2F53"
+          fill-opacity="1"
+          d="M0,64L48,53.3C96,43,192,21,288,32C384,43,480,85,576,85.3C672,85,768,43,864,53.3C960,64,1056,128,1152,138.7C1248,149,1344,107,1392,85.3L1440,64L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
+        ></path>
+      </svg>
       <section className="examples">
         <img
           src={image1}
@@ -60,6 +67,13 @@ const ShowPage = ({
         description={description}
         onClick={() => setCurrentMenuItem(type)}
       />
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path
+          fill="#EB2F53"
+          fill-opacity="1"
+          d="M0,160L60,149.3C120,139,240,117,360,128C480,139,600,181,720,202.7C840,224,960,224,1080,213.3C1200,203,1320,181,1380,170.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
+        ></path>
+      </svg>
     </section>
   );
 };

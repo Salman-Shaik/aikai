@@ -17,9 +17,9 @@ const createProgressBar = (rating) => (
       strokeLinecap: "round",
       textSize: "22px",
       pathTransitionDuration: 0.5,
-      pathColor: `rgb(253, 82, 144)`,
-      textColor: "#8d8c8c",
-      trailColor: "#fffff2",
+      pathColor: `#f85149`,
+      textColor: "#ffffff",
+      trailColor: "#8c1844",
       backgroundColor: "#ffe1ec",
     })}
   />
