@@ -5,6 +5,7 @@ import { getGenreNames, imageUrlBuilder } from "../../../../lib/helper";
 import { FavoriteComponent } from "./Actions/FavoriteComponent";
 import { ShareComponent } from "./Actions/ShareComponent";
 import { WatchList } from "./Actions/WatchList";
+import { AvailableOn } from "./AvailableOn";
 
 const createProgressBar = (rating) => (
   <CircularProgressbar
@@ -39,6 +40,7 @@ export const ShowDetails = ({
   const releaseDate = info["first_air_date"] || info["release_date"];
   const imagePath = info["poster_path"];
   const language = info["original_language"];
+  const homepage = info["homepage"];
 
   return (
     <section className="show_details">
@@ -50,7 +52,8 @@ export const ShowDetails = ({
           <h4>{genre}</h4>
           {createProgressBar(rating)}
           <h4 className="language">Language: {language.toUpperCase()}</h4>
-          <h4>Release Date: {releaseDate}</h4>
+          {/*<h4>Release Date: {releaseDate}</h4>*/}
+          <AvailableOn homePage={homepage} />
         </section>
       </section>
       <section className="show_actions">

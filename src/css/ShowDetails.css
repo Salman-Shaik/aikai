@@ -102,3 +102,25 @@
   box-shadow: #301923 1px 1px 6px 6px;
   border-radius: 50%;
 }
+
+.stream {
+  width: 2.6vw;
+  margin: 0.3vw 0;
+}
+
+.prime {
+  width: 2.4vw;
+  border-radius: 20px;
+  margin-left: 1vw;
+}
+
+.available_on {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.available_header {
+  margin: 0 !important;
+}
