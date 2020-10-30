@@ -1,6 +1,5 @@
 import Tooltip from "@material-ui/core/Tooltip";
-import AddToWatchList from "@material-ui/icons/PlaylistAdd";
-import AddedToWatchList from "@material-ui/icons/PlaylistAddCheck";
+import { Bookmark, BookmarkBorder } from "@material-ui/icons";
 import React, { useEffect, useState } from "react";
 import {
   addToWatchList,
@@ -31,7 +30,7 @@ export const WatchList = ({
   const Add = () => {
     return (
       <Tooltip title={"Add To WatchList"}>
-        <AddToWatchList className="add" onClick={onWatchListAdd} />
+        <BookmarkBorder className="add" onClick={onWatchListAdd} />
       </Tooltip>
     );
   };
@@ -39,7 +38,7 @@ export const WatchList = ({
   const Added = () => {
     return (
       <Tooltip title={"On WatchList"}>
-        <AddedToWatchList className="added" />
+        <Bookmark className="added" />
       </Tooltip>
     );
   };
