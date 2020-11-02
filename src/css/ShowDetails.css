@@ -81,6 +81,9 @@
   margin-bottom: 1vh;
 }
 
+.share_clicked {
+  color: dodgerblue;
+}
 .add,
 .added {
   font-size: 2em !important;
