@@ -5,6 +5,9 @@
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
+    "@testing-library/jest-dom": "^5.11.5",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
     "bcrypt": "^5.0.0",
     "check-password-strength": "^1.0.15",
     "compression": "^1.7.4",
@@ -26,6 +29,8 @@
     "react-scripts": "^4.0.0",
     "react-scroll": "^1.8.1",
     "react-switch": "^5.0.1",
+    "react-test-renderer": "^17.0.1",
+    "react-testing-library": "^8.0.1",
     "sequelize": "^6.3.5"
   },
   "scripts": {
@@ -51,8 +56,6 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.11.5",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10"
+    "jest-fetch-mock": "^3.0.3"
   }
 }

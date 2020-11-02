@@ -29,7 +29,7 @@ export const MiniShow = ({
           alt={title}
           onClick={onClick}
         />
-        <h4 className="title" onClick={onClick}>
+        <h4 className="title" onClick={onClick} data-testid="title">
           {title}
         </h4>
       </section>

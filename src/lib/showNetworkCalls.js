@@ -89,13 +89,17 @@ export const fetchOtherShow = (
 ) => {
   const url = `${API_HOST}/${currentShowType}/${showId}/${keyword}?api_key=${API_KEY}&language=en-IN&page=1`;
   fetch(url)
-    .then((r) => r.text())
-    .then((d) => JSON.parse(d).results)
+    .then((r) => {
+      return r.text();
+    })
+    .then((d) => {
+      return JSON.parse(d).results;
+    })
     .then((res) => getFirstFour(res))
     .then((ff) => {
-      setHomePageLoaded(true);
-      setOtherShows(ff);
       setLoaded(true);
+      setOtherShows(ff);
+      setHomePageLoaded(true);
     })
     .catch((e) => new TypeError(e));
 };

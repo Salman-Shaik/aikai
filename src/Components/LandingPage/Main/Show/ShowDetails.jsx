@@ -43,11 +43,13 @@ export const ShowDetails = ({
   const homepage = info["homepage"];
 
   return (
-    <section className="show_details">
-      <section className="show_specifics">
+    <section className="show_details" data-testid="show_details">
+      <section className="show_specifics" data-testid="show_specifics">
         <img className="poster" src={imageUrlBuilder(imagePath)} alt={title} />
         <section className="show_info">
-          <h2 className="show_title">{title}</h2>
+          <h2 className="show_title" data-testid="show_title">
+            {title}
+          </h2>
           <p className="description">{description}</p>
           <h4>{genre}</h4>
           {createProgressBar(rating)}
@@ -56,7 +58,7 @@ export const ShowDetails = ({
           <AvailableOn homePage={homepage} />
         </section>
       </section>
-      <section className="show_actions">
+      <section className="show_actions" data-testid="show_actions">
         <FavoriteComponent
           id={id}
           title={title}
@@ -71,7 +73,11 @@ export const ShowDetails = ({
           isUserLoggedIn={isUserLoggedIn}
           setGotoLoginPage={setGotoLoginPage}
         />
-        <ShareComponent id={id} currentShowType={currentShowType} />
+        <ShareComponent
+          id={id}
+          currentShowType={currentShowType}
+          navigator={navigator}
+        />
       </section>
     </section>
   );

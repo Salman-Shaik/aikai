@@ -2,14 +2,14 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Share from "@material-ui/icons/ShareTwoTone";
 import React from "react";
 
-export const ShareComponent = ({ id, currentShowType }) => {
+export const ShareComponent = ({ id, currentShowType, navigator }) => {
   const copyUrl = () => {
     const showUrl = `${window.location.href}?showId=${id}&showType=${currentShowType}`;
     navigator.clipboard.writeText(showUrl).catch((e) => new TypeError(e));
   };
   return (
     <Tooltip title={"Copy Url"}>
-      <Share className="share" onClick={copyUrl} />
+      <Share className="share" onClick={copyUrl} data-testid="share" />
     </Tooltip>
   );
 };

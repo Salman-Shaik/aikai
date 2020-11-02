@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Mini Show Snapshot Test 1`] = `
+<div>
+  <section
+    class="mini_show"
+  >
+    <section
+      class="mini_show_details"
+    >
+      <img
+        class="mini_poster"
+        src="https://image.tmdb.org/t/p/originalundefined"
+      />
+      <h4
+        class="title"
+        data-testid="title"
+      />
+    </section>
+    <section
+      class="mini_show_actions"
+    />
+  </section>
+</div>
+`;

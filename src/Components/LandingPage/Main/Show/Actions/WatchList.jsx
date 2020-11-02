@@ -30,7 +30,11 @@ export const WatchList = ({
   const Add = () => {
     return (
       <Tooltip title={"Add To WatchList"}>
-        <BookmarkBorder className="add" onClick={onWatchListAdd} />
+        <BookmarkBorder
+          className="add"
+          onClick={onWatchListAdd}
+          data-testid="add_to_watchlist"
+        />
       </Tooltip>
     );
   };
@@ -38,7 +42,7 @@ export const WatchList = ({
   const Added = () => {
     return (
       <Tooltip title={"On WatchList"}>
-        <Bookmark className="added" />
+        <Bookmark className="added" data-testid="on_watchlist" />
       </Tooltip>
     );
   };

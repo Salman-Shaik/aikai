@@ -2,7 +2,6 @@ import Tooltip from "@material-ui/core/Tooltip";
 import React from "react";
 
 export const AvailableOn = ({ homePage }) => {
-  console.log(homePage);
   const isNetflix = () => homePage.includes("netflix");
   const isDisneyPlus = () => homePage.includes("disney");
   const isPrimeVideo = () =>

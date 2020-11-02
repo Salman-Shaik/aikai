@@ -37,13 +37,21 @@ export const FavoriteComponent = ({
 
   const Liked = () => (
     <Tooltip title="You Like It">
-      <Favorite className="favorite" onClick={onDislike} />
+      <Favorite
+        className="favorite"
+        onClick={onDislike}
+        data-testid="favorite"
+      />
     </Tooltip>
   );
 
   const NotLiked = () => (
     <Tooltip title="Like It?">
-      <FavoriteBorder className="not_favorite" onClick={onLike} />
+      <FavoriteBorder
+        className="not_favorite"
+        onClick={onLike}
+        data-testid="not_favorite"
+      />
     </Tooltip>
   );
 

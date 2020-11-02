@@ -39,14 +39,14 @@ const Component = ({
   setCurrentMenuItem,
 }) => {
   return (
-    <section className={className}>
+    <section className={className} data-testid={className}>
       <h3 className="section_title">{_.capitalize(keyword)}</h3>
       {_.isEmpty(otherShows) ? (
-        <h4 className="empty">{`No ${_.capitalize(keyword)} ${_.capitalize(
-          currentShowType
-        )}s`}</h4>
+        <h4 className="empty" data-testid="empty">{`No ${_.capitalize(
+          keyword
+        )} ${_.capitalize(currentShowType)}s`}</h4>
       ) : (
-        <section className="mini_shows">
+        <section className="mini_shows" data-testid="mini_shows">
           {createMiniShows(
             otherShows,
             setCurrentShow,
@@ -73,6 +73,7 @@ export const OtherShows = ({
 }) => {
   const [otherShows, setOtherShows] = useState([]);
   const [loaded, setLoaded] = useState(false);
+
   useEffect(() => {
     if (showId !== 0 && !_.isEmpty(currentShowType)) {
       fetchOtherShow(

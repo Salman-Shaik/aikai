@@ -1,9 +1,18 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import { render } from "@testing-library/react";
 import App from "./App";
 
-test("renders learn react link", () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe("App", () => {
+  it("renders without crashing", () => {
+    const div = document.createElement("div");
+    ReactDOM.render(<App />, div);
+    setTimeout(() => ReactDOM.unmountComponentAtNode(div), 100);
+  });
+
+  it("App Snapshot Test", function () {
+    fetch.mockResponse(JSON.stringify(new TypeError()), { status: 400 });
+    const { container } = render(<App />);
+    expect(container).toMatchSnapshot();
+  });
 });

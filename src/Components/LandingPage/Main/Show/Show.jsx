@@ -49,7 +49,7 @@ const Component = ({
     <section>
       <section className="show">
         {_.isEmpty(info) || info["status_code"] === 34 ? (
-          <h2 className="invalid_query">
+          <h2 className="invalid_query" data-testid="invalid_query">
             {"Invalid Show: Check The Your Search Query."}
           </h2>
         ) : (
