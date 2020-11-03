@@ -27,20 +27,33 @@ const {
   logoutUser,
 } = require("./handlers/deleteHandler");
 const { sequelize, models } = require("./models");
+const async = require("async");
 
 const { User } = models;
 const port = process.env.PORT || 8080;
 
 const app = express();
 
+const userValidator = (req, res, next) => validateUser(req, res, next, User);
+
+const parallel = (middlewares) => {
+  return (req, res, next) => {
+    async.each(
+      middlewares,
+      (mw, cb) => {
+        mw(req, res, cb);
+      },
+      next
+    );
+  };
+};
+
 app.use(compression());
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(apiKeySetter);
-app.use((req, res, next) => validateUser(req, res, next, User));
-app.use(currentShowSetter);
+app.use(parallel([apiKeySetter, currentShowSetter, userValidator]));
 app.use(
   express.static(path.join(__dirname, "../build"), { maxAge: 2592000000 })
 );
