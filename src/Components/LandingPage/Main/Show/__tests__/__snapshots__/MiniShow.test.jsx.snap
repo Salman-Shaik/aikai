@@ -4,12 +4,14 @@ exports[`Mini Show Snapshot Test 1`] = `
 <div>
   <section
     class="mini_show"
+    data-testid="mini_show"
   >
     <section
       class="mini_show_details"
     >
       <img
         class="mini_poster"
+        data-testid="mini_poster"
         src="https://image.tmdb.org/t/p/originalundefined"
       />
       <h4

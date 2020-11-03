@@ -3,7 +3,7 @@ import "../../css/Alert.css";
 
 export const Alert = ({ style, message }) => {
   return (
-    <div className={`alert ${style}-alert`}>
+    <div className={`alert ${style}-alert`} data-testid={`${style}-alert`}>
       <span className={`${style}_message`}>{message}</span>
     </div>
   );

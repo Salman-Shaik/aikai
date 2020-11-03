@@ -84,10 +84,10 @@ export const LoginPage = ({
             autoComplete="on"
           />
         </section>
-        <button type="button" className="login_button" onClick={onLogin}>
+        <button type="button" className="login_button" onClick={onLogin} data-testid="login_button">
           Login
         </button>
-        <span className="create_account" onClick={gotoRegister}>
+        <span className="create_account" onClick={gotoRegister} data-testid="create_account">
           <b>New User? Create Account</b>
         </span>
       </section>

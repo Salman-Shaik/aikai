@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login Page Snapshot Test 1`] = `
+<div>
+  <section
+    class="login"
+  >
+    <section
+      class="login_form"
+    >
+      <h3
+        class="login_header"
+      >
+        Welcome Back
+      </h3>
+      <section
+        class="credentials"
+      >
+        <input
+          autocomplete="on"
+          class="credential "
+          placeholder="Enter Username"
+          type="text"
+        />
+        <input
+          autocomplete="on"
+          class="credential "
+          placeholder="Enter Password"
+          type="password"
+        />
+      </section>
+      <button
+        class="login_button"
+        data-testid="login_button"
+        type="button"
+      >
+        Login
+      </button>
+      <span
+        class="create_account"
+        data-testid="create_account"
+      >
+        <b>
+          New User? Create Account
+        </b>
+      </span>
+    </section>
+  </section>
+</div>
+`;

@@ -21,10 +21,11 @@ export const MiniShow = ({
   };
 
   return (
-    <section className="mini_show">
+    <section className="mini_show" data-testid={"mini_show"}>
       <section className="mini_show_details" onClick={onClick}>
         <img
           className="mini_poster"
+          data-testid="mini_poster"
           src={imageUrlBuilder(posterPath)}
           alt={title}
           onClick={onClick}

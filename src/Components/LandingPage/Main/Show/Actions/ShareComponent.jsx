@@ -11,6 +11,7 @@ export const ShareComponent = ({id, currentShowType, navigator}) => {
     setIsClicked(true);
     setTimeout(() => setIsClicked(false), 3000);
   };
+
   return (
     <Tooltip title={!!isClicked ? "Url Copied" : "Copy Url"}>
       <Share className={`share ${!!isClicked ? "share_clicked" : ""}`} onClick={copyUrl} data-testid="share"/>

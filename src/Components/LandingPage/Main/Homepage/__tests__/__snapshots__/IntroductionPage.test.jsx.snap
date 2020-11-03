@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Introduction Page Snapshot Test 1`] = `
+<div>
+  <section
+    class="introduction_page"
+  >
+    <section
+      class="introduction"
+    >
+      <span
+        class="heading"
+      >
+        Random Movie / TV Show Generator
+      </span>
+      <p
+        class="info"
+      >
+        Confused what to watch today, want to know the details of a movie/tv show, want to get recommendations for a movie/tv show, want to know what's playing in theatres or what's airing on TV. You can get all of them here @ A.I.K.A.I .
+      </p>
+    </section>
+  </section>
+</div>
+`;

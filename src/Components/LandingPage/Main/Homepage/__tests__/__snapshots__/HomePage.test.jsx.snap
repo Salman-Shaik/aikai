@@ -1,0 +1,261 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Homepage Snapshot Test 1`] = `
+<div>
+  <section
+    class="homepage"
+  >
+    <section
+      class="introduction_page"
+    >
+      <section
+        class="introduction"
+      >
+        <span
+          class="heading"
+        >
+          Random Movie / TV Show Generator
+        </span>
+        <p
+          class="info"
+        >
+          Confused what to watch today, want to know the details of a movie/tv show, want to get recommendations for a movie/tv show, want to know what's playing in theatres or what's airing on TV. You can get all of them here @ A.I.K.A.I .
+        </p>
+      </section>
+    </section>
+    <section
+      class="page"
+      id="now-playing"
+    >
+      <section
+        class="now-playing"
+      >
+        <img
+          alt="Now Playing"
+          class="now-playing_image"
+          src="nowPlaying.png"
+        />
+        <section
+          class="info_section"
+        >
+          <p
+            class="page_info"
+          >
+            Wanna know what's playing in Theatres or which TV show is airing today.
+          </p>
+          <button
+            class="visit"
+            type="button"
+          >
+            Visit →
+          </button>
+        </section>
+      </section>
+    </section>
+    <section
+      class="show-page"
+    >
+      <section
+        class="examples"
+      >
+        <img
+          alt="Top Rated Movie"
+          class="show_example"
+          src="movies-top.png"
+        />
+        <img
+          alt="Random Movie"
+          class="show_example"
+          src="movies-random.png"
+        />
+      </section>
+      <section
+        class="info_section"
+      >
+        <p
+          class="page_info"
+        >
+          Puzzled which Movie to watch? We are here to help you.
+        </p>
+        <button
+          class="visit"
+          type="button"
+        >
+          Visit →
+        </button>
+      </section>
+    </section>
+    <section
+      class="show-page"
+    >
+      <section
+        class="examples"
+      >
+        <img
+          alt="Top Rated Tv"
+          class="show_example"
+          src="tv-top.png"
+        />
+        <img
+          alt="Random Tv"
+          class="show_example"
+          src="tv-random.png"
+        />
+      </section>
+      <section
+        class="info_section"
+      >
+        <p
+          class="page_info"
+        >
+          Want to watch a TV / Web Series. We got your back with suggestions.
+        </p>
+        <button
+          class="visit"
+          type="button"
+        >
+          Visit →
+        </button>
+      </section>
+    </section>
+    <section
+      class="page"
+      id="editors_choice"
+    >
+      <section
+        class="editors_choice"
+      >
+        <img
+          alt="Editor's Choice"
+          class="editors_choice_image"
+          src="editorsChoice.png"
+        />
+        <section
+          class="info_section"
+        >
+          <p
+            class="page_info"
+          >
+            Recommendations from the Editor, he says these are best he has ever seen. Do you believe him?
+          </p>
+          <button
+            class="visit"
+            type="button"
+          >
+            Visit →
+          </button>
+        </section>
+      </section>
+    </section>
+    <section
+      class="page"
+      id="favorites"
+    >
+      <section
+        class="favorites"
+      >
+        <img
+          alt="favorite"
+          class="favorite_image"
+          src="favorites.png"
+        />
+        <section
+          class="description_section"
+        >
+          <img
+            alt="Favorite Example"
+            class="favorite_example"
+            src="example.png"
+          />
+          <section
+            class="info_section"
+          >
+            <p
+              class="page_info"
+            >
+              You can add movie or tv shows to your favorites list but you need to login first.
+            </p>
+            <button
+              class="visit"
+              type="button"
+            >
+              Visit →
+            </button>
+          </section>
+        </section>
+      </section>
+    </section>
+    <section
+      class="feature_page"
+    >
+      <section
+        class="features"
+      >
+        <span
+          class="features_header"
+        >
+          Features coming soon
+        </span>
+        <ul
+          class="feature_list"
+        >
+          <li
+            class="feature"
+          >
+            Watchlist
+          </li>
+          <li
+            class="feature"
+          >
+            User profile
+          </li>
+          <li
+            class="feature"
+          >
+            Subscriptions
+          </li>
+        </ul>
+      </section>
+      <section
+        class="feedback"
+      >
+        <span
+          class="feedback_header"
+        >
+          Feedback makes A.I.K.A.I perfect
+        </span>
+        <button
+          class="feedback_button"
+          type="button"
+        >
+          Share feedback
+        </button>
+      </section>
+      <span
+        class="signature"
+      >
+        Made by
+         
+        <a
+          class="profile_link"
+          href="https://github.com/Salman-Shaik"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Salman Shaik
+        </a>
+      </span>
+      <svg
+        viewBox="0 0 1440 320"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0,64L48,58.7C96,53,192,43,288,69.3C384,96,480,160,576,160C672,160,768,96,864,106.7C960,117,1056,203,1152,224C1248,245,1344,203,1392,181.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+          fill="#EB2F53"
+          fill-opacity="1"
+        />
+      </svg>
+    </section>
+  </section>
+</div>
+`;

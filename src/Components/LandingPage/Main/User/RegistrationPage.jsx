@@ -8,6 +8,7 @@ import { registerUser } from "../../../../lib/networkCalls";
 import { Alert } from "../../Alert";
 import { LanguageOption } from "./LanguageOption";
 
+//TODO: Need to add test
 const createLanguageComponents = (languages, addLanguage, removeLanguage) =>
   Object.values(languages).map((language) => (
     <LanguageOption
@@ -124,7 +125,7 @@ export const RegistrationPage = ({ setGotoRegisterPage, setGotoLoginPage }) => {
   };
 
   return (
-    <section className="register">
+    <section className="register" data-testid="register">
       {!!successMessage && <Alert style="success" message={successMessage} />}
       {_.isEqual(pageNumber, 1) && (
         <section className="register_page">

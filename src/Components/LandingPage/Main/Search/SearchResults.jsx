@@ -7,7 +7,7 @@ import { Spinner } from "../../../Spinner";
 import { MinimizeActionButton } from "../MinimizeActionButton";
 
 const Section = ({ posters, key }) => (
-  <section className="sectioned_posters" key={key}>
+  <section className="sectioned_posters" data-testid="sectioned_posters" key={key}>
     {posters}
   </section>
 );
@@ -31,9 +31,9 @@ const createSectionedPosters = (
     const title = info.name || info.title;
     const imagePath = info["poster_path"];
     const onClick = () => {
-      setCurrentMenuItem("");
       setCurrentShowId(id);
       setShowType();
+      setCurrentMenuItem("");
       setHomepageLoaded(false);
     };
     return (
@@ -82,7 +82,7 @@ export const SearchResults = ({
     setHomepageLoaded,
   }) => {
     return (
-      <section className="show_items">
+      <section className="show_items" data-testid="show_items">
         <MinimizeActionButton
           minimized={minimized}
           anchorText={anchorText}
@@ -90,7 +90,7 @@ export const SearchResults = ({
           className="action_button"
         />
         {!minimized && (
-          <section className="show_results">
+          <section className="show_results"data-testid="show_results">
             {_.isEmpty(results) ? (
               <span className="notice">No Results</span>
             ) : (
@@ -112,6 +112,7 @@ export const SearchResults = ({
     setMovieMinimized(!movieMinimized);
     setTVMinimized(true);
   };
+
   const minimizeTv = () => {
     setLoaded(false);
     setHomePageLoaded(false);
