@@ -1,8 +1,8 @@
 import Tooltip from "@material-ui/core/Tooltip";
 import Share from "@material-ui/icons/ShareTwoTone";
-import React, {useState} from "react";
+import React, { useState } from "react";
 
-export const ShareComponent = ({id, currentShowType, navigator}) => {
+export const ShareComponent = ({ id, currentShowType, navigator }) => {
   const [isClicked, setIsClicked] = useState(false);
 
   const copyUrl = () => {
@@ -14,7 +14,11 @@ export const ShareComponent = ({id, currentShowType, navigator}) => {
 
   return (
     <Tooltip title={!!isClicked ? "Url Copied" : "Copy Url"}>
-      <Share className={`share ${!!isClicked ? "share_clicked" : ""}`} onClick={copyUrl} data-testid="share"/>
+      <Share
+        className={`share ${!!isClicked ? "share_clicked" : ""}`}
+        onClick={copyUrl}
+        data-testid="share"
+      />
     </Tooltip>
   );
 };

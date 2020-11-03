@@ -7,7 +7,11 @@ import { Spinner } from "../../../Spinner";
 import { MinimizeActionButton } from "../MinimizeActionButton";
 
 const Section = ({ posters, key }) => (
-  <section className="sectioned_posters" data-testid="sectioned_posters" key={key}>
+  <section
+    className="sectioned_posters"
+    data-testid="sectioned_posters"
+    key={key}
+  >
     {posters}
   </section>
 );
@@ -90,7 +94,7 @@ export const SearchResults = ({
           className="action_button"
         />
         {!minimized && (
-          <section className="show_results"data-testid="show_results">
+          <section className="show_results" data-testid="show_results">
             {_.isEmpty(results) ? (
               <span className="notice">No Results</span>
             ) : (

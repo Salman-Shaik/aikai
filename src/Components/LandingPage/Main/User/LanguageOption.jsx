@@ -22,7 +22,11 @@ export const LanguageOption = ({ text, addLanguage, removeLanguage }) => {
       <h4 className="language">{text}</h4>
       {selected ? (
         <Tooltip title="Selected">
-          <CheckCircle className={"selected"} onClick={onUnSelect} data-testid="selected"/>
+          <CheckCircle
+            className={"selected"}
+            onClick={onUnSelect}
+            data-testid="selected"
+          />
         </Tooltip>
       ) : (
         <Tooltip title="Select">
