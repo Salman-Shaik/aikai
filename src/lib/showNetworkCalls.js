@@ -1,7 +1,7 @@
 import _ from "lodash";
 import languagesList from "../data/languages.json";
-import {getCookieValue, getFirstFour, getRandomItem} from "./helper";
-import {fetchLanguages} from "./networkCalls";
+import { getCookieValue, getFirstFour, getRandomItem } from "./helper";
+import { fetchLanguages } from "./networkCalls";
 
 const API_KEY = getCookieValue("apiKey");
 const YOUTUBE_API_KEY = getCookieValue("youtubeKey");
@@ -147,8 +147,9 @@ export const fetchSearchedShow = (
 };
 
 export const fetchVideoId = (title, setVideoId, setHomepageLoaded) => {
-  const url = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&videoEmbeddable=true"
-    + `&key=${YOUTUBE_API_KEY}&q=${title} Trailer`;
+  const url =
+    "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&videoEmbeddable=true" +
+    `&key=${YOUTUBE_API_KEY}&q=${title} Trailer`;
   fetch(url)
     .then((res) => res.text())
     .then((d) => JSON.parse(d))

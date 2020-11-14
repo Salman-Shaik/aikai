@@ -43,7 +43,11 @@ const Component = ({
       />
       {createOtherMovies("recommendations", "recommended_movies")}
       {createOtherMovies("similar", "similar_movies")}
-      <Trailer info={info} homepageLoaded={homepageLoaded} setHomepageLoaded={setHomePageLoaded}/>
+      <Trailer
+        info={info}
+        homepageLoaded={homepageLoaded}
+        setHomepageLoaded={setHomePageLoaded}
+      />
     </section>
   );
 
