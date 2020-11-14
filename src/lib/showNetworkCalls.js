@@ -149,13 +149,11 @@ export const fetchSearchedShow = (
 export const fetchVideoId = (title, setVideoId, setHomepageLoaded) => {
   const url = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&videoEmbeddable=true"
     + `&key=${YOUTUBE_API_KEY}&q=${title} Trailer`;
-
   fetch(url)
     .then((res) => res.text())
     .then((d) => JSON.parse(d))
     .then((results) => {
       const videoId = results.items[0].id.videoId;
-      console.log(videoId)
       setVideoId(videoId);
       setHomepageLoaded(true);
     })

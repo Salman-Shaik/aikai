@@ -38,10 +38,10 @@ const apiKeySetter = (req, res, next) => {
   let cookie = req.cookies.apiKey;
   let youtubeCookie = req.cookies.youtubeKey;
   if (!cookie) {
-    res.cookie("apiKey", "8f38dc176aea0ef9cbb167f50a8fc9b2");
+    res.cookie("apiKey", process.env.TMDB_API_KEY);
   }
   if (!youtubeCookie) {
-    res.cookie("youtubeKey", "***REMOVED***");
+    res.cookie("youtubeKey", process.env.YOUTUBE_API_KEY);
   }
   next();
 };
