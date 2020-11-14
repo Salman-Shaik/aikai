@@ -40,9 +40,12 @@
 }
 
 .random_image,
-.top_rated_image,
-.editors_choice_image {
+.top_rated_image {
   width: 70%;
+}
+
+.editors_choice_image {
+  width: 58%;
 }
 
 .favorite_image {
@@ -242,5 +245,5 @@
 }
 
 .show_example {
-  width: 45%;
+  width: 40%;
 }
