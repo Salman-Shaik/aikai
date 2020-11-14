@@ -1,9 +1,10 @@
 import _ from "lodash";
 import languagesList from "../data/languages.json";
-import { getCookieValue, getFirstFour, getRandomItem } from "./helper";
-import { fetchLanguages } from "./networkCalls";
+import {getCookieValue, getFirstFour, getRandomItem} from "./helper";
+import {fetchLanguages} from "./networkCalls";
 
 const API_KEY = getCookieValue("apiKey");
+const YOUTUBE_API_KEY = getCookieValue("youtubeKey");
 const API_HOST = "https://api.themoviedb.org/3";
 
 const playingMoviesFilter = (json, setPlayingMovies) => {
@@ -141,6 +142,22 @@ export const fetchSearchedShow = (
         setLoaded(true);
         setHomePageLoaded(true);
       }
+    })
+    .catch((e) => new TypeError(e));
+};
+
+export const fetchVideoId = (title, setVideoId, setHomepageLoaded) => {
+  const url = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&videoEmbeddable=true"
+    + `&key=${YOUTUBE_API_KEY}&q=${title} Trailer`;
+
+  fetch(url)
+    .then((res) => res.text())
+    .then((d) => JSON.parse(d))
+    .then((results) => {
+      const videoId = results.items[0].id.videoId;
+      console.log(videoId)
+      setVideoId(videoId);
+      setHomepageLoaded(true);
     })
     .catch((e) => new TypeError(e));
 };

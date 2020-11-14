@@ -33,10 +33,15 @@ const currentShowSetter = (req, res, next) => {
   }
   next();
 };
+
 const apiKeySetter = (req, res, next) => {
   let cookie = req.cookies.apiKey;
+  let youtubeCookie = req.cookies.youtubeKey;
   if (!cookie) {
     res.cookie("apiKey", "8f38dc176aea0ef9cbb167f50a8fc9b2");
+  }
+  if (!youtubeCookie) {
+    res.cookie("youtubeKey", "***REMOVED***");
   }
   next();
 };

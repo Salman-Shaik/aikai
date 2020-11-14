@@ -1,0 +1,16 @@
+.trailer_section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 85vw;
+}
+
+.trailer_title {
+  color: #6495ed;
+  margin-left: 0.4vw;
+}
+
+.trailer_video{
+  margin-left: 1vw;
+  border-radius: 10px;
+}
