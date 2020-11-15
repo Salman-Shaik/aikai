@@ -1,22 +1,20 @@
 import React from "react";
 import "../../../../css/MiniShow.css";
-import { imageUrlBuilder } from "../../../../lib/helper";
+import { createCookie, imageUrlBuilder } from "../../../../lib/helper";
 import { FavoriteComponent } from "./Actions/FavoriteComponent";
 
 export const MiniShow = ({
   posterPath,
   title,
   id,
-  setCurrentShowId,
   setHomePageLoaded,
-  setCurrentMenuItem,
   favFlag,
-  setGotoLoginPage,
+  updateLocation,
   isUserLoggedIn,
 }) => {
   const onClick = () => {
-    setCurrentShowId(id);
-    setCurrentMenuItem("");
+    createCookie("showId", id);
+    updateLocation("/");
     setHomePageLoaded(false);
   };
 
@@ -45,7 +43,7 @@ export const MiniShow = ({
             title={title}
             posterPath={posterPath}
             initialValue={true}
-            setGotoLoginPage={setGotoLoginPage}
+            updateLocation={updateLocation}
             isUserLoggedIn={isUserLoggedIn}
           />
         )}

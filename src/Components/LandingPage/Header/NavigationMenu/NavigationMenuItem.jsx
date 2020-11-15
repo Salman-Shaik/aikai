@@ -1,23 +1,18 @@
 import React from "react";
 import "../../../../css/NavigationMenuItem.css";
+import { isCurrentItem } from "../../../../lib/helper";
 
-export const NavigationMenuItem = ({
-  name,
-  currentMenuItem,
-  setCurrentMenuItem,
-  setHomePageLoaded,
-  onclick,
-}) => {
-  let isItemSelected = name === currentMenuItem;
+export const NavigationMenuItem = ({ name, setHomePageLoaded, onclick }) => {
+  let isItemSelected = isCurrentItem(name);
   const onClick = ({ target }) => {
     setHomePageLoaded(false);
-    setCurrentMenuItem(name);
     target.blur();
     onclick();
   };
+
   const isMovieOrTV =
-    (currentMenuItem === "movie" && name === "Movies") ||
-    (currentMenuItem === "tv" && name === "TV Shows");
+    window.location.href === "/movies" || window.location.href === "/tv_shows";
+
   return (
     <button
       type="button"

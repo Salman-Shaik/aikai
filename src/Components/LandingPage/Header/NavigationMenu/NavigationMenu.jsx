@@ -2,8 +2,6 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Favorite from "@material-ui/icons/Favorite";
 import React from "react";
 import "../../../../css/NavigationMenu.css";
-import { list } from "../../../../data/editorsChoice.json";
-import { getRandomItem } from "../../../../lib/helper";
 import { fetchUserFavorites } from "../../../../lib/networkCalls";
 import { NavigationMenuItem } from "./NavigationMenuItem";
 import { SearchBar } from "./SearchBar";
@@ -11,65 +9,45 @@ import { UserIcon } from "./UserIcon";
 
 export const NavigationMenu = (props) => {
   const {
-    currentMenuItem,
     isUserLoggedIn,
-    setCurrentMenuItem,
-    setCurrentShow,
-    setCurrentShowId,
     setIsUserLoggedIn,
-    setCurrentShowType,
     setHomePageLoaded,
-    setGotoLoginPage,
     setFavorites,
-    setGotoRegisterPage,
+    updateLocation,
   } = props;
 
   const createNavigationMenuItem = (name, onclick) => (
     <NavigationMenuItem
       name={name}
-      currentMenuItem={currentMenuItem}
-      setCurrentMenuItem={setCurrentMenuItem}
-      setHomePageLoaded={setHomePageLoaded}
       onclick={onclick}
+      setHomePageLoaded={setHomePageLoaded}
     />
   );
 
-  const setUserPagesOff = () => {
-    setGotoLoginPage(false);
-    setGotoRegisterPage(false);
-  };
-
   const onEditorsChoice = () => {
-    setUserPagesOff();
-    const randomShow = getRandomItem(list);
-    setCurrentShowType(randomShow.type);
-    setCurrentShowId(randomShow.id);
-    setHomePageLoaded(true);
+    setHomePageLoaded(false);
+    updateLocation("/editors_choice");
   };
 
   const onFavorites = () => {
-    setGotoRegisterPage(false);
-    if (!isUserLoggedIn) return setGotoLoginPage(true);
+    if (!isUserLoggedIn) return updateLocation("/login");
     fetchUserFavorites().then((favorites) => {
-      setCurrentMenuItem("Favorites");
       setFavorites(favorites);
       setHomePageLoaded(true);
+      updateLocation("/favorites");
     });
   };
 
   const onNowPlaying = () => {
-    setCurrentMenuItem("Now Playing");
-    setUserPagesOff();
+    updateLocation("/now_playing");
   };
 
   const onMovie = () => {
-    setUserPagesOff();
-    setCurrentMenuItem("movie");
+    updateLocation("/movies");
   };
 
   const onTv = () => {
-    setUserPagesOff();
-    setCurrentMenuItem("tv");
+    updateLocation("/tv_shows");
   };
 
   return (
@@ -82,21 +60,14 @@ export const NavigationMenu = (props) => {
         <Favorite className="favorites_icon" onClick={onFavorites} />
       </Tooltip>
       <SearchBar
-        setCurrentShow={setCurrentShow}
-        setCurrentShowId={setCurrentShowId}
         setHomePageLoaded={setHomePageLoaded}
-        setCurrentMenuItem={setCurrentMenuItem}
-        clear={() => {
-          setGotoRegisterPage(false);
-          setGotoLoginPage(false);
-        }}
+        updateLocation={updateLocation}
       />
       <UserIcon
         isUserLoggedIn={isUserLoggedIn}
-        setGotoLoginPage={setGotoLoginPage}
         setHomePageLoaded={setHomePageLoaded}
         setIsUserLoggedIn={setIsUserLoggedIn}
-        setCurrentMenuItem={setCurrentMenuItem}
+        updateLocation={updateLocation}
       />
     </section>
   );

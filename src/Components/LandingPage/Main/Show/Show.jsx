@@ -16,8 +16,7 @@ const Component = ({
   setHomePageLoaded,
   homepageLoaded,
   isUserLoggedIn,
-  setGotoLoginPage,
-  setCurrentMenuItem,
+  updateLocation,
 }) => {
   const createOtherMovies = (keyword, className) => (
     <OtherShows
@@ -29,7 +28,7 @@ const Component = ({
       setCurrentShowId={setCurrentShowId}
       homepageLoaded={homepageLoaded}
       setHomePageLoaded={setHomePageLoaded}
-      setCurrentMenuItem={setCurrentMenuItem}
+      updateLocation={updateLocation}
     />
   );
 
@@ -39,7 +38,7 @@ const Component = ({
         info={info}
         currentShowType={currentShowType}
         isUserLoggedIn={isUserLoggedIn}
-        setGotoLoginPage={setGotoLoginPage}
+        updateLocation={updateLocation}
       />
       {createOtherMovies("recommendations", "recommended_movies")}
       {createOtherMovies("similar", "similar_movies")}
@@ -70,18 +69,13 @@ export const Show = ({
   currentShowId,
   currentShow,
   currentShowType,
-  setCurrentShow,
-  setCurrentShowType,
-  setCurrentMenuItem,
-  setCurrentShowId,
   homepageLoaded,
   setHomePageLoaded,
   isUserLoggedIn,
-  setGotoLoginPage,
+  updateLocation,
 }) => {
   const [info, setShowInformation] = useState({});
   const [loaded, setLoaded] = useState(false);
-
   useEffect(() => {
     if (currentShowId !== 0 && !_.isEmpty(currentShowType)) {
       return fetchShow(
@@ -92,14 +86,7 @@ export const Show = ({
         setHomePageLoaded
       );
     }
-  }, [
-    currentShow,
-    currentShowId,
-    currentShowType,
-    setCurrentShowId,
-    setCurrentShowType,
-    setHomePageLoaded,
-  ]);
+  }, [currentShow, currentShowId, currentShowType, setHomePageLoaded]);
 
   return !loaded || !homepageLoaded ? (
     <Spinner loaded={loaded} />
@@ -107,13 +94,10 @@ export const Show = ({
     <Component
       info={info}
       currentShowType={currentShowType}
-      setCurrentShow={setCurrentShow}
-      setCurrentShowId={setCurrentShowId}
       setHomePageLoaded={setHomePageLoaded}
       homepageLoaded={homepageLoaded}
       isUserLoggedIn={isUserLoggedIn}
-      setGotoLoginPage={setGotoLoginPage}
-      setCurrentMenuItem={setCurrentMenuItem}
+      updateLocation={updateLocation}
     />
   );
 };

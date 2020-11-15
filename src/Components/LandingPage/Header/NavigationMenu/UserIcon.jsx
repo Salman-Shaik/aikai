@@ -7,15 +7,13 @@ import { logout } from "../../../../lib/networkCalls";
 
 export const UserIcon = ({
   isUserLoggedIn,
-  setGotoLoginPage,
+  updateLocation,
   setHomePageLoaded,
   setIsUserLoggedIn,
-  setCurrentMenuItem,
 }) => {
   const onClick = () => {
     if (!isUserLoggedIn) {
-      setCurrentMenuItem("");
-      setGotoLoginPage(true);
+      updateLocation("/login");
     }
   };
   const onLogout = () => logout(setHomePageLoaded, setIsUserLoggedIn);

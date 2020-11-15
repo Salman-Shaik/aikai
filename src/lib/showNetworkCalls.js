@@ -1,6 +1,11 @@
 import _ from "lodash";
 import languagesList from "../data/languages.json";
-import { getCookieValue, getFirstFour, getRandomItem } from "./helper";
+import {
+  createCookie,
+  getCookieValue,
+  getFirstFour,
+  getRandomItem,
+} from "./helper";
 import { fetchLanguages } from "./networkCalls";
 
 const API_KEY = getCookieValue("apiKey");
@@ -105,8 +110,7 @@ export const fetchOtherShow = (
     .catch((e) => new TypeError(e));
 };
 export const fetchTopShow = (
-  setCurrentShowId,
-  setCurrentShowType,
+  setShowId,
   setHomePageLoaded,
   pageNumber,
   type
@@ -117,8 +121,8 @@ export const fetchTopShow = (
     .then((data) => JSON.parse(data).results)
     .then((res) => getRandomItem(res))
     .then((show) => {
-      setCurrentShowType(type);
-      setCurrentShowId(show.id);
+      createCookie("showType", type);
+      setShowId(show.id);
       setHomePageLoaded(true);
     })
     .catch((e) => new TypeError(e));

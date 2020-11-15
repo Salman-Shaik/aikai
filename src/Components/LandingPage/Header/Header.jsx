@@ -1,26 +1,19 @@
 import React from "react";
 import "../../../css/Header.css";
+import { deleteCookie } from "../../../lib/helper";
 import { NavigationMenu } from "./NavigationMenu/NavigationMenu";
 
 export const Header = ({
-  currentMenuItem,
-  setCurrentMenuItem,
   isUserLoggedIn,
-  setGotoLoginPage,
   setFavorites,
   setIsUserLoggedIn,
-  setCurrentShow,
-  setCurrentShowId,
-  setCurrentShowType,
   setHomePageLoaded,
-  setGotoRegisterPage,
+  updateLocation,
 }) => {
   const onIconClick = () => {
-    setCurrentMenuItem("");
-    setCurrentShow("");
-    setCurrentShowId(0);
-    setGotoLoginPage(false);
-    setGotoRegisterPage(false);
+    updateLocation("/");
+    deleteCookie("show");
+    deleteCookie("showId");
   };
 
   return (
@@ -29,17 +22,11 @@ export const Header = ({
         A.I.K.A.I
       </h2>
       <NavigationMenu
-        currentMenuItem={currentMenuItem}
         isUserLoggedIn={isUserLoggedIn}
         setIsUserLoggedIn={setIsUserLoggedIn}
-        setGotoLoginPage={setGotoLoginPage}
-        setGotoRegisterPage={setGotoRegisterPage}
-        setCurrentMenuItem={setCurrentMenuItem}
-        setCurrentShow={setCurrentShow}
-        setCurrentShowId={setCurrentShowId}
-        setCurrentShowType={setCurrentShowType}
         setHomePageLoaded={setHomePageLoaded}
         setFavorites={setFavorites}
+        updateLocation={updateLocation}
       />
     </header>
   );

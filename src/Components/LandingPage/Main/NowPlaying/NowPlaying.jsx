@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../../../css/NowPlaying.css";
+import { createCookie } from "../../../../lib/helper";
 import {
   fetchAiringTVShows,
   fetchPlayingMovies,
@@ -10,19 +11,16 @@ import { PlayingShows } from "./PlayingShows";
 const Component = ({
   playingMovies,
   airingTvShows,
-  setCurrentShowId,
-  setCurrentShowType,
   setHomePageLoaded,
-  setCurrentMenuItem,
+  updateLocation,
 }) => {
   const createPlayingShows = (data, className, type) => (
     <PlayingShows
       data={data}
-      setCurrentShowId={setCurrentShowId}
       className={className}
-      setCurrentShowType={() => setCurrentShowType(type)}
+      setCurrentShowType={() => createCookie("showType", type)}
       setHomePageLoaded={setHomePageLoaded}
-      setCurrentMenuItem={setCurrentMenuItem}
+      updateLocation={updateLocation}
     />
   );
 
@@ -40,11 +38,9 @@ const Component = ({
 };
 
 export const NowPlaying = ({
-  setCurrentShowType,
-  setCurrentShowId,
   homepageLoaded,
   setHomePageLoaded,
-  setCurrentMenuItem,
+  updateLocation,
 }) => {
   const [playingMovies, setPlayingMovies] = useState([]);
   const [airingTvShows, setAiringTvShows] = useState([]);
@@ -61,10 +57,8 @@ export const NowPlaying = ({
     <Component
       playingMovies={playingMovies}
       airingTvShows={airingTvShows}
-      setCurrentShowId={setCurrentShowId}
-      setCurrentShowType={setCurrentShowType}
       setHomePageLoaded={setHomePageLoaded}
-      setCurrentMenuItem={setCurrentMenuItem}
+      updateLocation={updateLocation}
     />
   );
 };

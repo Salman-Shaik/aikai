@@ -25,23 +25,17 @@ const Page = ({ keyword, image, alt, description, onClick }) => {
   );
 };
 
-const NowPlayingPage = ({ setCurrentMenuItem }) => (
+const NowPlayingPage = ({ updateLocation }) => (
   <Page
     keyword="now-playing"
     image="nowPlaying.png"
     alt="Now Playing"
     description="Wanna know what's playing in Theatres or which TV show is airing today."
-    onClick={() => setCurrentMenuItem("Now Playing")}
+    onClick={() => updateLocation("/now_playing")}
   />
 );
 
-const ShowPage = ({
-  image1,
-  image2,
-  description,
-  setCurrentMenuItem,
-  type,
-}) => {
+const ShowPage = ({ image1, image2, description, updateLocation, type }) => {
   return (
     <section className="show-page">
       <section className="examples">
@@ -56,45 +50,42 @@ const ShowPage = ({
           className="show_example"
         />
       </section>
-      <InfoSection
-        description={description}
-        onClick={() => setCurrentMenuItem(type)}
-      />
+      <InfoSection description={description} onClick={() => updateLocation()} />
     </section>
   );
 };
 
-const MoviesPage = ({ setCurrentMenuItem }) => (
+const MoviesPage = ({ updateLocation }) => (
   <ShowPage
     image1="movies-top.png"
     image2="movies-random.png"
     description="Puzzled which Movie to watch? We are here to help you."
-    setCurrentMenuItem={setCurrentMenuItem}
+    updateLocation={() => updateLocation("/movies")}
     type="movie"
   />
 );
 
-const TVPage = ({ setCurrentMenuItem }) => (
+const TVPage = ({ updateLocation }) => (
   <ShowPage
     image1="tv-top.png"
     image2="tv-random.png"
     description="Want to watch a TV / Web Series. We got your back with suggestions."
-    setCurrentMenuItem={setCurrentMenuItem}
+    updateLocation={() => updateLocation("/tv_shows")}
     type="tv"
   />
 );
 
-const EditorsChoicePage = ({ setCurrentMenuItem }) => (
+const EditorsChoicePage = ({ updateLocation }) => (
   <Page
     keyword="editors_choice"
     image="editorsChoice.png"
     alt="Editor's Choice"
     description="Recommendations from the Editor, he says these are best he has ever seen. Do you believe him?"
-    onClick={() => setCurrentMenuItem("Editor's Choice")}
+    onClick={() => updateLocation("/editors_choice")}
   />
 );
 
-const FavoritesPage = ({ setCurrentMenuItem }) => {
+const FavoritesPage = ({ updateLocation }) => {
   return (
     <section id="favorites" className="page">
       <section className="favorites">
@@ -107,7 +98,7 @@ const FavoritesPage = ({ setCurrentMenuItem }) => {
           />
           <InfoSection
             description="You can add movie or tv shows to your favorites list but you need to login first."
-            onClick={() => setCurrentMenuItem("Favorites")}
+            onClick={() => updateLocation("/favorites")}
           />
         </section>
       </section>
@@ -168,15 +159,15 @@ const Footer = () => {
   );
 };
 
-export const HomePage = ({ setCurrentMenuItem }) => {
+export const HomePage = ({ updateLocation }) => {
   return (
     <section className="homepage">
       <IntroductionPage />
-      <NowPlayingPage setCurrentMenuItem={setCurrentMenuItem} />
-      <MoviesPage setCurrentMenuItem={setCurrentMenuItem} />
-      <TVPage setCurrentMenuItem={setCurrentMenuItem} />
-      <EditorsChoicePage setCurrentMenuItem={setCurrentMenuItem} />
-      <FavoritesPage setCurrentMenuItem={setCurrentMenuItem} />
+      <NowPlayingPage updateLocation={updateLocation} />
+      <MoviesPage updateLocation={updateLocation} />
+      <TVPage updateLocation={updateLocation} />
+      <EditorsChoicePage updateLocation={updateLocation} />
+      <FavoritesPage updateLocation={updateLocation} />
       <Footer />
     </section>
   );

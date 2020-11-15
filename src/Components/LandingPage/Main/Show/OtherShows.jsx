@@ -9,7 +9,7 @@ const createMiniShows = (
   setCurrentShow,
   setCurrentShowId,
   setHomePageLoaded,
-  setCurrentMenuItem
+  updateLocation
 ) => {
   return shows.map((show, index) => {
     const posterPath = show["poster_path"];
@@ -22,7 +22,7 @@ const createMiniShows = (
         key={index}
         setHomePageLoaded={setHomePageLoaded}
         id={show.id}
-        setCurrentMenuItem={setCurrentMenuItem}
+        updateLocation={updateLocation}
       />
     );
   });
@@ -36,7 +36,7 @@ const Component = ({
   setCurrentShow,
   setCurrentShowId,
   setHomePageLoaded,
-  setCurrentMenuItem,
+  updateLocation,
 }) => {
   return (
     <section className={className} data-testid={className}>
@@ -52,7 +52,7 @@ const Component = ({
             setCurrentShow,
             setCurrentShowId,
             setHomePageLoaded,
-            setCurrentMenuItem
+            updateLocation
           )}
         </section>
       )}
@@ -69,7 +69,7 @@ export const OtherShows = ({
   setCurrentShowId,
   homepageLoaded,
   setHomePageLoaded,
-  setCurrentMenuItem,
+  updateLocation,
 }) => {
   const [otherShows, setOtherShows] = useState([]);
   const [loaded, setLoaded] = useState(false);
@@ -98,7 +98,7 @@ export const OtherShows = ({
       setCurrentShow={setCurrentShow}
       setCurrentShowId={setCurrentShowId}
       setHomePageLoaded={setHomePageLoaded}
-      setCurrentMenuItem={setCurrentMenuItem}
+      updateLocation={updateLocation}
     />
   );
 };

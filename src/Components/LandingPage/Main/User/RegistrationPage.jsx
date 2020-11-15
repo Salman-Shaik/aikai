@@ -18,7 +18,7 @@ const createLanguageComponents = (languages, addLanguage, removeLanguage) =>
     />
   ));
 
-export const RegistrationPage = ({ setGotoRegisterPage, setGotoLoginPage }) => {
+export const RegistrationPage = ({ updateLocation }) => {
   const [name, setName] = useState("");
   const [age, setAge] = useState(0);
   const [explicitFlag, setExplicitFlag] = useState(false);
@@ -102,8 +102,7 @@ export const RegistrationPage = ({ setGotoRegisterPage, setGotoLoginPage }) => {
       age,
       explicitFlag,
       languages,
-      setGotoRegisterPage,
-      setGotoLoginPage,
+      updateLocation,
       setSuccessMessage
     );
   };

@@ -4,14 +4,9 @@ import Search from "@material-ui/icons/Search";
 import _ from "lodash";
 import React, { useState } from "react";
 import "../../../../css/SearchBar.css";
+import { createCookie, deleteCookie } from "../../../../lib/helper";
 
-export const SearchBar = ({
-  setCurrentShow,
-  setCurrentShowId,
-  setHomePageLoaded,
-  setCurrentMenuItem,
-  clear,
-}) => {
+export const SearchBar = ({ setHomePageLoaded, updateLocation }) => {
   const [show, setShow] = useState("");
   const [error, setError] = useState(false);
 
@@ -20,10 +15,9 @@ export const SearchBar = ({
     if (_.isEmpty(show.trim())) return setError(true);
     setHomePageLoaded(false);
     setError(false);
-    setCurrentMenuItem("Search");
-    setCurrentShow(show);
-    setCurrentShowId(0);
-    clear();
+    createCookie("show", show);
+    deleteCookie("showId");
+    updateLocation("/search");
   };
 
   const onChange = ({ target }) => {
@@ -35,6 +29,7 @@ export const SearchBar = ({
     setError(false);
     setShow("");
   };
+
   return (
     <form className={`search_bar ${error ? "error" : ""}`} onSubmit={onClick}>
       <Tooltip title="Search">

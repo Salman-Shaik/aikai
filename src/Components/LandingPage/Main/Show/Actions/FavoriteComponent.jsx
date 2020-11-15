@@ -14,7 +14,7 @@ export const FavoriteComponent = ({
   title,
   id,
   posterPath,
-  setGotoLoginPage,
+  updateLocation,
   initialValue,
 }) => {
   const [isFavorite, setIsFavorite] = useState(
@@ -29,7 +29,7 @@ export const FavoriteComponent = ({
     if (isUserLoggedIn) {
       setFavorite(title, id, posterPath, setIsFavorite);
     } else {
-      setGotoLoginPage(true);
+      updateLocation("/login");
     }
   };
 

@@ -17,17 +17,15 @@ const ArrowRight = Arrow({
 
 export const PlayingShows = ({
   data,
-  setCurrentShowId,
   setCurrentShowType,
   setHomePageLoaded,
-  setCurrentMenuItem,
+  updateLocation,
 }) => {
   let menu = createPosters(
     data,
-    setCurrentShowId,
     setCurrentShowType,
     setHomePageLoaded,
-    setCurrentMenuItem
+    updateLocation
   );
   return (
     <section className="playing_movies">

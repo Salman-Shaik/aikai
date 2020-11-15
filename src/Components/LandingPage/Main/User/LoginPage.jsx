@@ -4,12 +4,7 @@ import "../../../../css/LoginPage.css";
 import { login } from "../../../../lib/networkCalls";
 import { Alert } from "../../Alert";
 
-export const LoginPage = ({
-  setIsUserLoggedIn,
-  setGotoRegisterPage,
-  setGotoLoginPage,
-  setCurrentMenuItem,
-}) => {
+export const LoginPage = ({ setIsUserLoggedIn, updateLocation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [usernameError, setUsernameError] = useState(false);
@@ -48,17 +43,13 @@ export const LoginPage = ({
       username,
       password,
       setIsUserLoggedIn,
-      setGotoLoginPage,
+      updateLocation,
       setError,
       setSuccessMessage
     );
   };
 
-  const gotoRegister = () => {
-    setCurrentMenuItem("");
-    setGotoLoginPage(false);
-    return setGotoRegisterPage(true);
-  };
+  const gotoRegister = () => updateLocation("/register");
 
   return (
     <section className="login">

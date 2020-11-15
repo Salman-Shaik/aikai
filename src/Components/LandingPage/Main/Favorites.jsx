@@ -17,10 +17,8 @@ const getSectionedMiniShows = (map) => {
 
 export const Favorites = ({
   userFavorites,
-  setCurrentShowId,
   setHomePageLoaded,
-  setCurrentMenuItem,
-  setGotoLoginPage,
+  updateLocation,
   isUserLoggedIn,
 }) => {
   const MiniShows = () => {
@@ -29,11 +27,9 @@ export const Favorites = ({
         posterPath={posterPath}
         title={title}
         id={id}
-        setCurrentShowId={setCurrentShowId}
         setHomePageLoaded={setHomePageLoaded}
-        setCurrentMenuItem={setCurrentMenuItem}
+        updateLocation={updateLocation}
         favFlag={true}
-        setGotoLoginPage={setGotoLoginPage}
         isUserLoggedIn={isUserLoggedIn}
       />
     ));

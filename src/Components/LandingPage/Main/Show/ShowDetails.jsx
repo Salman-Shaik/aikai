@@ -30,7 +30,7 @@ export const ShowDetails = ({
   info,
   currentShowType,
   isUserLoggedIn,
-  setGotoLoginPage,
+  updateLocation,
 }) => {
   const id = info.id;
   const title = info.name || info.title;
@@ -64,14 +64,14 @@ export const ShowDetails = ({
           title={title}
           posterPath={imagePath}
           isUserLoggedIn={isUserLoggedIn}
-          setGotoLoginPage={setGotoLoginPage}
+          updateLocation={updateLocation}
         />
         <WatchList
           id={id}
           title={title}
           posterPath={imagePath}
           isUserLoggedIn={isUserLoggedIn}
-          setGotoLoginPage={setGotoLoginPage}
+          updateLocation={updateLocation}
         />
         <ShareComponent
           id={id}

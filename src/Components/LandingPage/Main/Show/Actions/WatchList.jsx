@@ -11,7 +11,7 @@ export const WatchList = ({
   title,
   posterPath,
   isUserLoggedIn,
-  setGotoLoginPage,
+  updateLocation,
 }) => {
   const [isOnWatchList, setIsOnWatchList] = useState(false);
 
@@ -23,7 +23,7 @@ export const WatchList = ({
     if (isUserLoggedIn) {
       addToWatchList(title, id, posterPath, setIsOnWatchList);
     } else {
-      setGotoLoginPage(true);
+      updateLocation("/login");
     }
   };
 

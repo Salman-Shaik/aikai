@@ -8,20 +8,18 @@ const filterPosterPaths = (item) => !!item["poster_path"];
 
 export const createPosters = (
   rawJson,
-  setCurrentShowId,
   setCurrentShowType,
   setHomePageLoaded,
-  setCurrentMenuItem
+  updateLocation
 ) => {
   const filteredList = rawJson.filter(filterPosterPaths);
   return filteredList.map((item, index) => (
     <Poster
       data={item}
       key={index}
-      setCurrentShowId={setCurrentShowId}
       setCurrentShowType={setCurrentShowType}
       setHomePageLoaded={setHomePageLoaded}
-      setCurrentMenuItem={setCurrentMenuItem}
+      updateLocation={updateLocation}
     />
   ));
 };
@@ -63,5 +61,31 @@ export const getCookieValue = (cookieString) => {
   return cookiesObj[cookieString];
 };
 
+export const createCookie = (key, value) => {
+  deleteCookie(key);
+  document.cookie = `${key}=${value}`;
+};
+
+export const createCookieIfNotExists = (key, value) => {
+  const cookieValue = getCookieValue(key);
+  if (!cookieValue) {
+    document.cookie = `${key}=${value}`;
+  }
+};
+
+export const deleteCookie = (key) => {
+  document.cookie = `${key}=; expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
+};
+
 export const getJwtToken = (payload) =>
   jwt.sign(payload, "ADHIIDHIKAADHUADHEIDHI");
+
+export const isCurrentItem = (name) => {
+  const url = {
+    "Now Playing": "/now_playing",
+    Movies: "/movies",
+    "Tv Shows": "/tv_shows",
+    "Editor's Choice": "/editors_choice",
+  };
+  return url[name] === window.location.href;
+};

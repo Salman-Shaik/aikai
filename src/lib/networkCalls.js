@@ -4,7 +4,7 @@ export const login = (
   username,
   password,
   setIsUserLoggedIn,
-  setGotoLoginPage,
+  updateLocation,
   setError,
   setSuccessMessage
 ) => {
@@ -18,7 +18,7 @@ export const login = (
       setSuccessMessage("Login Success!");
       setTimeout(() => {
         setIsUserLoggedIn(true);
-        setGotoLoginPage(false);
+        updateLocation("/");
       }, 1000);
     }
   };
@@ -54,8 +54,7 @@ export const registerUser = (
   age,
   explicitFlag,
   languages,
-  setGotoRegisterPage,
-  setGotoLoginPage,
+  updateLocation,
   setSuccessMessage
 ) => {
   const jwtToken = getJwtToken({ username, password });
@@ -71,8 +70,7 @@ export const registerUser = (
       if (res.status === 200) {
         setSuccessMessage("Account Created!");
         setTimeout(() => {
-          setGotoRegisterPage(false);
-          setGotoLoginPage(true);
+          updateLocation("/login");
         }, 1000);
       }
     })

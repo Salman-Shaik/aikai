@@ -1,22 +1,21 @@
 import React from "react";
 import "../../../../css/Poster.css";
-import { imageUrlBuilder } from "../../../../lib/helper";
+import { createCookie, imageUrlBuilder } from "../../../../lib/helper";
 
 export const Poster = ({
   data,
   key,
-  setCurrentShowId,
   setCurrentShowType,
   setHomePageLoaded,
-  setCurrentMenuItem,
+  updateLocation,
 }) => {
   let title = data.name || data.title;
 
   const onClick = () => {
-    setCurrentMenuItem("");
-    setCurrentShowId(data.id);
+    createCookie("showId", data.id);
     setCurrentShowType();
     setHomePageLoaded(false);
+    updateLocation("/");
   };
 
   return (

@@ -1,7 +1,7 @@
 import _ from "lodash";
 import React, { useEffect, useState } from "react";
 import "../../../../css/SearchResults.css";
-import { getSix, imageUrlBuilder } from "../../../../lib/helper";
+import { createCookie, getSix, imageUrlBuilder } from "../../../../lib/helper";
 import { fetchSearchedShow } from "../../../../lib/showNetworkCalls";
 import { Spinner } from "../../../Spinner";
 import { MinimizeActionButton } from "../MinimizeActionButton";
@@ -25,9 +25,8 @@ const getSectionedPosters = (map) => {
 
 const createSectionedPosters = (
   movieResults,
-  setCurrentShowId,
   setShowType,
-  setCurrentMenuItem,
+  updateLocation,
   setHomepageLoaded
 ) => {
   const postersMap = movieResults.map((info, idx) => {
@@ -35,9 +34,9 @@ const createSectionedPosters = (
     const title = info.name || info.title;
     const imagePath = info["poster_path"];
     const onClick = () => {
-      setCurrentShowId(id);
+      createCookie("showId", id);
       setShowType();
-      setCurrentMenuItem("");
+      updateLocation("/");
       setHomepageLoaded(false);
     };
     return (
@@ -55,11 +54,9 @@ const createSectionedPosters = (
 
 export const SearchResults = ({
   currentShowTitle,
-  setCurrentShowId,
-  setCurrentShowType,
   homepageLoaded,
   setHomePageLoaded,
-  setCurrentMenuItem,
+  updateLocation,
 }) => {
   const [movieResults, setMovieResults] = useState([]);
   const [tvResults, setTvResults] = useState([]);
@@ -100,9 +97,8 @@ export const SearchResults = ({
             ) : (
               createSectionedPosters(
                 results,
-                setCurrentShowId,
                 setShowType,
-                setCurrentMenuItem,
+                updateLocation,
                 setHomepageLoaded
               )
             )}
@@ -131,8 +127,8 @@ export const SearchResults = ({
     );
   };
 
-  const setMovie = () => setCurrentShowType("movie");
-  const setTv = () => setCurrentShowType("tv");
+  const setMovie = () => createCookie("showType", "movie");
+  const setTv = () => createCookie("showType", "tv");
 
   const Component = () => {
     return (

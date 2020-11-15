@@ -21,13 +21,7 @@ export const DoubleShow = (props) => {
 
   const minimizeRandom = () => {
     const randomPageNumber = _.random(1, randomShowPageNumber[type]);
-    fetchTopShow(
-      setRandomId,
-      props.setCurrentShowType,
-      props.setHomePageLoaded,
-      randomPageNumber,
-      type
-    );
+    fetchTopShow(setRandomId, props.setHomePageLoaded, randomPageNumber, type);
     setRandomMinimized(!randomMinimized);
     setTopRatedMinimized(true);
     props.setHomePageLoaded(false);
@@ -37,7 +31,6 @@ export const DoubleShow = (props) => {
     const topRatedPageNumber = _.random(1, topRatedShowPageNumber);
     fetchTopShow(
       setTopRatedId,
-      props.setCurrentShowType,
       props.setHomePageLoaded,
       topRatedPageNumber,
       type

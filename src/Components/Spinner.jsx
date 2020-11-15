@@ -12,7 +12,7 @@ export const Spinner = ({ loaded }) => {
       corners={1}
       rotate={0}
       direction={1}
-      color="#f2bdcd"
+      color="#DF256A"
       speed={1}
       trail={60}
       shadow={true}
