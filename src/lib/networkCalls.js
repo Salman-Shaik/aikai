@@ -134,10 +134,32 @@ export const addToWatchList = (title, id, posterPath, setIsOnWatchList) => {
     .catch((e) => new TypeError(e));
 };
 
-export const isShowOnWatchList = (title, setIsOnWatchList) => {
-  fetch("/watchlist")
+const fetchUserWatchList = () => {
+  return fetch("/watchlist")
     .then((r) => r.text())
-    .then((d) => JSON.parse(d))
+    .then((d) => JSON.parse(d));
+};
+
+export const fetchWatchList = (
+  setWatchList,
+  setWatched,
+  setLoaded,
+  setHomePageLoaded
+) => {
+  fetchUserWatchList()
+    .then((watchList) => {
+      const watched = watchList.filter((w) => w.watched);
+      const yetToWatch = watchList.filter((w) => !w.watched);
+      setWatchList(yetToWatch);
+      setWatched(watched);
+      setLoaded(true);
+      setHomePageLoaded(true);
+    })
+    .catch((e) => new TypeError(e));
+};
+
+export const isShowOnWatchList = (title, setIsOnWatchList) => {
+  fetchUserWatchList()
     .then((watchListMap) => watchListMap.map((w) => w.title))
     .then((watchList) => {
       if (watchList.includes(title)) {
@@ -152,3 +174,17 @@ export const fetchLanguages = () =>
   fetch("/languages")
     .then((r) => r.text())
     .then((d) => JSON.parse(d));
+
+export const markWatched = (id, updateLocation) => {
+  fetch("/watched", {
+    method: "put",
+    body: JSON.stringify({ id }),
+    headers: { "Content-Type": "application/json" },
+  })
+    .then((r) => {
+      if (r.status === 200) {
+        updateLocation("/watch_list");
+      }
+    })
+    .catch((e) => new TypeError(e));
+};

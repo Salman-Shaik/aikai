@@ -1,0 +1,74 @@
+.watchlist_section {
+  width: 100%;
+  height: 86vh;
+  padding-top: 3vh;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.yet_to_watch,
+.watched {
+  width: 100%;
+  padding-top: 1vh;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.sectioned_shows {
+  width: 94%;
+  height: 14vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.mini_show {
+  margin: 0 0.5vw;
+}
+
+.notice {
+  color: #d3d3d3;
+  text-align: center;
+}
+
+.minim_button {
+  background-image: linear-gradient(
+    to right bottom,
+    #43e97b,
+    #31ee95,
+    #25f2ae,
+    #27f6c3,
+    #38f9d7
+  );
+  background-image: -webkit-linear-gradient(
+    to right bottom,
+    #43e97b,
+    #31ee95,
+    #25f2ae,
+    #27f6c3,
+    #38f9d7
+  );
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2vw;
+  width: 92%;
+  height: 6vh;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #222222;
+  border-radius: 5px;
+  margin-top: 2vh;
+  margin-bottom: 1vh;
+}

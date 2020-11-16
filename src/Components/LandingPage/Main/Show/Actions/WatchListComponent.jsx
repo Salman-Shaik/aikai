@@ -6,14 +6,17 @@ import {
   isShowOnWatchList,
 } from "../../../../../lib/networkCalls";
 
-export const WatchList = ({
+export const WatchListComponent = ({
   id,
   title,
   posterPath,
   isUserLoggedIn,
   updateLocation,
+  initialValue,
 }) => {
-  const [isOnWatchList, setIsOnWatchList] = useState(false);
+  const [isOnWatchList, setIsOnWatchList] = useState(
+    !!initialValue ? initialValue : false
+  );
 
   useEffect(() => {
     if (isUserLoggedIn) isShowOnWatchList(title, setIsOnWatchList);

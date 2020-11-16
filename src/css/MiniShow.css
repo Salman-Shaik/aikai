@@ -43,3 +43,11 @@
   -webkit-text-fill-color: transparent;
   text-align: left;
 }
+
+.watched_icon {
+  font-size: 1.8em !important;
+  cursor: pointer;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  color: #7cfc00;
+}

@@ -1,21 +1,10 @@
 import _ from "lodash";
 import React, { useEffect, useState } from "react";
-import "../../../css/Favorite.css";
-import { getFive } from "../../../lib/helper";
+import "../../../css/Favorites.css";
+import { getSectionedMiniShows } from "../../../lib/helper";
 import { fetchUserFavorites } from "../../../lib/networkCalls";
 import { Spinner } from "../../Spinner";
 import { MiniShow } from "./Show/MiniShow";
-
-const Section = ({ miniShows }) => (
-  <section className="sectioned_shows">{miniShows}</section>
-);
-
-const getSectionedMiniShows = (map) => {
-  const sectionedMap = [];
-  for (let i = 0; i < map.length; i += 5)
-    sectionedMap.push(<Section miniShows={getFive(map, i)} />);
-  return sectionedMap;
-};
 
 export const Favorites = ({
   setHomePageLoaded,

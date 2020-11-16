@@ -4,7 +4,7 @@ import "../../../../css/ShowDetails.css";
 import { getGenreNames, imageUrlBuilder } from "../../../../lib/helper";
 import { FavoriteComponent } from "./Actions/FavoriteComponent";
 import { ShareComponent } from "./Actions/ShareComponent";
-import { WatchList } from "./Actions/WatchList";
+import { WatchListComponent } from "./Actions/WatchListComponent";
 import { AvailableOn } from "./AvailableOn";
 
 const createProgressBar = (rating) => (
@@ -67,7 +67,7 @@ export const ShowDetails = ({
           isUserLoggedIn={isUserLoggedIn}
           updateLocation={updateLocation}
         />
-        <WatchList
+        <WatchListComponent
           id={id}
           title={title}
           posterPath={imagePath}

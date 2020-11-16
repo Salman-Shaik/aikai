@@ -25,7 +25,8 @@
   width: 96%;
 }
 
-.favorites {
+.favorites,
+.watchlist {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -48,11 +49,11 @@
   width: 58%;
 }
 
-.favorite_image {
+.action_image {
   width: 65%;
 }
 
-.favorite_example {
+.action_example {
   width: 15%;
 }
 

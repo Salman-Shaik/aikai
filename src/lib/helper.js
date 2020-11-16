@@ -89,3 +89,14 @@ export const isCurrentItem = (name) => {
   };
   return url[name] === window.location.href;
 };
+
+export const Section = ({ miniShows }) => (
+  <section className="sectioned_shows">{miniShows}</section>
+);
+
+export const getSectionedMiniShows = (map) => {
+  const sectionedMap = [];
+  for (let i = 0; i < map.length; i += 5)
+    sectionedMap.push(<Section miniShows={getFive(map, i)} />);
+  return sectionedMap;
+};

@@ -11,6 +11,7 @@ import { SearchResults } from "./Search/SearchResults";
 import { Show } from "./Show/Show";
 import { LoginPage } from "./User/LoginPage";
 import { RegistrationPage } from "./User/RegistrationPage";
+import { WatchList } from "./WatchList";
 
 export const Main = (props) => {
   const {
@@ -81,6 +82,16 @@ export const Main = (props) => {
             path="/favorite_shows"
             render={() => (
               <Favorites
+                setHomePageLoaded={setHomePageLoaded}
+                updateLocation={updateLocation}
+                isUserLoggedIn={isUserLoggedIn}
+              />
+            )}
+          />
+          <Route
+            path="/watch_list"
+            render={() => (
+              <WatchList
                 setHomePageLoaded={setHomePageLoaded}
                 updateLocation={updateLocation}
                 isUserLoggedIn={isUserLoggedIn}

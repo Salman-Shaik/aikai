@@ -1,4 +1,5 @@
 import Tooltip from "@material-ui/core/Tooltip";
+import { Bookmark } from "@material-ui/icons";
 import Favorite from "@material-ui/icons/Favorite";
 import React from "react";
 import "../../../../css/NavigationMenu.css";
@@ -32,6 +33,11 @@ export const NavigationMenu = (props) => {
     updateLocation("/favorite_shows");
   };
 
+  const onWatchlist = () => {
+    setHomePageLoaded(false);
+    updateLocation("/watch_list");
+  };
+
   const onNowPlaying = () => {
     updateLocation("/now_playing");
   };
@@ -52,6 +58,9 @@ export const NavigationMenu = (props) => {
       {createNavigationMenuItem("Editor's Choice", onEditorsChoice)}
       <Tooltip title="Favorites">
         <Favorite className="favorites_icon" onClick={onFavorites} />
+      </Tooltip>
+      <Tooltip title="Watchlist">
+        <Bookmark className="watchlist_icon" onClick={onWatchlist} />
       </Tooltip>
       <SearchBar
         setHomePageLoaded={setHomePageLoaded}

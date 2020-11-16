@@ -1,7 +1,11 @@
+import Tooltip from "@material-ui/core/Tooltip";
+import { CheckCircle } from "@material-ui/icons";
 import React from "react";
 import "../../../../css/MiniShow.css";
 import { createCookie, imageUrlBuilder } from "../../../../lib/helper";
+import { markWatched } from "../../../../lib/networkCalls";
 import { FavoriteComponent } from "./Actions/FavoriteComponent";
+import { WatchListComponent } from "./Actions/WatchListComponent";
 
 export const MiniShow = ({
   posterPath,
@@ -9,6 +13,7 @@ export const MiniShow = ({
   id,
   setHomePageLoaded,
   favFlag,
+  watchListFlag,
   updateLocation,
   isUserLoggedIn,
 }) => {
@@ -18,11 +23,13 @@ export const MiniShow = ({
     setHomePageLoaded(false);
   };
 
+  const onWatched = () => markWatched(id, updateLocation);
+
   return (
     <section
       className="mini_show"
       data-testid={"mini_show"}
-      onClick={!!favFlag ? () => {} : onClick}
+      onClick={!!favFlag || !!watchListFlag ? () => {} : onClick}
     >
       <section className="mini_show_details" onClick={onClick}>
         <img
@@ -46,6 +53,21 @@ export const MiniShow = ({
             updateLocation={updateLocation}
             isUserLoggedIn={isUserLoggedIn}
           />
+        )}
+        {!!watchListFlag && (
+          <WatchListComponent
+            id={id}
+            title={title}
+            posterPath={posterPath}
+            updateLocation={updateLocation}
+            isUserLoggedIn={isUserLoggedIn}
+            initialValue={true}
+          />
+        )}
+        {!!watchListFlag && (
+          <Tooltip title="Watched?">
+            <CheckCircle className="watched_icon" onClick={onWatched} />
+          </Tooltip>
         )}
       </section>
     </section>

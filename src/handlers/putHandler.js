@@ -59,7 +59,7 @@ const watchedHandler = async (req, res, User) => {
   const filteredWatchList = watchList.filter((f) => f.id !== id);
   filteredWatchList.push(show);
   await User.update({ watchlist: filteredWatchList }, { where: { username } });
-  res.send(`Removed From Watchlist`);
+  res.send(`Marked Watched`);
 };
 
 module.exports = {

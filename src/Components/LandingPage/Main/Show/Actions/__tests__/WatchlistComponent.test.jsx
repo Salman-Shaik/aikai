@@ -1,7 +1,7 @@
 import { cleanup, render, waitFor, fireEvent } from "@testing-library/react";
 import fetchMock from "jest-fetch-mock";
 import React from "react";
-import { WatchList } from "../WatchList";
+import { WatchListComponent } from "../WatchListComponent";
 
 describe("Watchlist Component", () => {
   beforeEach(() => {
@@ -16,7 +16,7 @@ describe("Watchlist Component", () => {
   it("Snapshot Test", () => {
     fetch.mockResponse(JSON.stringify([{ title: "Gone Girl" }]));
     const { container } = render(
-      <WatchList isUserLoggedIn={true} title="Gone Girl" />
+      <WatchListComponent isUserLoggedIn={true} title="Gone Girl" />
     );
     expect(container).toMatchSnapshot();
   });
@@ -24,7 +24,7 @@ describe("Watchlist Component", () => {
   it("should show add to watchlist if not added to watchlist", async () => {
     fetch.mockResponse(JSON.stringify([{ title: "Duh" }]));
     const { getByTestId } = render(
-      <WatchList isUserLoggedIn={true} title="Gone Girl" />
+      <WatchListComponent isUserLoggedIn={true} title="Gone Girl" />
     );
     const addToWatchList = await waitFor(() => getByTestId("add_to_watchlist"));
     expect(addToWatchList).toBeDefined();
@@ -33,7 +33,7 @@ describe("Watchlist Component", () => {
   it("should show on watchlist if added to watchlist", async () => {
     fetch.mockResponse(JSON.stringify([{ title: "Gone Girl" }]));
     const { getByTestId } = render(
-      <WatchList isUserLoggedIn={true} title="Gone Girl" />
+      <WatchListComponent isUserLoggedIn={true} title="Gone Girl" />
     );
     const onWatchList = await waitFor(() => getByTestId("on_watchlist"));
     expect(onWatchList).toBeDefined();
@@ -45,7 +45,7 @@ describe("Watchlist Component", () => {
       ["", { status: 200 }]
     );
     const { getByTestId } = render(
-      <WatchList isUserLoggedIn={true} title="Gone Girl" />
+      <WatchListComponent isUserLoggedIn={true} title="Gone Girl" />
     );
     const addToWatchList = await waitFor(() => getByTestId("add_to_watchlist"));
     fireEvent.click(addToWatchList);

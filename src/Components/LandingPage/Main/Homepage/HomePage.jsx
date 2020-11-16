@@ -85,24 +85,37 @@ const EditorsChoicePage = ({ updateLocation }) => (
   />
 );
 
-const FavoritesPage = ({ updateLocation }) => {
+const ActionsPage = ({ updateLocation, action, description }) => {
   return (
-    <section id="favorites" className="page">
-      <section className="favorites">
-        <img src="favorites.png" alt="favorite" className="favorite_image" />
-        <section className="description_section">
-          <img
-            src="example.png"
-            alt="Favorite Example"
-            className="favorite_example"
-          />
-          <InfoSection
-            description="You can add movie or tv shows to your favorites list but you need to login first."
-            onClick={() => updateLocation("/favorite_shows")}
-          />
-        </section>
+    <section id={action} className="page">
+      <section className={action}>
+        <img src={`${action}.png`} alt={action} className="action_image" />
+        <InfoSection
+          description={description}
+          onClick={() => updateLocation()}
+        />
       </section>
     </section>
+  );
+};
+
+const FavoritesPage = ({ updateLocation }) => {
+  return (
+    <ActionsPage
+      updateLocation={() => updateLocation("/favorite_shows")}
+      description="You can add a movie or a tv shows to your favorites list but you need to login first."
+      action="favorites"
+    />
+  );
+};
+
+const WatchListPage = ({ updateLocation }) => {
+  return (
+    <ActionsPage
+      updateLocation={() => updateLocation("/watch_list")}
+      description="You can keep a track of all the movies or tv shows which you want to watch in future but you need to login first."
+      action="watchlist"
+    />
   );
 };
 
@@ -124,7 +137,6 @@ const Footer = () => {
       <section className="features">
         <span className="features_header">Features coming soon</span>
         <ul className="feature_list">
-          <li className="feature">Watchlist</li>
           <li className="feature">User profile</li>
           <li className="feature">Subscriptions</li>
         </ul>
@@ -168,6 +180,7 @@ export const HomePage = ({ updateLocation }) => {
       <TVPage updateLocation={updateLocation} />
       <EditorsChoicePage updateLocation={updateLocation} />
       <FavoritesPage updateLocation={updateLocation} />
+      <WatchListPage updateLocation={updateLocation} />
       <Footer />
     </section>
   );
