@@ -33,7 +33,7 @@ export const FavoriteComponent = ({
     }
   };
 
-  const onDislike = () => removeFavorite(id, setIsFavorite);
+  const onDislike = () => removeFavorite(id, setIsFavorite, updateLocation);
 
   const Liked = () => (
     <Tooltip title="You Like It">

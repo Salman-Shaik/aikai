@@ -91,7 +91,7 @@ export const setFavorite = (title, id, posterPath, setIsFavorite) => {
     .catch((e) => new TypeError(e));
 };
 
-export const removeFavorite = (id, setIsFavorite) => {
+export const removeFavorite = (id, setIsFavorite, updateLocation) => {
   fetch("/favorite", {
     method: "delete",
     body: JSON.stringify({ id }),
@@ -100,6 +100,7 @@ export const removeFavorite = (id, setIsFavorite) => {
     .then((res) => {
       if (res.status === 200) {
         setIsFavorite(false);
+        updateLocation("/favorite_shows");
       }
     })
     .catch((e) => new TypeError(e));
