@@ -11,8 +11,6 @@ import { Trailer } from "./Trailer";
 const Component = ({
   info,
   currentShowType,
-  setCurrentShow,
-  setCurrentShowId,
   setHomePageLoaded,
   homepageLoaded,
   isUserLoggedIn,
@@ -24,8 +22,6 @@ const Component = ({
       className={className}
       currentShowType={currentShowType}
       showId={info.id}
-      setCurrentShow={setCurrentShow}
-      setCurrentShowId={setCurrentShowId}
       homepageLoaded={homepageLoaded}
       setHomePageLoaded={setHomePageLoaded}
       updateLocation={updateLocation}

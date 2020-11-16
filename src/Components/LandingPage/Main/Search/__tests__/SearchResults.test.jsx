@@ -5,25 +5,18 @@ import { searchResultsMockData } from "../../../../../lib/testHelper";
 import { SearchResults } from "../SearchResults";
 
 describe("Search Results", () => {
-  let setHomePageLoaded,
-    setCurrentShowId,
-    setCurrentShowType,
-    setCurrentMenuItem;
+  let setHomePageLoaded, updateLocation;
 
   beforeEach(() => {
     fetchMock.doMock();
     setHomePageLoaded = jest.fn();
-    setCurrentShowId = jest.fn();
-    setCurrentShowType = jest.fn();
-    setCurrentMenuItem = jest.fn();
+    updateLocation = jest.fn();
   });
 
   afterEach(() => {
     cleanup();
     setHomePageLoaded.mockClear();
-    setCurrentShowId.mockClear();
-    setCurrentShowType.mockClear();
-    setCurrentMenuItem.mockClear();
+    updateLocation.mockClear();
   });
 
   it("Snapshot Test", () => {
@@ -35,7 +28,11 @@ describe("Search Results", () => {
   it("should maximize movies section and show movie posters by default", async () => {
     fetch.mockResponse(JSON.stringify(searchResultsMockData), { status: 200 });
     const { getByTestId, getAllByTestId } = render(
-      <SearchResults currentShowTitle="love" homepageLoaded={true} />
+      <SearchResults
+        currentShowTitle="love"
+        homepageLoaded={true}
+        updateLocation={updateLocation}
+      />
     );
 
     const showResults = await waitFor(() => getByTestId("show_results"));
@@ -54,6 +51,7 @@ describe("Search Results", () => {
       <SearchResults
         currentShowTitle="love"
         homepageLoaded={true}
+        updateLocation={updateLocation}
         setHomePageLoaded={setHomePageLoaded}
       />
     );
@@ -72,10 +70,8 @@ describe("Search Results", () => {
       <SearchResults
         currentShowTitle="love"
         homepageLoaded={true}
-        setCurrentShowId={setCurrentShowId}
+        updateLocation={updateLocation}
         setHomePageLoaded={setHomePageLoaded}
-        setCurrentShowType={setCurrentShowType}
-        setCurrentMenuItem={setCurrentMenuItem}
       />
     );
 
@@ -83,8 +79,6 @@ describe("Search Results", () => {
       getAllByTestId("sectioned_posters")
     );
     fireEvent.click(sectionedPosters[0].firstChild);
-    expect(setCurrentShowId).toHaveBeenCalledWith(
-      searchResultsMockData.results[0].id
-    );
+    expect(document.cookie).toBe("showId=590223; showType=movie");
   });
 });

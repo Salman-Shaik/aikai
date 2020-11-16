@@ -4,31 +4,21 @@ import React from "react";
 import { LoginPage } from "../LoginPage";
 
 describe("Login Page", () => {
-  let setGotoLoginPage,
-    setGotoRegisterPage,
-    setIsUserLoggedIn,
-    setCurrentMenuItem,
-    props;
+  let updateLocation, setIsUserLoggedIn, props;
   beforeEach(() => {
     fetchMock.doMock();
-    setGotoRegisterPage = jest.fn();
-    setGotoLoginPage = jest.fn();
     setIsUserLoggedIn = jest.fn();
-    setCurrentMenuItem = jest.fn();
+    updateLocation = jest.fn();
     props = {
-      setGotoLoginPage,
-      setGotoRegisterPage,
       setIsUserLoggedIn,
-      setCurrentMenuItem,
+      updateLocation,
     };
   });
 
   afterEach(() => {
     cleanup();
-    setGotoLoginPage.mockClear();
-    setGotoRegisterPage.mockClear();
     setIsUserLoggedIn.mockClear();
-    setCurrentMenuItem.mockClear();
+    updateLocation.mockClear();
   });
 
   it("Snapshot Test", function () {
@@ -99,7 +89,7 @@ describe("Login Page", () => {
     const errorAlert = await waitFor(() => getByTestId("error-alert"));
     expect(errorAlert).toBeDefined();
     expect(setIsUserLoggedIn).not.toHaveBeenCalled();
-    expect(setGotoLoginPage).not.toHaveBeenCalled();
+    expect(updateLocation).not.toHaveBeenCalledWith("/login");
   });
 
   it("should render registration when clicked on create account", async () => {
@@ -107,7 +97,7 @@ describe("Login Page", () => {
     const createAccount = getByTestId("create_account");
     fireEvent.click(createAccount);
 
-    expect(setGotoLoginPage).toHaveBeenCalledWith(false);
-    expect(setGotoRegisterPage).toHaveBeenCalledWith(true);
+    expect(updateLocation).not.toHaveBeenCalledWith("/login");
+    expect(updateLocation).toHaveBeenCalledWith("/register");
   });
 });

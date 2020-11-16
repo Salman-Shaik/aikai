@@ -37,7 +37,8 @@ export const ShowDetails = ({
   const genre = getGenreNames(info, currentShowType);
   const rating = info["vote_average"];
   const description = info.overview;
-  const releaseDate = info["first_air_date"] || info["release_date"];
+  // TODO: think about this
+  // const releaseDate = info["first_air_date"] || info["release_date"];
   const imagePath = info["poster_path"];
   const language = info["original_language"];
   const homepage = info["homepage"];

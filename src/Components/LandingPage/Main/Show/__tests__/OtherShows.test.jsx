@@ -5,18 +5,16 @@ import { otherShowsMockData } from "../../../../../lib/testHelper";
 import { OtherShows } from "../OtherShows";
 
 describe("Other Shows", () => {
-  let props, setCurrentShowId, setCurrentMenuItem, setHomePageLoaded;
+  let props, setHomePageLoaded, updateLocation;
 
   beforeEach(() => {
-    setCurrentShowId = jest.fn();
-    setCurrentMenuItem = jest.fn();
+    updateLocation = jest.fn();
     setHomePageLoaded = jest.fn();
     props = {
       showId: 12345,
       currentShowType: "movie",
       homepageLoaded: true,
-      setCurrentShowId,
-      setCurrentMenuItem,
+      updateLocation,
       setHomePageLoaded,
     };
 
@@ -25,7 +23,8 @@ describe("Other Shows", () => {
 
   afterEach(() => {
     cleanup();
-    setCurrentShowId.mockClear();
+    updateLocation.mockClear();
+    setHomePageLoaded.mockClear();
     fetch.resetMocks();
   });
 
@@ -58,8 +57,6 @@ describe("Other Shows", () => {
     const mini_poster = await waitFor(() => getAllByTestId("mini_poster")[0]);
     fireEvent.click(mini_poster);
 
-    expect(setCurrentShowId).toHaveBeenCalledWith(
-      otherShowsMockData.results[0].id
-    );
+    expect(document.cookie).toBe("showId=123");
   });
 });

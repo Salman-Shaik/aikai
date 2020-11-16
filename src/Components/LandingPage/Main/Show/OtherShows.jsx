@@ -4,13 +4,7 @@ import { fetchOtherShow } from "../../../../lib/showNetworkCalls";
 import { Spinner } from "../../../Spinner";
 import { MiniShow } from "./MiniShow";
 
-const createMiniShows = (
-  shows,
-  setCurrentShow,
-  setCurrentShowId,
-  setHomePageLoaded,
-  updateLocation
-) => {
+const createMiniShows = (shows, setHomePageLoaded, updateLocation) => {
   return shows.map((show, index) => {
     const posterPath = show["poster_path"];
     const title = show.title || show.name;
@@ -18,7 +12,6 @@ const createMiniShows = (
       <MiniShow
         posterPath={posterPath}
         title={title}
-        setCurrentShowId={setCurrentShowId}
         key={index}
         setHomePageLoaded={setHomePageLoaded}
         id={show.id}
@@ -33,8 +26,6 @@ const Component = ({
   otherShows,
   keyword,
   currentShowType,
-  setCurrentShow,
-  setCurrentShowId,
   setHomePageLoaded,
   updateLocation,
 }) => {
@@ -47,13 +38,7 @@ const Component = ({
         )} ${_.capitalize(currentShowType)}s`}</h4>
       ) : (
         <section className="mini_shows" data-testid="mini_shows">
-          {createMiniShows(
-            otherShows,
-            setCurrentShow,
-            setCurrentShowId,
-            setHomePageLoaded,
-            updateLocation
-          )}
+          {createMiniShows(otherShows, setHomePageLoaded, updateLocation)}
         </section>
       )}
     </section>
@@ -65,8 +50,6 @@ export const OtherShows = ({
   className,
   showId,
   currentShowType,
-  setCurrentShow,
-  setCurrentShowId,
   homepageLoaded,
   setHomePageLoaded,
   updateLocation,
@@ -95,8 +78,6 @@ export const OtherShows = ({
       otherShows={otherShows}
       keyword={keyword}
       currentShowType={currentShowType}
-      setCurrentShow={setCurrentShow}
-      setCurrentShowId={setCurrentShowId}
       setHomePageLoaded={setHomePageLoaded}
       updateLocation={updateLocation}
     />
