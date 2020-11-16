@@ -14,7 +14,7 @@ export const Trailer = ({ info, homepageLoaded, setHomepageLoaded }) => {
 
   useEffect(() => {
     fetchVideoId(title, setVideoId, setHomepageLoaded);
-  }, [title]);
+  }, [title, setHomepageLoaded]);
 
   return !homepageLoaded ? (
     <Spinner loaded={homepageLoaded} />

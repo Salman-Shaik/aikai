@@ -2,12 +2,7 @@ import _ from "lodash";
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { list } from "../../../data/editorsChoice.json";
-import {
-  createCookie,
-  createCookieIfNotExists,
-  deleteCookie,
-  getRandomItem,
-} from "../../../lib/helper";
+import { deleteCookie, getRandomItem } from "../../../lib/helper";
 import { DoubleShow } from "./DoubleShow";
 import { Favorites } from "./Favorites";
 import { HomePage } from "./Homepage/HomePage";
@@ -19,7 +14,6 @@ import { RegistrationPage } from "./User/RegistrationPage";
 
 export const Main = (props) => {
   const {
-    favorites,
     currentShow,
     currentShowId,
     isUserLoggedIn,
@@ -84,10 +78,9 @@ export const Main = (props) => {
             render={() => <RegistrationPage updateLocation={updateLocation} />}
           />
           <Route
-            path="/favorites"
+            path="/favorite_shows"
             render={() => (
               <Favorites
-                userFavorites={favorites}
                 setHomePageLoaded={setHomePageLoaded}
                 updateLocation={updateLocation}
                 isUserLoggedIn={isUserLoggedIn}

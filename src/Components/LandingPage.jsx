@@ -15,18 +15,15 @@ export const LandingPage = () => {
   const currentShowType = showTypeCookie || "";
   const [homepageLoaded, setHomePageLoaded] = useState(false);
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(!!userCookie || false);
-  const [favorites, setFavorites] = useState([]);
 
-  const updateLocation = (path) => {
-    window.location.href = path;
-  };
+  const updateLocation = (path) => (window.location.href = path);
+
   return (
     <div className="landingpage">
       <Header
         isUserLoggedIn={isUserLoggedIn}
         setIsUserLoggedIn={setIsUserLoggedIn}
         setHomePageLoaded={setHomePageLoaded}
-        setFavorites={setFavorites}
         updateLocation={updateLocation}
       />
       <Main
@@ -34,7 +31,6 @@ export const LandingPage = () => {
         currentShowId={currentShowId}
         currentShowType={currentShowType}
         homepageLoaded={homepageLoaded}
-        favorites={favorites}
         setHomePageLoaded={setHomePageLoaded}
         isUserLoggedIn={isUserLoggedIn}
         setIsUserLoggedIn={setIsUserLoggedIn}

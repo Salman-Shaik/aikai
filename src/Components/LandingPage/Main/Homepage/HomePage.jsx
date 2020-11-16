@@ -98,7 +98,7 @@ const FavoritesPage = ({ updateLocation }) => {
           />
           <InfoSection
             description="You can add movie or tv shows to your favorites list but you need to login first."
-            onClick={() => updateLocation("/favorites")}
+            onClick={() => updateLocation("/favorite_shows")}
           />
         </section>
       </section>

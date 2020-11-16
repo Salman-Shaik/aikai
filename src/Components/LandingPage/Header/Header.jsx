@@ -5,7 +5,6 @@ import { NavigationMenu } from "./NavigationMenu/NavigationMenu";
 
 export const Header = ({
   isUserLoggedIn,
-  setFavorites,
   setIsUserLoggedIn,
   setHomePageLoaded,
   updateLocation,
@@ -25,7 +24,6 @@ export const Header = ({
         isUserLoggedIn={isUserLoggedIn}
         setIsUserLoggedIn={setIsUserLoggedIn}
         setHomePageLoaded={setHomePageLoaded}
-        setFavorites={setFavorites}
         updateLocation={updateLocation}
       />
     </header>

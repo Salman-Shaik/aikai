@@ -68,11 +68,14 @@ app.get("/explicitFlag", (req, res) => getExplicitFlag(req, res, User));
 app.get("/*", (req, res) =>
   res.sendFile(path.join(__dirname, "../build", "index.html"))
 );
+
 app.post("/login", (req, res) => loginHandler(req, res, User));
 app.post("/register", (req, res) => registrationHandler(req, res, User));
+
 app.put("/favorite", (req, res) => favoriteHandler(req, res, User));
 app.put("/watch", (req, res) => addToWatchList(req, res, User));
 app.put("/watched", (req, res) => watchedHandler(req, res, User));
+
 app.delete("/favorite", (req, res) => deleteFavorite(req, res, User));
 app.delete("/watch", (req, res) => deleteFromWatchlist(req, res, User));
 app.delete("/logout", logoutUser);
