@@ -49,14 +49,14 @@ const parallel = (middlewares) => {
 };
 
 app.use(compression());
+app.use(
+  express.static(path.join(__dirname, "../build"), { maxAge: 2592000000 })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(
   parallel([logger("dev"), apiKeySetter, currentShowSetter, userValidator])
-);
-app.use(
-  express.static(path.join(__dirname, "../build"), { maxAge: 2592000000 })
 );
 app.use(favicon(__dirname + "../build/favicon.ico"));
 
