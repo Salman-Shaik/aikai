@@ -1,9 +1,9 @@
 import _ from "lodash";
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { list } from "../../../data/editorsChoice.json";
-import { deleteCookie, getRandomItem } from "../../../lib/helper";
+import { deleteCookie } from "../../../lib/helper";
 import { DoubleShow } from "./DoubleShow";
+import { EditorsChoice } from "./EditorsChoice";
 import { Favorites } from "./Favorites";
 import { HomePage } from "./Homepage/HomePage";
 import { NowPlaying } from "./NowPlaying/NowPlaying";
@@ -30,7 +30,6 @@ export const Main = (props) => {
   const isShowPresent = !isShowIdEmpty || !isShowEmpty;
   const isMovie = _.isEqual(window.location.href, "/movies");
   const isTv = _.isEqual(window.location.href, "/tv_shows");
-  const randomShow = getRandomItem(list);
 
   if (isMovie || isTv) {
     deleteCookie("showType");
@@ -152,14 +151,12 @@ export const Main = (props) => {
           <Route
             path="/editors_choice"
             render={() => (
-              <Show
-                currentShowId={randomShow.id}
+              <EditorsChoice
                 currentShow={currentShow}
-                currentShowType={randomShow.type}
-                isUserLoggedIn={isUserLoggedIn}
-                homepageLoaded={homepageLoaded}
-                setHomePageLoaded={setHomePageLoaded}
                 updateLocation={updateLocation}
+                isUserLoggedIn={isUserLoggedIn}
+                setHomePageLoaded={setHomePageLoaded}
+                homepageLoaded={homepageLoaded}
               />
             )}
           />

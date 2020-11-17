@@ -7,13 +7,15 @@ import { Spinner } from "../../../Spinner";
 export const Videos = ({ info, homepageLoaded, setHomepageLoaded }) => {
   const [videoIds, setVideoIds] = useState([]);
   const title = info.name || info.title;
+
   const opts = {
     height: "470",
     width: "718",
   };
+
   const subOpts = {
     height: "230",
-    width: "325"
+    width: "325",
   };
 
   useEffect(() => {
