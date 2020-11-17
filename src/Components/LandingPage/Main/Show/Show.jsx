@@ -6,7 +6,7 @@ import { fetchShow } from "../../../../lib/showNetworkCalls";
 import { Spinner } from "../../../Spinner";
 import { OtherShows } from "./OtherShows";
 import { ShowDetails } from "./ShowDetails";
-import { Trailer } from "./Trailer";
+import { Videos } from "./Videos";
 
 const Component = ({
   info,
@@ -38,7 +38,7 @@ const Component = ({
       />
       {createOtherMovies("recommendations", "recommended_movies")}
       {createOtherMovies("similar", "similar_movies")}
-      <Trailer
+      <Videos
         info={info}
         homepageLoaded={homepageLoaded}
         setHomepageLoaded={setHomePageLoaded}

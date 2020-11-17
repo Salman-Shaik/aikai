@@ -1,0 +1,34 @@
+.trailer_section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 85vw;
+}
+
+.trailer_title {
+  color: #6495ed;
+  margin-left: 0.4vw;
+}
+
+.videos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-left: 1vw;
+  width: 83.8vw;
+}
+
+.trailer_video {
+  border-radius: 10px;
+}
+
+.vertical-line {
+  margin: 6px 0;
+  border-left: 2px solid #C0C0C0;
+}
+
+.video_sub {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
