@@ -272,33 +272,53 @@ exports[`App App Snapshot Test 1`] = `
                 class="favorites"
               >
                 <img
-                  alt="favorite"
-                  class="favorite_image"
+                  alt="favorites"
+                  class="action_image"
                   src="favorites.png"
                 />
                 <section
-                  class="description_section"
+                  class="info_section"
                 >
-                  <img
-                    alt="Favorite Example"
-                    class="favorite_example"
-                    src="example.png"
-                  />
-                  <section
-                    class="info_section"
+                  <p
+                    class="page_info"
                   >
-                    <p
-                      class="page_info"
-                    >
-                      You can add movie or tv shows to your favorites list but you need to login first.
-                    </p>
-                    <button
-                      class="visit"
-                      type="button"
-                    >
-                      Visit →
-                    </button>
-                  </section>
+                    You can add a movie or a tv shows to your favorites list but you need to login first.
+                  </p>
+                  <button
+                    class="visit"
+                    type="button"
+                  >
+                    Visit →
+                  </button>
+                </section>
+              </section>
+            </section>
+            <section
+              class="page"
+              id="watchlist"
+            >
+              <section
+                class="watchlist"
+              >
+                <img
+                  alt="watchlist"
+                  class="action_image"
+                  src="watchlist.png"
+                />
+                <section
+                  class="info_section"
+                >
+                  <p
+                    class="page_info"
+                  >
+                    You can keep a track of all the movies or tv shows which you want to watch in future but you need to login first.
+                  </p>
+                  <button
+                    class="visit"
+                    type="button"
+                  >
+                    Visit →
+                  </button>
                 </section>
               </section>
             </section>
@@ -316,11 +336,6 @@ exports[`App App Snapshot Test 1`] = `
                 <ul
                   class="feature_list"
                 >
-                  <li
-                    class="feature"
-                  >
-                    Watchlist
-                  </li>
                   <li
                     class="feature"
                   >

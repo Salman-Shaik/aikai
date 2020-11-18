@@ -125,7 +125,7 @@ export const RegistrationPage = ({ updateLocation }) => {
 
   return (
     <section className="register" data-testid="register">
-      {!!successMessage && <Alert style="success" message={successMessage} />}
+      {!!successMessage && <Alert type="success" message={successMessage} />}
       {_.isEqual(pageNumber, 1) && (
         <section className="register_page">
           <h3 className="header">Create Account</h3>

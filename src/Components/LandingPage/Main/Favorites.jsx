@@ -23,7 +23,7 @@ export const Favorites = ({
         setLoaded(true);
       })
       .catch((e) => new TypeError(e));
-  }, []);
+  }, [isUserLoggedIn, setHomePageLoaded, updateLocation]);
 
   const MiniShows = () => {
     const miniShowMap = favorites.map(({ posterPath, title, id }) => (

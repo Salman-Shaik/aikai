@@ -1,10 +1,10 @@
 import React from "react";
 import "../../css/Alert.css";
 
-export const Alert = ({ style, message }) => {
+export const Alert = ({ type, message }) => {
   return (
-    <div className={`alert ${style}-alert`} data-testid={`${style}-alert`}>
-      <span className={`${style}_message`}>{message}</span>
+    <div className={`alert ${type}-alert`} data-testid={`${type}-alert`}>
+      <span className={`${type}_message`}>{message}</span>
     </div>
   );
 };

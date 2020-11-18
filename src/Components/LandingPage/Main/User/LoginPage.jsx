@@ -53,9 +53,9 @@ export const LoginPage = ({ setIsUserLoggedIn, updateLocation }) => {
 
   return (
     <section className="login">
-      {!!error && !successMessage && <Alert style="error" message={error} />}
+      {!!error && !successMessage && <Alert type="error" message={error} />}
       {!!successMessage && !error && (
-        <Alert style="success" message={successMessage} />
+        <Alert type="success" message={successMessage} />
       )}
       <section className="login_form" onSubmit={onLogin}>
         <h3 className="login_header">Welcome Back</h3>
