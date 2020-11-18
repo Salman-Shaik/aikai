@@ -9,12 +9,19 @@
   background-size: cover;
 }
 
-.register_page,
-.user_preferences {
+.register_page {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 18px;
+}
+
+.user_inputs {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   border-radius: 18px;
   background-color: rgba(34, 34, 34, 0.5);
   backdrop-filter: blur(24px);
@@ -22,13 +29,13 @@
 }
 
 .register_page {
-  width: 27vw;
+  width: 90vw;
   height: 54vh;
 }
 
-.user_preferences {
-  width: 28vw;
-  height: 65vh;
+.user_inputs {
+  width: 25vw;
+  height: 43vh;
 }
 
 .user_details {
@@ -96,8 +103,7 @@
   -moz-appearance: textfield;
 }
 
-.reg_btn,
-.next_btn {
+.reg_btn {
   padding: 10px 0;
   width: 22vw;
   font-size: 1.2em;
@@ -108,9 +114,7 @@
   border-radius: 10px;
   box-shadow: #1d1d1d 1px 1px 8px 5px;
   cursor: pointer;
-}
-
-.reg_btn {
+  margin-top: 4vh;
   background-image: linear-gradient(
     to right bottom,
     #72ffb6,
@@ -127,31 +131,10 @@
     #33dd79,
     #10d164
   );
-}
-
-.next_btn {
-  background-image: linear-gradient(
-    to right bottom,
-    #fa4f2e,
-    #f03f42,
-    #ec3154,
-    #e42764,
-    #d82474
-  );
-  background-image: -webkit-linear-gradient(
-    to right bottom,
-    #fa4f2e,
-    #f03f42,
-    #ec3154,
-    #e42764,
-    #d82474
-  );
-  margin-top: -5vh;
 }
 
 .detail:focus,
-.reg_btn:focus,
-.next_btn:focus {
+.reg_btn:focus {
   outline: none;
 }
 
@@ -171,8 +154,7 @@
   }
 }
 
-.header,
-.pref_header {
+.header {
   background-image: -webkit-linear-gradient(
     to right,
     #eea2a2 0%,
@@ -191,21 +173,15 @@
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-size: 4em;
+  font-size: 5em;
   font-weight: normal;
   margin-top: 1vh;
   margin-bottom: 0;
   word-spacing: 20vw;
   word-break: break-word;
   text-align: left;
-  margin-left: 2.5vw;
-}
-
-.pref_header {
-  font-size: 2.8em;
-  word-break: keep-all;
-  text-align: center;
-  margin-left: 0;
+  margin-left: 0.5vw;
+  width: 21.2vw;
 }
 
 .strength {
@@ -234,10 +210,13 @@
 .languages_section {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   width: 20vw;
   padding: 0 1vw 1vh;
-  margin-top: -2vh;
+  border-radius: 18px;
+  background-color: rgba(34, 34, 34, 0.5);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
 }
 
 .languages {

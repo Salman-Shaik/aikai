@@ -19,20 +19,20 @@ const createLanguageComponents = (languages, addLanguage, removeLanguage) =>
   ));
 
 export const RegistrationPage = ({ updateLocation }) => {
+  const [successMessage, setSuccessMessage] = useState("");
   const [name, setName] = useState("");
   const [age, setAge] = useState(0);
-  const [explicitFlag, setExplicitFlag] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordStrength, setPasswordStrength] = useState("");
+  const [explicitFlag, setExplicitFlag] = useState(false);
   const [nameError, setNameError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [usernameError, setUsernameError] = useState(false);
   const [ageError, setAgeError] = useState(false);
   const [disabled, setDisabled] = useState(true);
-  const [passwordStrength, setPasswordStrength] = useState("");
-  const [pageNumber, setPageNumber] = useState(1);
   const [languages, setLanguages] = useState([]);
-  const [successMessage, setSuccessMessage] = useState("");
+
   const updateName = ({ target }) => {
     setNameError(false);
     setName(target.value);
@@ -59,7 +59,9 @@ export const RegistrationPage = ({ updateLocation }) => {
     setAge(value);
   };
 
-  const onSwitch = () => setExplicitFlag(!explicitFlag);
+  const onSwitch = (checked) => {
+    setExplicitFlag(checked);
+  };
 
   const setErrors = (state) => {
     setNameError(state);
@@ -107,12 +109,6 @@ export const RegistrationPage = ({ updateLocation }) => {
     );
   };
 
-  const onNext = () => {
-    if (isFormInvalid()) return;
-    setErrors(false);
-    setPageNumber(2);
-  };
-
   const addLanguage = (language) => {
     const languagesMap = languages;
     languagesMap.push(language);
@@ -126,9 +122,9 @@ export const RegistrationPage = ({ updateLocation }) => {
   return (
     <section className="register" data-testid="register">
       {!!successMessage && <Alert type="success" message={successMessage} />}
-      {_.isEqual(pageNumber, 1) && (
-        <section className="register_page">
-          <h3 className="header">Create Account</h3>
+      <section className="register_page">
+        <h3 className="header">Create Account</h3>
+        <section className="user_inputs">
           <section className="user_details">
             <section className="personal_details">
               <input
@@ -160,18 +156,9 @@ export const RegistrationPage = ({ updateLocation }) => {
               <i>{`${passwordStrength} Password`}</i>
             </h5>
           </section>
-          <button type="button" className="next_btn" onClick={onNext}>
-            Next >
-          </button>
-        </section>
-      )}
-      {_.isEqual(pageNumber, 2) && (
-        <section className="user_preferences">
-          <h3 className="pref_header">Preferences</h3>
           <section className="explicit">
             <span className="explicit_label">Show Explicit Content</span>
             <Switch
-              onChange={onSwitch}
               checked={explicitFlag}
               className={"explicit_switch"}
               disabled={disabled}
@@ -179,23 +166,24 @@ export const RegistrationPage = ({ updateLocation }) => {
               onHandleColor="#ffefd5"
               offColor="#000000"
               onColor="#fb74a9"
+              onChange={onSwitch}
             />
-          </section>
-          <section className="languages_section">
-            <span className="explicit_label">Language Preferences</span>
-            <section className="languages">
-              {createLanguageComponents(
-                languageList,
-                addLanguage,
-                removeLanguage
-              )}
-            </section>
           </section>
           <button type="button" className="reg_btn" onClick={onRegister}>
             Sign Up
           </button>
         </section>
-      )}
+        <section className="languages_section">
+          <span className="explicit_label">Select Languages</span>
+          <section className="languages">
+            {createLanguageComponents(
+              languageList,
+              addLanguage,
+              removeLanguage
+            )}
+          </section>
+        </section>
+      </section>
     </section>
   );
 };
