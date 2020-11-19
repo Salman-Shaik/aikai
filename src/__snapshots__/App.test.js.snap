@@ -334,12 +334,12 @@ exports[`App App Snapshot Test 1`] = `
                   <li
                     class="feature"
                   >
-                    User profile
+                    Subscriptions
                   </li>
                   <li
                     class="feature"
                   >
-                    Subscriptions
+                    New Features are yet to add
                   </li>
                 </ul>
               </section>
