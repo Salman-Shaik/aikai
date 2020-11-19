@@ -1,24 +1,43 @@
 import checkPasswordStrength from "check-password-strength";
+import { decode } from "js-base64";
 import _ from "lodash";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Switch from "react-switch";
-import "../../../../css/RegistrationPage.css";
+import "../../../../css/UserDetails.css";
 import languageList from "../../../../data/languages.json";
-import { registerUser } from "../../../../lib/networkCalls";
+import { getCookieValue } from "../../../../lib/helper";
+import {
+  fetchDetails,
+  registerUser,
+  updateUser,
+} from "../../../../lib/networkCalls";
+import { Spinner } from "../../../Spinner";
 import { Alert } from "../../Alert";
 import { LanguageOption } from "./LanguageOption";
 
 //TODO: Need to add test
-const createLanguageComponents = (languages, addLanguage, removeLanguage) =>
-  Object.values(languages).map((language) => (
+const createLanguageComponents = (
+  languageList,
+  addLanguage,
+  removeLanguage,
+  languages
+) =>
+  Object.values(languageList).map((i) => (
     <LanguageOption
-      text={language}
+      languages={languages}
+      text={i}
       addLanguage={addLanguage}
-      removeLanguage={{ removeLanguage }}
+      removeLanguage={removeLanguage}
     />
   ));
 
-export const RegistrationPage = ({ updateLocation }) => {
+export const UserDetails = ({
+  updateLocation,
+  updateFlag,
+  isUserLoggedIn,
+  homepageLoaded,
+  setHomePageLoaded,
+}) => {
   const [successMessage, setSuccessMessage] = useState("");
   const [name, setName] = useState("");
   const [age, setAge] = useState(0);
@@ -32,6 +51,26 @@ export const RegistrationPage = ({ updateLocation }) => {
   const [ageError, setAgeError] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const [languages, setLanguages] = useState([]);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    if (updateFlag && isUserLoggedIn) {
+      const userCookie = getCookieValue("user").replaceAll("%3D", "=");
+      const userName = decode(userCookie);
+      setUsername(userName);
+      setHomePageLoaded(false);
+      return fetchDetails(
+        setAge,
+        setExplicitFlag,
+        setLanguages,
+        setName,
+        setDisabled,
+        setLoaded,
+        setHomePageLoaded
+      );
+    }
+    setLoaded(true);
+  }, [updateFlag, isUserLoggedIn]);
 
   const updateName = ({ target }) => {
     setNameError(false);
@@ -94,6 +133,34 @@ export const RegistrationPage = ({ updateLocation }) => {
     return isInvalid;
   };
 
+  const isUpdateFormInvalid = () => {
+    let isInvalid = false;
+    if (_.isEqual(age, 0)) {
+      isInvalid = true;
+      setAgeError(true);
+    }
+    if (_.isEmpty(name.trim())) {
+      isInvalid = true;
+      setNameError(true);
+    }
+    return isInvalid;
+  };
+
+  const onUpdate = () => {
+    if (isUpdateFormInvalid()) return;
+    setErrors(false);
+    updateUser(
+      name,
+      username,
+      password,
+      age,
+      explicitFlag,
+      languages,
+      updateLocation,
+      setSuccessMessage
+    );
+  };
+
   const onRegister = () => {
     if (isFormInvalid()) return;
     setErrors(false);
@@ -119,11 +186,15 @@ export const RegistrationPage = ({ updateLocation }) => {
     setLanguages(languages.filter((l) => l !== language));
   };
 
-  return (
+  return !loaded && !homepageLoaded ? (
+    <Spinner loaded={loaded} />
+  ) : (
     <section className="register" data-testid="register">
       {!!successMessage && <Alert type="success" message={successMessage} />}
       <section className="register_page">
-        <h3 className="header">Create Account</h3>
+        <h3 className="header">
+          {updateFlag ? "Update Details" : "Create Account"}
+        </h3>
         <section className="user_inputs">
           <section className="user_details">
             <section className="personal_details">
@@ -132,12 +203,14 @@ export const RegistrationPage = ({ updateLocation }) => {
                 placeholder="Enter Full Name"
                 className={`detail name ${nameError ? "error" : ""}`}
                 onChange={updateName}
+                value={name}
               />
               <input
                 type="number"
                 placeholder="Age"
                 className={`detail age ${ageError ? "error" : ""}`}
                 onChange={updateAge}
+                value={age}
               />
             </section>
             <input
@@ -145,6 +218,8 @@ export const RegistrationPage = ({ updateLocation }) => {
               placeholder="Enter Your Email"
               className={`detail email ${usernameError ? "error" : ""}`}
               onChange={updateUsername}
+              value={username}
+              readOnly={updateFlag}
             />
             <input
               type="password"
@@ -162,15 +237,19 @@ export const RegistrationPage = ({ updateLocation }) => {
               checked={explicitFlag}
               className={"explicit_switch"}
               disabled={disabled}
-              offHandleColor="#a9a9a9"
-              onHandleColor="#ffefd5"
+              offHandleColor="#ffefd5"
+              onHandleColor="#222222"
               offColor="#000000"
-              onColor="#fb74a9"
+              onColor="#4CE990"
               onChange={onSwitch}
             />
           </section>
-          <button type="button" className="reg_btn" onClick={onRegister}>
-            Sign Up
+          <button
+            type="button"
+            className="reg_btn"
+            onClick={updateFlag ? onUpdate : onRegister}
+          >
+            {`${updateFlag ? "Update" : "Sign Up"}`}
           </button>
         </section>
         <section className="languages_section">
@@ -179,7 +258,8 @@ export const RegistrationPage = ({ updateLocation }) => {
             {createLanguageComponents(
               languageList,
               addLanguage,
-              removeLanguage
+              removeLanguage,
+              languages
             )}
           </section>
         </section>

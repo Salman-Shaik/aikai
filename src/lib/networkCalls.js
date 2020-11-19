@@ -34,7 +34,11 @@ export const login = (
     .catch((e) => new TypeError(e));
 };
 
-export const logout = (setHomePageLoaded, setIsUserLoggedIn) => {
+export const logout = (
+  setHomePageLoaded,
+  setIsUserLoggedIn,
+  updateLocation
+) => {
   fetch("/logout", {
     method: "delete",
   })
@@ -43,6 +47,7 @@ export const logout = (setHomePageLoaded, setIsUserLoggedIn) => {
       if (st === 200) {
         setIsUserLoggedIn(false);
         setHomePageLoaded(true);
+        updateLocation("/");
       }
     });
 };
@@ -71,6 +76,36 @@ export const registerUser = (
         setSuccessMessage("Account Created!");
         setTimeout(() => {
           updateLocation("/login");
+        }, 1000);
+      }
+    })
+    .catch((e) => new TypeError(e));
+};
+
+export const updateUser = (
+  name,
+  username,
+  password,
+  age,
+  explicitFlag,
+  languages,
+  updateLocation,
+  setSuccessMessage
+) => {
+  const jwtToken = getJwtToken({ username, password });
+  fetch("/details", {
+    method: "put",
+    body: JSON.stringify({ name, age, explicitFlag, languages }),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${jwtToken}`,
+    },
+  })
+    .then((res) => {
+      if (res.status === 200) {
+        setSuccessMessage("User Details Updated!");
+        setTimeout(() => {
+          updateLocation("/");
         }, 1000);
       }
     })
@@ -186,6 +221,31 @@ export const markWatched = (id, updateLocation) => {
       if (r.status === 200) {
         updateLocation("/watch_list");
       }
+    })
+    .catch((e) => new TypeError(e));
+};
+
+export const fetchDetails = (
+  setAge,
+  setExplicitFlag,
+  setLanguages,
+  setName,
+  setDisabled,
+  setLoaded,
+  setHomePageLoaded
+) => {
+  fetch("/user_details")
+    .then((res) => res.text())
+    .then((d) => JSON.parse(d))
+    .then((details) => {
+      const { languages, age, name, explicitFlag } = details;
+      setAge(age);
+      setDisabled(!(age >= 18));
+      setExplicitFlag(explicitFlag);
+      setLanguages(languages);
+      setName(name);
+      setLoaded(true);
+      setHomePageLoaded(true);
     })
     .catch((e) => new TypeError(e));
 };

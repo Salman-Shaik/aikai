@@ -1,4 +1,5 @@
 const _ = require("lodash");
+const jwt = require("jsonwebtoken");
 const { Sequelize } = require("sequelize");
 const { decode } = require("js-base64");
 
@@ -62,8 +63,27 @@ const watchedHandler = async (req, res, User) => {
   res.send(`Marked Watched`);
 };
 
+const updateUserDetails = async (req, res, User) => {
+  const token = req.get("Authorization").replace("Bearer ", "");
+  if (!token) {
+    res.status(401);
+    res.send("Unauthorized User");
+  }
+  const { password } = jwt.verify(token, "ADHIIDHIKAADHUADHEIDHI");
+  const cookie = req.cookies.user;
+  if (_.isEmpty(cookie)) {
+    res.status(401);
+    return res.send("User not logged in");
+  }
+  let username = decode(cookie);
+  const { name, age, explicitFlag, languages } = req.body;
+  await User.updateUser(username, password, name, age, explicitFlag, languages);
+  res.send("User details Updated");
+};
+
 module.exports = {
   favoriteHandler,
   addToWatchList,
   watchedHandler,
+  updateUserDetails,
 };

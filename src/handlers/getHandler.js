@@ -47,9 +47,23 @@ const getLanguages = async (req, res, User) => {
   return res.send(titles);
 };
 
+const getUserDetails = async (req, res, User) => {
+  let cookie = req.cookies.user;
+  if (!!cookie) {
+    const username = decode(cookie);
+    const { name, age, explicitFlag, languages } = await User.findByUsername(
+      username
+    );
+    return res.send(JSON.stringify({ name, age, explicitFlag, languages }));
+  }
+  res.status(401);
+  res.send("User Not logged In");
+};
+
 module.exports = {
   getExplicitFlag,
   getFavorites,
   getWatchList,
   getLanguages,
+  getUserDetails,
 };

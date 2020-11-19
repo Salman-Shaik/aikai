@@ -1,10 +1,18 @@
 import Tooltip from "@material-ui/core/Tooltip";
 import { CheckCircle, RadioButtonUncheckedOutlined } from "@material-ui/icons";
+import _ from "lodash";
 import React, { useState } from "react";
 import "../../../../css/LanguageOption.css";
 
-export const LanguageOption = ({ text, addLanguage, removeLanguage }) => {
-  const [selected, setSelected] = useState(false);
+export const LanguageOption = ({
+  languages,
+  text,
+  addLanguage,
+  removeLanguage,
+}) => {
+  const [selected, setSelected] = useState(
+    _.isEmpty(languages) ? false : !!languages.includes(text)
+  );
 
   const onSelect = () => {
     setSelected(true);

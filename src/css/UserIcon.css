@@ -6,10 +6,17 @@
   cursor: pointer;
 }
 
+.login_item {
+  font-size: 1.18em !important;
+  color: #ffefd5;
+  margin: 0 1vw;
+  justify-self: flex-end;
+  cursor: pointer;
+}
+
 .logout_icon {
   font-size: 2.4em !important;
   color: #ff0000;
   margin: 0 1vw;
-  justify-self: flex-end;
   cursor: pointer;
 }

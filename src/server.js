@@ -28,6 +28,8 @@ const {
 } = require("./handlers/deleteHandler");
 const { sequelize, models } = require("./models");
 const async = require("async");
+const { updateUserDetails } = require("./handlers/putHandler");
+const { getUserDetails } = require("./handlers/getHandler");
 
 const { User } = models;
 const port = process.env.PORT || 8080;
@@ -65,6 +67,7 @@ app.get("/favorites", (req, res) => getFavorites(req, res, User));
 app.get("/watchlist", (req, res) => getWatchList(req, res, User));
 app.get("/languages", (req, res) => getLanguages(req, res, User));
 app.get("/explicitFlag", (req, res) => getExplicitFlag(req, res, User));
+app.get("/user_details", (req, res) => getUserDetails(req, res, User));
 app.get("/*", (req, res) =>
   res.sendFile(path.join(__dirname, "../build", "index.html"))
 );
@@ -75,6 +78,7 @@ app.post("/register", (req, res) => registrationHandler(req, res, User));
 app.put("/favorite", (req, res) => favoriteHandler(req, res, User));
 app.put("/watch", (req, res) => addToWatchList(req, res, User));
 app.put("/watched", (req, res) => watchedHandler(req, res, User));
+app.put("/details", (req, res) => updateUserDetails(req, res, User));
 
 app.delete("/favorite", (req, res) => deleteFavorite(req, res, User));
 app.delete("/watch", (req, res) => deleteFromWatchlist(req, res, User));

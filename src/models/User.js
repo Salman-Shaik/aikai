@@ -90,6 +90,43 @@ const user = (sequelize, DataTypes) => {
     });
   };
 
+  User.updateUser = async (
+    username,
+    password,
+    name,
+    age,
+    explicitFlag,
+    languages
+  ) => {
+    if (password === "") {
+      await User.update(
+        {
+          name,
+          age,
+          explicitFlag,
+          languages,
+        },
+        { where: { username } }
+      );
+    } else {
+      await bcrypt.hash(password, 10, async (err, hash) => {
+        if (err) console.log(err);
+        if (hash) {
+          await User.update(
+            {
+              password: hash,
+              name,
+              age,
+              explicitFlag,
+              languages,
+            },
+            { where: { username } }
+          );
+        }
+      });
+    }
+  };
+
   User.validateUser = async (username, password, res) => {
     const userObj = await User.findByUsername(username);
     if (_.isEmpty(userObj)) {

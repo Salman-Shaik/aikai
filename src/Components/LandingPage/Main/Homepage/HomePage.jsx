@@ -137,8 +137,8 @@ const Footer = () => {
       <section className="features">
         <span className="features_header">Features coming soon</span>
         <ul className="feature_list">
-          <li className="feature">User profile</li>
           <li className="feature">Subscriptions</li>
+          <li className="feature">New Features are yet to add</li>
         </ul>
       </section>
       <section className="feedback">

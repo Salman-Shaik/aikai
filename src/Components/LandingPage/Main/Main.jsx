@@ -10,7 +10,7 @@ import { NowPlaying } from "./NowPlaying/NowPlaying";
 import { SearchResults } from "./Search/SearchResults";
 import { Show } from "./Show/Show";
 import { LoginPage } from "./User/LoginPage";
-import { RegistrationPage } from "./User/RegistrationPage";
+import { UserDetails } from "./User/UserDetails";
 import { WatchList } from "./WatchList";
 
 export const Main = (props) => {
@@ -75,7 +75,27 @@ export const Main = (props) => {
           />
           <Route
             path="/register"
-            render={() => <RegistrationPage updateLocation={updateLocation} />}
+            render={() => (
+              <UserDetails
+                updateLocation={updateLocation}
+                updateFlag={false}
+                isUserLoggedIn={isUserLoggedIn}
+                homepageLoaded={homepageLoaded}
+                setHomePageLoaded={setHomePageLoaded}
+              />
+            )}
+          />
+          <Route
+            path="/update_profile"
+            render={() => (
+              <UserDetails
+                updateLocation={updateLocation}
+                updateFlag={true}
+                isUserLoggedIn={isUserLoggedIn}
+                homepageLoaded={homepageLoaded}
+                setHomePageLoaded={setHomePageLoaded}
+              />
+            )}
           />
           <Route
             path="/favorite_shows"

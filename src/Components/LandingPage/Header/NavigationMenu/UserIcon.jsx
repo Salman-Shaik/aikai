@@ -16,15 +16,30 @@ export const UserIcon = ({
       updateLocation("/login");
     }
   };
-  const onLogout = () => logout(setHomePageLoaded, setIsUserLoggedIn);
+
+  const onProfile = () => {
+    updateLocation("/update_profile");
+  };
+
+  const onLogout = () => {
+    logout(setHomePageLoaded, setIsUserLoggedIn, updateLocation);
+  };
 
   return isUserLoggedIn ? (
-    <Tooltip title="Logout">
-      <PowerSettingsNew className="logout_icon" onClick={onLogout} />
-    </Tooltip>
+    window.location.href.includes("/update_profile") ? (
+      <Tooltip title="Logout">
+        <PowerSettingsNew className="logout_icon" onClick={onLogout} />
+      </Tooltip>
+    ) : (
+      <Tooltip title="Profile">
+        <AccountCircle className="user_icon" onClick={onProfile} />
+      </Tooltip>
+    )
   ) : (
     <Tooltip title="Login">
-      <AccountCircle className="user_icon" onClick={onClick} />
+      <span className="login_item" onClick={onClick}>
+        LogIn
+      </span>
     </Tooltip>
   );
 };
