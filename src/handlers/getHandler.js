@@ -1,5 +1,6 @@
 const _ = require("lodash");
 const { decode } = require("js-base64");
+const path = require("path");
 
 const getExplicitFlag = async (req, res, User) => {
   let cookie = req.cookies.user;
@@ -60,10 +61,37 @@ const getUserDetails = async (req, res, User) => {
   res.send("User Not logged In");
 };
 
+const isValidReactRoute = (url) => {
+  const validRoutes = [
+    "/login",
+    "/register",
+    "/update_profile",
+    "/favorite_shows",
+    "/watch_list",
+    "/now_playing",
+    "/search",
+    "/movies",
+    "/tv_shows",
+    "/editors_choice",
+    "/",
+    "/not-found",
+  ];
+  return validRoutes.includes(url);
+};
+
+const handleReactRoutingRequests = (req, res) => {
+  const url = req.url;
+  if (isValidReactRoute(url)) {
+    return res.sendFile(path.join(__dirname, "../../build", "index.html"));
+  }
+  res.status(404).redirect("/not-found");
+};
+
 module.exports = {
   getExplicitFlag,
   getFavorites,
   getWatchList,
   getLanguages,
   getUserDetails,
+  handleReactRoutingRequests,
 };

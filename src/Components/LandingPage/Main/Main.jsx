@@ -6,6 +6,7 @@ import { DoubleShow } from "./DoubleShow";
 import { EditorsChoice } from "./EditorsChoice";
 import { Favorites } from "./Favorites";
 import { HomePage } from "./Homepage/HomePage";
+import { NotFound } from "./NotFound";
 import { NowPlaying } from "./NowPlaying/NowPlaying";
 import { SearchResults } from "./Search/SearchResults";
 import { Show } from "./Show/Show";
@@ -180,6 +181,7 @@ export const Main = (props) => {
               />
             )}
           />
+          <Route path="/not-found" render={() => <NotFound />} />
           <Route path="/" render={() => <Component />} />
         </Switch>
       </Router>

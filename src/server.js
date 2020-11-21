@@ -28,6 +28,7 @@ const {
 } = require("./handlers/deleteHandler");
 const { sequelize, models } = require("./models");
 const async = require("async");
+const { handleReactRoutingRequests } = require("./handlers/getHandler");
 const { updateUserDetails } = require("./handlers/putHandler");
 const { getUserDetails } = require("./handlers/getHandler");
 
@@ -68,9 +69,7 @@ app.get("/watchlist", (req, res) => getWatchList(req, res, User));
 app.get("/languages", (req, res) => getLanguages(req, res, User));
 app.get("/explicitFlag", (req, res) => getExplicitFlag(req, res, User));
 app.get("/user_details", (req, res) => getUserDetails(req, res, User));
-app.get("/*", (req, res) =>
-  res.sendFile(path.join(__dirname, "../build", "index.html"))
-);
+app.get("/*", handleReactRoutingRequests);
 
 app.post("/login", (req, res) => loginHandler(req, res, User));
 app.post("/register", (req, res) => registrationHandler(req, res, User));
