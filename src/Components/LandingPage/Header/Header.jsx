@@ -18,7 +18,12 @@ export const Header = ({
   return (
     <header className="page_header">
       <section className="logo_sections" onClick={onIconClick}>
-        <img src={`favicon.png`} alt="icon" className="logo-symbol" onClick={onIconClick}/>
+        <img
+          src={`favicon.png`}
+          alt="icon"
+          className="logo-symbol"
+          onClick={onIconClick}
+        />
         <h2 className="logo" onClick={onIconClick}>
           A.I.K.A.I
         </h2>

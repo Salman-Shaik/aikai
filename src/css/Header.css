@@ -34,7 +34,7 @@
   -webkit-text-fill-color: transparent;
 }
 
-.logo_sections{
+.logo_sections {
   display: flex;
   flex-direction: row;
   align-items: center;
