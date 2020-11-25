@@ -70,7 +70,7 @@ export const UserDetails = ({
       );
     }
     setLoaded(true);
-  }, [updateFlag, isUserLoggedIn,setHomePageLoaded]);
+  }, [updateFlag, isUserLoggedIn, setHomePageLoaded]);
 
   const updateName = ({ target }) => {
     setNameError(false);

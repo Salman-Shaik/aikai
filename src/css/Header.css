@@ -14,7 +14,6 @@
 .logo {
   cursor: pointer;
   font-size: 2.5em;
-  margin-left: 2vw;
   background-image: linear-gradient(
     to right bottom,
     #f14f2e,
@@ -33,4 +32,16 @@
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.logo_sections{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.logo-symbol {
+  height: 6.5em;
+  width: 6em;
 }

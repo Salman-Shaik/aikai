@@ -17,9 +17,12 @@ export const Header = ({
 
   return (
     <header className="page_header">
-      <h2 className="logo" onClick={onIconClick}>
-        A.I.K.A.I
-      </h2>
+      <section className="logo_sections" onClick={onIconClick}>
+        <img src={`favicon.png`} alt="icon" className="logo-symbol" onClick={onIconClick}/>
+        <h2 className="logo" onClick={onIconClick}>
+          A.I.K.A.I
+        </h2>
+      </section>
       <NavigationMenu
         isUserLoggedIn={isUserLoggedIn}
         setIsUserLoggedIn={setIsUserLoggedIn}
