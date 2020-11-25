@@ -42,6 +42,7 @@
 }
 
 .logo-symbol {
+  cursor: pointer;
   height: 6.5em;
   width: 6em;
 }
