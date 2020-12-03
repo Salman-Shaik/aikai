@@ -45,9 +45,9 @@
   align-items: center;
   justify-content: center;
   min-height: 89vh;
+  width: 99vw;
   background-image: url("../resources/movie_background.jpg");
   background-size: cover;
-  width: 1850px;
 }
 
 .heading {
