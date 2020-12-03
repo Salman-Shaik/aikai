@@ -11,11 +11,20 @@ exports[`App App Snapshot Test 1`] = `
       <header
         class="page_header"
       >
-        <h2
-          class="logo"
+        <section
+          class="logo_sections"
         >
-          A.I.K.A.I
-        </h2>
+          <img
+            alt="icon"
+            class="logo-symbol"
+            src="favicon.png"
+          />
+          <h2
+            class="logo"
+          >
+            A.I.K.A.I
+          </h2>
+        </section>
         <section
           class="navigation_menu"
         >
@@ -145,7 +154,7 @@ exports[`App App Snapshot Test 1`] = `
                 <img
                   alt="Now Playing"
                   class="now-playing_image"
-                  src="nowPlaying.png"
+                  src="nowPlaying.jpg"
                 />
                 <section
                   class="info_section"
@@ -173,12 +182,12 @@ exports[`App App Snapshot Test 1`] = `
                 <img
                   alt="Top Rated Movie"
                   class="show_example"
-                  src="movies-top.png"
+                  src="movies-top.jpg"
                 />
                 <img
                   alt="Random Movie"
                   class="show_example"
-                  src="movies-random.png"
+                  src="movies-random.jpg"
                 />
               </section>
               <section
@@ -206,12 +215,12 @@ exports[`App App Snapshot Test 1`] = `
                 <img
                   alt="Top Rated Tv"
                   class="show_example"
-                  src="tv-top.png"
+                  src="tv-top.jpg"
                 />
                 <img
                   alt="Random Tv"
                   class="show_example"
-                  src="tv-random.png"
+                  src="tv-random.jpg"
                 />
               </section>
               <section
@@ -240,7 +249,7 @@ exports[`App App Snapshot Test 1`] = `
                 <img
                   alt="Editor's Choice"
                   class="editors_choice_image"
-                  src="editorsChoice.png"
+                  src="editorsChoice.jpg"
                 />
                 <section
                   class="info_section"
@@ -269,7 +278,7 @@ exports[`App App Snapshot Test 1`] = `
                 <img
                   alt="favorites"
                   class="action_image"
-                  src="favorites.png"
+                  src="favorites.jpg"
                 />
                 <section
                   class="info_section"
@@ -298,7 +307,7 @@ exports[`App App Snapshot Test 1`] = `
                 <img
                   alt="watchlist"
                   class="action_image"
-                  src="watchlist.png"
+                  src="watchlist.jpg"
                 />
                 <section
                   class="info_section"

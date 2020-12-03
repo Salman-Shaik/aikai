@@ -57,8 +57,8 @@ const ShowPage = ({ image1, image2, description, updateLocation, type }) => {
 
 const MoviesPage = ({ updateLocation }) => (
   <ShowPage
-    image1="movies-top.png"
-    image2="movies-random.png"
+    image1="movies-top.jpg"
+    image2="movies-random.jpg"
     description="Puzzled which Movie to watch? We are here to help you."
     updateLocation={() => updateLocation("/movies")}
     type="movie"
@@ -67,8 +67,8 @@ const MoviesPage = ({ updateLocation }) => (
 
 const TVPage = ({ updateLocation }) => (
   <ShowPage
-    image1="tv-top.png"
-    image2="tv-random.png"
+    image1="tv-top.jpg"
+    image2="tv-random.jpg"
     description="Want to watch a TV / Web Series. We got your back with suggestions."
     updateLocation={() => updateLocation("/tv_shows")}
     type="tv"
@@ -78,7 +78,7 @@ const TVPage = ({ updateLocation }) => (
 const EditorsChoicePage = ({ updateLocation }) => (
   <Page
     keyword="editors_choice"
-    image="editorsChoice.png"
+    image="editorsChoice.jpg"
     alt="Editor's Choice"
     description="Recommendations from the Editor, he says these are best he has ever seen. Do you believe him?"
     onClick={() => updateLocation("/editors_choice")}
@@ -89,7 +89,7 @@ const ActionsPage = ({ updateLocation, action, description }) => {
   return (
     <section id={action} className="page">
       <section className={action}>
-        <img src={`${action}.png`} alt={action} className="action_image" />
+        <img src={`${action}.jpg`} alt={action} className="action_image" />
         <InfoSection
           description={description}
           onClick={() => updateLocation()}

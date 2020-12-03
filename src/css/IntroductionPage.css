@@ -45,9 +45,9 @@
   align-items: center;
   justify-content: center;
   min-height: 89vh;
-  background-image: url("../resources/movie_background.png");
+  background-image: url("../resources/movie_background.jpg");
   background-size: cover;
-  backdrop-filter: blur(24px);
+  width: 1850px;
 }
 
 .heading {
