@@ -28,7 +28,7 @@ const Page = ({ keyword, image, alt, description, onClick }) => {
 const NowPlayingPage = ({ updateLocation }) => (
   <Page
     keyword="now-playing"
-    image="nowPlaying.png"
+    image="nowPlaying.jpg"
     alt="Now Playing"
     description="Wanna know what's playing in Theatres or which TV show is airing today."
     onClick={() => updateLocation("/now_playing")}
