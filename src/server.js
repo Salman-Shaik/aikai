@@ -53,7 +53,7 @@ const parallel = (middlewares) => {
 
 app.use(compression());
 app.use(
-  express.static(path.join(__dirname, "../build"), { maxAge: 2592000000 })
+  express.static(path.join(__dirname, "../build"), { maxAge: 31540000000 })
 );
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
