@@ -10,6 +10,11 @@ const loginHandler = async (req, res, User) => {
   await User.validateUser(username, password, res);
 };
 
+const mobileLoginHandler = async (req, res, User) => {
+  const { username, password } = req.body;
+  await User.validateUser(username, password, res);
+};
+
 const registrationHandler = async (req, res, User) => {
   const token = req.get("Authorization").replace("Bearer ", "");
   if (!token) {
@@ -26,4 +31,5 @@ const registrationHandler = async (req, res, User) => {
 module.exports = {
   loginHandler,
   registrationHandler,
+  mobileLoginHandler,
 };

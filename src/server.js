@@ -20,7 +20,11 @@ const {
   watchedHandler,
   addToWatchList,
 } = require("./handlers/putHandler");
-const { loginHandler, registrationHandler } = require("./handlers/postHandler");
+const {
+  loginHandler,
+  registrationHandler,
+  mobileLoginHandler,
+} = require("./handlers/postHandler");
 const {
   deleteFavorite,
   deleteFromWatchlist,
@@ -72,6 +76,7 @@ app.get("/user_details", (req, res) => getUserDetails(req, res, User));
 app.get("/*", handleReactRoutingRequests);
 
 app.post("/login", (req, res) => loginHandler(req, res, User));
+app.post("/mobile/login", (req, res) => mobileLoginHandler(req, res, User));
 app.post("/register", (req, res) => registrationHandler(req, res, User));
 
 app.put("/favorite", (req, res) => favoriteHandler(req, res, User));
