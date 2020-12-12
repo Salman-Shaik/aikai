@@ -136,7 +136,7 @@ const user = (sequelize, DataTypes) => {
     await bcrypt.compare(password, userObj.password, (err, result) => {
       if (result) {
         res.cookie("user", encode(username));
-        res.send(JSON.stringify({user:encode(username)}));
+        res.send(JSON.stringify({ user: encode(username) }));
       } else {
         res.status(401);
         res.send("Invalid Password");
