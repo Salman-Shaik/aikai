@@ -28,6 +28,7 @@ const {
 } = require("./handlers/postHandler");
 const {
   deleteFavorite,
+  deleteFavoriteForMobile,
   deleteFromWatchlist,
   logoutUser,
 } = require("./handlers/deleteHandler");
@@ -92,6 +93,7 @@ app.put("/watched", (req, res) => watchedHandler(req, res, User));
 app.put("/details", (req, res) => updateUserDetails(req, res, User));
 
 app.delete("/favorite", (req, res) => deleteFavorite(req, res, User));
+app.delete("/mobile/favorite", (req, res) => deleteFavoriteForMobile(req, res, User));
 app.delete("/watch", (req, res) => deleteFromWatchlist(req, res, User));
 app.delete("/logout", logoutUser);
 

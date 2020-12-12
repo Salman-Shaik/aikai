@@ -25,6 +25,20 @@ const deleteFavorite = async (req, res, User) => {
   res.send(`Deleted Favorite Successfully.`);
 };
 
+const deleteFavoriteForMobile = async (req, res, User) => {
+  const userToken = req.query.user;
+  if (_.isEmpty(userToken)) {
+    res.status(401);
+    return res.send("User not logged in");
+  }
+  const username = decode(userToken);
+  const { id } = req.body;
+  const favorites = await User.getFavorites(username);
+  const filteredFavorites = favorites.filter((f) => f.id !== id);
+  await User.update({ favorites: filteredFavorites }, { where: { username } });
+  res.send(`Deleted Favorite Successfully.`);
+};
+
 const deleteFromWatchlist = async (req, res, User) => {
   const cookie = req.cookies.user;
   if (_.isEmpty(cookie)) {
@@ -43,4 +57,5 @@ module.exports = {
   logoutUser,
   deleteFavorite,
   deleteFromWatchlist,
+  deleteFavoriteForMobile
 };
