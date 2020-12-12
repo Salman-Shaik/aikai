@@ -25,6 +25,18 @@ const getFavorites = async (req, res, User) => {
   return res.send(titles);
 };
 
+const getFavoritesForMobile = async (req, res, User) => {
+  const userToken = req.query.user;
+  if (_.isEmpty(userToken)) {
+    res.status(401);
+    return res.send("User not logged in");
+  }
+  const username = decode(userToken);
+  const userFavorites = await User.getFavorites(username);
+  const titles = JSON.stringify(userFavorites);
+  return res.send(titles);
+};
+
 const getWatchList = async (req, res, User) => {
   const cookie = req.cookies.user;
   if (_.isEmpty(cookie)) {
@@ -94,4 +106,5 @@ module.exports = {
   getLanguages,
   getUserDetails,
   handleReactRoutingRequests,
+  getFavoritesForMobile,
 };
