@@ -53,9 +53,24 @@ const deleteFromWatchlist = async (req, res, User) => {
   res.send(`Removed From Watchlist`);
 };
 
+const deleteFromWatchlistForMobile = async (req, res, User) => {
+  const userToken = req.query.user;
+  if (_.isEmpty(userToken)) {
+    res.status(401);
+    return res.send("User not logged in");
+  }
+  const username = decode(userToken);
+  const { id } = req.body;
+  const watchList = await User.getWatchList(username);
+  const filteredWatchList = watchList.filter((w) => w.id !== id);
+  await User.update({ watchlist: filteredWatchList }, { where: { username } });
+  res.send(`Removed From Watchlist`);
+};
+
 module.exports = {
   logoutUser,
   deleteFavorite,
   deleteFromWatchlist,
-  deleteFavoriteForMobile
+  deleteFavoriteForMobile,
+  deleteFromWatchlistForMobile
 };

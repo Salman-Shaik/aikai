@@ -49,6 +49,18 @@ const getWatchList = async (req, res, User) => {
   return res.send(titles);
 };
 
+const getWatchListForMobile = async (req, res, User) => {
+  const userToken = req.query.user;
+  if (_.isEmpty(userToken)) {
+    res.status(401);
+    return res.send("User not logged in");
+  }
+  const username = decode(userToken);
+  const watchListObj = await User.getWatchList(username);
+  const titles = JSON.stringify(watchListObj);
+  return res.send(titles);
+};
+
 const getLanguages = async (req, res, User) => {
   const cookie = req.cookies.user;
   if (_.isEmpty(cookie)) {
@@ -107,4 +119,5 @@ module.exports = {
   getUserDetails,
   handleReactRoutingRequests,
   getFavoritesForMobile,
+  getWatchListForMobile,
 };

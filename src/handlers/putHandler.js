@@ -63,6 +63,23 @@ const watchedHandler = async (req, res, User) => {
   res.send(`Marked Watched`);
 };
 
+const watchedHandlerForMobile = async (req, res, User) => {
+  const userToken = req.query.user;
+  if (_.isEmpty(userToken)) {
+    res.status(401);
+    return res.send("User not logged in");
+  }
+  const username = decode(userToken);
+  const { id } = req.body;
+  const watchList = await User.getWatchList(username);
+  const watchedShow = watchList.find((show) => show.id === id);
+  watchedShow.watched = true;
+  const filteredWatchList = watchList.filter((f) => f.id !== id);
+  filteredWatchList.push(watchedShow);
+  await User.update({ watchlist: filteredWatchList }, { where: { username } });
+  res.send(`Marked Watched`);
+};
+
 const updateUserDetails = async (req, res, User) => {
   const token = req.get("Authorization").replace("Bearer ", "");
   if (!token) {
@@ -85,5 +102,6 @@ module.exports = {
   favoriteHandler,
   addToWatchList,
   watchedHandler,
+  watchedHandlerForMobile,
   updateUserDetails,
 };
