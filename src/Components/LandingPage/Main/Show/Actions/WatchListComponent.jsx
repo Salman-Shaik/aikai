@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import {
   addToWatchList,
   isShowOnWatchList,
-  removeFromWatchList,
 } from "../../../../../lib/networkCalls";
 
 export const WatchListComponent = ({
@@ -31,14 +30,6 @@ export const WatchListComponent = ({
     }
   };
 
-  const onWatchListRemove = () => {
-    if (isUserLoggedIn) {
-      removeFromWatchList(id, updateLocation);
-    } else {
-      updateLocation("/login");
-    }
-  };
-
   const Add = () => {
     return (
       <Tooltip title={"Add To WatchList"}>
@@ -54,11 +45,7 @@ export const WatchListComponent = ({
   const Added = () => {
     return (
       <Tooltip title={"On WatchList"}>
-        <Bookmark
-          className="added"
-          data-testid="on_watchlist"
-          onClick={onWatchListRemove}
-        />
+        <Bookmark className="added" data-testid="on_watchlist" />
       </Tooltip>
     );
   };
