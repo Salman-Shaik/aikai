@@ -72,5 +72,5 @@ module.exports = {
   deleteFavorite,
   deleteFromWatchlist,
   deleteFavoriteForMobile,
-  deleteFromWatchlistForMobile
+  deleteFromWatchlistForMobile,
 };

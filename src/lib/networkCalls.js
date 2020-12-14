@@ -170,6 +170,20 @@ export const addToWatchList = (title, id, posterPath, setIsOnWatchList) => {
     .catch((e) => new TypeError(e));
 };
 
+export const removeFromWatchList = (id, updateLocation) => {
+  fetch("/watch", {
+    method: "delete",
+    body: JSON.stringify({ id }),
+    headers: { "Content-Type": "application/json" },
+  })
+    .then((res) => {
+      if (res.status === 200) {
+        updateLocation("/watch_list");
+      }
+    })
+    .catch((e) => new TypeError(e));
+};
+
 const fetchUserWatchList = () => {
   return fetch("/watchlist")
     .then((r) => r.text())

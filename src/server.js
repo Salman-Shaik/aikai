@@ -77,9 +77,13 @@ app.use(favicon(__dirname + "../build/favicon.ico"));
 
 app.get("/health", (req, res) => res.send("ok"));
 app.get("/favorites", (req, res) => getFavorites(req, res, User));
-app.get("/mobile/favorites", (req, res) => getFavoritesForMobile(req, res, User));
+app.get("/mobile/favorites", (req, res) =>
+  getFavoritesForMobile(req, res, User)
+);
 app.get("/watchlist", (req, res) => getWatchList(req, res, User));
-app.get("/mobile/watchlist", (req, res) => getWatchListForMobile(req, res, User));
+app.get("/mobile/watchlist", (req, res) =>
+  getWatchListForMobile(req, res, User)
+);
 app.get("/languages", (req, res) => getLanguages(req, res, User));
 app.get("/explicitFlag", (req, res) => getExplicitFlag(req, res, User));
 app.get("/user_details", (req, res) => getUserDetails(req, res, User));
@@ -92,13 +96,19 @@ app.post("/register", (req, res) => registrationHandler(req, res, User));
 app.put("/favorite", (req, res) => favoriteHandler(req, res, User));
 app.put("/watch", (req, res) => addToWatchList(req, res, User));
 app.put("/watched", (req, res) => watchedHandler(req, res, User));
-app.put("/mobile/watched", (req, res) => watchedHandlerForMobile(req, res, User));
+app.put("/mobile/watched", (req, res) =>
+  watchedHandlerForMobile(req, res, User)
+);
 app.put("/details", (req, res) => updateUserDetails(req, res, User));
 
 app.delete("/favorite", (req, res) => deleteFavorite(req, res, User));
-app.delete("/mobile/favorite", (req, res) => deleteFavoriteForMobile(req, res, User));
+app.delete("/mobile/favorite", (req, res) =>
+  deleteFavoriteForMobile(req, res, User)
+);
 app.delete("/watch", (req, res) => deleteFromWatchlist(req, res, User));
-app.delete("/mobile/watch", (req, res) => deleteFromWatchlistForMobile(req, res, User));
+app.delete("/mobile/watch", (req, res) =>
+  deleteFromWatchlistForMobile(req, res, User)
+);
 app.delete("/logout", logoutUser);
 
 sequelize.sync().then(() => {
