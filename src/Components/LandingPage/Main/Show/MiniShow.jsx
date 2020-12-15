@@ -16,9 +16,11 @@ export const MiniShow = ({
   watchListFlag,
   updateLocation,
   isUserLoggedIn,
+  currentShowType,
 }) => {
   const onClick = () => {
     createCookie("showId", id);
+    !!currentShowType && createCookie("showType", currentShowType);
     updateLocation("/");
     setHomePageLoaded(false);
   };
