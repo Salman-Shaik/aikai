@@ -37,8 +37,8 @@ export const ShowDetails = ({
   const genre = getGenreNames(info, currentShowType);
   const rating = info["vote_average"];
   const description = info.overview;
-  // TODO: think about this
-  // const releaseDate = info["first_air_date"] || info["release_date"];
+  const releaseDate = info["first_air_date"] || info["release_date"];
+  const year = releaseDate.split("-")[0] || "Y.T.A";
   const imagePath = info["poster_path"];
   const language = info["original_language"];
   const homepage = info["homepage"];
@@ -49,13 +49,12 @@ export const ShowDetails = ({
         <img className="poster" src={imageUrlBuilder(imagePath)} alt={title} />
         <section className="show_info">
           <h2 className="show_title" data-testid="show_title">
-            {title}
+            {`${title} (${year})`}
           </h2>
           <p className="description">{description}</p>
           <h4>{genre}</h4>
           {createProgressBar(rating)}
           <h4 className="language">Language: {language.toUpperCase()}</h4>
-          {/*<h4>Release Date: {releaseDate}</h4>*/}
           <AvailableOn homePage={homepage} />
         </section>
       </section>
