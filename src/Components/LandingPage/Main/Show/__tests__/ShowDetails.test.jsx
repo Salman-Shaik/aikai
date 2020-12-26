@@ -28,6 +28,6 @@ describe("Show Details", () => {
     expect(showSpecifics).toBeDefined();
     expect(showActions).toBeDefined();
     expect(availableOn).toBeDefined();
-    expect(showTitle.innerHTML).toBe(`${showMockData.title} (${year})`);
+    expect(showTitle.innerHTML.includes(`${showMockData.title} (${year})`)).toBeTruthy();
   });
 });
