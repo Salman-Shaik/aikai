@@ -1,3 +1,5 @@
+import Tooltip from "@material-ui/core/Tooltip";
+import { LiveTvOutlined, TheatersRounded } from "@material-ui/icons";
 import React from "react";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import "../../../../css/ShowDetails.css";
@@ -50,6 +52,15 @@ export const ShowDetails = ({
         <section className="show_info">
           <h2 className="show_title" data-testid="show_title">
             {`${title} (${year})`}
+            {currentShowType === "movie" ? (
+              <Tooltip title="Movie">
+                <TheatersRounded className="show_type_movie" />
+              </Tooltip>
+            ) : (
+              <Tooltip title="TV / Web Series">
+                <LiveTvOutlined className="show_type_tv" />
+              </Tooltip>
+            )}
           </h2>
           <p className="description">{description}</p>
           <h4>{genre}</h4>

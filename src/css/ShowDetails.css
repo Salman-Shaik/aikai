@@ -28,6 +28,9 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .show_info {
@@ -120,4 +123,16 @@
 
 .available_header {
   margin: 0 !important;
+}
+
+.show_type_movie {
+  font-size: 1.3em !important;
+  color: #e3eeff;
+  margin-left: 0.2vw !important;
+}
+
+.show_type_tv {
+  font-size: 1.3em !important;
+  color: #e3eeff;
+  margin-left: 0.3vw;
 }
