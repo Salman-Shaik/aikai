@@ -4,7 +4,6 @@ import "../../../../css/SearchResults.css";
 import { createCookie, getSix, imageUrlBuilder } from "../../../../lib/helper";
 import { fetchSearchedShow } from "../../../../lib/showNetworkCalls";
 import { Spinner } from "../../../Spinner";
-import { MinimizeActionButton } from "../MinimizeActionButton";
 
 const Section = ({ posters, key }) => (
   <section
@@ -25,7 +24,6 @@ const getSectionedPosters = (map) => {
 
 const createSectionedPosters = (
   movieResults,
-  setShowType,
   updateLocation,
   setHomepageLoaded
 ) => {
@@ -34,8 +32,8 @@ const createSectionedPosters = (
     const title = info.name || info.title;
     const imagePath = info["poster_path"];
     const onClick = () => {
+      info.setShowType();
       createCookie("showId", id);
-      setShowType();
       updateLocation("/");
       setHomepageLoaded(false);
     };
@@ -60,8 +58,6 @@ export const SearchResults = ({
 }) => {
   const [movieResults, setMovieResults] = useState([]);
   const [tvResults, setTvResults] = useState([]);
-  const [movieMinimized, setMovieMinimized] = useState(false);
-  const [tvMinimized, setTVMinimized] = useState(true);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -72,52 +68,6 @@ export const SearchResults = ({
       setLoaded,
       setHomePageLoaded
     );
-  }, [currentShowTitle, setHomePageLoaded]);
-
-  const ResultsComponent = ({
-    minimizeMethod,
-    minimized,
-    anchorText,
-    results,
-    setShowType,
-    setHomepageLoaded,
-  }) => {
-    return (
-      <section className="show_items" data-testid="show_items">
-        <MinimizeActionButton
-          minimized={minimized}
-          anchorText={anchorText}
-          minimizeMethod={minimizeMethod}
-          className="action_button"
-        />
-        {!minimized && (
-          <section className="show_results" data-testid="show_results">
-            {_.isEmpty(results) ? (
-              <span className="notice">No Results</span>
-            ) : (
-              createSectionedPosters(
-                results,
-                setShowType,
-                updateLocation,
-                setHomepageLoaded
-              )
-            )}
-          </section>
-        )}
-      </section>
-    );
-  };
-
-  const minimizeMovies = () => {
-    setMovieMinimized(!movieMinimized);
-    setTVMinimized(true);
-  };
-
-  const minimizeTv = () => {
-    setLoaded(false);
-    setHomePageLoaded(false);
-    setTVMinimized(!tvMinimized);
-    setMovieMinimized(true);
     fetchSearchedShow(
       "tv",
       currentShowTitle,
@@ -125,31 +75,33 @@ export const SearchResults = ({
       setLoaded,
       setHomePageLoaded
     );
-  };
+  }, [currentShowTitle, setHomePageLoaded]);
 
-  const setMovie = () => createCookie("showType", "movie");
-  const setTv = () => createCookie("showType", "tv");
+  const results = movieResults.concat(tvResults).sort((a, b) => {
+    const aTitle = a.name || a.title;
+    const bTitle = b.name || b.title;
+    return aTitle.toLowerCase() === currentShowTitle.toLowerCase()
+      ? 1
+      : bTitle.toLowerCase() === currentShowTitle.toLowerCase()
+      ? 1
+      : aTitle.toLowerCase() > bTitle.toLowerCase()
+      ? -1
+      : 1;
+  });
 
   const Component = () => {
     return (
       <section className="search_results">
         <span className="search_text">{`Search Results For ${currentShowTitle}...`}</span>
-        <ResultsComponent
-          minimizeMethod={minimizeMovies}
-          anchorText="Movies"
-          results={movieResults}
-          setShowType={setMovie}
-          minimized={movieMinimized}
-          setHomepageLoaded={setHomePageLoaded}
-        />
-        <ResultsComponent
-          minimizeMethod={minimizeTv}
-          anchorText="TV Shows"
-          results={tvResults}
-          setShowType={setTv}
-          minimized={tvMinimized}
-          setHomepageLoaded={setHomePageLoaded}
-        />
+        <section className="show_items" data-testid="show_items">
+          <section className="show_results" data-testid="show_results">
+            {_.isEmpty(results) ? (
+              <span className="notice">No Results</span>
+            ) : (
+              createSectionedPosters(results, updateLocation, setHomePageLoaded)
+            )}
+          </section>
+        </section>
       </section>
     );
   };

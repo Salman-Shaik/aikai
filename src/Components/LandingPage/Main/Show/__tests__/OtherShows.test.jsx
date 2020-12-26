@@ -57,6 +57,6 @@ describe("Other Shows", () => {
     const mini_poster = await waitFor(() => getAllByTestId("mini_poster")[0]);
     fireEvent.click(mini_poster);
 
-    expect(document.cookie).toBe("showId=123");
+    expect(document.cookie).toBe("showId=123; showType=movie");
   });
 });

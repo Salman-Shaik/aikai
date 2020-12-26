@@ -18,6 +18,8 @@ describe("Show Details", () => {
     const { getByTestId, getByAltText } = render(
       <ShowDetails info={showMockData} currentShowType="movie" />
     );
+    const releaseDate = showMockData.release_date;
+    const year = releaseDate.split("-")[0] || "Y.T.A";
     const showSpecifics = getByTestId("show_specifics");
     const showActions = getByTestId("show_actions");
     const availableOn = getByAltText("Netflix");
@@ -26,6 +28,6 @@ describe("Show Details", () => {
     expect(showSpecifics).toBeDefined();
     expect(showActions).toBeDefined();
     expect(availableOn).toBeDefined();
-    expect(showTitle.innerHTML).toBe(showMockData.title);
+    expect(showTitle.innerHTML).toBe(`${showMockData.title} (${year})`);
   });
 });

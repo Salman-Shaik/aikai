@@ -141,7 +141,14 @@ export const fetchSearchedShow = (
     .then((d) => JSON.parse(d).results)
     .then((res) => res.slice(0, 12))
     .then((sr) => {
-      setResults(sr);
+      const results = sr.map((r) => {
+        const t = r;
+        t.setShowType = () => {
+          createCookie("showType", type);
+        };
+        return t;
+      });
+      setResults(results);
       if (!!setLoaded) {
         setLoaded(true);
         setHomePageLoaded(true);
