@@ -1,7 +1,12 @@
 import _ from "lodash";
 import React, { useEffect, useState } from "react";
 import "../../../../css/SearchResults.css";
-import { createCookie, getSix, imageUrlBuilder } from "../../../../lib/helper";
+import {
+  createCookie,
+  getSix,
+  imageUrlBuilder,
+  onPosterError,
+} from "../../../../lib/helper";
 import { fetchSearchedShow } from "../../../../lib/showNetworkCalls";
 import { Spinner } from "../../../Spinner";
 
@@ -40,8 +45,10 @@ const createSectionedPosters = (
     return (
       <img
         className="search_posters"
+        onError={onPosterError}
         src={imageUrlBuilder(imagePath)}
         alt={title}
+        title={title}
         onClick={onClick}
         key={idx}
       />

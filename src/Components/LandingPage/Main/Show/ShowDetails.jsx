@@ -3,7 +3,11 @@ import { LiveTvOutlined, TheatersRounded } from "@material-ui/icons";
 import React from "react";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import "../../../../css/ShowDetails.css";
-import { getGenreNames, imageUrlBuilder } from "../../../../lib/helper";
+import {
+  getGenreNames,
+  imageUrlBuilder,
+  onPosterError,
+} from "../../../../lib/helper";
 import { FavoriteComponent } from "./Actions/FavoriteComponent";
 import { ShareComponent } from "./Actions/ShareComponent";
 import { WatchListComponent } from "./Actions/WatchListComponent";
@@ -48,7 +52,13 @@ export const ShowDetails = ({
   return (
     <section className="show_details" data-testid="show_details">
       <section className="show_specifics" data-testid="show_specifics">
-        <img className="poster" src={imageUrlBuilder(imagePath)} alt={title} />
+        <img
+          className="poster"
+          src={imageUrlBuilder(imagePath)}
+          alt={title}
+          title={title}
+          onError={onPosterError}
+        />
         <section className="show_info">
           <h2 className="show_title" data-testid="show_title">
             {`${title} (${year})`}

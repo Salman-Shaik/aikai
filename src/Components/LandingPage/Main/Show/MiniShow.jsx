@@ -2,7 +2,11 @@ import Tooltip from "@material-ui/core/Tooltip";
 import { CheckCircle } from "@material-ui/icons";
 import React from "react";
 import "../../../../css/MiniShow.css";
-import { createCookie, imageUrlBuilder } from "../../../../lib/helper";
+import {
+  createCookie,
+  imageUrlBuilder,
+  onPosterError,
+} from "../../../../lib/helper";
 import { markWatched } from "../../../../lib/networkCalls";
 import { FavoriteComponent } from "./Actions/FavoriteComponent";
 import { WatchListComponent } from "./Actions/WatchListComponent";
@@ -39,6 +43,8 @@ export const MiniShow = ({
           data-testid="mini_poster"
           src={imageUrlBuilder(posterPath)}
           alt={title}
+          title={title}
+          onError={onPosterError}
           onClick={onClick}
         />
         <h4 className="title" onClick={onClick} data-testid="title">

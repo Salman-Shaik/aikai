@@ -1,6 +1,10 @@
 import React from "react";
 import "../../../../css/Poster.css";
-import { createCookie, imageUrlBuilder } from "../../../../lib/helper";
+import {
+  createCookie,
+  imageUrlBuilder,
+  onPosterError,
+} from "../../../../lib/helper";
 
 export const Poster = ({
   data,
@@ -23,6 +27,8 @@ export const Poster = ({
       <img
         src={imageUrlBuilder(data["poster_path"])}
         alt={title}
+        title={title}
+        onError={onPosterError}
         className="poster"
         key={key}
         onClick={onClick}
