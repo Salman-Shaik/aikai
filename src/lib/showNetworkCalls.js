@@ -36,7 +36,7 @@ const airingShowsFilter = (
       results = results.filter((r) =>
         languages.includes(languagesList[r["original_language"]])
       );
-    if (results.length > 10) results = results.slice(0, 16);
+    if (results.length > 16) results = results.slice(0, 16);
     setAiringTvShows(results);
     setLoaded(true);
     setHomepageLoaded(true);
@@ -66,6 +66,7 @@ export const fetchAiringTVShows = (
     )
     .catch((e) => new TypeError(e));
 };
+
 export const fetchShow = (
   currentShowId,
   currentShowType,
