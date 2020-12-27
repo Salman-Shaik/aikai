@@ -22,6 +22,8 @@ const {
   watchedHandler,
   watchedHandlerForMobile,
   addToWatchList,
+  mobileFavoriteHandler,
+  addToWatchListForMobile,
 } = require("./handlers/putHandler");
 const {
   loginHandler,
@@ -35,6 +37,7 @@ const {
   deleteFromWatchlistForMobile,
   logoutUser,
 } = require("./handlers/deleteHandler");
+
 const { sequelize, models } = require("./models");
 const async = require("async");
 const { handleReactRoutingRequests } = require("./handlers/getHandler");
@@ -94,7 +97,11 @@ app.post("/mobile/login", (req, res) => mobileLoginHandler(req, res, User));
 app.post("/register", (req, res) => registrationHandler(req, res, User));
 
 app.put("/favorite", (req, res) => favoriteHandler(req, res, User));
+app.put("/mobile/favorite", (req, res) =>
+  mobileFavoriteHandler(req, res, User)
+);
 app.put("/watch", (req, res) => addToWatchList(req, res, User));
+app.put("/mobile/watch", (req, res) => addToWatchListForMobile(req, res, User));
 app.put("/watched", (req, res) => watchedHandler(req, res, User));
 app.put("/mobile/watched", (req, res) =>
   watchedHandlerForMobile(req, res, User)

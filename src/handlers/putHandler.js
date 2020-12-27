@@ -24,6 +24,27 @@ const favoriteHandler = async (req, res, User) => {
   res.send(`${title} Saved As Favorite Successfully.`);
 };
 
+const mobileFavoriteHandler = async (req, res, User) => {
+  const userToken = req.query.user;
+  if (_.isEmpty(userToken)) {
+    res.status(401);
+    return res.send("User not logged in");
+  }
+  const username = decode(userToken);
+  const { title, id, posterPath } = req.body;
+  await User.update(
+    {
+      favorites: Sequelize.fn(
+        "array_append",
+        Sequelize.col("favorites"),
+        `{"title":"${title}","id":${id},"posterPath":"${posterPath}"}`
+      ),
+    },
+    { where: { username } }
+  );
+  res.send(`${title} Saved As Favorite Successfully.`);
+};
+
 const addToWatchList = async (req, res, User) => {
   const cookie = req.cookies.user;
   if (_.isEmpty(cookie)) {
@@ -31,6 +52,28 @@ const addToWatchList = async (req, res, User) => {
     return res.send("User not logged in");
   }
   const username = decode(cookie);
+  const { title, id, posterPath } = req.body;
+  const show = { title: title, id: id, posterPath: posterPath, watched: false };
+  await User.update(
+    {
+      watchlist: Sequelize.fn(
+        "array_append",
+        Sequelize.col("watchlist"),
+        JSON.stringify(show)
+      ),
+    },
+    { where: { username } }
+  );
+  res.send(`${title} Added To WatchList.`);
+};
+
+const addToWatchListForMobile = async (req, res, User) => {
+  const userToken = req.query.user;
+  if (_.isEmpty(userToken)) {
+    res.status(401);
+    return res.send("User not logged in");
+  }
+  const username = decode(userToken);
   const { title, id, posterPath } = req.body;
   const show = { title: title, id: id, posterPath: posterPath, watched: false };
   await User.update(
@@ -104,4 +147,6 @@ module.exports = {
   watchedHandler,
   watchedHandlerForMobile,
   updateUserDetails,
+  mobileFavoriteHandler,
+  addToWatchListForMobile,
 };
