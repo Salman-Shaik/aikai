@@ -45,6 +45,7 @@ const { updateUserDetails } = require("./handlers/putHandler");
 const { getUserDetails } = require("./handlers/getHandler");
 
 const cors = require("cors");
+const { getUserFullName } = require("./handlers/getHandler");
 
 const { User } = models;
 const port = process.env.PORT || 8080;
@@ -90,6 +91,7 @@ app.get("/mobile/watchlist", (req, res) =>
 app.get("/languages", (req, res) => getLanguages(req, res, User));
 app.get("/explicitFlag", (req, res) => getExplicitFlag(req, res, User));
 app.get("/user_details", (req, res) => getUserDetails(req, res, User));
+app.get("/mobile/name", (req, res) => getUserFullName(req, res, User));
 app.get("/*", handleReactRoutingRequests);
 
 app.post("/login", (req, res) => loginHandler(req, res, User));
