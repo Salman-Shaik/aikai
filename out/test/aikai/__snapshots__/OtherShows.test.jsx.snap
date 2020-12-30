@@ -1,0 +1,166 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Other Shows Snapshot Test 1`] = `
+<div>
+  <div
+    class="loader"
+  >
+    <div
+      class="spinner"
+      role="progressbar"
+      style="position: absolute; width: 0px; z-index: 2000000000; left: 50%; top: 50%;"
+    >
+      <div
+        style="position: absolute; top: -5px; opacity: 0.25; webkit-animation: opacity-60-25-0-15 1s linear infinite;"
+      >
+        <div
+          style="position: absolute; width: 30px; height: 10px; background: rgb(0, 0, 0); webkit-box-shadow: 0 0 4px #000; webkit-transform-origin: left; webkit-transform: rotate(0deg) translate(30px,0); webkit-border-radius: 5px; top: 2px;"
+        />
+        <div
+          style="position: absolute; width: 30px; height: 10px; background: rgb(223, 37, 106); webkit-box-shadow: 0 0 1px rgba(0,0,0,.1); webkit-transform-origin: left; webkit-transform: rotate(0deg) translate(30px,0); webkit-border-radius: 5px;"
+        />
+      </div>
+      <div
+        style="position: absolute; top: -5px; opacity: 0.25; webkit-animation: opacity-60-25-1-15 1s linear infinite;"
+      >
+        <div
+          style="position: absolute; width: 30px; height: 10px; background: rgb(0, 0, 0); webkit-box-shadow: 0 0 4px #000; webkit-transform-origin: left; webkit-transform: rotate(24deg) translate(30px,0); webkit-border-radius: 5px; top: 2px;"
+        />
+        <div
+          style="position: absolute; width: 30px; height: 10px; background: rgb(223, 37, 106); webkit-box-shadow: 0 0 1px rgba(0,0,0,.1); webkit-transform-origin: left; webkit-transform: rotate(24deg) translate(30px,0); webkit-border-radius: 5px;"
+        />
+      </div>
+      <div
+        style="position: absolute; top: -5px; opacity: 0.25; webkit-animation: opacity-60-25-2-15 1s linear infinite;"
+      >
+        <div
+          style="position: absolute; width: 30px; height: 10px; background: rgb(0, 0, 0); webkit-box-shadow: 0 0 4px #000; webkit-transform-origin: left; webkit-transform: rotate(48deg) translate(30px,0); webkit-border-radius: 5px; top: 2px;"
+        />
+        <div
+          style="position: absolute; width: 30px; height: 10px; background: rgb(223, 37, 106); webkit-box-shadow: 0 0 1px rgba(0,0,0,.1); webkit-transform-origin: left; webkit-transform: rotate(48deg) translate(30px,0); webkit-border-radius: 5px;"
+        />
+      </div>
+      <div
+        style="position: absolute; top: -5px; opacity: 0.25; webkit-animation: opacity-60-25-3-15 1s linear infinite;"
+      >
+        <div
+          style="position: absolute; width: 30px; height: 10px; background: rgb(0, 0, 0); webkit-box-shadow: 0 0 4px #000; webkit-transform-origin: left; webkit-transform: rotate(72deg) translate(30px,0); webkit-border-radius: 5px; top: 2px;"
+        />
+        <div
+          style="position: absolute; width: 30px; height: 10px; background: rgb(223, 37, 106); webkit-box-shadow: 0 0 1px rgba(0,0,0,.1); webkit-transform-origin: left; webkit-transform: rotate(72deg) translate(30px,0); webkit-border-radius: 5px;"
+        />
+      </div>
+      <div
+        style="position: absolute; top: -5px; opacity: 0.25; webkit-animation: opacity-60-25-4-15 1s linear infinite;"
+      >
+        <div
+          style="position: absolute; width: 30px; height: 10px; background: rgb(0, 0, 0); webkit-box-shadow: 0 0 4px #000; webkit-transform-origin: left; webkit-transform: rotate(96deg) translate(30px,0); webkit-border-radius: 5px; top: 2px;"
+        />
+        <div
+          style="position: absolute; width: 30px; height: 10px; background: rgb(223, 37, 106); webkit-box-shadow: 0 0 1px rgba(0,0,0,.1); webkit-transform-origin: left; webkit-transform: rotate(96deg) translate(30px,0); webkit-border-radius: 5px;"
+        />
+      </div>
+      <div
+        style="position: absolute; top: -5px; opacity: 0.25; webkit-animation: opacity-60-25-5-15 1s linear infinite;"
+      >
+        <div
+          style="position: absolute; width: 30px; height: 10px; background: rgb(0, 0, 0); webkit-box-shadow: 0 0 4px #000; webkit-transform-origin: left; webkit-transform: rotate(120deg) translate(30px,0); webkit-border-radius: 5px; top: 2px;"
+        />
+        <div
+          style="position: absolute; width: 30px; height: 10px; background: rgb(223, 37, 106); webkit-box-shadow: 0 0 1px rgba(0,0,0,.1); webkit-transform-origin: left; webkit-transform: rotate(120deg) translate(30px,0); webkit-border-radius: 5px;"
+        />
+      </div>
+      <div
+        style="position: absolute; top: -5px; opacity: 0.25; webkit-animation: opacity-60-25-6-15 1s linear infinite;"
+      >
+        <div
+          style="position: absolute; width: 30px; height: 10px; background: rgb(0, 0, 0); webkit-box-shadow: 0 0 4px #000; webkit-transform-origin: left; webkit-transform: rotate(144deg) translate(30px,0); webkit-border-radius: 5px; top: 2px;"
+        />
+        <div
+          style="position: absolute; width: 30px; height: 10px; background: rgb(223, 37, 106); webkit-box-shadow: 0 0 1px rgba(0,0,0,.1); webkit-transform-origin: left; webkit-transform: rotate(144deg) translate(30px,0); webkit-border-radius: 5px;"
+        />
+      </div>
+      <div
+        style="position: absolute; top: -5px; opacity: 0.25; webkit-animation: opacity-60-25-7-15 1s linear infinite;"
+      >
+        <div
+          style="position: absolute; width: 30px; height: 10px; background: rgb(0, 0, 0); webkit-box-shadow: 0 0 4px #000; webkit-transform-origin: left; webkit-transform: rotate(168deg) translate(30px,0); webkit-border-radius: 5px; top: 2px;"
+        />
+        <div
+          style="position: absolute; width: 30px; height: 10px; background: rgb(223, 37, 106); webkit-box-shadow: 0 0 1px rgba(0,0,0,.1); webkit-transform-origin: left; webkit-transform: rotate(168deg) translate(30px,0); webkit-border-radius: 5px;"
+        />
+      </div>
+      <div
+        style="position: absolute; top: -5px; opacity: 0.25; webkit-animation: opacity-60-25-8-15 1s linear infinite;"
+      >
+        <div
+          style="position: absolute; width: 30px; height: 10px; background: rgb(0, 0, 0); webkit-box-shadow: 0 0 4px #000; webkit-transform-origin: left; webkit-transform: rotate(192deg) translate(30px,0); webkit-border-radius: 5px; top: 2px;"
+        />
+        <div
+          style="position: absolute; width: 30px; height: 10px; background: rgb(223, 37, 106); webkit-box-shadow: 0 0 1px rgba(0,0,0,.1); webkit-transform-origin: left; webkit-transform: rotate(192deg) translate(30px,0); webkit-border-radius: 5px;"
+        />
+      </div>
+      <div
+        style="position: absolute; top: -5px; opacity: 0.25; webkit-animation: opacity-60-25-9-15 1s linear infinite;"
+      >
+        <div
+          style="position: absolute; width: 30px; height: 10px; background: rgb(0, 0, 0); webkit-box-shadow: 0 0 4px #000; webkit-transform-origin: left; webkit-transform: rotate(216deg) translate(30px,0); webkit-border-radius: 5px; top: 2px;"
+        />
+        <div
+          style="position: absolute; width: 30px; height: 10px; background: rgb(223, 37, 106); webkit-box-shadow: 0 0 1px rgba(0,0,0,.1); webkit-transform-origin: left; webkit-transform: rotate(216deg) translate(30px,0); webkit-border-radius: 5px;"
+        />
+      </div>
+      <div
+        style="position: absolute; top: -5px; opacity: 0.25; webkit-animation: opacity-60-25-10-15 1s linear infinite;"
+      >
+        <div
+          style="position: absolute; width: 30px; height: 10px; background: rgb(0, 0, 0); webkit-box-shadow: 0 0 4px #000; webkit-transform-origin: left; webkit-transform: rotate(240deg) translate(30px,0); webkit-border-radius: 5px; top: 2px;"
+        />
+        <div
+          style="position: absolute; width: 30px; height: 10px; background: rgb(223, 37, 106); webkit-box-shadow: 0 0 1px rgba(0,0,0,.1); webkit-transform-origin: left; webkit-transform: rotate(240deg) translate(30px,0); webkit-border-radius: 5px;"
+        />
+      </div>
+      <div
+        style="position: absolute; top: -5px; opacity: 0.25; webkit-animation: opacity-60-25-11-15 1s linear infinite;"
+      >
+        <div
+          style="position: absolute; width: 30px; height: 10px; background: rgb(0, 0, 0); webkit-box-shadow: 0 0 4px #000; webkit-transform-origin: left; webkit-transform: rotate(264deg) translate(30px,0); webkit-border-radius: 5px; top: 2px;"
+        />
+        <div
+          style="position: absolute; width: 30px; height: 10px; background: rgb(223, 37, 106); webkit-box-shadow: 0 0 1px rgba(0,0,0,.1); webkit-transform-origin: left; webkit-transform: rotate(264deg) translate(30px,0); webkit-border-radius: 5px;"
+        />
+      </div>
+      <div
+        style="position: absolute; top: -5px; opacity: 0.25; webkit-animation: opacity-60-25-12-15 1s linear infinite;"
+      >
+        <div
+          style="position: absolute; width: 30px; height: 10px; background: rgb(0, 0, 0); webkit-box-shadow: 0 0 4px #000; webkit-transform-origin: left; webkit-transform: rotate(288deg) translate(30px,0); webkit-border-radius: 5px; top: 2px;"
+        />
+        <div
+          style="position: absolute; width: 30px; height: 10px; background: rgb(223, 37, 106); webkit-box-shadow: 0 0 1px rgba(0,0,0,.1); webkit-transform-origin: left; webkit-transform: rotate(288deg) translate(30px,0); webkit-border-radius: 5px;"
+        />
+      </div>
+      <div
+        style="position: absolute; top: -5px; opacity: 0.25; webkit-animation: opacity-60-25-13-15 1s linear infinite;"
+      >
+        <div
+          style="position: absolute; width: 30px; height: 10px; background: rgb(0, 0, 0); webkit-box-shadow: 0 0 4px #000; webkit-transform-origin: left; webkit-transform: rotate(312deg) translate(30px,0); webkit-border-radius: 5px; top: 2px;"
+        />
+        <div
+          style="position: absolute; width: 30px; height: 10px; background: rgb(223, 37, 106); webkit-box-shadow: 0 0 1px rgba(0,0,0,.1); webkit-transform-origin: left; webkit-transform: rotate(312deg) translate(30px,0); webkit-border-radius: 5px;"
+        />
+      </div>
+      <div
+        style="position: absolute; top: -5px; opacity: 0.25; webkit-animation: opacity-60-25-14-15 1s linear infinite;"
+      >
+        <div
+          style="position: absolute; width: 30px; height: 10px; background: rgb(0, 0, 0); webkit-box-shadow: 0 0 4px #000; webkit-transform-origin: left; webkit-transform: rotate(336deg) translate(30px,0); webkit-border-radius: 5px; top: 2px;"
+        />
+        <div
+          style="position: absolute; width: 30px; height: 10px; background: rgb(223, 37, 106); webkit-box-shadow: 0 0 1px rgba(0,0,0,.1); webkit-transform-origin: left; webkit-transform: rotate(336deg) translate(30px,0); webkit-border-radius: 5px;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
