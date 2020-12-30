@@ -19,8 +19,6 @@ export const Videos = ({info, homepageLoaded, setHomepageLoaded}) => {
   };
 
   useEffect(() => {
-    //TODO: remove in develop
-    setHomepageLoaded(false);
     fetchVideoId(title, setVideoIds, setHomepageLoaded);
   }, [title, setHomepageLoaded]);
 
