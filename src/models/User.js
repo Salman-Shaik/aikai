@@ -127,6 +127,24 @@ const user = (sequelize, DataTypes) => {
     }
   };
 
+  User.updateUserForMobile = async (
+    username,
+    name,
+    age,
+    explicitFlag,
+    languages
+  ) => {
+    await User.update(
+      {
+        name,
+        age,
+        explicitFlag,
+        languages,
+      },
+      { where: { username } }
+    );
+  };
+
   User.validateUser = async (username, password, res) => {
     const userObj = await User.findByUsername(username);
     if (_.isEmpty(userObj)) {

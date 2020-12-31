@@ -141,6 +141,18 @@ const updateUserDetails = async (req, res, User) => {
   res.send("User details Updated");
 };
 
+const updateUserDetailsForMobile = async (req, res, User) => {
+  const userToken = req.query.user;
+  if (_.isEmpty(userToken)) {
+    res.status(401);
+    return res.send("User not logged in");
+  }
+  const username = decode(userToken);
+  const { name, age, explicitFlag, languages } = req.body;
+  await User.updateUserForMobile(username, name, age, explicitFlag, languages);
+  res.send("User details Updated");
+};
+
 module.exports = {
   favoriteHandler,
   addToWatchList,
@@ -149,4 +161,5 @@ module.exports = {
   updateUserDetails,
   mobileFavoriteHandler,
   addToWatchListForMobile,
+  updateUserDetailsForMobile,
 };

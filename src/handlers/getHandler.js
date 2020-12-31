@@ -85,6 +85,19 @@ const getUserDetails = async (req, res, User) => {
   res.send("User Not logged In");
 };
 
+const getUserDetailsForMobile = async (req, res, User) => {
+  const userToken = req.query.user;
+  if (!_.isEmpty(userToken)) {
+    const username = decode(userToken);
+    const { name, age, explicitFlag, languages } = await User.findByUsername(
+      username
+    );
+    return res.send(JSON.stringify({ name, age, explicitFlag, languages }));
+  }
+  res.status(401);
+  res.send("User Not logged In");
+};
+
 const getUserFullName = async (req, res, User) => {
   const userToken = req.query.user;
   if (_.isEmpty(userToken)) {
@@ -132,4 +145,5 @@ module.exports = {
   getFavoritesForMobile,
   getWatchListForMobile,
   getUserFullName,
+  getUserDetailsForMobile,
 };

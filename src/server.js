@@ -45,6 +45,8 @@ const { updateUserDetails } = require("./handlers/putHandler");
 const { getUserDetails } = require("./handlers/getHandler");
 
 const cors = require("cors");
+const { getUserDetailsForMobile } = require("./handlers/getHandler");
+const { updateUserDetailsForMobile } = require("./handlers/putHandler");
 const { mobileRegistrationHandler } = require("./handlers/postHandler");
 const { getUserFullName } = require("./handlers/getHandler");
 
@@ -92,6 +94,9 @@ app.get("/mobile/watchlist", (req, res) =>
 app.get("/languages", (req, res) => getLanguages(req, res, User));
 app.get("/explicitFlag", (req, res) => getExplicitFlag(req, res, User));
 app.get("/user_details", (req, res) => getUserDetails(req, res, User));
+app.get("/mobile/user_details", (req, res) =>
+  getUserDetailsForMobile(req, res, User)
+);
 app.get("/mobile/name", (req, res) => getUserFullName(req, res, User));
 app.get("/*", handleReactRoutingRequests);
 
@@ -113,6 +118,9 @@ app.put("/mobile/watched", (req, res) =>
   watchedHandlerForMobile(req, res, User)
 );
 app.put("/details", (req, res) => updateUserDetails(req, res, User));
+app.put("/mobile/details", (req, res) =>
+  updateUserDetailsForMobile(req, res, User)
+);
 
 app.delete("/favorite", (req, res) => deleteFavorite(req, res, User));
 app.delete("/mobile/favorite", (req, res) =>
