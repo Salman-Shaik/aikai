@@ -145,6 +145,26 @@ const user = (sequelize, DataTypes) => {
     );
   };
 
+  User.updatePassword = async (oldPassword, newPassword, username, res) => {
+    const userObj = await User.findByUsername(username);
+    if (_.isEmpty(userObj)) {
+      return;
+    }
+    await bcrypt.compare(oldPassword, userObj.password, async (err, result) => {
+      if (result) {
+        await User.update(
+          {
+            password: newPassword,
+          },
+          { where: { username } }
+        );
+        res.send("Password Updated Successfully");
+      } else {
+        res.status(401);
+        res.send("Invalid Password");
+      }
+    });
+  };
   User.validateUser = async (username, password, res) => {
     const userObj = await User.findByUsername(username);
     if (_.isEmpty(userObj)) {

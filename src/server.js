@@ -45,6 +45,7 @@ const { updateUserDetails } = require("./handlers/putHandler");
 const { getUserDetails } = require("./handlers/getHandler");
 
 const cors = require("cors");
+const { updatePasswordForMobile } = require("./handlers/putHandler");
 const { getUserDetailsForMobile } = require("./handlers/getHandler");
 const { updateUserDetailsForMobile } = require("./handlers/putHandler");
 const { mobileRegistrationHandler } = require("./handlers/postHandler");
@@ -120,6 +121,9 @@ app.put("/mobile/watched", (req, res) =>
 app.put("/details", (req, res) => updateUserDetails(req, res, User));
 app.put("/mobile/details", (req, res) =>
   updateUserDetailsForMobile(req, res, User)
+);
+app.put("/mobile/update_password", (req, res) =>
+  updatePasswordForMobile(req, res, User)
 );
 
 app.delete("/favorite", (req, res) => deleteFavorite(req, res, User));
