@@ -34,8 +34,8 @@
 }
 
 .user_inputs {
-  width: 25vw;
-  height: 43vh;
+  width: 26vw;
+  height: 50vh;
 }
 
 .user_details {
@@ -43,7 +43,6 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-evenly;
-  margin-top: -2vh;
 }
 
 .email,
@@ -71,7 +70,7 @@
 
 .explicit {
   align-items: center;
-  width: 20vw;
+  width: 22.5vw;
 }
 
 .explicit_label {
@@ -226,4 +225,18 @@
   justify-content: center;
   align-self: center;
   width: 85%;
+}
+
+.name_and_age {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5vh;
+}
+
+label {
+  font-size: 1em;
+  font-weight: bold;
+  text-align: left;
+  color: #ffefd5;
+  margin: 0.3vh 0.3vw;
 }

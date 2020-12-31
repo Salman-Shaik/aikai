@@ -198,38 +198,50 @@ export const UserDetails = ({
         <section className="user_inputs">
           <section className="user_details">
             <section className="personal_details">
-              <input
-                type="name"
-                placeholder="Enter Full Name"
-                className={`detail name ${nameError ? "error" : ""}`}
-                onChange={updateName}
-                value={name}
-              />
-              <input
-                type="number"
-                placeholder="Age"
-                className={`detail age ${ageError ? "error" : ""}`}
-                onChange={updateAge}
-                value={age}
-              />
+              <section className="name_and_age">
+                <label htmlFor={"name"}>Full Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  className={`detail name ${nameError ? "error" : ""}`}
+                  onChange={updateName}
+                  value={name}
+                />
+              </section>
+              <section className="name_and_age">
+                <label htmlFor={"age"}>Age</label>
+                <input
+                  type="number"
+                  id="age"
+                  className={`detail age ${ageError ? "error" : ""}`}
+                  onChange={updateAge}
+                  value={age}
+                />
+              </section>
             </section>
-            <input
-              type="text"
-              placeholder="Enter Your Email"
-              className={`detail email ${usernameError ? "error" : ""}`}
-              onChange={updateUsername}
-              value={username}
-              readOnly={updateFlag}
-            />
-            <input
-              type="password"
-              placeholder="Enter Password"
-              className={`detail password ${passwordError ? "error" : ""}`}
-              onChange={updatePassword}
-            />
-            <h5 className={`strength ${passwordStrength.toLowerCase()}`}>
-              <i>{`${passwordStrength} Password`}</i>
-            </h5>
+            <>
+              <label htmlFor="email">Email</label>
+              <input
+                type="text"
+                id="email"
+                className={`detail email ${usernameError ? "error" : ""}`}
+                onChange={updateUsername}
+                value={username}
+                readOnly={updateFlag}
+              />
+            </>
+            <>
+              <label htmlFor={"password"}>Password</label>
+              <input
+                type="password"
+                id="password"
+                className={`detail password ${passwordError ? "error" : ""}`}
+                onChange={updatePassword}
+              />
+              <h5 className={`strength ${passwordStrength.toLowerCase()}`}>
+                <i>{`${passwordStrength} Password`}</i>
+              </h5>
+            </>
           </section>
           <section className="explicit">
             <span className="explicit_label">Show Explicit Content</span>
