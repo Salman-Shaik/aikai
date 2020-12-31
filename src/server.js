@@ -45,6 +45,7 @@ const { updateUserDetails } = require("./handlers/putHandler");
 const { getUserDetails } = require("./handlers/getHandler");
 
 const cors = require("cors");
+const { mobileRegistrationHandler } = require("./handlers/postHandler");
 const { getUserFullName } = require("./handlers/getHandler");
 
 const { User } = models;
@@ -97,6 +98,9 @@ app.get("/*", handleReactRoutingRequests);
 app.post("/login", (req, res) => loginHandler(req, res, User));
 app.post("/mobile/login", (req, res) => mobileLoginHandler(req, res, User));
 app.post("/register", (req, res) => registrationHandler(req, res, User));
+app.post("/mobile/register", (req, res) =>
+  mobileRegistrationHandler(req, res, User)
+);
 
 app.put("/favorite", (req, res) => favoriteHandler(req, res, User));
 app.put("/mobile/favorite", (req, res) =>

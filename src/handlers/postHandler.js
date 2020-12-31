@@ -28,8 +28,16 @@ const registrationHandler = async (req, res, User) => {
   return res.send("Sign Up Success!");
 };
 
+const mobileRegistrationHandler = async (req, res, User) => {
+  const { name, age, explicitFlag, languages, username, password } = req.body;
+  await User.createUser(username, password, name, age, explicitFlag, languages);
+  await User.findByUsername(username);
+  return res.send("Sign Up Success!");
+};
+
 module.exports = {
   loginHandler,
   registrationHandler,
   mobileLoginHandler,
+  mobileRegistrationHandler,
 };
