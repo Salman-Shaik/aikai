@@ -152,12 +152,14 @@ const user = (sequelize, DataTypes) => {
     }
     await bcrypt.compare(oldPassword, userObj.password, async (err, result) => {
       if (result) {
-        await User.update(
-          {
-            password: newPassword,
-          },
-          { where: { username } }
-        );
+        await bcrypt.hash(newPassword, 10, async (err, hash) => {
+          await User.update(
+            {
+              password: hash,
+            },
+            { where: { username } }
+          );
+        });
         res.send("Password Updated Successfully");
       } else {
         res.status(401);
