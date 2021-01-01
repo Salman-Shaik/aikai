@@ -61,6 +61,15 @@ const user = (sequelize, DataTypes) => {
         defaultValue: [],
         unique: false,
       },
+      subscription: {
+        type: DataTypes.STRING,
+        unique: false,
+        defaultValue: "FREE",
+        allowNull: false,
+        validate: {
+          notEmpty: true,
+        },
+      },
     },
     {
       timestamps: false,
