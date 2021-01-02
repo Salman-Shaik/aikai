@@ -154,6 +154,11 @@ const user = (sequelize, DataTypes) => {
     );
   };
 
+  User.updateSubscription = async (subscription, username, res) => {
+    await User.update({ subscription }, { where: { username } });
+    res.send("Subscription Changed");
+  };
+
   User.updatePassword = async (oldPassword, newPassword, username, res) => {
     const userObj = await User.findByUsername(username);
     if (_.isEmpty(userObj)) {

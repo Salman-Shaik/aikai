@@ -135,6 +135,26 @@ const handleReactRoutingRequests = (req, res) => {
   res.status(404).redirect("/not-found");
 };
 
+const getSubscription = async (req, res, User) => {
+  const cookie = req.cookies.user;
+  if (_.isEmpty(cookie)) {
+    return res.send(JSON.stringify([]));
+  }
+  let username = decode(cookie);
+  const { subscription } = await User.findByUsername(username);
+  return res.send(JSON.stringify({ subscription }));
+};
+
+const getSubscriptionForMobile = async (req, res, User) => {
+  const userToken = req.query.user;
+  if (_.isEmpty(userToken)) {
+    res.status(401);
+    return res.send("User not logged in");
+  }
+  const username = decode(userToken);
+  const { subscription } = await User.findByUsername(username);
+  return res.send(JSON.stringify({ subscription }));
+};
 module.exports = {
   getExplicitFlag,
   getFavorites,
@@ -146,4 +166,6 @@ module.exports = {
   getWatchListForMobile,
   getUserFullName,
   getUserDetailsForMobile,
+  getSubscription,
+  getSubscriptionForMobile,
 };

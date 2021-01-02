@@ -164,6 +164,28 @@ const updatePasswordForMobile = async (req, res, User) => {
   await User.updatePassword(oldPassword, newPassword, username, res);
 };
 
+const updateSubscriptionForMobile = async (req, res, User) => {
+  const userToken = req.query.user;
+  if (_.isEmpty(userToken)) {
+    res.status(401);
+    return res.send("User not logged in");
+  }
+  const username = decode(userToken);
+  const { subscription } = req.body;
+  await User.updateSubscription(subscription, username, res);
+};
+
+const updateSubscription = async (req, res, User) => {
+  const cookie = req.cookies.user;
+  if (_.isEmpty(cookie)) {
+    res.status(401);
+    return res.send("User not logged in");
+  }
+  let username = decode(cookie);
+  const { subscription } = req.body;
+  await User.updateSubscription(subscription, username, res);
+};
+
 module.exports = {
   favoriteHandler,
   addToWatchList,
@@ -174,4 +196,6 @@ module.exports = {
   addToWatchListForMobile,
   updateUserDetailsForMobile,
   updatePasswordForMobile,
+  updateSubscription,
+  updateSubscriptionForMobile,
 };

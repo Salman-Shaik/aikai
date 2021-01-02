@@ -45,6 +45,10 @@ const { updateUserDetails } = require("./handlers/putHandler");
 const { getUserDetails } = require("./handlers/getHandler");
 
 const cors = require("cors");
+const { updateSubscription } = require("./handlers/putHandler");
+const { updateSubscriptionForMobile } = require("./handlers/putHandler");
+const { getSubscriptionForMobile } = require("./handlers/getHandler");
+const { getSubscription } = require("./handlers/getHandler");
 const { updatePasswordForMobile } = require("./handlers/putHandler");
 const { getUserDetailsForMobile } = require("./handlers/getHandler");
 const { updateUserDetailsForMobile } = require("./handlers/putHandler");
@@ -94,6 +98,10 @@ app.get("/mobile/watchlist", (req, res) =>
 );
 app.get("/languages", (req, res) => getLanguages(req, res, User));
 app.get("/explicitFlag", (req, res) => getExplicitFlag(req, res, User));
+app.get("/subscription", (req, res) => getSubscription(req, res, User));
+app.get("/mobile/subscription", (req, res) =>
+  getSubscriptionForMobile(req, res, User)
+);
 app.get("/user_details", (req, res) => getUserDetails(req, res, User));
 app.get("/mobile/user_details", (req, res) =>
   getUserDetailsForMobile(req, res, User)
@@ -124,6 +132,10 @@ app.put("/mobile/details", (req, res) =>
 );
 app.put("/mobile/update_password", (req, res) =>
   updatePasswordForMobile(req, res, User)
+);
+app.get("/subscription", (req, res) => updateSubscription(req, res, User));
+app.get("/mobile/subscription", (req, res) =>
+  updateSubscriptionForMobile(req, res, User)
 );
 
 app.delete("/favorite", (req, res) => deleteFavorite(req, res, User));
