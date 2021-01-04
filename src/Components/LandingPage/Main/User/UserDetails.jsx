@@ -45,6 +45,7 @@ export const UserDetails = ({
   const [password, setPassword] = useState("");
   const [passwordStrength, setPasswordStrength] = useState("");
   const [explicitFlag, setExplicitFlag] = useState(false);
+  const [termsFlag, setTermsFlag] = useState(false);
   const [nameError, setNameError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [usernameError, setUsernameError] = useState(false);
@@ -256,6 +257,39 @@ export const UserDetails = ({
               onChange={onSwitch}
             />
           </section>
+          {!updateFlag && (
+            <section className="terms_and_policy">
+              <input
+                type="checkbox"
+                id="terms"
+                name="terms"
+                checked={termsFlag}
+                onChange={() => setTermsFlag(!termsFlag)}
+                className="terms_flag"
+              />
+              <label htmlFor="terms" className="termsLabel">
+                By clicking this, I agree to{" "}
+                <a
+                  className="hyper_links"
+                  href={"/terms_and_conditions"}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Terms & Conditions
+                </a>{" "}
+                and{" "}
+                <a
+                  className="hyper_links"
+                  href={"/privacy_policy"}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Privacy Policy
+                </a>
+                .
+              </label>
+            </section>
+          )}
           <button
             type="button"
             className="reg_btn"

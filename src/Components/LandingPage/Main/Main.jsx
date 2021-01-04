@@ -8,8 +8,10 @@ import { Favorites } from "./Favorites";
 import { HomePage } from "./Homepage/HomePage";
 import { NotFound } from "./NotFound";
 import { NowPlaying } from "./NowPlaying/NowPlaying";
+import { PrivacyPolicy } from "./PrivacyPolicy";
 import { SearchResults } from "./Search/SearchResults";
 import { Show } from "./Show/Show";
+import { TermsAndConditions } from "./TermsAndConditions";
 import { LoginPage } from "./User/LoginPage";
 import { UserDetails } from "./User/UserDetails";
 import { WatchList } from "./WatchList";
@@ -181,6 +183,11 @@ export const Main = (props) => {
               />
             )}
           />
+          <Route
+            path="/terms_and_conditions"
+            render={() => <TermsAndConditions />}
+          />
+          <Route path="/privacy_policy" render={() => <PrivacyPolicy />} />
           <Route path="/not-found" render={() => <NotFound />} />
           <Route path="/" render={() => <Component />} />
         </Switch>

@@ -30,12 +30,12 @@
 
 .register_page {
   width: 90vw;
-  height: 54vh;
+  height: 60vh;
 }
 
 .user_inputs {
   width: 26vw;
-  height: 50vh;
+  height: 54vh;
 }
 
 .user_details {
@@ -239,4 +239,23 @@ label {
   text-align: left;
   color: #ffefd5;
   margin: 0.3vh 0.3vw;
+}
+
+.terms_label {
+  font-size: 1em;
+  font-weight: bold;
+  text-align: left;
+  color: #ffefd5;
+  margin: 0.3vh 0.3vw;
+}
+
+.hyper_links {
+  text-decoration: none;
+  color: #1e90ff;
+  cursor: pointer;
+}
+
+.terms_and_policy {
+  margin-top: 2vh;
+  width: 22.6vw;
 }

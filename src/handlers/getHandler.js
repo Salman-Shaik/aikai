@@ -123,6 +123,8 @@ const isValidReactRoute = (url) => {
     "/editors_choice",
     "/",
     "/not-found",
+    "/terms_and_conditions",
+    "/privacy_policy",
   ];
   return validRoutes.includes(url);
 };
