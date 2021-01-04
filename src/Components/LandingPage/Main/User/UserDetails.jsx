@@ -45,7 +45,7 @@ export const UserDetails = ({
   const [password, setPassword] = useState("");
   const [passwordStrength, setPasswordStrength] = useState("");
   const [explicitFlag, setExplicitFlag] = useState(false);
-  const [termsFlag, setTermsFlag] = useState(false);
+  const [termsFlag, setTermsFlag] = useState(!!updateFlag);
   const [nameError, setNameError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [usernameError, setUsernameError] = useState(false);
@@ -294,6 +294,7 @@ export const UserDetails = ({
             type="button"
             className="reg_btn"
             onClick={updateFlag ? onUpdate : onRegister}
+            disabled={!termsFlag}
           >
             {`${updateFlag ? "Update" : "Sign Up"}`}
           </button>

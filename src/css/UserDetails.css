@@ -132,6 +132,11 @@
   );
 }
 
+.reg_btn:disabled {
+  background: #5b5b5b;
+  cursor: default;
+}
+
 .detail:focus,
 .reg_btn:focus {
   outline: none;
