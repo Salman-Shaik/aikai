@@ -125,6 +125,8 @@ const isValidReactRoute = (url) => {
     "/not-found",
     "/terms_and_conditions",
     "/privacy_policy",
+    "/refund_policy",
+    "/about_us",
   ];
   return validRoutes.includes(url);
 };

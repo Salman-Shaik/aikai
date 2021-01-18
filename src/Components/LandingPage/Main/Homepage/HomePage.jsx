@@ -166,6 +166,48 @@ const Footer = () => {
           Salman Shaik
         </a>
       </span>
+      <section className={"policies"}>
+        <a
+          href="/about_us"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="policy_link"
+        >
+          About Us
+        </a>
+        <a
+          href="mailto: lightmasters.aikai@gmail.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="policy_link"
+        >
+          Contact Us
+        </a>
+        <a
+          href="/terms_and_conditions"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="policy_link"
+        >
+          Terms And Conditions
+        </a>
+        <a
+          href="/privacy_policy"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="policy_link"
+        >
+          Privacy Policy
+        </a>
+        <a
+          href="/refund_policy"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="policy_link"
+        >
+          Refund Policy
+        </a>
+      </section>
       <WaveComponent />
     </section>
   );

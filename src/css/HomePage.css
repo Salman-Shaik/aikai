@@ -123,6 +123,16 @@
   width: 100%;
 }
 
+.policies {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  background-color: rgba(29, 29, 29, 0.2);
+  padding: 1vw;
+}
+
 .features,
 .feedback {
   display: flex;
@@ -199,6 +209,18 @@
   text-decoration: none;
   color: #1e90ff;
   cursor: pointer;
+}
+
+.policy_link {
+  text-decoration: none;
+  font-size: 1.1em;
+  color: #ffefd5;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.policy_link:hover {
+  color: #1e90ff;
 }
 
 .feedback_button {
