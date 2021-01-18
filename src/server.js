@@ -133,8 +133,8 @@ app.put("/mobile/details", (req, res) =>
 app.put("/mobile/update_password", (req, res) =>
   updatePasswordForMobile(req, res, User)
 );
-app.get("/subscription", (req, res) => updateSubscription(req, res, User));
-app.get("/mobile/subscription", (req, res) =>
+app.put("/subscription", (req, res) => updateSubscription(req, res, User));
+app.put("/mobile/subscription", (req, res) =>
   updateSubscriptionForMobile(req, res, User)
 );
 
