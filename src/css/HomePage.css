@@ -37,7 +37,10 @@
 }
 
 .now-playing_image {
-  width: 74%;
+  width: 72.5%;
+  border-radius: 4px;
+  box-shadow: #1d1d1d 1px 6px 8px 10px !important;
+  cursor: pointer;
 }
 
 .random_image,
@@ -47,10 +50,17 @@
 
 .editors_choice_image {
   width: 58%;
+  border-radius: 4px;
+  box-shadow: #1d1d1d 1px 6px 8px 10px !important;
+  cursor: pointer;
 }
 
 .action_image {
   width: 65%;
+  padding: 1.2vh 1vw;
+  border-radius: 4px;
+  box-shadow: #1d1d1d 1px 6px 8px 10px !important;
+  cursor: pointer;
 }
 
 .action_example {
@@ -269,4 +279,8 @@
 
 .show_example {
   width: 40%;
+  padding: 1.5vh 0;
+  border-radius: 4px;
+  box-shadow: #1d1d1d 1px 6px 8px 10px !important;
+  cursor: pointer;
 }
