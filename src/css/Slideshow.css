@@ -1,0 +1,18 @@
+.four-images {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.slideshow_poster {
+  width: 13vw;
+  height: 34vh;
+  border: none;
+  border-radius: 2px;
+  box-shadow: #1d1d1d 1px 6px 8px 10px !important;
+  cursor: pointer;
+}
+
+.slideshow {
+  margin: 0 2vw;
+}

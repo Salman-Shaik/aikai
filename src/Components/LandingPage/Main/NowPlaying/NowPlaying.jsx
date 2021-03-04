@@ -6,7 +6,7 @@ import {
   fetchPlayingMovies,
 } from "../../../../lib/showNetworkCalls";
 import { Spinner } from "../../../Spinner";
-import { PlayingShows } from "./PlayingShows";
+import Slideshow from "./Slideshow";
 
 const Component = ({
   playingMovies,
@@ -15,9 +15,8 @@ const Component = ({
   updateLocation,
 }) => {
   const createPlayingShows = (data, className, type) => (
-    <PlayingShows
+    <Slideshow
       data={data}
-      className={className}
       setCurrentShowType={() => createCookie("showType", type)}
       setHomePageLoaded={setHomePageLoaded}
       updateLocation={updateLocation}
@@ -27,9 +26,6 @@ const Component = ({
   return (
     <section className="now_playing">
       <h2 className="sub_header">Now Playing - Movies</h2>
-      <h5 className="note">
-        **RESULTS CAN BE UNRELAVENT DUE TO ONGOING PANDEMIC**
-      </h5>
       {createPlayingShows(playingMovies, "playing_movies", "movie")}
       <h2 className="sub_header">Now Airing - TV Shows</h2>
       {createPlayingShows(airingTvShows, "airing_shows", "tv")}

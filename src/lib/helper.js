@@ -83,6 +83,7 @@ export const getJwtToken = (payload) =>
 export const onPosterError = (e) => {
   e.target.src = "fallback.jpg";
 };
+
 export const isCurrentItem = (name) => {
   const url = {
     "Now Playing": "/now_playing",
