@@ -474,6 +474,46 @@
       "title": "Death on the Nile",
       "id": 505026,
       "type": "movie"
+    },
+    {
+      "title": "The Last Ship",
+      "id": 60802,
+      "type": "tv"
+    },
+    {
+      "title": "Sex Education",
+      "id": 81356,
+      "type": "tv"
+    },
+    {
+      "title": "Zombie Reddy",
+      "id": 773303,
+      "type": "movie"
+    },
+    {
+      "title": "Krack",
+      "id": 784572,
+      "type": "movie"
+    },
+    {
+      "title": "WandaVision",
+      "id": 85271,
+      "type": "tv"
+    },
+    {
+      "title": "Zack Synder's Justice League",
+      "id": 791373,
+      "type": "movie"
+    },
+    {
+      "title": "Spider-man: No Way Home",
+      "id": 634649,
+      "type": "movie"
+    },
+    {
+      "title": "Sherlock",
+      "id": 432517,
+      "type": "tv"
     }
   ]
 }
