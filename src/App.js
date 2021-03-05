@@ -2,13 +2,12 @@ import React from "react";
 import { isMobile } from "react-device-detect";
 import { LandingPage } from "./Components/LandingPage";
 import "./css/App.css";
+import {MobileHomepage} from "./Components/MobileHomepage";
 
 const App = () => (
   <div className="App">
     {isMobile ? (
-      <h4 className="mobile_notice">
-        This website in not available on Mobile yet. Please Try Desktop Version.
-      </h4>
+      <MobileHomepage/>
     ) : (
       <LandingPage />
     )}
