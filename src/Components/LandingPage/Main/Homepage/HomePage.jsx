@@ -18,7 +18,12 @@ const Page = ({ keyword, image, alt, description, onClick }) => {
   return (
     <section id={keyword} className="page">
       <section className={keyword}>
-        <img src={image} alt={alt} className={`${keyword}_image`} onClick={onClick}/>
+        <img
+          src={image}
+          alt={alt}
+          className={`${keyword}_image`}
+          onClick={onClick}
+        />
         <InfoSection description={description} onClick={onClick} />
       </section>
     </section>
@@ -91,7 +96,12 @@ const ActionsPage = ({ updateLocation, action, description }) => {
   return (
     <section id={action} className="page">
       <section className={action}>
-        <img src={`${action}.jpg`} alt={action} className="action_image" onClick={() => updateLocation()}/>
+        <img
+          src={`${action}.jpg`}
+          alt={action}
+          className="action_image"
+          onClick={() => updateLocation()}
+        />
         <InfoSection
           description={description}
           onClick={() => updateLocation()}

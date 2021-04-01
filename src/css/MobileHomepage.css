@@ -1,4 +1,4 @@
-.mobile_homepage{
+.mobile_homepage {
   width: 100%;
   min-height: 100vh;
 }
@@ -12,35 +12,35 @@
   min-height: 10vh;
 }
 
-.mobile_header_logo{
+.mobile_header_logo {
   height: 12.5em;
   width: 12em;
   margin-top: -2vh !important;
 }
 
-.mobile_mockup{
+.mobile_mockup {
   height: 23.3em;
   width: 23.3em;
   margin-top: 3vh;
 }
 
-.mobile_header_text{
+.mobile_header_text {
   font-size: 2.7em;
   background-image: linear-gradient(
-          to right bottom,
-          #f14f2e,
-          #f03f42,
-          #ec3154,
-          #e42764,
-          #d82474
+    to right bottom,
+    #f14f2e,
+    #f03f42,
+    #ec3154,
+    #e42764,
+    #d82474
   );
   background-image: -webkit-linear-gradient(
-          to right bottom,
-          #f14f2e,
-          #f03f42,
-          #ec3154,
-          #e42764,
-          #d82474
+    to right bottom,
+    #f14f2e,
+    #f03f42,
+    #ec3154,
+    #e42764,
+    #d82474
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
