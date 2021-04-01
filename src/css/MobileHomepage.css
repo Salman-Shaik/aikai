@@ -47,3 +47,11 @@
   margin: 0 !important;
   margin-top: -6vh !important;
 }
+
+.mobile_policy_link {
+  text-decoration: none;
+  font-size: 0.9em;
+  color: #ffefd5;
+  cursor: pointer;
+  font-weight: bold;
+}
