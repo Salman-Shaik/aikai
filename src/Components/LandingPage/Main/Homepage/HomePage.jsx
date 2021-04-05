@@ -220,6 +220,7 @@ const Footer = () => {
           Refund Policy
         </a>
       </section>
+      <img src="lightmasters.png" alt="LightMasters" className="company"/>
       <WaveComponent />
     </section>
   );

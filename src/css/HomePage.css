@@ -284,3 +284,9 @@
   box-shadow: #1d1d1d 1px 6px 8px 10px !important;
   cursor: pointer;
 }
+
+.company {
+  height: 14vh;
+  border-radius: 2px;
+  margin-bottom: -7vh;
+}
