@@ -91,7 +91,8 @@ export const isCurrentItem = (name) => {
     "Tv Shows": "/tv_shows",
     "Editor's Choice": "/editors_choice",
   };
-  return url[name] === window.location.href;
+  const href = window.location.href;
+  return href.includes(url[name]);
 };
 
 export const Section = ({ miniShows }) => (
