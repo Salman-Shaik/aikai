@@ -8,6 +8,13 @@ import { TermsAndConditions } from "./TermsAndConditions";
 const Component = () => (
   <>
     <img src={`mockup.png`} alt="icon" className="mobile_mockup" />
+    <a href="https://play.google.com/store/apps/details?id=co.aikai&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
+      <img
+        alt="Get it on Google Play"
+        src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+        className="googlePlayButton"
+      />
+    </a>
     <section className={"policies"}>
       <a
         href="mailto: lightmasters.aikai@gmail.com"
