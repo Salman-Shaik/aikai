@@ -8,6 +8,17 @@ import { TermsAndConditions } from "./TermsAndConditions";
 const Component = () => (
   <>
     <img src={`mockup.png`} alt="icon" className="mobile_mockup" />
+    <span className="app_signature">
+      Made by{" "}
+      <a
+        href="https://github.com/Salman-Shaik"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="profile_link"
+      >
+        Salman Shaik
+      </a>
+    </span>
     <a href="https://play.google.com/store/apps/details?id=co.aikai&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
       <img
         alt="Get it on Google Play"
@@ -49,6 +60,7 @@ const Component = () => (
         Refund Policy
       </a>
     </section>
+    <img src="lightmasters.png" alt="LightMasters" className="app_company" />
   </>
 );
 

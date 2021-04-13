@@ -150,7 +150,7 @@ const Footer = () => {
         <span className="features_header">Features coming soon</span>
         <ul className="feature_list">
           <li className="feature">Subscriptions</li>
-          <li className="feature">New Features are yet to add</li>
+          <li className="feature">New Features are yet to be add</li>
         </ul>
       </section>
       <section className="feedback">
