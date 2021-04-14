@@ -127,6 +127,7 @@ const isValidReactRoute = (url) => {
     "/privacy_policy",
     "/refund_policy",
     "/about_us",
+    "/download_app",
   ];
   return validRoutes.includes(url);
 };
