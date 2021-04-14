@@ -42,6 +42,10 @@ export const NavigationMenu = (props) => {
     updateLocation("/now_playing");
   };
 
+  const onDownload = () => {
+    updateLocation("/download_app");
+  };
+
   const onMovie = () => {
     updateLocation("/movies");
   };
@@ -52,6 +56,8 @@ export const NavigationMenu = (props) => {
 
   return (
     <section className="navigation_menu">
+      {createNavigationMenuItem("Download The App", onDownload)}
+      <p className="page_info">|</p>
       {createNavigationMenuItem("Now Playing", onNowPlaying)}
       {createNavigationMenuItem("Movies", onMovie)}
       {createNavigationMenuItem("TV Shows", onTv)}

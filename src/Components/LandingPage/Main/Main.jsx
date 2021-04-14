@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { deleteCookie } from "../../../lib/helper";
 import { AboutUs } from "./AboutUs";
 import { DoubleShow } from "./DoubleShow";
+import { DownloadApp } from "./DownloadApp";
 import { EditorsChoice } from "./EditorsChoice";
 import { Favorites } from "./Favorites";
 import { HomePage } from "./Homepage/HomePage";
@@ -189,6 +190,7 @@ export const Main = (props) => {
             path="/terms_and_conditions"
             render={() => <TermsAndConditions />}
           />
+          <Route path="/download_app" render={() => <DownloadApp />} />
           <Route path="/privacy_policy" render={() => <PrivacyPolicy />} />
           <Route path="/refund_policy" render={() => <RefundPolicy />} />
           <Route path="/about_us" render={() => <AboutUs />} />

@@ -1,5 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  AmazonAppStoreButton,
+  GalaxyStoreButton,
+  GooglePlayButton,
+} from "../../DownloadButtons";
 import { AboutUs } from "./AboutUs";
 import { PrivacyPolicy } from "./PrivacyPolicy";
 import { RefundPolicy } from "./RefundPolicy";
@@ -9,27 +14,9 @@ const Component = () => (
   <>
     <img src={`mockup.png`} alt="icon" className="mobile_mockup" />
     <section className="downloadSources">
-      <a href="https://play.google.com/store/apps/details?id=co.aikai&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
-        <img
-          alt="Get it on Google Play"
-          src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-          className="googlePlayButton"
-        />
-      </a>
-      <a href="https://galaxy.store/aikai">
-        <img
-          src="https://img.samsungapps.com/seller/images/badges/galaxyStore/png_big/GalaxyStore_English.png?ver=1617639800000"
-          alt="Available on Samsung Galaxy Store"
-          className="galaxyButton"
-        />
-      </a>
-      <a href="https://www.amazon.in/dp/B092CR1Y1Z/ref=apps_sf_sta">
-        <img
-          alt="Get it on Amazon App Store"
-          src="amazonBadgeBlack.png"
-          className="amazonPlayButton"
-        />
-      </a>
+      <GooglePlayButton className="googlePlayButton" />
+      <GalaxyStoreButton className="galaxyButton" />
+      <AmazonAppStoreButton className="amazonPlayButton" />
     </section>
     <section className={"policies"}>
       <a
