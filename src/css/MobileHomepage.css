@@ -58,10 +58,21 @@
 
 .googlePlayButton {
   height: 8vh;
-  margin-top: 4vh;
-  margin-bottom: 2vh;
+  /*margin-top: 4vh;*/
+  /*margin-bottom: 2vh;*/
 }
 
+.amazonPlayButton {
+  height: 5.3vh;
+}
+.downloadSources {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 3vh;
+}
 .app_company {
   height: 10vh;
   border-radius: 2px;
