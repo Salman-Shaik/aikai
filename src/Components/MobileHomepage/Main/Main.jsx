@@ -16,6 +16,13 @@ const Component = () => (
           className="googlePlayButton"
         />
       </a>
+      <a href="https://galaxy.store/aikai">
+        <img
+          src="https://img.samsungapps.com/seller/images/badges/galaxyStore/png_big/GalaxyStore_English.png?ver=1617639800000"
+          alt="Available on Samsung Galaxy Store"
+          className="galaxyButton"
+        />
+      </a>
       <a href="https://www.amazon.in/dp/B092CR1Y1Z/ref=apps_sf_sta">
         <img
           alt="Get it on Amazon App Store"
