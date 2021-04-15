@@ -206,11 +206,6 @@ export const isShowOnWatchList = (title, setIsOnWatchList) => {
     .catch((e) => new TypeError(e));
 };
 
-export const fetchLanguages = () =>
-  fetch("/languages")
-    .then((r) => r.text())
-    .then((d) => JSON.parse(d));
-
 export const markWatched = (id, updateLocation) => {
   fetch("/watched", {
     method: "put",

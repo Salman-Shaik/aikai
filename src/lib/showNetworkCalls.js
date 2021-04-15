@@ -6,7 +6,6 @@ import {
   getFirstFour,
   getRandomItem,
 } from "./helper";
-import { fetchLanguages } from "./networkCalls";
 
 const API_KEY = getCookieValue("apiKey");
 const YOUTUBE_API_KEY = getCookieValue("youtubeKey");
@@ -14,14 +13,21 @@ const API_HOST = "https://api.themoviedb.org/3";
 
 const playingMoviesFilter = (json, setPlayingMovies) => {
   let results = json.results;
-  fetchLanguages().then((languages) => {
-    if (!_.isEmpty(languages))
-      results = results.filter((r) =>
-        languages.includes(languagesList[r["original_language"]])
-      );
-    if (results.length > 16) results = results.slice(0, 16);
-    setPlayingMovies(results);
-  });
+  const languages = getCookieValue("languages").split("%2C");
+  if (!_.isEmpty(languages)) {
+    results = results.filter((r) =>
+      languages.includes(languagesList[r["original_language"]])
+    );
+  }
+  if (results.length > 16) {
+    results = results.slice(0, 16);
+  } else if (results.length > 12) {
+    results = results.slice(0, 12);
+  } else if (results.length > 8) {
+    results = results.slice(0, 8);
+  }
+  console.log(results);
+  setPlayingMovies(results);
 };
 
 const airingShowsFilter = (
@@ -31,16 +37,23 @@ const airingShowsFilter = (
   setHomepageLoaded
 ) => {
   let results = json.results;
-  fetchLanguages().then((languages) => {
-    if (!_.isEmpty(languages))
-      results = results.filter((r) =>
-        languages.includes(languagesList[r["original_language"]])
-      );
-    if (results.length > 16) results = results.slice(0, 16);
-    setAiringTvShows(results);
-    setLoaded(true);
-    setHomepageLoaded(true);
-  });
+  const languages = getCookieValue("languages").split("%2C");
+  console.log(languages);
+  if (!_.isEmpty(languages)) {
+    results = results.filter((r) =>
+      languages.includes(languagesList[r["original_language"]])
+    );
+  }
+  if (results.length > 16) {
+    results = results.slice(0, 16);
+  } else if (results.length > 12) {
+    results = results.slice(0, 12);
+  } else if (results.length > 8) {
+    results = results.slice(0, 8);
+  }
+  setAiringTvShows(results);
+  setLoaded(true);
+  setHomepageLoaded(true);
 };
 
 export const fetchPlayingMovies = (setPlayingMovies) => {

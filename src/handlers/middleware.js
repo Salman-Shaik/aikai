@@ -20,6 +20,7 @@ const validateUser = async (req, res, next, User) => {
   }
   next();
 };
+
 const currentShowSetter = (req, res, next) => {
   const show = req.query.showId;
   const showType = req.query.showType;

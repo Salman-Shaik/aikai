@@ -190,6 +190,8 @@ const user = (sequelize, DataTypes) => {
     await bcrypt.compare(password, userObj.password, (err, result) => {
       if (result) {
         res.cookie("user", encode(username));
+        res.cookie("languages", _.toString(userObj.languages));
+        res.cookie("explicitFlag", userObj.explicitFlag);
         res.send(JSON.stringify({ user: encode(username) }));
       } else {
         res.status(401);
@@ -212,11 +214,6 @@ const user = (sequelize, DataTypes) => {
   User.getWatchList = async (username) => {
     const user = await User.findByUsername(username);
     return user.watchlist;
-  };
-
-  User.getLanguages = async (username) => {
-    const user = await User.findByUsername(username);
-    return user.languages;
   };
 
   return User;

@@ -12,8 +12,6 @@ const {
 const {
   getFavorites,
   getWatchList,
-  getExplicitFlag,
-  getLanguages,
   getFavoritesForMobile,
   getWatchListForMobile,
 } = require("./handlers/getHandler");
@@ -96,8 +94,6 @@ app.get("/watchlist", (req, res) => getWatchList(req, res, User));
 app.get("/mobile/watchlist", (req, res) =>
   getWatchListForMobile(req, res, User)
 );
-app.get("/languages", (req, res) => getLanguages(req, res, User));
-app.get("/explicitFlag", (req, res) => getExplicitFlag(req, res, User));
 app.get("/subscription", (req, res) => getSubscription(req, res, User));
 app.get("/mobile/subscription", (req, res) =>
   getSubscriptionForMobile(req, res, User)
