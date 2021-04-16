@@ -14,10 +14,15 @@ const API_HOST = "https://api.themoviedb.org/3";
 const playingMoviesFilter = (json, setPlayingMovies) => {
   let results = json.results;
   const languages = getCookieValue("languages").split("%2C");
-  if (!_.isEmpty(languages)) {
-    results = results.filter((r) =>
-      languages.includes(languagesList[r["original_language"]])
-    );
+  const explicitFlag = getCookieValue("explicitFlag");
+  if (!_.isUndefined(languages) && !_.isUndefined(explicitFlag)) {
+    results = results.filter((r) => {
+      return (
+        languages.includes(languagesList[r["original_language"]]) &&
+        !_.isUndefined(r.adult) &&
+        (!r.adult || r.adult === explicitFlag)
+      );
+    });
   }
   if (results.length > 16) {
     results = results.slice(0, 16);
@@ -26,7 +31,6 @@ const playingMoviesFilter = (json, setPlayingMovies) => {
   } else if (results.length > 8) {
     results = results.slice(0, 8);
   }
-  console.log(results);
   setPlayingMovies(results);
 };
 
@@ -38,8 +42,7 @@ const airingShowsFilter = (
 ) => {
   let results = json.results;
   const languages = getCookieValue("languages").split("%2C");
-  console.log(languages);
-  if (!_.isEmpty(languages)) {
+  if (!_.isUndefined(languages)) {
     results = results.filter((r) =>
       languages.includes(languagesList[r["original_language"]])
     );
@@ -123,6 +126,7 @@ export const fetchOtherShow = (
     })
     .catch((e) => new TypeError(e));
 };
+
 export const fetchTopShow = (
   setShowId,
   setHomePageLoaded,
@@ -133,7 +137,29 @@ export const fetchTopShow = (
   fetch(url)
     .then((res) => res.text())
     .then((data) => JSON.parse(data).results)
-    .then((res) => getRandomItem(res))
+    .then((res) => {
+      const languages = getCookieValue("languages").split("%2C");
+      const explicitFlag = getCookieValue("explicitFlag").split("%2C");
+      let results = res;
+      if (type === "movie") {
+        if (!_.isUndefined(languages) && !_.isUndefined(explicitFlag)) {
+          results = res.filter((r) => {
+            return (
+              languages.includes(languagesList[r["original_language"]]) &&
+              !_.isUndefined(r.adult) &&
+              (!r.adult || r.adult === explicitFlag)
+            );
+          });
+        }
+      } else {
+        if (!_.isUndefined(languages)) {
+          results = results.filter((r) =>
+            languages.includes(languagesList[r["original_language"]])
+          );
+        }
+      }
+      return getRandomItem(results);
+    })
     .then((show) => {
       createCookie("showType", type);
       setShowId(show.id);
