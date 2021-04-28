@@ -14,6 +14,7 @@ const API_HOST = "https://api.themoviedb.org/3";
 const playingMoviesFilter = (json, setPlayingMovies) => {
   let results = json.results;
   const languages = getCookieValue("languages").split("%2C");
+
   const explicitFlag = getCookieValue("explicitFlag");
   if (!_.isUndefined(languages) && !_.isUndefined(explicitFlag)) {
     results = results.filter((r) => {

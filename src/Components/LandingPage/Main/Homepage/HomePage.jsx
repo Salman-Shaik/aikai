@@ -178,6 +178,7 @@ const Footer = () => {
           Salman Shaik
         </a>
       </span>
+
       <section className={"policies"}>
         <a
           href="/about_us"

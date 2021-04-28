@@ -60,18 +60,6 @@ const app = express();
 
 const userValidator = (req, res, next) => validateUser(req, res, next, User);
 
-const parallel = (middlewares) => {
-  return (req, res, next) => {
-    async.each(
-      middlewares,
-      (mw, cb) => {
-        mw(req, res, cb);
-      },
-      next
-    );
-  };
-};
-
 app.use(cors());
 app.use(compression());
 app.use(
@@ -80,9 +68,10 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(
-  parallel([logger("dev"), apiKeySetter, currentShowSetter, userValidator])
-);
+app.use(logger("dev"));
+app.use(apiKeySetter);
+app.use(currentShowSetter);
+app.use(userValidator);
 app.use(favicon(__dirname + "../build/favicon.ico"));
 
 app.get("/health", (req, res) => res.send("ok"));

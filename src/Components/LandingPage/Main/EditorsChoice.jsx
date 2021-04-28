@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getRandomItem } from "../../../lib/helper";
+import { getRandomSuggestion } from "../../../lib/helper";
 import { Show } from "./Show/Show";
 import { list } from "../../../data/editorsChoice.json";
 
@@ -12,7 +12,7 @@ export const EditorsChoice = ({
 }) => {
   const [randomShow, setRandomShow] = useState({});
   useEffect(() => {
-    const randomItem = getRandomItem(list);
+    const randomItem = getRandomSuggestion(list);
     setRandomShow(randomItem);
   }, []);
 

@@ -46,11 +46,6 @@ export const fetchExplicitFlag = () =>
     .then((r) => r.text())
     .then((d) => JSON.parse(d).flagStatus);
 
-export const getRandomItem = (arr) => {
-  const shuffledArr = _.shuffle(arr);
-  return shuffledArr[0];
-};
-
 export const getCookieValue = (cookieString) => {
   const cookies = document.cookie.split("; ");
   const cookiesObj = {};
@@ -59,6 +54,18 @@ export const getCookieValue = (cookieString) => {
     cookiesObj[key] = val;
   });
   return cookiesObj[cookieString];
+};
+
+export const getRandomSuggestion = (arr) => {
+  const languages = getCookieValue("languages").split("%2C");
+  const filteredArray = arr.filter((item) => languages.includes(item.language));
+  return filteredArray.length === 0
+    ? getRandomItem(arr)
+    : getRandomItem(filteredArray);
+};
+export const getRandomItem = (arr) => {
+  const shuffledArr = _.shuffle(arr);
+  return shuffledArr[0];
 };
 
 export const createCookie = (key, value) => {

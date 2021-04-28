@@ -3,517 +3,625 @@
     {
       "title": "Shawshank Redemption",
       "id": 278,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Schindler's List",
       "id": 424,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Black Panther",
       "id": 284054,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Avengers: Endgame",
       "id": 299534,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Avengers: Infinity War",
       "id": 299536,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Friends",
       "id": 1668,
-      "type": "tv"
+      "type": "tv",
+      "language": "English"
     },
     {
       "title": "The Big Bang Theory",
       "id": 1418,
-      "type": "tv"
+      "type": "tv",
+      "language": "English"
     },
     {
       "title": "How I Met Your Mother",
       "id": 1100,
-      "type": "tv"
+      "type": "tv",
+      "language": "English"
     },
     {
       "title": "Fringe",
       "id": 1705,
-      "type": "tv"
+      "type": "tv",
+      "language": "English"
     },
     {
       "title": "WestWorld",
       "id": 63247,
-      "type": "tv"
+      "type": "tv",
+      "language": "English"
     },
     {
       "title": "Black Mirror",
       "id": 42009,
-      "type": "tv"
+      "type": "tv",
+      "language": "English"
     },
     {
       "title": "Iron Man",
       "id": 1726,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Avengers",
       "id": 24428,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Doctor Strange",
       "id": 284052,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Spider-man",
       "id": 557,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Spider-man: Far from home",
       "id": 429617,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Spider-man: Homecoming",
       "id": 315635,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Thor: Ragnarok",
       "id": 284053,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Iron Man 2",
       "id": 10138,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Spider-Man 2",
       "id": 558,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "2001",
       "id": 62,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Captain America: Civil War",
       "id": 271110,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Wonder Woman",
       "id": 297762,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Aquaman",
       "id": 297802,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Shazam",
       "id": 287947,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Man of Steel",
       "id": 49521,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Zodiac",
       "id": 1949,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Gone Girl",
       "id": 210577,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Chhichhore",
       "id": 596650,
-      "type": "movie"
+      "type": "movie",
+      "language": "Hindi"
     },
     {
       "title": "Jigarthandha",
       "id": 270766,
-      "type": "movie"
+      "type": "movie",
+      "language": "Tamil"
     },
     {
       "title": "Ala Vaikuntapuramlo",
       "id": 628241,
-      "type": "movie"
+      "type": "movie",
+      "language": "Telugu"
     },
     {
       "title": "Aravindha Sametha",
       "id": 534530,
-      "type": "movie"
+      "type": "movie",
+      "language": "Telugu"
     },
     {
       "title": "Nannaku Prematho",
       "id": 365187,
-      "type": "movie"
+      "type": "movie",
+      "language": "Telugu"
     },
     {
       "title": "Bajrangi Bhaijaan",
       "id": 348892,
-      "type": "movie"
+      "type": "movie",
+      "language": "Hindi"
     },
     {
       "title": "Ghazi Attack",
       "id": 442405,
-      "type": "movie"
+      "type": "movie",
+      "language": "Hindi"
     },
     {
       "title": "PINK",
       "id": 415358,
-      "type": "movie"
+      "type": "movie",
+      "language": "Hindi"
     },
     {
       "title": "Wind River",
       "id": 395834,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Jack Reacher",
       "id": 75780,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Divergent",
       "id": 157350,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Insurgent",
       "id": 262500,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "The Fault In Our Stars",
       "id": 222935,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "The Witcher",
       "id": 71912,
-      "type": "tv"
+      "type": "tv",
+      "language": "English"
     },
     {
       "title": "Interstellar",
       "id": 157336,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Inception",
       "id": 27205,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Avatar",
       "id": 19995,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Titanic",
       "id": 597,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "The Perks Of being a wallflower",
       "id": 84892,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Exorcist",
       "id": 9552,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "The Conjuring",
       "id": 138843,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Eternal sunshine of the spotless mind",
       "id": 38,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Back to the future",
       "id": 105,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Top Gun",
       "id": 744,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Mission: Impossible III",
       "id": 956,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Mission Impossible: Ghost Protocol",
       "id": 56292,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Mission Impossible: Rogue Nation",
       "id": 177677,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Knives Out",
       "id": 546554,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "1917",
       "id": 530915,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Lawrence Of Arabia",
       "id": 947,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Prince Of Persia",
       "id": 9543,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Ready Player One",
       "id": 333339,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Se7en",
       "id": 807,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Fight Club",
       "id": 550,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "1 - Nenokkadine",
       "id": 249772,
-      "type": "movie"
+      "type": "movie",
+      "language": "Telugu"
     },
     {
       "title": "Khaleja",
       "id": 56986,
-      "type": "movie"
+      "type": "movie",
+      "language": "Telugu"
     },
     {
       "title": "Ye Maya Chesave",
       "id": 63430,
-      "type": "movie"
+      "type": "movie",
+      "language": "Telugu"
     },
     {
       "title": "Devil Wears Prada",
       "id": 350,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Love & Other Drugs",
       "id": 43347,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "V for Vendetta",
       "id": 752,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Matrix: Reloaded",
       "id": 604,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "The Matrix Revolutions",
       "id": 605,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "The Matrix",
       "id": 603,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "The Butterfly Effect",
       "id": 1954,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "PSV Garuda Vega",
       "id": 484423,
-      "type": "movie"
+      "type": "movie",
+      "language": "Telugu"
     },
     {
       "title": "Breathe",
       "id": 76659,
-      "type": "tv"
+      "type": "tv",
+      "language": "Hindi"
     },
     {
       "title": "Hamari Adhuri Kahani",
       "id": 339367,
-      "type": "movie"
+      "type": "movie",
+      "language": "Hindi"
     },
     {
       "title": "Notebook",
       "id": 582375,
-      "type": "movie"
+      "type": "movie",
+      "language": "Hindi"
     },
     {
       "title": "The Notebook",
       "id": 11036,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Deep Blue Sea",
       "id": 8914,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Aladdin",
       "id": 420817,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Quiet Place",
       "id": 447332,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Shutter Island",
       "id": 11324,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "The Prestige",
       "id": 1124,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "The Mummy",
       "id": 564,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Raiders of the Lost Ark",
       "id": 85,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Charlie And The Chocolate Factory",
       "id": 118,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Frozen",
       "id": 109445,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "The 100",
       "id": 48866,
-      "type": "tv"
+      "type": "tv",
+      "language": "English"
     },
     {
       "title": "The Good Place",
       "id": 66573,
-      "type": "tv"
+      "type": "tv",
+      "language": "English"
     },
     {
       "title": "Soorarai Pottru",
       "id": 595228,
-      "type": "movie"
+      "type": "movie",
+      "language": "Tamil"
     },
     {
       "title": "Catch Me If You Can",
       "id": 640,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Unsolved Mysteries",
       "id": 105177,
-      "type": "tv"
+      "type": "tv",
+      "language": "English"
     },
     {
       "title": "Rockstar",
       "id": 79464,
-      "type": "movie"
+      "type": "movie",
+      "language": "Hindi"
     },
     {
       "title": "Tamasha",
       "id": 339274,
-      "type": "movie"
+      "type": "movie",
+      "language": "Hindi"
     },
     {
       "title": "Brahmastra",
       "id": 496331,
-      "type": "movie"
+      "type": "movie",
+      "language": "Hindi"
     },
     {
       "title": "Death on the Nile",
       "id": 505026,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "The Last Ship",
       "id": 60802,
-      "type": "tv"
+      "type": "tv",
+      "language": "English"
     },
     {
       "title": "Sex Education",
       "id": 81356,
-      "type": "tv"
+      "type": "tv",
+      "language": "English"
     },
     {
       "title": "Zombie Reddy",
       "id": 773303,
-      "type": "movie"
+      "type": "movie",
+      "language": "Telugu"
     },
     {
       "title": "Krack",
       "id": 784572,
-      "type": "movie"
+      "type": "movie",
+      "language": "Telugu"
     },
     {
       "title": "WandaVision",
       "id": 85271,
-      "type": "tv"
+      "type": "tv",
+      "language": "English"
     },
     {
       "title": "Zack Synder's Justice League",
       "id": 791373,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Spider-man: No Way Home",
       "id": 634649,
-      "type": "movie"
+      "type": "movie",
+      "language": "English"
     },
     {
       "title": "Sherlock",
       "id": 432517,
-      "type": "tv"
+      "type": "tv",
+      "language": "English"
+    },
+    {
+      "title": "October",
+      "id": 496527,
+      "type": "movie"
     }
   ]
 }
