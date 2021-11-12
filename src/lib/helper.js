@@ -112,3 +112,7 @@ export const getSectionedMiniShows = (map) => {
     sectionedMap.push(<Section miniShows={getFive(map, i)} />);
   return sectionedMap;
 };
+
+export const isEmptyOrUndefined = (value) => {
+  return _.isEmpty(value) || _.isUndefined(value);
+};

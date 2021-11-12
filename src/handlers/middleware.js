@@ -44,6 +44,7 @@ const apiKeySetter = (req, res, next) => {
   if (!youtubeCookie) {
     res.cookie("youtubeKey", process.env.YOUTUBE_API_KEY);
   }
+  res.cookie("languages", process.env.LANGUAGES);
   next();
 };
 

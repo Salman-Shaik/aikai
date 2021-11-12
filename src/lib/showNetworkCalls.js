@@ -5,6 +5,7 @@ import {
   getCookieValue,
   getFirstFour,
   getRandomItem,
+  isEmptyOrUndefined,
 } from "./helper";
 
 const API_KEY = getCookieValue("apiKey");
@@ -13,10 +14,13 @@ const API_HOST = "https://api.themoviedb.org/3";
 
 const playingMoviesFilter = (json, setPlayingMovies) => {
   let results = json.results;
-  const languages = getCookieValue("languages").split("%2C");
-
+  let languageCookieValue = getCookieValue("languages");
   const explicitFlag = getCookieValue("explicitFlag");
-  if (!_.isUndefined(languages) && !_.isUndefined(explicitFlag)) {
+  if (
+    !isEmptyOrUndefined(languageCookieValue) &&
+    !isEmptyOrUndefined(explicitFlag)
+  ) {
+    const languages = languageCookieValue.split("%2C");
     results = results.filter((r) => {
       return (
         languages.includes(languagesList[r["original_language"]]) &&
@@ -25,12 +29,11 @@ const playingMoviesFilter = (json, setPlayingMovies) => {
       );
     });
   }
-  if (results.length > 16) {
-    results = results.slice(0, 16);
-  } else if (results.length > 12) {
-    results = results.slice(0, 12);
-  } else if (results.length > 8) {
-    results = results.slice(0, 8);
+
+  let extraResults = results.length % 4;
+  if (extraResults !== 0) {
+    let desiredNumberOfResults = results.length - extraResults;
+    results = results.slice(0, desiredNumberOfResults);
   }
   setPlayingMovies(results);
 };
@@ -42,18 +45,19 @@ const airingShowsFilter = (
   setHomepageLoaded
 ) => {
   let results = json.results;
-  const languages = getCookieValue("languages").split("%2C");
-  if (!_.isUndefined(languages)) {
+  let cookieValue = getCookieValue("languages");
+
+  if (!isEmptyOrUndefined(cookieValue)) {
+    const languages = cookieValue.split("%2C");
     results = results.filter((r) =>
       languages.includes(languagesList[r["original_language"]])
     );
   }
-  if (results.length > 16) {
-    results = results.slice(0, 16);
-  } else if (results.length > 12) {
-    results = results.slice(0, 12);
-  } else if (results.length > 8) {
-    results = results.slice(0, 8);
+
+  let extraResults = results.length % 4;
+  if (extraResults !== 0) {
+    let desiredNumberOfResults = results.length - extraResults;
+    results = results.slice(0, desiredNumberOfResults);
   }
   setAiringTvShows(results);
   setLoaded(true);
@@ -139,11 +143,15 @@ export const fetchTopShow = (
     .then((res) => res.text())
     .then((data) => JSON.parse(data).results)
     .then((res) => {
-      const languages = getCookieValue("languages").split("%2C");
-      const explicitFlag = getCookieValue("explicitFlag").split("%2C");
+      let languageCookieValue = getCookieValue("languages");
+      const explicitFlag = getCookieValue("explicitFlag");
       let results = res;
       if (type === "movie") {
-        if (!_.isUndefined(languages) && !_.isUndefined(explicitFlag)) {
+        if (
+          !isEmptyOrUndefined(languageCookieValue) &&
+          !isEmptyOrUndefined(explicitFlag)
+        ) {
+          const languages = languageCookieValue.split("%2C");
           results = res.filter((r) => {
             return (
               languages.includes(languagesList[r["original_language"]]) &&
@@ -153,10 +161,11 @@ export const fetchTopShow = (
           });
         }
       } else {
-        if (!_.isUndefined(languages)) {
-          results = results.filter((r) =>
-            languages.includes(languagesList[r["original_language"]])
-          );
+        if (!isEmptyOrUndefined(languageCookieValue)) {
+          results = results.filter((r) => {
+            const languages = languageCookieValue.split("%2C");
+            languages.includes(languagesList[r["original_language"]]);
+          });
         }
       }
       return getRandomItem(results);

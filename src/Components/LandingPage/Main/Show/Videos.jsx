@@ -29,12 +29,6 @@ export const Videos = ({ info, homepageLoaded, setHomepageLoaded }) => {
       <h3 className="trailer_title">Videos</h3>
       <section className="videos">
         <YouTube videoId={videoIds[0]} opts={opts} className="trailer_video" />
-        <div className="vertical-line" />
-        <YouTube
-          videoId={videoIds[1]}
-          opts={subOpts}
-          className="trailer_video"
-        />
       </section>
     </section>
   );
