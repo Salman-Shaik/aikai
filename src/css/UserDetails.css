@@ -15,6 +15,8 @@
   align-items: center;
   justify-content: space-around;
   border-radius: 18px;
+  width: 90vw;
+  height: 60vh;
 }
 
 .user_inputs {
@@ -26,14 +28,6 @@
   background-color: rgba(34, 34, 34, 0.5);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-}
-
-.register_page {
-  width: 90vw;
-  height: 60vh;
-}
-
-.user_inputs {
   width: 26vw;
   height: 54vh;
 }

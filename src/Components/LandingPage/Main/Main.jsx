@@ -2,7 +2,7 @@ import _ from "lodash";
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { deleteCookie } from "../../../lib/helper";
-import { AboutUs } from "./AboutUs";
+import { AboutUs } from "../../AboutUs";
 import { DoubleShow } from "./DoubleShow";
 import { DownloadApp } from "./DownloadApp";
 import { EditorsChoice } from "./EditorsChoice";
@@ -10,11 +10,11 @@ import { Favorites } from "./Favorites";
 import { HomePage } from "./Homepage/HomePage";
 import { NotFound } from "./NotFound";
 import { NowPlaying } from "./NowPlaying/NowPlaying";
-import { PrivacyPolicy } from "./PrivacyPolicy";
-import { RefundPolicy } from "./RefundPolicy";
+import { PrivacyPolicy } from "../../PrivacyPolicy";
+import { RefundPolicy } from "../../RefundPolicy";
 import { SearchResults } from "./Search/SearchResults";
 import { Show } from "./Show/Show";
-import { TermsAndConditions } from "./TermsAndConditions";
+import { TermsAndConditions } from "../../TermsAndConditions";
 import { LoginPage } from "./User/LoginPage";
 import { UserDetails } from "./User/UserDetails";
 import { WatchList } from "./WatchList";
@@ -188,12 +188,12 @@ export const Main = (props) => {
           />
           <Route
             path="/terms_and_conditions"
-            render={() => <TermsAndConditions />}
+            render={() => <TermsAndConditions className={"terms"}/>}
           />
           <Route path="/download_app" render={() => <DownloadApp />} />
-          <Route path="/privacy_policy" render={() => <PrivacyPolicy />} />
-          <Route path="/refund_policy" render={() => <RefundPolicy />} />
-          <Route path="/about_us" render={() => <AboutUs />} />
+          <Route path="/privacy_policy" render={() => <PrivacyPolicy className={"terms"}/>} />
+          <Route path="/refund_policy" render={() => <RefundPolicy className={"terms"}/>} />
+          <Route path="/about_us" render={() => <AboutUs className={"terms"}/>} />
           <Route path="/not-found" render={() => <NotFound />} />
           <Route path="/" render={() => <Component />} />
         </Switch>

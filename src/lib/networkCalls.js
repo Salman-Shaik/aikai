@@ -52,37 +52,11 @@ export const logout = (
     });
 };
 
-export const registerUser = (
-  name,
-  username,
-  password,
-  age,
-  explicitFlag,
-  languages,
-  updateLocation,
-  setSuccessMessage
-) => {
-  const jwtToken = getJwtToken({ username, password });
-  fetch("/register", {
-    method: "post",
-    body: JSON.stringify({ name, age, explicitFlag, languages }),
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${jwtToken}`,
-    },
-  })
-    .then((res) => {
-      if (res.status === 200) {
-        setSuccessMessage("Account Created!");
-        setTimeout(() => {
-          updateLocation("/login");
-        }, 1000);
-      }
-    })
-    .catch((e) => new TypeError(e));
-};
+export const registerUser = (...args) => updateUserDetails(...args, "/register", "post", "Account Created!", "/login");
 
-export const updateUser = (
+export const updateUser = (...args) => updateUserDetails(...args, "/details", "put", "User Details Updated!", "/");
+
+export const updateUserDetails = (
   name,
   username,
   password,
@@ -90,11 +64,15 @@ export const updateUser = (
   explicitFlag,
   languages,
   updateLocation,
-  setSuccessMessage
+  setSuccessMessage,
+  url,
+  method,
+  successMessage,
+  redirectUrl
 ) => {
   const jwtToken = getJwtToken({ username, password });
-  fetch("/details", {
-    method: "put",
+  fetch(url, {
+    method: method,
     body: JSON.stringify({ name, age, explicitFlag, languages }),
     headers: {
       "Content-Type": "application/json",
@@ -103,9 +81,9 @@ export const updateUser = (
   })
     .then((res) => {
       if (res.status === 200) {
-        setSuccessMessage("User Details Updated!");
+        setSuccessMessage(successMessage);
         setTimeout(() => {
-          updateLocation("/");
+          updateLocation(redirectUrl);
         }, 1000);
       }
     })
@@ -235,7 +213,7 @@ export const fetchDetails = (
     .then((details) => {
       const { languages, age, name, explicitFlag } = details;
       setAge(age);
-      setDisabled(!(age >= 18));
+      setDisabled(age < 18);
       setExplicitFlag(explicitFlag);
       setLanguages(languages);
       setName(name);

@@ -1,8 +1,8 @@
 import React from "react";
-import "../../../css/TermsAndConditions.css";
-export const TermsAndConditions = () => {
+import "../css/TermsAndConditions.css";
+export const TermsAndConditions = ({className}) => {
   return (
-    <section className={"terms"}>
+    <section className={className}>
       <h2>
         <strong>Terms and Conditions</strong>
       </h2>

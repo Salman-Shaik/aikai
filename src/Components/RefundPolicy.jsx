@@ -1,8 +1,8 @@
 import React from "react";
-import "../../../css/TermsAndConditions.css";
-export const RefundPolicy = () => {
+import "../css/TermsAndConditions.css";
+export const RefundPolicy = ({className}) => {
   return (
-    <section className={"terms"}>
+    <section className={className}>
       <h2>
         <strong>Refund Policy</strong>
       </h2>

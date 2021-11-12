@@ -5,10 +5,10 @@ import {
   GalaxyStoreButton,
   GooglePlayButton,
 } from "../../DownloadButtons";
-import { AboutUs } from "./AboutUs";
-import { PrivacyPolicy } from "./PrivacyPolicy";
-import { RefundPolicy } from "./RefundPolicy";
-import { TermsAndConditions } from "./TermsAndConditions";
+import { AboutUs } from "../../AboutUs";
+import { PrivacyPolicy } from "../../PrivacyPolicy";
+import { RefundPolicy } from "../../RefundPolicy";
+import { TermsAndConditions } from "../../TermsAndConditions";
 
 const Component = () => (
   <>
@@ -76,11 +76,11 @@ export const Main = () => {
         <Switch>
           <Route
             path="/terms_and_conditions"
-            render={() => <TermsAndConditions />}
+            render={() => <TermsAndConditions className={"mobile-terms"}/>}
           />
-          <Route path="/privacy_policy" render={() => <PrivacyPolicy />} />
-          <Route path="/refund_policy" render={() => <RefundPolicy />} />
-          <Route path="/about_us" render={() => <AboutUs />} />
+          <Route path="/privacy_policy" render={() => <PrivacyPolicy className={"mobile-terms"}/>} />
+          <Route path="/refund_policy" render={() => <RefundPolicy className={"mobile-terms"}/>} />
+          <Route path="/about_us" render={() => <AboutUs className={"mobile-terms"}/>} />
           <Route path="/" render={() => <Component />} />
         </Switch>
       </Router>

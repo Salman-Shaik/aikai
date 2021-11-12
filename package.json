@@ -37,7 +37,8 @@
     "react-test-renderer": "^17.0.2",
     "react-testing-library": "^8.0.1",
     "react-youtube": "^7.13.1",
-    "sequelize": "^6.9.0"
+    "sequelize": "^6.9.0",
+    "sonarqube-scanner": "^2.8.1"
   },
   "scripts": {
     "start": "node src/server.js",
