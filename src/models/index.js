@@ -5,12 +5,12 @@ console.log(`DB URL: ${dbUrl}`);
 const sequelize = new Sequelize(dbUrl, {
   dialect: "postgres",
   protocol: "postgres",
-  ssl: true,
-  dialectOptions: {
-    ssl: {
-      rejectUnauthorized: false,
-    },
-  },
+  // ssl: true,
+  // dialectOptions: {
+  //   ssl: {
+  //     rejectUnauthorized: false,
+  //   },
+  // },
 });
 
 const models = {
