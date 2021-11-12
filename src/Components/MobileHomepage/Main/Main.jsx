@@ -76,11 +76,20 @@ export const Main = () => {
         <Switch>
           <Route
             path="/terms_and_conditions"
-            render={() => <TermsAndConditions className={"mobile-terms"}/>}
+            render={() => <TermsAndConditions className={"mobile-terms"} />}
           />
-          <Route path="/privacy_policy" render={() => <PrivacyPolicy className={"mobile-terms"}/>} />
-          <Route path="/refund_policy" render={() => <RefundPolicy className={"mobile-terms"}/>} />
-          <Route path="/about_us" render={() => <AboutUs className={"mobile-terms"}/>} />
+          <Route
+            path="/privacy_policy"
+            render={() => <PrivacyPolicy className={"mobile-terms"} />}
+          />
+          <Route
+            path="/refund_policy"
+            render={() => <RefundPolicy className={"mobile-terms"} />}
+          />
+          <Route
+            path="/about_us"
+            render={() => <AboutUs className={"mobile-terms"} />}
+          />
           <Route path="/" render={() => <Component />} />
         </Switch>
       </Router>

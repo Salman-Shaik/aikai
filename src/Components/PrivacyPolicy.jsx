@@ -1,7 +1,8 @@
 import React from "react";
 import "../css/TermsAndConditions.css";
+import "../css/mobile/TermsAndConditions.css";
 
-export const PrivacyPolicy = ({className}) => {
+export const PrivacyPolicy = ({ className }) => {
   return (
     <section className={className}>
       <h1>Privacy Policy for A.I.K.A.I</h1>

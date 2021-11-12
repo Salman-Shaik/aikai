@@ -52,9 +52,11 @@ export const logout = (
     });
 };
 
-export const registerUser = (...args) => updateUserDetails(...args, "/register", "post", "Account Created!", "/login");
+export const registerUser = (...args) =>
+  updateUserDetails(...args, "/register", "post", "Account Created!", "/login");
 
-export const updateUser = (...args) => updateUserDetails(...args, "/details", "put", "User Details Updated!", "/");
+export const updateUser = (...args) =>
+  updateUserDetails(...args, "/details", "put", "User Details Updated!", "/");
 
 export const updateUserDetails = (
   name,

@@ -188,12 +188,21 @@ export const Main = (props) => {
           />
           <Route
             path="/terms_and_conditions"
-            render={() => <TermsAndConditions className={"terms"}/>}
+            render={() => <TermsAndConditions className={"terms"} />}
           />
           <Route path="/download_app" render={() => <DownloadApp />} />
-          <Route path="/privacy_policy" render={() => <PrivacyPolicy className={"terms"}/>} />
-          <Route path="/refund_policy" render={() => <RefundPolicy className={"terms"}/>} />
-          <Route path="/about_us" render={() => <AboutUs className={"terms"}/>} />
+          <Route
+            path="/privacy_policy"
+            render={() => <PrivacyPolicy className={"terms"} />}
+          />
+          <Route
+            path="/refund_policy"
+            render={() => <RefundPolicy className={"terms"} />}
+          />
+          <Route
+            path="/about_us"
+            render={() => <AboutUs className={"terms"} />}
+          />
           <Route path="/not-found" render={() => <NotFound />} />
           <Route path="/" render={() => <Component />} />
         </Switch>

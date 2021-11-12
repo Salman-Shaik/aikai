@@ -1,6 +1,8 @@
 import React from "react";
 import "../css/TermsAndConditions.css";
-export const TermsAndConditions = ({className}) => {
+import "../css/mobile/TermsAndConditions.css";
+
+export const TermsAndConditions = ({ className }) => {
   return (
     <section className={className}>
       <h2>
