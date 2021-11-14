@@ -1,11 +1,11 @@
 import _ from "lodash";
 import React, { useEffect, useState } from "react";
-import "../../../css/WatchList.css";
-import { getSectionedMiniShows } from "../../../lib/helper";
-import { fetchWatchList } from "../../../lib/networkCalls";
-import { Spinner } from "../../Spinner";
-import { MinimizeActionButton } from "./MinimizeActionButton";
-import { MiniShow } from "./Show/MiniShow";
+import "../../../../css/WatchList.css";
+import { getSectionedMiniShows } from "../../../../lib/helper";
+import { fetchWatchList } from "../../../../lib/networkCalls";
+import { Spinner } from "../../../Spinner";
+import { MinimizeActionButton } from "../MinimizeActionButton";
+import { MiniShow } from "../Show/MiniShow";
 
 export const WatchList = ({
   setHomePageLoaded,

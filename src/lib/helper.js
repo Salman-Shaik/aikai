@@ -3,6 +3,7 @@ import _ from "lodash";
 import React from "react";
 import { Poster } from "../Components/LandingPage/Main/NowPlaying/Poster";
 import { genres } from "../data/genres.json";
+import { cinematicUniverses } from "../data/cinematicUniverses.json";
 
 const filterPosterPaths = (item) => !!item["poster_path"];
 
@@ -94,9 +95,10 @@ export const onPosterError = (e) => {
 export const isCurrentItem = (name) => {
   const url = {
     "Now Playing": "/now_playing",
-    Movies: "/movies",
-    "Tv Shows": "/tv_shows",
+    Movie: "/movies",
+    Tv: "/tv_shows",
     "Editor's Choice": "/editors_choice",
+    "Download App": "/download_app",
   };
   const href = window.location.href;
   return href.includes(url[name]);
@@ -115,4 +117,8 @@ export const getSectionedMiniShows = (map) => {
 
 export const isEmptyOrUndefined = (value) => {
   return _.isEmpty(value) || _.isUndefined(value);
+};
+
+export const getCuratedLists = () => {
+  return cinematicUniverses;
 };

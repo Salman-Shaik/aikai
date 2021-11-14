@@ -106,6 +106,7 @@ const isValidReactRoute = (url) => {
     "/refund_policy",
     "/about_us",
     "/download_app",
+    "/curated_lists",
   ];
   return validRoutes.includes(url);
 };

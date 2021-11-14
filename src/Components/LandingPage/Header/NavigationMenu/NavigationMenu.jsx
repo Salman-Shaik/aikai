@@ -54,14 +54,19 @@ export const NavigationMenu = (props) => {
     updateLocation("/tv_shows");
   };
 
+  const onCuratedLists = () => {
+    updateLocation("/curated_lists");
+  };
+
   return (
     <section className="navigation_menu">
-      {createNavigationMenuItem("Download The App", onDownload)}
+      {createNavigationMenuItem("Download App", onDownload)}
       <p className="page_info">|</p>
       {createNavigationMenuItem("Now Playing", onNowPlaying)}
-      {createNavigationMenuItem("Movies", onMovie)}
-      {createNavigationMenuItem("TV Shows", onTv)}
+      {createNavigationMenuItem("Movie", onMovie)}
+      {createNavigationMenuItem("TV", onTv)}
       {createNavigationMenuItem("Editor's Choice", onEditorsChoice)}
+      {createNavigationMenuItem("Curated Lists", onCuratedLists)}
       <Tooltip title="Favorites">
         <Favorite className="favorites_icon" onClick={onFavorites} />
       </Tooltip>

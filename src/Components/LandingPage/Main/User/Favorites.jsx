@@ -1,10 +1,10 @@
 import _ from "lodash";
 import React, { useEffect, useState } from "react";
-import "../../../css/Favorites.css";
-import { getSectionedMiniShows } from "../../../lib/helper";
-import { fetchUserFavorites } from "../../../lib/networkCalls";
-import { Spinner } from "../../Spinner";
-import { MiniShow } from "./Show/MiniShow";
+import "../../../../css/Favorites.css";
+import { getSectionedMiniShows } from "../../../../lib/helper";
+import { fetchUserFavorites } from "../../../../lib/networkCalls";
+import { Spinner } from "../../../Spinner";
+import { MiniShow } from "../Show/MiniShow";
 
 export const Favorites = ({
   setHomePageLoaded,

@@ -6,7 +6,7 @@ import { AboutUs } from "../../AboutUs";
 import { DoubleShow } from "./DoubleShow";
 import { DownloadApp } from "./DownloadApp";
 import { EditorsChoice } from "./EditorsChoice";
-import { Favorites } from "./Favorites";
+import { Favorites } from "./User/Favorites";
 import { HomePage } from "./Homepage/HomePage";
 import { NotFound } from "./NotFound";
 import { NowPlaying } from "./NowPlaying/NowPlaying";
@@ -17,7 +17,8 @@ import { Show } from "./Show/Show";
 import { TermsAndConditions } from "../../TermsAndConditions";
 import { LoginPage } from "./User/LoginPage";
 import { UserDetails } from "./User/UserDetails";
-import { WatchList } from "./WatchList";
+import { WatchList } from "./User/WatchList";
+import { CuratedLists } from "./CuratedLists/CuratedLists";
 
 export const Main = (props) => {
   const {
@@ -191,6 +192,7 @@ export const Main = (props) => {
             render={() => <TermsAndConditions className={"terms"} />}
           />
           <Route path="/download_app" render={() => <DownloadApp />} />
+          <Route path="/curated_lists" render={() => <CuratedLists />} />
           <Route
             path="/privacy_policy"
             render={() => <PrivacyPolicy className={"terms"} />}
