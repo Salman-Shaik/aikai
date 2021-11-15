@@ -8,6 +8,7 @@ import {
   onPosterError,
 } from "../../../../lib/helper";
 import "../../../../css/SearchResults.css";
+import { Spinner } from "../../../Spinner";
 
 export const ShowGallery = ({
   setHomePageLoaded,
@@ -18,6 +19,7 @@ export const ShowGallery = ({
   cinematicUniverse,
 }) => {
   const [showsInfo, setShowsInfo] = useState([]);
+  const [loaded, setLoaded] = useState(false);
   useEffect(async () => {
     if (_.isEmpty(cinematicUniverse)) updateLocation("/curated_lists");
     let moviesAndShows = editorsChoice;
@@ -34,6 +36,7 @@ export const ShowGallery = ({
       })
     );
     setShowsInfo(info);
+    setLoaded(true);
   }, []);
 
   const createSectionedPosters = (
@@ -66,10 +69,12 @@ export const ShowGallery = ({
     return getSectionedPosters(postersMap);
   };
 
-  return (
+  return !loaded ? (
+    <Spinner loaded={loaded} />
+  ) : (
     <section>
       {_.isEmpty(showsInfo) ? (
-        <h2 className="notice">Please try Again Later.</h2>
+        <h2 className="notice">Please Try Again Later.</h2>
       ) : (
         createSectionedPosters(showsInfo, updateLocation, setHomePageLoaded)
       )}
