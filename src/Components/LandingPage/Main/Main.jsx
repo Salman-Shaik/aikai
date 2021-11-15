@@ -1,7 +1,7 @@
 import _ from "lodash";
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { deleteCookie } from "../../../lib/helper";
+import { deleteCookie, getCuratedLists } from "../../../lib/helper";
 import { AboutUs } from "../../AboutUs";
 import { DoubleShow } from "./DoubleShow";
 import { DownloadApp } from "./DownloadApp";
@@ -19,6 +19,8 @@ import { LoginPage } from "./User/LoginPage";
 import { UserDetails } from "./User/UserDetails";
 import { WatchList } from "./User/WatchList";
 import { CuratedLists } from "./CuratedLists/CuratedLists";
+import { ShowGallery } from "./CuratedLists/ShowGallery";
+import { list } from "../../../data/editorsChoice.json";
 
 export const Main = (props) => {
   const {
@@ -30,6 +32,7 @@ export const Main = (props) => {
     homepageLoaded,
     setHomePageLoaded,
     updateLocation,
+    cinematicUniverse,
   } = props;
 
   const isShowEmpty = _.isEmpty(currentShow);
@@ -37,6 +40,7 @@ export const Main = (props) => {
   const isShowPresent = !isShowIdEmpty || !isShowEmpty;
   const isMovie = _.isEqual(window.location.href, "/movies");
   const isTv = _.isEqual(window.location.href, "/tv_shows");
+  const curatedList = getCuratedLists();
 
   if (isMovie || isTv) {
     deleteCookie("showType");
@@ -192,7 +196,31 @@ export const Main = (props) => {
             render={() => <TermsAndConditions className={"terms"} />}
           />
           <Route path="/download_app" render={() => <DownloadApp />} />
-          <Route path="/curated_lists" render={() => <CuratedLists />} />
+          <Route
+            path="/curated_lists"
+            render={() => (
+              <CuratedLists
+                curatedLists={curatedList}
+                updateLocation={updateLocation}
+              />
+            )}
+          />
+          <Route
+            path="/curated_list_gallery"
+            render={() => {
+              return (
+                <ShowGallery
+                  isUserLoggedIn={isUserLoggedIn}
+                  setHomePageLoaded={setHomePageLoaded}
+                  updateLocation={updateLocation}
+                  list={curatedList}
+                  editorsChoice={list}
+                  editorsChoiceFlag={cinematicUniverse === "Editor's Choice"}
+                  cinematicUniverse={cinematicUniverse}
+                />
+              );
+            }}
+          />
           <Route
             path="/privacy_policy"
             render={() => <PrivacyPolicy className={"terms"} />}

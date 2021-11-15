@@ -122,3 +122,20 @@ export const isEmptyOrUndefined = (value) => {
 export const getCuratedLists = () => {
   return cinematicUniverses;
 };
+
+export const getSectionedPosters = (map) => {
+  const Section = ({ posters, key }) => (
+    <section
+      className="sectioned_posters"
+      data-testid="sectioned_posters"
+      key={key}
+    >
+      {posters}
+    </section>
+  );
+
+  const sectionedMap = [];
+  for (let i = 0; i < map.length; i += 6)
+    sectionedMap.push(<Section posters={getSix(map, i)} key={i} />);
+  return sectionedMap;
+};

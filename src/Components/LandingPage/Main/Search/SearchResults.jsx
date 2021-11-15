@@ -3,29 +3,12 @@ import React, { useEffect, useState } from "react";
 import "../../../../css/SearchResults.css";
 import {
   createCookie,
-  getSix,
+  getSectionedPosters,
   imageUrlBuilder,
   onPosterError,
 } from "../../../../lib/helper";
 import { fetchSearchedShow } from "../../../../lib/showNetworkCalls";
 import { Spinner } from "../../../Spinner";
-
-const Section = ({ posters, key }) => (
-  <section
-    className="sectioned_posters"
-    data-testid="sectioned_posters"
-    key={key}
-  >
-    {posters}
-  </section>
-);
-
-const getSectionedPosters = (map) => {
-  const sectionedMap = [];
-  for (let i = 0; i < map.length; i += 6)
-    sectionedMap.push(<Section posters={getSix(map, i)} key={i} />);
-  return sectionedMap;
-};
 
 const createSectionedPosters = (
   movieResults,

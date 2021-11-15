@@ -1,16 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { List } from "./List";
 import "../../../../css/CuratedLists.css";
-import { getCuratedLists } from "../../../../lib/helper";
 import { list } from "../../../../data/editorsChoice.json";
 
-export const CuratedLists = () => {
-  let [curatedLists, setCuratedLists] = useState({});
-
-  useEffect(() => {
-    setCuratedLists(getCuratedLists());
-  }, []);
-
+export const CuratedLists = ({ curatedLists, updateLocation }) => {
   return (
     <section className={"curated_lists"}>
       {Object.values(curatedLists).map(
@@ -19,6 +12,7 @@ export const CuratedLists = () => {
             title={title}
             description={description}
             items={moviesAndShows}
+            updateLocation={updateLocation}
           />
         )
       )}
@@ -26,6 +20,7 @@ export const CuratedLists = () => {
         title={"Editor's Choice"}
         description={"Movies And TV Show recommendations from Editor"}
         items={list}
+        updateLocation={updateLocation}
       />
     </section>
   );

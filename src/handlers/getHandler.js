@@ -107,6 +107,7 @@ const isValidReactRoute = (url) => {
     "/about_us",
     "/download_app",
     "/curated_lists",
+    "/curated_list_gallery",
   ];
   return validRoutes.includes(url);
 };

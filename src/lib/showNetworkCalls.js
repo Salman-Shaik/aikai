@@ -213,7 +213,6 @@ export const fetchImages = async (id, type) => {
     .then((r) => r.text())
     .then((d) => JSON.parse(d).posters)
     .then((posters) => {
-      console.log(posters[0]);
       return posters[0]["file_path"];
     });
 };
@@ -224,7 +223,6 @@ export const fetchCast = async (id, type) => {
     .then((r) => r.text())
     .then((d) => JSON.parse(d).cast)
     .then((castings) => {
-      console.log(castings[0]);
       return castings[0].name;
     });
 };

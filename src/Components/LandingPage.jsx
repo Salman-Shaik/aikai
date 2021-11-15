@@ -9,6 +9,7 @@ export const LandingPage = () => {
   const showIdCookie = getCookieValue("showId");
   const showTypeCookie = getCookieValue("showType");
   const showCookie = getCookieValue("show");
+  const cinematicUniverse = getCookieValue("cinematicUniverse");
 
   const currentShow = showCookie || "";
   const currentShowId = showIdCookie || 0;
@@ -35,6 +36,7 @@ export const LandingPage = () => {
         isUserLoggedIn={isUserLoggedIn}
         setIsUserLoggedIn={setIsUserLoggedIn}
         updateLocation={updateLocation}
+        cinematicUniverse={cinematicUniverse}
       />
     </div>
   );

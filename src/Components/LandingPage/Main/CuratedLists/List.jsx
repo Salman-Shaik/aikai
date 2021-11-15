@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "../../../../css/CuratedLists.css";
 import { fetchCast, fetchImages } from "../../../../lib/showNetworkCalls";
-import { imageUrlBuilder, onPosterError } from "../../../../lib/helper";
+import {
+  createCookie,
+  imageUrlBuilder,
+  onPosterError,
+} from "../../../../lib/helper";
 import _ from "lodash";
 
-export const List = ({ title, description, items }) => {
+export const List = ({ title, description, items, updateLocation }) => {
   const firstFive = items.slice(0, 5);
   const [images, setImages] = useState([]);
   const [cast, setCast] = useState([]);
@@ -21,8 +25,12 @@ export const List = ({ title, description, items }) => {
     setCast(_.uniq(credits));
   }, []);
 
+  const onClick = () => {
+    createCookie("cinematicUniverse", title);
+    updateLocation("/curated_list_gallery");
+  };
   return (
-    <section className={"curated_list"}>
+    <section className={"curated_list"} onClick={onClick}>
       <section className={"background"}>
         {images.map((image) => {
           return (
@@ -41,7 +49,7 @@ export const List = ({ title, description, items }) => {
           Movies: {firstFive.map((m) => m.title).join(", ")}, etc.
         </p>
         <p className={"cast"}>Starring: {cast.join(", ")}, etc.</p>
-        <p className={"description"}>{description}</p>
+        <p className={"list_description"}>{description}</p>
       </section>
     </section>
   );
