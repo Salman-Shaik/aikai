@@ -37,6 +37,7 @@ export const ShowDetails = ({
   currentShowType,
   isUserLoggedIn,
   updateLocation,
+  country,
 }) => {
   const id = info.id;
   const title = info.name || info.title;
@@ -47,7 +48,6 @@ export const ShowDetails = ({
   const year = releaseDate.split("-")[0] || "Y.T.A";
   const imagePath = info["poster_path"];
   const language = info["original_language"];
-  const homepage = info["homepage"];
 
   return (
     <section className="show_details" data-testid="show_details">
@@ -76,7 +76,7 @@ export const ShowDetails = ({
           <h4>{genre}</h4>
           {createProgressBar(rating)}
           <h4 className="language">Language: {language.toUpperCase()}</h4>
-          <AvailableOn homePage={homepage} />
+          <AvailableOn country={country} type={currentShowType} id={id} />
         </section>
       </section>
       <section className="show_actions" data-testid="show_actions">

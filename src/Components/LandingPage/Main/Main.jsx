@@ -33,6 +33,7 @@ export const Main = (props) => {
     setHomePageLoaded,
     updateLocation,
     cinematicUniverse,
+    country,
   } = props;
 
   const isShowEmpty = _.isEmpty(currentShow);
@@ -64,6 +65,7 @@ export const Main = (props) => {
             homepageLoaded={homepageLoaded}
             setHomePageLoaded={setHomePageLoaded}
             updateLocation={updateLocation}
+            country={country}
           />
         ) : (
           <HomePage updateLocation={updateLocation} />
@@ -161,6 +163,7 @@ export const Main = (props) => {
                 setHomePageLoaded={setHomePageLoaded}
                 updateLocation={updateLocation}
                 type="movie"
+                country={country}
               />
             )}
           />
@@ -176,6 +179,7 @@ export const Main = (props) => {
                 setHomePageLoaded={setHomePageLoaded}
                 updateLocation={updateLocation}
                 type="tv"
+                country={country}
               />
             )}
           />
@@ -188,6 +192,7 @@ export const Main = (props) => {
                 isUserLoggedIn={isUserLoggedIn}
                 setHomePageLoaded={setHomePageLoaded}
                 homepageLoaded={homepageLoaded}
+                country={country}
               />
             )}
           />

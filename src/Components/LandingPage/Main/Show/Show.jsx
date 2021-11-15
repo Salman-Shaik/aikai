@@ -15,6 +15,7 @@ const Component = ({
   homepageLoaded,
   isUserLoggedIn,
   updateLocation,
+  country,
 }) => {
   const createOtherMovies = (keyword, className) => (
     <OtherShows
@@ -35,6 +36,7 @@ const Component = ({
         currentShowType={currentShowType}
         isUserLoggedIn={isUserLoggedIn}
         updateLocation={updateLocation}
+        country={country}
       />
       {createOtherMovies("recommendations", "recommended_movies")}
       {createOtherMovies("similar", "similar_movies")}
@@ -69,6 +71,7 @@ export const Show = ({
   setHomePageLoaded,
   isUserLoggedIn,
   updateLocation,
+  country,
 }) => {
   const [info, setShowInformation] = useState({});
   const [loaded, setLoaded] = useState(false);
@@ -94,6 +97,7 @@ export const Show = ({
       homepageLoaded={homepageLoaded}
       isUserLoggedIn={isUserLoggedIn}
       updateLocation={updateLocation}
+      country={country}
     />
   );
 };

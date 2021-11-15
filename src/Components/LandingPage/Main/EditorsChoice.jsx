@@ -9,6 +9,7 @@ export const EditorsChoice = ({
   homepageLoaded,
   setHomePageLoaded,
   updateLocation,
+  country,
 }) => {
   const [randomShow, setRandomShow] = useState({});
   useEffect(() => {
@@ -25,6 +26,7 @@ export const EditorsChoice = ({
       homepageLoaded={homepageLoaded}
       setHomePageLoaded={setHomePageLoaded}
       updateLocation={updateLocation}
+      country={country}
     />
   );
 };

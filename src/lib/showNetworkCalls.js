@@ -241,3 +241,16 @@ export const fetchVideoId = (title, setVideoIds, setHomepageLoaded) => {
     })
     .catch((e) => new TypeError(e));
 };
+
+export const fetchOttPlatforms = async (country, type, id, setOtt) => {
+  const url = `${API_HOST}/${type}/${id}/watch/providers?api_key=${API_KEY}`;
+  await fetch(url)
+    .then((r) => r.text())
+    .then((d) => JSON.parse(d).results)
+    .then((results) => {
+      const ottPlatforms = results[country].flatrate.map(
+        (fr) => fr["provider_name"]
+      );
+      setOtt(ottPlatforms);
+    });
+};
