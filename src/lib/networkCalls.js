@@ -64,6 +64,7 @@ export const updateUserDetails = (
   password,
   age,
   explicitFlag,
+  country,
   languages,
   updateLocation,
   setSuccessMessage,
@@ -75,7 +76,7 @@ export const updateUserDetails = (
   const jwtToken = getJwtToken({ username, password });
   fetch(url, {
     method: method,
-    body: JSON.stringify({ name, age, explicitFlag, languages }),
+    body: JSON.stringify({ name, age, explicitFlag, languages, country }),
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${jwtToken}`,
@@ -206,6 +207,7 @@ export const fetchDetails = (
   setLanguages,
   setName,
   setDisabled,
+  setCountry,
   setLoaded,
   setHomePageLoaded
 ) => {
@@ -213,12 +215,13 @@ export const fetchDetails = (
     .then((res) => res.text())
     .then((d) => JSON.parse(d))
     .then((details) => {
-      const { languages, age, name, explicitFlag } = details;
+      const { languages, age, name, explicitFlag, country } = details;
       setAge(age);
       setDisabled(age < 18);
       setExplicitFlag(explicitFlag);
       setLanguages(languages);
       setName(name);
+      setCountry(country);
       setLoaded(true);
       setHomePageLoaded(true);
     })

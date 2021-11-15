@@ -54,10 +54,11 @@ const getUserDetails = async (req, res, User) => {
   let cookie = req.cookies.user;
   if (!!cookie) {
     const username = decode(cookie);
-    const { name, age, explicitFlag, languages } = await User.findByUsername(
-      username
+    const { name, age, explicitFlag, languages, country } =
+      await User.findByUsername(username);
+    return res.send(
+      JSON.stringify({ name, age, explicitFlag, languages, country })
     );
-    return res.send(JSON.stringify({ name, age, explicitFlag, languages }));
   }
   res.status(401);
   res.send("User Not logged In");
@@ -67,10 +68,11 @@ const getUserDetailsForMobile = async (req, res, User) => {
   const userToken = req.query.user;
   if (!_.isEmpty(userToken)) {
     const username = decode(userToken);
-    const { name, age, explicitFlag, languages } = await User.findByUsername(
-      username
+    const { name, age, explicitFlag, languages, country } =
+      await User.findByUsername(username);
+    return res.send(
+      JSON.stringify({ name, age, explicitFlag, languages, country })
     );
-    return res.send(JSON.stringify({ name, age, explicitFlag, languages }));
   }
   res.status(401);
   res.send("User Not logged In");

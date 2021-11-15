@@ -40,9 +40,10 @@ export const UserDetails = ({
 }) => {
   const [successMessage, setSuccessMessage] = useState("");
   const [name, setName] = useState("");
-  const [age, setAge] = useState(0);
+  const [age, setAge] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [country, setCountry] = useState("default");
   const [passwordStrength, setPasswordStrength] = useState("");
   const [explicitFlag, setExplicitFlag] = useState(false);
   const [termsFlag, setTermsFlag] = useState(!!updateFlag);
@@ -66,6 +67,7 @@ export const UserDetails = ({
         setLanguages,
         setName,
         setDisabled,
+        setCountry,
         setLoaded,
         setHomePageLoaded
       );
@@ -156,6 +158,7 @@ export const UserDetails = ({
       password,
       age,
       explicitFlag,
+      country,
       languages,
       updateLocation,
       setSuccessMessage
@@ -171,6 +174,7 @@ export const UserDetails = ({
       password,
       age,
       explicitFlag,
+      country,
       languages,
       updateLocation,
       setSuccessMessage
@@ -187,6 +191,10 @@ export const UserDetails = ({
     setLanguages(languages.filter((l) => l !== language));
   };
 
+  const onCountryChange = ({ target }) => {
+    const country = target.value;
+    setCountry(country);
+  };
   return !loaded && !homepageLoaded ? (
     <Spinner loaded={loaded} />
   ) : (
@@ -257,6 +265,20 @@ export const UserDetails = ({
               onChange={onSwitch}
             />
           </section>
+          <select
+            className={"country detail"}
+            required
+            onChange={onCountryChange}
+            value={country}
+          >
+            <option value={"default"} selected disabled>
+              Please Select Your Country
+            </option>
+            <option value={"IN"}>India</option>
+            <option value={"US"}>United States</option>
+            <option value={"DE"}>Germany</option>
+            <option value={"Others"}>Other</option>
+          </select>
           {!updateFlag && (
             <section className="terms_and_policy">
               <input

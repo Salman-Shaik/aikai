@@ -136,8 +136,16 @@ const updateUserDetails = async (req, res, User) => {
     return res.send("User not logged in");
   }
   let username = decode(cookie);
-  const { name, age, explicitFlag, languages } = req.body;
-  await User.updateUser(username, password, name, age, explicitFlag, languages);
+  const { name, age, explicitFlag, languages, country } = req.body;
+  await User.updateUser(
+    username,
+    password,
+    name,
+    age,
+    explicitFlag,
+    languages,
+    country
+  );
   res.send("User details Updated");
 };
 

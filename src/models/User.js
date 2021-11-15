@@ -61,6 +61,11 @@ const user = (sequelize, DataTypes) => {
         defaultValue: [],
         unique: false,
       },
+      country: {
+        type: DataTypes.STRING,
+        defaultValue: "Other",
+        unique: false,
+      },
       subscription: {
         type: DataTypes.STRING,
         unique: false,
@@ -82,7 +87,8 @@ const user = (sequelize, DataTypes) => {
     name,
     age,
     explicitFlag,
-    languages
+    languages,
+    country
   ) => {
     await bcrypt.hash(password, 10, async (err, hash) => {
       if (err) console.log(err);
@@ -94,6 +100,7 @@ const user = (sequelize, DataTypes) => {
           age,
           explicitFlag,
           languages,
+          country,
         });
       }
     });
@@ -105,7 +112,8 @@ const user = (sequelize, DataTypes) => {
     name,
     age,
     explicitFlag,
-    languages
+    languages,
+    country
   ) => {
     if (password === "") {
       await User.update(
@@ -114,6 +122,7 @@ const user = (sequelize, DataTypes) => {
           age,
           explicitFlag,
           languages,
+          country,
         },
         { where: { username } }
       );
@@ -128,6 +137,7 @@ const user = (sequelize, DataTypes) => {
               age,
               explicitFlag,
               languages,
+              country,
             },
             { where: { username } }
           );
@@ -192,6 +202,7 @@ const user = (sequelize, DataTypes) => {
         res.cookie("user", encode(username));
         res.cookie("languages", _.toString(userObj.languages));
         res.cookie("explicitFlag", userObj.explicitFlag);
+        res.cookie("country", userObj.country);
         res.send(JSON.stringify({ user: encode(username) }));
       } else {
         res.status(401);
