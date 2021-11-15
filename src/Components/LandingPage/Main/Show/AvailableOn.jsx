@@ -10,7 +10,8 @@ export const AvailableOn = ({ country, type, id }) => {
   }, []);
 
   const isNetflix = () => ott.includes("Netflix");
-  const isDisneyPlus = () => ott.includes("Disney Plus");
+  const isDisneyPlus = () =>
+    ott.includes("Disney Plus") || ott.includes("Hotstar");
   const isPrimeVideo = () => ott.includes("Amazon Prime Video");
 
   return isNetflix() || isPrimeVideo() || isDisneyPlus() ? (

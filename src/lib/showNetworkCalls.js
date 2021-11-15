@@ -248,9 +248,17 @@ export const fetchOttPlatforms = async (country, type, id, setOtt) => {
     .then((r) => r.text())
     .then((d) => JSON.parse(d).results)
     .then((results) => {
-      const ottPlatforms = results[country].flatrate.map(
-        (fr) => fr["provider_name"]
-      );
+      const result = results[country];
+      let ottPlatforms = [];
+      const getProviderName = (fr) => fr["provider_name"];
+      if (!!result.flatrate) {
+        ottPlatforms = ottPlatforms.concat(
+          result.flatrate.map(getProviderName)
+        );
+      }
+      if (!!result.ads) {
+        ottPlatforms = ottPlatforms.concat(result.ads.map(getProviderName));
+      }
       setOtt(ottPlatforms);
     });
 };
