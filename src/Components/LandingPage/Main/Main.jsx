@@ -137,6 +137,7 @@ export const Main = (props) => {
                 homepageLoaded={homepageLoaded}
                 setHomePageLoaded={setHomePageLoaded}
                 updateLocation={updateLocation}
+                country={country}
               />
             )}
           />

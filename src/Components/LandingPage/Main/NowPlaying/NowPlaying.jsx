@@ -37,14 +37,15 @@ export const NowPlaying = ({
   homepageLoaded,
   setHomePageLoaded,
   updateLocation,
+  country,
 }) => {
   const [playingMovies, setPlayingMovies] = useState([]);
   const [airingTvShows, setAiringTvShows] = useState([]);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    fetchPlayingMovies(setPlayingMovies);
-    fetchAiringTVShows(setAiringTvShows, setLoaded, setHomePageLoaded);
+    fetchPlayingMovies(setPlayingMovies,country);
+    fetchAiringTVShows(setAiringTvShows,setLoaded, setHomePageLoaded);
   }, [setHomePageLoaded]);
 
   return !loaded || !homepageLoaded ? (
