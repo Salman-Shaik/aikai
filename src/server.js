@@ -4,18 +4,19 @@ const favicon = require("express-favicon");
 const logger = require("morgan");
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 const {
   validateUser,
   currentShowSetter,
   apiKeySetter,
 } = require("./handlers/middleware");
+
 const {
-  getFavorites,
-  getWatchList,
-  getFavoritesForMobile,
-  getWatchListForMobile,
-} = require("./handlers/getHandler");
-const {
+  updateSubscription,
+  updateSubscriptionForMobile,
+  updatePasswordForMobile,
+  updateUserDetailsForMobile,
+  updateUserDetails,
   favoriteHandler,
   watchedHandler,
   watchedHandlerForMobile,
@@ -24,10 +25,25 @@ const {
   addToWatchListForMobile,
 } = require("./handlers/putHandler");
 const {
+  getSubscriptionForMobile,
+  getSubscription,
+  getUserDetailsForMobile,
+  getUserFullName,
+  getUserDetails,
+  handleReactRoutingRequests,
+  getFavorites,
+  getWatchList,
+  getFavoritesForMobile,
+  getWatchListForMobile,
+} = require("./handlers/getHandler");
+
+const {
+  mobileRegistrationHandler,
   loginHandler,
   registrationHandler,
   mobileLoginHandler,
 } = require("./handlers/postHandler");
+
 const {
   deleteFavorite,
   deleteFavoriteForMobile,
@@ -37,21 +53,6 @@ const {
 } = require("./handlers/deleteHandler");
 
 const { sequelize, models } = require("./models");
-const async = require("async");
-const { handleReactRoutingRequests } = require("./handlers/getHandler");
-const { updateUserDetails } = require("./handlers/putHandler");
-const { getUserDetails } = require("./handlers/getHandler");
-
-const cors = require("cors");
-const { updateSubscription } = require("./handlers/putHandler");
-const { updateSubscriptionForMobile } = require("./handlers/putHandler");
-const { getSubscriptionForMobile } = require("./handlers/getHandler");
-const { getSubscription } = require("./handlers/getHandler");
-const { updatePasswordForMobile } = require("./handlers/putHandler");
-const { getUserDetailsForMobile } = require("./handlers/getHandler");
-const { updateUserDetailsForMobile } = require("./handlers/putHandler");
-const { mobileRegistrationHandler } = require("./handlers/postHandler");
-const { getUserFullName } = require("./handlers/getHandler");
 
 const { User } = models;
 const port = process.env.PORT || 8080;

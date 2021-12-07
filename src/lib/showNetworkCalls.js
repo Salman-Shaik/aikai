@@ -64,7 +64,7 @@ const airingShowsFilter = (
   setHomepageLoaded(true);
 };
 
-export const fetchPlayingMovies = (setPlayingMovies,country) => {
+export const fetchPlayingMovies = (setPlayingMovies, country) => {
   const url = `${API_HOST}/movie/now_playing?api_key=${API_KEY}&language=en-IN&region=${country}`;
   fetch(url)
     .then((r) => r.text())
